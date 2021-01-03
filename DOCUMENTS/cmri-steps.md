@@ -89,9 +89,43 @@ send <D> cmd then motor shield all 4 light will blinking
 
 ### 8 step
 ```
+install java 8 and jmri on the laptop or raspberri pi 
 
-https://www.youtube.com/watch?v=qScLz-kq88k
+then open "panel pro" -> preferences -> connections 
+click on + button on tab 
+System manufacturer : DCC++
+System Connection : DCC++ Serial Port 
 
-from 19:00 time 
+	Serial Port : cu.usbmodem14201 
+	Connection Prefix: D
+	connection Name : DCC++
+	click on ADdition connection Settings 
+		Baud rate : 115200bps 
+Click on the Save button and restrat 
+
+```
+
+
+### 9 step
+```
+place engine on the programming track 
+
+then open "panel pro" -> roster -> click on the Red button on roster 
+now we hear the sound of the locomotive 
+ensure the programming tack radio botton is slected in the botton 
+then click on the new loco botton 
+click the botton "read from the decoder" botton 
+provide the long address and name then save it 
+then select the loco on thee roster and then open the throttle to operate the engine 
+```
+
+
+### 10 step
+```
+then open "panel pro" -> preferences -> withrottle
+check the "start automatically with application" check box and save and restart 
+once restart then check on redbotton to start the application it will turn to green 
+in pone /table in withrottle/engine driver app provide the host name and the port number to configure the cmri server then 
+use the app to controll the engine on dcc++ layout 
 
 ```
