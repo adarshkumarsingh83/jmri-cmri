@@ -1,5 +1,5 @@
 
-![](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/DOCUMENTS/UNO%20BASED%20DCC%2B%2B%20BASE%20STATION%20/uno%20cmri.png)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/DOCUMENTS/UNO%20BASED%20DCC%2B%2B%20BASE%20STATION%20/uno%20cmri.png)
 
 ### 1 step (download the dcc++ software code for ardiuno)
 ```
