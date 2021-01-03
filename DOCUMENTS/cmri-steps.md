@@ -1,18 +1,18 @@
 
-### 1 step
+### 1 step (download the dcc++ software code for ardiuno)
 ```
 Download the cmri code from the below url repository 
 https://github.com/DccPlusPlus/BaseStation
 ```
 
-### 2 step
+### 2 step (configure the dcc++ code in the arduino ide)
 ```
+connect the ardiuno board the system 
 extrct the zip file and then go inside the in DCCpp_Uno directory 
-
 open the file "DCCpp_Uno.ino" in the arduino ide 
 ```
 
-### 3 step
+### 3 step ( configure and upload the code to arduino)
 ```
 ensure the port and board type uno is selected in tools 
 
@@ -23,7 +23,7 @@ if its compile the uno is compable for the dcc++
 then upload the code to the uno if the code compile sucessfuly 
 ```
 
-### 4 step
+### 4 step (setting up the arduino for dcc++)
 ```
 now once code is uploaded to uno then 
 
@@ -33,7 +33,7 @@ we can see some dcc++ serial messages
 
 ```
 
-### 5 step
+### 5 step (testing the comptablity of the arduino for dcc++ base station code )
 ```
 now in the serial monitor send some cmd to the dcc++ uno board for seding singla 
 Example 
@@ -60,7 +60,7 @@ send cmd <D> to led will blink in slower rate
 ```
 
 
-### 6 step
+### 6 step (enable the moter shield for dcc++)
 ```
 take moter shield then cut the botton "vin connect" and test it from multimeter 
 
@@ -70,7 +70,7 @@ then once touch the both wire together it will make beep if wire is connected
 now mount the moter shield on the top of uno 
 ```
 
-### 7 step
+### 7 step (test the moter shield for dcc++ compatablity)
 ```
 put the jumper from pin 12 to pin 10 
 put the jumper from pin 13 to pin 5
@@ -87,7 +87,7 @@ send <D> cmd then motor shield all 4 light will blinking
 
 ```
 
-### 8 step
+### 8 step (install jmri and configure the dcc++ base stattion)
 ```
 install java 8 and jmri on the laptop or raspberri pi 
 
@@ -106,21 +106,22 @@ Click on the Save button and restrat
 ```
 
 
-### 9 step
+### 9 step (using jmri inbuilt panal to control the train)
 ```
 place engine on the programming track 
 
 then open "panel pro" -> roster -> click on the Red button on roster 
 now we hear the sound of the locomotive 
-ensure the programming tack radio botton is slected in the botton 
-then click on the new loco botton 
+ensure the "programming tack" radio botton is slected in the botton 
+then click on the "new loco" botton 
 click the botton "read from the decoder" botton 
-provide the long address and name then save it 
+provide the long address and name then click on the save button
+then place the loco on the main track/operattion track then 
 then select the loco on thee roster and then open the throttle to operate the engine 
 ```
 
 
-### 10 step
+### 10 step (using phone or table to control the train)
 ```
 then open "panel pro" -> preferences -> withrottle
 check the "start automatically with application" check box and save and restart 
