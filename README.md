@@ -4,7 +4,7 @@
 
 
 ## DCC jmri with nce panel pro and sbs 
-[DCC & NCE BASE STATION](https://github.com/adarshkumarsingh83/jmri-cmri/tree/main/DOCUMENTS/DCC%20SYSTEM)
+[DCC & NCE BASE STATION](https://github.com/adarshkumarsingh83/jmri-cmri/tree/main/DOCUMENTS/DCC%20BASED%20NCE%20SYSTEM)
 
 ## jmri-cmri arduino uno based bases station 
 [DCC++ UNO BASE STATION](https://github.com/adarshkumarsingh83/jmri-cmri/tree/main/DOCUMENTS/UNO%20BASED%20DCC%2B%2B%20BASE%20STATION%20)
