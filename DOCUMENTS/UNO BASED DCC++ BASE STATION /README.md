@@ -133,4 +133,4 @@ use the app to controll the engine on dcc++ layout
 
 ```
 
-![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/DOCUMENTS/UNO%20BASED%20DCC%2B%2B%20BASE%20STATION%20/IMG_6098.HEIC)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/DOCUMENTS/UNO%20BASED%20DCC%2B%2B%20BASE%20STATION%20/IMG_6098.jpg)
