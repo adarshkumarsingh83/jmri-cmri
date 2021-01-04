@@ -1,12 +1,4 @@
-# jmri-cmri
 
----
-
-### jmri-cmri
-
-
-### SETUP 
-----
 
 # ArduinoCMRI
 ---
@@ -15,7 +7,6 @@
 Requirements
 ------------
 * JMRI -- http://jmri.org/
-* An Arduino -- http://arduino.cc/ -- More modern Arduino boards (such as the Uno) are supported  now!
 
 Installation
 ------------
