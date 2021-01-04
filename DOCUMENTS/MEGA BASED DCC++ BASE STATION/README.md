@@ -114,3 +114,5 @@ in pone /table in withrottle/engine driver app provide the host name and the por
 use the app to controll the engine on dcc++ layout 
 
 ```
+
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/DOCUMENTS/MEGA%20BASED%20DCC%2B%2B%20BASE%20STATION/IMG_6099.HEIC)
