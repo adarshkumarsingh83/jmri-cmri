@@ -50,6 +50,42 @@ If you wanted to extend this demo to transmit data back to the PC, all you need 
 	
 ```
 
+Documentation
+-------------
+**CMRI(unsigned int address = 0, unsigned int input\_bits = 24, unsigned int output\_bits = 48)**
+Creates a new CMRI object. The default values will create a device that matches the capabilities of an SMINI node. If you want to bind to a different node address, or address more or less inputs, you can alter it here. The maximum combined number of addressable inputs and outputs is 2048 (C/MRI limitation). The library will work fine with any number of inputs and outputs, it will simply ignore out-of-range data.
+
+**void set\_address(unsigned int address)**
+Sets the address of the C/MRI node.
+
+**char process()**
+Reads in available data from the serial port and acts accordingly:
+* For POLL requests, it replies with the current state of the input data.
+* For INIT requests, it does nothing.
+* For SET/TRANSMIT (T) requests, it updates the output data.
+
+Return value is NULL for no valid packet received, or one of CMRI::INIT, CMRI::SET, CMRI::POLL depending on the packet type received.
+
+**bool process\_char(char c)**
+Similar to the CMRI::process method, but lets you manage the serial data yourself. Use this if you are processing more than 1 CMRI node in a system.
+
+Return value is true if a valid packet has been received and processing of it has finished. Otherwise it returns false.
+
+**void transmit()**
+Transmits the current state of the input data back to the PC. Creates a CMRI::GET packet.
+
+**bool get\_bit(int n)**
+Reads a bit from of the last valid input data received. Use this to update your signals, points, etc.
+
+**char get\_byte(int n)**
+Reads an entire byte from the input buffer. Use this with shiftOut and some shift registers to vastly expand your I/O capabilities.
+
+**bool set\_bit(int n, bool b)**
+Updates the output buffer to the specified value. Data will be transmitted to the PC either when transmit() is called, or when the next POLL packet is received.
+
+**bool set\_byte(int n, char b)**
+Updates an entire byte of the output buffer. Use this with shiftIn and some shift registers to add many extra digital inputs to your system.
+
 ---
 
 ## configuration in panel pro
@@ -119,5 +155,42 @@ void loop() {
 
 }
 
+
+We start off by defining the Driver Enable pin (DE_PIN), and Receiver Enable pin (RE_PIN). Usually these pins will be connected together on the MAX485, so you can just use the same pin here.
+
+Next we initialise the bus at 9600bps, just like you would with Serial.begin(9600). Then we print out some text using .println(...). Println handles the bus state for us, changing to TX mode then back to RX mode.
+
+In our main loop we check if any input is available, and if it is, we set the bus to TX mode, write out the data, and return to RX mode.
+
 ```
+
+Documentation
+-------------
+**Auto485(int DE_pin)**
+Creates a new Auto485 object. The Driver and Receiver Enable pins on the MAX485 are connected together.
+
+**Auto485(int DE_pin, int RE_pin)**
+Creates a new Auto485 object. The Driver and Receiver Enable pins on the MAX485 are connected to separate pins on the Arduino.
+
+**Auto485(int DE_pin, int RE_pin, HardwareSerial serial_port)**
+Creates a new Auto485 object using the specified serial port. Usually the defaults are fine (Serial on most boards, Serial1 on the Leonardo and other USBCOM boards). If you are using a Mega with multiple serial ports this lets you choose which serial port to use.
+
+**Auto485::TX**, **Auto485::RX**
+These are constants to let you toggle the mode of the bus.
+
+**begin(baud), begin(baud, config)**
+Initiate a serial connection at the given speed, and optionally with the given config settings (e.g. `SERIAL_8N2` to use two stop bits, etc).
+
+**set_mode(Auto485::TX)**, **set_mode(Auto485::RX)**
+Manually change to transmit or receive mode. When returning to receive mode, the function will pause until all pending serial data has been sent.
+
+**write(...)**, **print(...)**
+When in receive mode, the first call to any output functions will change to transmit mode, then send out the data as expected. It handles all the formatting options of the regular Arduino `print` and `write` functions.
+
+**flush()**
+Finish writing data, then switch to receive mode. Usually the serial writing functions happen asynchronously, with no delay while the data is sent out the serial port. When we're operating in half duplex mode though, we need to wait for the data to finish being sent before we change the mode of the bus. By calling `.flush()` we ensure there is no unsent data in the buffer. Once all pending data has been sent, we automatically switch back to receive mode!
+
+**println(...)**
+Like the `write(...)` and `print(...)` functions, calling `println(...)` will automatically switch to transmit mode. Unlike the lower-level functions though, println will return to receive mode at the end of the line. This means you can easily print simple messages to the bus and everything operates as expected, but if you're sending data byte-by-byte, that functionality if there too and Auto485 won't toggle between RX and TX for every single byte you send.
+
 

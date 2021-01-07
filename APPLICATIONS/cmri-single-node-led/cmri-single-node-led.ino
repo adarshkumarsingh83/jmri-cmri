@@ -20,14 +20,6 @@ void loop() {
 
   cmri.process();
 
-  for (int i = 0; i < 49; i++) {
-    Serial.println("  ");
-    Serial.print(i);
-    Serial.print("  ");
-    Serial.print(cmri.get_bit(i));
-  }
-
-
   // 2: update output. Reads bit 0 of T packet and sets the LED to this
   digitalWrite(RED_LED_PIN, cmri.get_bit(0));
 
