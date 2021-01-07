@@ -1,4 +1,7 @@
 
+
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-485-multiple-node-leds/connections-details.png)
+
 # CMRI CONFIGURATION IN PANEL PRO
 
 ```
