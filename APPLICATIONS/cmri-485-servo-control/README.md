@@ -1,4 +1,6 @@
 
+
+
 # CMRI CONFIGURATION IN PANEL PRO
 
 ```
@@ -22,6 +24,8 @@ Also click on additional connection box and select the Baud rate to 9600 bps
 
 ```
 
+
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-485-servo-control/connection-details.png)
 
 
 ### CMRI library
