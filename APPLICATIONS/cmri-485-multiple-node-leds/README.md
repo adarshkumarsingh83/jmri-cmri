@@ -50,3 +50,8 @@ Once you have added both these addresses to your table you are done. Click on th
 ### RS485 library
 
 - https://github.com/madleech/Auto485
+
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-485-multiple-node-leds/IMG_6233.jpg)
+
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-485-multiple-node-leds/IMG_6232.jpg)
+
