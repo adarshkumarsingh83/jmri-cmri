@@ -26,7 +26,16 @@ Also click on additional connection box and select the Baud rate to 9600 bps
 
 
 click on confiugure nodes to bring up the nodes page
-In the node address put 1 in for the first Arduino and click Add Node, then click on configure nodes again so we can add the second Arduino which will be node 2. Each Arduino you add in this way will need a seperate node addresss. Once this has all been done make sure you save the settings and restart PanelPro so that all the settings are implemented.
+
+In the node address put 1 in for the first Arduino and click Add Node, 
+
+then click on configure nodes again so we can add the second Arduino which will be node 2. 
+
+then click on configure nodes again so we can add the reminaing  Arduino one by one based on address provided on arduino program 
+
+Each Arduino you add in this way will need a seperate node addresss. 
+
+Once this has all been done make sure you save the settings and restart PanelPro so that all the settings are implemented.
 
 Once PanelPro has restarted click on tools > tables > lights so we can add a light control for each Arduino.
 first Arduino the address will be 1001 and 
