@@ -1,6 +1,6 @@
 
 
-![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-single-node-led/connections-details.png)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-485-single-node-led/connections-details.png)
 
 ### CMRI library
 
