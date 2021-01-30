@@ -72,27 +72,27 @@ void loop() {
     // for board 0 servo 0 to 15
     Status[i] = (cmri.get_bit(i));
     if (Status[i] == 1) {
-      pwm.writeMicroseconds(i, Throw[i]);
+      pwm1.writeMicroseconds(i, Throw[i]);
     } else {
-      pwm.writeMicroseconds(i, Close[i]);
+      pwm1.writeMicroseconds(i, Close[i]);
     }
 
 
     // for board 1 servo 16 to 31
     Status[i + 16] = (cmri.get_bit(i + 16));
     if (Status[i + 16] == 1) {
-      pwm.writeMicroseconds(i, Throw[i + 16]);
+      pwm2.writeMicroseconds(i, Throw[i + 16]);
     } else {
-      pwm.writeMicroseconds(i, Close[i + 16]);
+      pwm2.writeMicroseconds(i, Close[i + 16]);
     }
 
 
     // for board 2 servo 31 to 47
     Status[i + 32] = (cmri.get_bit(i + 32));
     if (Status[i + 32] == 1) {
-      pwm.writeMicroseconds(i, Throw[i + 32]);
+      pwm3.writeMicroseconds(i, Throw[i + 32]);
     } else {
-      pwm.writeMicroseconds(i, Close[i + 32]);
+      pwm3.writeMicroseconds(i, Close[i + 32]);
     }
 
     /*
