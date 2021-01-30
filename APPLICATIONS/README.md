@@ -14,7 +14,7 @@
 ---
 
 
-## cmri-485-servo-control
+## cmri-485-direct-servo-control
 
 
 ---

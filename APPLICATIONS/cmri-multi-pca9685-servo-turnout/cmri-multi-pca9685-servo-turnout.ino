@@ -16,9 +16,8 @@ void setup() {
   Serial.begin(9600);
   bus.begin(9600);
   pwm.begin();
-  pwm.setPWMFreq(60);  // This is the maximum PWM frequency
-  //pwm.setPWM(0, 0, 150);
-  //pwm.setPWM(1, 0, 200);
+  pwm.setPWMFreq(60); 
+
  
 }
 
