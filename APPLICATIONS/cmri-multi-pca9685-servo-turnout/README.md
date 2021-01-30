@@ -43,6 +43,35 @@ A0 and A1 1st and 2nd from right is solded then it will be 2+1+1 = 4 board
 
 NOTE see the soldering chart above 
 
+SEE the reference doc for the PCF9685
+
+https://learn.adafruit.com/16-channel-pwm-servo-driver?view=all
+
+JMRI 
+Tools -> tables -> turnout -> add 
+board no 1 with address 40  servo position 0 will be => 1001  use 1 bit study state 
+board no 1 with address 40  servo position 2 will be => 1002  use 1 bit study state
+..... continue ......
+
+board no 2 with address 41 servo position  0 will be => 1017
+board no 2 with address 41 servo position  1 will be => 1018
+
+..... continue ......
+
+board no 3  with address 42 servo position 0 will be => 1033
+board no 3 with asddress 42 servo position 1 will be => 1034
+
+..... continue ......
+
+board no 4 with address 43 servo poition 0 will be => 1049
+board no 4 with address 43 servo poition 1 will be => 1050
+
+..... continue ......
+
+and so on till the number of board mutliplied by 16 total we can have numbers 
+
+
+
 ```
 
 
