@@ -49,24 +49,53 @@ https://learn.adafruit.com/16-channel-pwm-servo-driver?view=all
 
 JMRI 
 Tools -> tables -> turnout -> add 
+
+## BOARD NO 1 WITH ADDRESS 40 
+-------------------------------
 board no 1 with address 40  servo position 0 will be => 1001  use 1 bit study state 
 board no 1 with address 40  servo position 2 will be => 1002  use 1 bit study state
+.
+.
+.
 ..... continue ......
+board no 1 with address 40  servo position 16 will be => 1016  use 1 bit study state
 
-board no 2 with address 41 servo position  0 will be => 1017  1001  use 1 bit study state 
-board no 2 with address 41 servo position  1 will be => 1018  1001  use 1 bit study state 
 
+
+## BOARD NO 2 WITH ADDRESS 41
+-------------------------------
+board no 2 with address 41 servo position  0 will be => 1017    use 1 bit study state 
+board no 2 with address 41 servo position  1 will be => 1018    use 1 bit study state 
+.
+.
+.
 ..... continue ......
+board no 2 with address 41 servo position  16 will be => 1032    use 1 bit study state 
 
-board no 3  with address 42 servo position 0 will be => 1033  1001  use 1 bit study state 
-board no 3 with asddress 42 servo position 1 will be => 1034  1001  use 1 bit study state 
 
+
+## BOARD NO 3 WITH ADDRESS 42
+-------------------------------
+board no 3  with address 42 servo position 0 will be => 1033    use 1 bit study state 
+board no 3 with asddress 42 servo position 1 will be => 1034    use 1 bit study state 
+.
+.
+.
 ..... continue ......
+board no 3 with asddress 42 servo position 16 will be => 1048    use 1 bit study state 
 
-board no 4 with address 43 servo poition 0 will be => 1049  1001  use 1 bit study state 
-board no 4 with address 43 servo poition 1 will be => 1050  1001  use 1 bit study state 
 
+
+## BOARD NO 4 WITH ADDRESS 43
+-------------------------------
+board no 4 with address 43 servo poition 0 will be => 1049   use 1 bit study state 
+board no 4 with address 43 servo poition 1 will be => 1050   use 1 bit study state 
+.
+.
+.
 ..... continue ......
+board no 4 with address 43 servo poition 16 will be => 1064   use 1 bit study state 
+
 
 and so on till the number of board mutliplied by 16 total we can have numbers 
 
