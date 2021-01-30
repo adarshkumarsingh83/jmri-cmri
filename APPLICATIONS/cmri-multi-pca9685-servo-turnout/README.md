@@ -25,7 +25,7 @@ Also click on additional connection box and select the Baud rate to 9600 bps
 
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-pca9685-servo-turnout/multi_pca9685%20servo.png)
 
-![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-pca9685-servo-turnout/pca9685%20address%20chart.png)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-pca9685-servo-turnout/pca9685%20soldering%20address%20chart.png)
 
 
 ### CMRI library
