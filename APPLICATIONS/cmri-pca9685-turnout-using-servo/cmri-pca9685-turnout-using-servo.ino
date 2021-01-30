@@ -28,11 +28,11 @@ void loop(){
    Tbit[1] = (cmri.get_bit(1)); //TBD1
    
    if (Tbit[0] == 1){
-     pwm.setPWM(0, 0, 170);
+     pwm.setPWM(0, 0, 100);
      Serial.println("trow");
    }
    if (Tbit[0] == 0){
-     pwm.setPWM(0, 0, 150);
+     pwm.setPWM(0, 0, 200);
      Serial.println("close");
    }
    if (Tbit[1] == 1){
