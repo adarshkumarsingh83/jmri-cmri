@@ -39,11 +39,12 @@ by deafult if nothings is solded then it will be 1 + 0 = 1 board
 AO 1st position from right is solded then it will be 1+1 = 2 board 
 A1 2nd position from right is solded then it will be 2+1 = 3 board 
 A0 and A1 1st and 2nd from right is solded then it will be 2+1+1 = 4 board 
+...... and so on 
 
-
+NOTE see the soldering chart above 
 
 ```
-NOTE see the soldering chart above 
+
 
 ### CMRI library
 
