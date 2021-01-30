@@ -38,26 +38,26 @@ void setup() {
 
   //Servo connection 0 - point motor
   //board 0 address 0 servo will be 0 then 1,2,3 and so on till 15
-  Throw[0] = 100;
-  Close[0] = 200;
+  Throw[0] = 1015;
+  Close[0] = 1800;
 
 
   //Servo connection 0 - point motor
   //board 1 address 0 servo will 16 then 17, 18 and so on till 31
-  Throw[16] = 100;
-  Close[16] = 200;
+  Throw[16] = 1015;
+  Close[16] = 1800;
 
 
   //Servo connection 0 - point motor
   //board 2 address 0 servo will be 32 then 33 and so on till 47
-  Throw[32] = 100;
-  Close[32] = 200;
+  Throw[32] = 1015;
+  Close[32] = 1800;
 
 
   //Servo connection 0 - point motor
   //board 3 address 0 servo will be 48 then 49, 50 and so on till 63
-  // Throw[48] = 100;
-  // Close[48] = 200;
+  // Throw[48] = 1015;
+  // Close[48] = 1800;
 
 }
 
@@ -66,8 +66,7 @@ void loop() {
   cmri.process();
 
 
-  for (int i = 0; i < numServos; i++) {
-
+  for (int i = 0; i < 16; i++) {
 
     // for board 0 servo 0 to 15
     Status[i] = (cmri.get_bit(i));
@@ -77,31 +76,34 @@ void loop() {
       pwm1.writeMicroseconds(i, Close[i]);
     }
 
-
+     
     // for board 1 servo 16 to 31
-    Status[i + 16] = (cmri.get_bit(i + 16));
-    if (Status[i + 16] == 1) {
-      pwm2.writeMicroseconds(i, Throw[i + 16]);
+    int board1 = 16 + i;
+    Status[board1] = (cmri.get_bit(board1));
+    if (Status[board1] == 1) {
+      pwm2.writeMicroseconds(i, Throw[board1]);
     } else {
-      pwm2.writeMicroseconds(i, Close[i + 16]);
+      pwm2.writeMicroseconds(i, Close[board1]);
     }
 
-
+    
     // for board 2 servo 31 to 47
-    Status[i + 32] = (cmri.get_bit(i + 32));
-    if (Status[i + 32] == 1) {
-      pwm3.writeMicroseconds(i, Throw[i + 32]);
+    int board2 = 32 + i;
+    Status[board2] = (cmri.get_bit(board2));
+    if (Status[board2] == 1) {
+      pwm3.writeMicroseconds(i, Throw[board2]);
     } else {
-      pwm3.writeMicroseconds(i, Close[i + 32]);
+      pwm3.writeMicroseconds(i, Close[board2]);
     }
 
     /*
       // for board 3 servo 48 to 64
-      Status[i + 48] = (cmri.get_bit(i + 48));
-      if (Status[i + 48] == 1) {
-      pwm.writeMicroseconds(i, Throw[i + 48]);
+      int board3 = 48 + i;
+      Status[board3] = (cmri.get_bit(board3));
+      if (Status[board3] == 1) {
+      pwm.writeMicroseconds(i, Throw[board3]);
       } else {
-      pwm.writeMicroseconds(i, Close[i + 48]);
+      pwm.writeMicroseconds(i, Close[board3]);
       }
     */
 
