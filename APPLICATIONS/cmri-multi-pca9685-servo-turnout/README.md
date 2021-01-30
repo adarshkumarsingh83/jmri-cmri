@@ -53,18 +53,18 @@ board no 1 with address 40  servo position 0 will be => 1001  use 1 bit study st
 board no 1 with address 40  servo position 2 will be => 1002  use 1 bit study state
 ..... continue ......
 
-board no 2 with address 41 servo position  0 will be => 1017
-board no 2 with address 41 servo position  1 will be => 1018
+board no 2 with address 41 servo position  0 will be => 1017  1001  use 1 bit study state 
+board no 2 with address 41 servo position  1 will be => 1018  1001  use 1 bit study state 
 
 ..... continue ......
 
-board no 3  with address 42 servo position 0 will be => 1033
-board no 3 with asddress 42 servo position 1 will be => 1034
+board no 3  with address 42 servo position 0 will be => 1033  1001  use 1 bit study state 
+board no 3 with asddress 42 servo position 1 will be => 1034  1001  use 1 bit study state 
 
 ..... continue ......
 
-board no 4 with address 43 servo poition 0 will be => 1049
-board no 4 with address 43 servo poition 1 will be => 1050
+board no 4 with address 43 servo poition 0 will be => 1049  1001  use 1 bit study state 
+board no 4 with address 43 servo poition 1 will be => 1050  1001  use 1 bit study state 
 
 ..... continue ......
 
