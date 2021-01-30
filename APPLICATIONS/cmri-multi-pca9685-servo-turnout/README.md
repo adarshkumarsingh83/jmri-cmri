@@ -103,6 +103,8 @@ and so on till the number of board mutliplied by 16 total we can have numbers
 
 ```
 
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-pca9685-servo-turnout/demo.jpg)
+
 
 ### CMRI library
 
@@ -117,4 +119,3 @@ and so on till the number of board mutliplied by 16 total we can have numbers
 - https://github.com/adafruit/Adafruit-PWM-Servo-Driver-Library
 
 
-![img]()
