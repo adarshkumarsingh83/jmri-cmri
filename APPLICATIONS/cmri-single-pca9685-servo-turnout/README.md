@@ -38,4 +38,4 @@ Also click on additional connection box and select the Baud rate to 9600 bps
 - https://github.com/adafruit/Adafruit-PWM-Servo-Driver-Library
 
 
-![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-pca9685-turnout-using-servo/img.jpg)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-single-pca9685-servo-turnout/img.jpg)
