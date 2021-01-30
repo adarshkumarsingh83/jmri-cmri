@@ -29,6 +29,13 @@ Also click on additional connection box and select the Baud rate to 9600 bps
 
 ```
 
+## connection details 
+5v power supply to pca9685 board directly 
+sda and scl from arudino to pca9685 first board only 
+5v and gnd from arduino to pda9685 vcc and gnd 
+and then dasi chain the pca9685 with board 1 to board 2 and then so on 
+
+
 soldering address calculation 
 ------------------------------------
 1 + A5    A4    A3    A2    A1   A0
