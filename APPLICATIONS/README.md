@@ -2,7 +2,13 @@
 
 ---
 
-## cmri-single-node-led
+## cmri-485-single-node-led
+
+
+---
+
+
+## cmri-485-multiple-node-leds
 
 
 ---
@@ -14,13 +20,15 @@
 ---
 
 
-## cmri-pca9685-turnout-using-servo
+## cmri-single-pca9685-servo-turnout
 
 
 ---
 
 
-## cmri-485-multiple-node-leds
+## cmri-multi-pca9685-servo-turnout
+
+
 
 ---
 
