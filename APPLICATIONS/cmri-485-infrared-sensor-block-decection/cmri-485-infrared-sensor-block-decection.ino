@@ -9,7 +9,7 @@
 
 Auto485 bus(DE_PIN);
 // defaults to a SMINI with address 0. SMINI = 24 inputs, 48 outputs
-CMRI cmri(CMRI_ADDR, 24, 48, bus); 
+CMRI cmri(CMRI_ADDR, 24, 48, bus);
 
 void setup() {
   bus.begin(9600);
