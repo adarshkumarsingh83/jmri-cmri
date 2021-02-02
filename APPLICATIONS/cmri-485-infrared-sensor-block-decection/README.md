@@ -76,8 +76,9 @@ click on "add" sensor button
 
 
 NOTE : In Arduino code address for the sensor will start from 0 but in jmri it will start from 1 
-1st param is sensor address and 2nd is the value we cant to send to jmri 
+Example: 
 cmri.set_bit(0, xxx);
+1st param is sensor address and 2nd is the value we cant to send to jmri 
 but while configuringg the sensor will start the address by 1001 in which 1000 is arduino address and 1 is the sensor address 
 ```
 
