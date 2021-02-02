@@ -61,13 +61,21 @@ SEE the reference doc for the PCF9685
 
 https://learn.adafruit.com/16-channel-pwm-servo-driver?view=all
 
+
+NOTE : In Arduino code address for the sensor/component will start from 0 but in jmri it will start from 1 
+Example: 
+cmri.set_bit(0, xxx);
+1st param is sensor/component address and 2nd is the value we cant to send to jmri 
+but while configuring the sensor/component will start the address by 1001 in which 1000 is arduino address and 1 is the sensor/component address 
+
+
 JMRI 
 Tools -> tables -> turnout -> add 
 
 ## BOARD NO 1 WITH ADDRESS 40 
 -------------------------------
 board no 1 with address 40  servo position 0 will be => 1001  use 1 bit study state 
-board no 1 with address 40  servo position 2 will be => 1002  use 1 bit study state
+board no 1 with address 40  servo position 1 will be => 1002  use 1 bit study state
 .
 .
 .
