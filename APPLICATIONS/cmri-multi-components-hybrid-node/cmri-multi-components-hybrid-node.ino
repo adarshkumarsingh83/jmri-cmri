@@ -13,6 +13,9 @@
 #define IR_SENSOR_PIN_4  4
 #define IR_SENSOR_PIN_5  5
 
+
+#define LED_LIGHT_PIN_13  13
+
 Adafruit_PWMServoDriver pwm1 = Adafruit_PWMServoDriver(0x40);//setup the board 0
 Adafruit_PWMServoDriver pwm2 = Adafruit_PWMServoDriver(0x41);//setup the board 1
 Adafruit_PWMServoDriver pwm3 = Adafruit_PWMServoDriver(0x42);//setup the board 2
@@ -61,6 +64,8 @@ void setup() {
    pinMode(IR_SENSOR_PIN_4, INPUT_PULLUP); 
    pinMode(IR_SENSOR_PIN_5, INPUT_PULLUP); 
 
+
+   pinMode(LED_LIGHT_PIN_13, OUTPUT);
 }
 
 void loop() {
@@ -103,6 +108,10 @@ void loop() {
       cmri.set_bit(0, !digitalRead(IR_SENSOR_PIN_3));  //Bit 0 = address 1001 in JMRI
       cmri.set_bit(1, !digitalRead(IR_SENSOR_PIN_4));  //Bit 1 = address 1002 in JMRI
       cmri.set_bit(2, !digitalRead(IR_SENSOR_PIN_5));  //Bit 2 = address 1003 in JMRI
+
+
+      // LED LIGHT 
+      //digitalWrite(LED_LIGHT_PIN_13, cmri.get_bit(0));
   }
 
 }
