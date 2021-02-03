@@ -3,7 +3,7 @@
 ---
 
 ## Connection details
-![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-pcf8574-led-signals/connectionsdetails.JPG)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-pcf8574-led-signals/connectionsdetail.JPG)
 ```
 arduino scl and sda to the pcf8574 pins to sda and scl 
 then use seprate 5v+ supply to power up the pcf8574 to the first board vcc and gnd gnd will go to the arduino gnd also 
