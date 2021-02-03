@@ -3,7 +3,7 @@
 --- 
 
 
-![img]()
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-components/IMG_6257.JPG)
 
 ---
 ## Connection details
