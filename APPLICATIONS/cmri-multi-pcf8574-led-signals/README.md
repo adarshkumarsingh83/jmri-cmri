@@ -122,7 +122,7 @@ Note Repeate this for all the signal lights
 NOTE 1007 AND 1008 CAN BE USED FOR OTHER PURPOSE OR MIXED WITH 1015 AND 1016 
  ```
 
-### FOR BOARD 3 
+### FOR BOARD 2 
 
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-pcf8574-led-signals/2%20board%20config.png)
 ```
