@@ -29,6 +29,22 @@ pcf8574 other end whill have chained pcf8574 board
 
 ```
 
+### jumper configuartion for the addition boards 
+```
+# Addressing configuation via jumper 
+
+	A2 A1 A0      address of board 
+----------------------------	
+	0  0   0   =  0x20
+	0  0   0   =  0x21
+    0  1   0   =  0x22
+    0  1   1   =  0x23
+    1  0   0   =  0x24
+    1  0   1   =  0x25
+    1  1   0   =  0x26
+    1  1   1   =  0x27
+```
+
 ## CMRI CONFIGURATION IN PANEL PRO
 
 ```
