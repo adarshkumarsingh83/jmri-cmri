@@ -4,6 +4,7 @@
 
 
 ## Connection details 
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-pcf8574-led-signals/IMG_6258.JPG)
 ```
 arduino scl and sda to the pcf8574 pins to sda and scl 
 arduino 5v+ and gnd to the pcf8574 pins to vcc and gnd
@@ -69,6 +70,7 @@ Node Type: SMINI
 
 
 ## JMRI PROCESS FOR SIGNAL HEAD FOR THE SIGNAL LIGHTS 
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-pcf8574-led-signals/SIGNALS%20HEAD%20CONFIGURATIONS.png)
 ````
 PANEL PRO -> tools -> sinnals heads -> add 
 
@@ -113,5 +115,27 @@ Note Repeate this for all the signal lights
           "provide address which is mentioned in the arduino code for red light or pin where red light is connected "
           in our case its 1004 
 
-
 ````
+
+## As light configuration 
+
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-pcf8574-led-signals/%20LIGHT%20CONFIGURATIONS.png)
+```
+ panel pro -> tools -> tables -> light -> add 
+
+ address 1001 
+ name xxx 
+
+ click on add button 
+
+  address 1002
+ name xxx 
+
+ click on add button 
+
+ address 1003
+ name xxx 
+
+ click on add button 
+ do it for all the address configured in arduino sktech 
+```
