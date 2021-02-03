@@ -30,6 +30,8 @@ pcf8574 other end whill have chained pcf8574 board
 ```
 
 ### jumper configuartion for the addition boards 
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-pcf8574-led-signals/pca8574%20addressing%20configuration.png)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-pcf8574-led-signals/pcf.png)
 ```
 # Addressing configuation via jumper 
 
