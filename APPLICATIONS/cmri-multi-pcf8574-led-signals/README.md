@@ -3,6 +3,7 @@
 ---
 
 ## Connection details
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-pcf8574-led-signals/connectionsdetails.JPG)
 ```
 arduino scl and sda to the pcf8574 pins to sda and scl 
 then use seprate 5v+ supply to power up the pcf8574 to the first board vcc and gnd gnd will go to the arduino gnd also 
@@ -54,7 +55,7 @@ Also click on additional connection box and select the Baud rate to 9600 bps
 ## configure the nodes so click on "Configure C/MRI nodes"
 
 ### FOR BOARD 1 
-![img]()
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-pcf8574-led-signals/1%20board%20config.png)
 ```
 PANEL PRO -> tools -> sinnals heads -> add 
 
@@ -105,7 +106,7 @@ NOTE 1007 AND 1008 CAN BE USED FOR OTHER PURPOSE OR MIXED WITH 1015 AND 1016
 
 ### FOR BOARD 3 
 
-![img]()
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-pcf8574-led-signals/2%20board%20config.png)
 ```
 PANEL PRO -> tools -> sinnals heads -> add 
 
