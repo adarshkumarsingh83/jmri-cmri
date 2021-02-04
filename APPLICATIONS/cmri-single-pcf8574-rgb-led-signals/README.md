@@ -69,7 +69,7 @@ Node Type: SMINI
 ```
 
 ## JMRI PROCESS FOR SIGNAL HEAD FOR THE SIGNAL LIGHTS
-[img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-single-pcf8574-rgb-led-signals/signal%20head%20rgb%20led.png)
+[img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-single-pcf8574-rgb-led-signals/signal_head_rgb_led.png)
 ```
 PANEL PRO -> tools -> sinnals heads -> add 
 
