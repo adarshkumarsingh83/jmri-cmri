@@ -89,8 +89,6 @@ Node Type: SMINI
 
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-pcf8574-rgb-led-signals/1%20board%20signal%20head.png)
 
-![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-pcf8574-rgb-led-signals/2%20board%20signal%20head.png)
-
 
 ### 1 board 
 ```
@@ -160,6 +158,8 @@ Note Repeate this for all the signal lights
           in our case its 1007          
 
  ```
+
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-pcf8574-rgb-led-signals/2%20board%20signal%20head.png)
 
 ### 2 board 
 
