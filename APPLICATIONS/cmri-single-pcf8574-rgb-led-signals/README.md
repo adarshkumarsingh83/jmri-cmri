@@ -2,7 +2,7 @@
 
 ---
 
-![img]()
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-single-pcf8574-rgb-led-signals/connection.JPG)
 ## Connection details
 ```
 arduino scl and sda to the pcf8574 pins to sda and scl 
@@ -28,9 +28,9 @@ signal first set
 ```
 
 
-![img]()
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-single-pcf8574-rgb-led-signals/rgb-led-pin.png)
 
-![img]()
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-single-pcf8574-rgb-led-signals/rgb-specturm.png)
 
 ## CMRI CONFIGURATION IN PANEL PRO
 ```
