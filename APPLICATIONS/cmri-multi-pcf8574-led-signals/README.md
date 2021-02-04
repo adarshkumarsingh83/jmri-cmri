@@ -149,6 +149,7 @@ Note Repeate this for all the signal lights
           "provide address which is mentioned in the arduino code for red light or pin where red light is connected "
           in our case its 1004      
 
+
 NOTE 1007 AND 1008 CAN BE USED FOR OTHER PURPOSE OR MIXED WITH 1015 AND 1016 
  ```
 
@@ -199,7 +200,6 @@ Note Repeate this for all the signal lights
     Click on "Create New" radio button 
           "provide address which is mentioned in the arduino code for red light or pin where red light is connected "
           in our case its 1012     
-
 
 NOTE 1015 AND 1016 CAN BE USED FOR OTHER PURPOSE OR MIXED WITH 1006 ADN 1007 
 
