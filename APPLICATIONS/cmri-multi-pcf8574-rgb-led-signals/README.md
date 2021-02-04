@@ -2,7 +2,7 @@
 
 ---
 
-![img]()
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-pcf8574-rgb-led-signals/connections.JPG)
 
 ## Connection details
 ```
@@ -44,9 +44,9 @@ signal first set
 and so one after every red and green one pin has to leave for blue with jrmri address for blue pin         
 ```
 
-![img]()
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-pcf8574-rgb-led-signals/rgb-led-pin.png)
 
-![img]()
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-pcf8574-rgb-led-signals/rgb-specturm.png)
 
 ## CMRI CONFIGURATION IN PANEL PRO
 ```
@@ -86,8 +86,10 @@ Node Type: SMINI
 ```
 
 ## JMRI PROCESS FOR SIGNAL HEAD FOR THE SIGNAL LIGHTS
-![img]()
-![img]()
+
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-pcf8574-rgb-led-signals/1%20board%20signal%20head.png)
+
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-pcf8574-rgb-led-signals/2%20board%20signal%20head.png)
 
 
 ### 1 board 
