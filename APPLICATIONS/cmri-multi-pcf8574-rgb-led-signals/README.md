@@ -154,6 +154,8 @@ Node Type: SMINI
 
 ### 1 board 
 ```
+NOTE WE CAN KEEP ONE RESERVE JMRI ADDRESS AND USE IT FOR ALL THE YELLOW ENTRY TO SAVE JMRI ADDRESS 
+
 PANEL PRO -> tools -> sinnals heads -> add 
 
   Drop down select -> Triple Output RGB-> 
@@ -226,6 +228,8 @@ Note Repeate this for all the signal lights
 ### 2 board 
 
 ```
+NOTE WE CAN KEEP ONE RESERVE JMRI ADDRESS AND USE IT FOR ALL THE YELLOW ENTRY TO SAVE JMRI ADDRESS 
+
 PANEL PRO -> tools -> sinnals heads -> add 
 
   Drop down select -> Triple Output RGB-> 
