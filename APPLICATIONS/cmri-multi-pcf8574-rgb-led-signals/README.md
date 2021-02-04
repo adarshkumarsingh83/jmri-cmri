@@ -69,7 +69,7 @@ and so one after every red and green one pin has to leave for blue with jrmri ad
 ## Connection details with Exteranl Power supply 
 ```
 arduino scl and sda to the pcf8574 pins to sda and scl 
-external power supply 5v+ and gnd to the pcf8574 pins to vcc and gnd
+external power supply 5v+ and gnd to the pcf8574 pins to vcc and gnd and one gnd will go to arduino gnd as  a common gnd 
 arduino pin 3 to the intrupt pin which is INT ON pcf8574
 pcf8574 other end gnd will go to next in chain pcf8574
 last in chain pcf8574 other end gnd will go to breadboard negative to power the rgb led 
