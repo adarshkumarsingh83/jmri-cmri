@@ -2,7 +2,7 @@
 
 ---
 
-![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-single-pcf8574-rgb-led-signals/connection.JPG)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-single-pcf8574-rgb-led-signals/connections.JPG)
 ## Connection details
 ```
 arduino scl and sda to the pcf8574 pins to sda and scl 
@@ -69,7 +69,7 @@ Node Type: SMINI
 ```
 
 ## JMRI PROCESS FOR SIGNAL HEAD FOR THE SIGNAL LIGHTS
-[img]()
+[img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-single-pcf8574-rgb-led-signals/signal%20head%20rgb%20led.png)
 ```
 PANEL PRO -> tools -> sinnals heads -> add 
 
