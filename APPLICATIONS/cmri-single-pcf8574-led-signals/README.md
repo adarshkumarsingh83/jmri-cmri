@@ -34,11 +34,14 @@ pcf8574  p0 to p7 pins to the breadboard short leg of the led
 
 ```
 
+
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-single-pcf8574-led-signals/connection%20with%20external%20power%20supply.JPG)
+
 * with external +5v power supply 
 ```
 arduino scl and sda to the pcf8574 pins to sda and scl 
 external 5v+ and gnd to the pcf8574 pins to vcc and gnd via breadboard 
+external power supply gnd will go to the arduino gnd which is the common groupnd 
 arduino pin 3 to the intrupt pin which is INT ON pcf8574
 all p0 to p7 pin of pcf8574 will go to led short leg 
 long leg of led will conected to 220oms resistor and other leg of risistor will be connected to +5v external positive to complete the circuit 
