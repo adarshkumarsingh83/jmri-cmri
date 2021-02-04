@@ -3,10 +3,11 @@
 ---
 
 ## Connection details
-![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-pcf8574-led-signals/connectionsdetail.JPG)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-pcf8574-led-signals/connectionsdetail-with-arduino-power.JPG)
+* connection with arduino power 
 ```
 arduino scl and sda to the pcf8574 pins to sda and scl 
-then use seprate 5v+ supply to power up the pcf8574 to the first board vcc and gnd gnd will go to the arduino gnd also 
+then use arduino 5v+ to power up the pcf8574 to the first board vcc and gnd also 
 arduino pin 3 to the intrupt pin which is INT ON pcf8574
 pcf8574  p0 to p7 pins to the breadboard short leg of the led  
 connect the +5v power supply for all the 1k resistor and then other end of resisot will go to the long leg of leds 
@@ -28,6 +29,35 @@ pcf8574 other end whill have chained pcf8574 board
          p7  is left  
 
 ```
+
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-pcf8574-led-signals/connectionsdetail-with-external-power.JPG)
+* connection with external power 
+```
+arduino scl and sda to the pcf8574 pins to sda and scl 
+then use external seprate 5v+ supply to power up the pcf8574 to the first board vcc and gnd  and one gnd will go to the arduino gnd for common ground 
+arduino pin 3 to the intrupt pin which is INT ON pcf8574
+pcf8574  p0 to p7 pins to the breadboard short leg of the led  
+connect the +5v power supply for all the 1k resistor and then other end of resisot will go to the long leg of leds 
+pcf8574 other end whill have chained pcf8574 board 
+
+ board 1... 8 
+      signal first set 
+        p0 is for red 
+        p1 is for yellow 
+        p2 is for green
+
+      signal 2nd set 
+        p3 is for red 
+        p4 is for yellow 
+        p5 is for green 
+
+       then remaning 
+         p6  is left  
+         p7  is left  
+
+```
+
+
 
 ### jumper configuartion for the addition boards 
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-pcf8574-led-signals/pca8574%20addressing%20configuration.png)
