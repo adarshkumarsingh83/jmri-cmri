@@ -2,12 +2,74 @@
 
 ---
 
+## PCF8574 addressing configuraiton adjustments
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-pcf8574-rgb-led-signals/pca8574-addressing-configuration.png)
+
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-pcf8574-rgb-led-signals/pcf.png)
+
+```
+# Addressing configuation via jumper 
+
+  A2 A1 A0      address of board 
+----------------------------  
+  0  0   0   =  0x20
+  0  0   0   =  0x21
+    0  1   0   =  0x22
+    0  1   1   =  0x23
+    1  0   0   =  0x24
+    1  0   1   =  0x25
+    1  1   0   =  0x26
+    1  1   1   =  0x27
+```
+
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-pcf8574-rgb-led-signals/connections.JPG)
 
-## Connection details
+## Connection details with Arduion Power supply 
 ```
 arduino scl and sda to the pcf8574 pins to sda and scl 
 arduino 5v+ and gnd to the pcf8574 pins to vcc and gnd
+arduino pin 3 to the intrupt pin which is INT ON pcf8574
+pcf8574 other end gnd will go to next in chain pcf8574
+last in chain pcf8574 other end gnd will go to breadboard negative to power the rgb led 
+pcf8574  p0 to p7 pins to the breadboard short leg of the rgb led  
+
+Note we are using common cathod rgb led to we are using gnd from pcf8574 to long leg of the rbg led 
+
+1 board 
+signal first set 
+        p0 is for red        = cmri address will be 1001
+        p1 is for green red  = cmri address will be 1002
+        
+      signal 2nd set 
+        p3 is for red    = cmri address will be 1004
+        p4 is for green  = cmri address will be 1005
+     
+       signal 3nd set 
+        p6 is for red    = cmri address will be 1007
+        p7 is for green  = cmri address will be 1008
+
+2 board 
+signal first set 
+        p0 is for red        = cmri address will be 1009
+        p1 is for green red  = cmri address will be 1010
+        
+      signal 2nd set 
+        p3 is for red    = cmri address will be 1012
+        p4 is for green  = cmri address will be 1013
+     
+       signal 3nd set 
+        p6 is for red    = cmri address will be 1015
+        p7 is for green  = cmri address will be 1016
+
+and so one after every red and green one pin has to leave for blue with jrmri address for blue pin         
+```
+
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-pcf8574-rgb-led-signals/external-powersupply-connection.JPG)
+
+## Connection details with Exteranl Power supply 
+```
+arduino scl and sda to the pcf8574 pins to sda and scl 
+external power supply 5v+ and gnd to the pcf8574 pins to vcc and gnd
 arduino pin 3 to the intrupt pin which is INT ON pcf8574
 pcf8574 other end gnd will go to next in chain pcf8574
 last in chain pcf8574 other end gnd will go to breadboard negative to power the rgb led 
