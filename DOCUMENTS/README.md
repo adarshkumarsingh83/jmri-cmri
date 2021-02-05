@@ -6,7 +6,10 @@
 
 
 
-### BINARY 
+
+
+### BINARY BASIC KNOWLEDGE 
+
 ```
 BASE 2 
 ONLY 0 OR 1 
@@ -117,4 +120,9 @@ Checking if n is power of 2 (1,2,4,8,...): check !(n & (n-1))
 Getting xth bit of n: n |= (1 << x)
 Checking if x is even or odd: x&1 == 0 (even)
 Toggle the nth bit of x: x ^ (1<<n)
+Quick way to calculte the deciaml from binary is 
+if its 8 bit 256 - the position of numbers like 
+for every poistion where you want 1 add them togher eg 256 + 128 + 64 + 32 + 16 + 8 + 4+ 2 + 1 
+for every position where we don't want one just replace that with 0 eg  256 + 0 + 64 + 32 + 0 + 8 + 4+ 2 + 1 
+ 
 ```
