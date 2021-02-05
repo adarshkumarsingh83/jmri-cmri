@@ -1,6 +1,31 @@
 
+# CMRI MULIPLE PCA9685 CHAIN SERVO TURNOUT 
 
-# CMRI CONFIGURATION IN PANEL PRO
+---
+
+
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-pca9685-servo-turnout/connection-dettails.JPG)
+
+## Connection details 
+```
+sda and scl from arduino to pca9685 
+external power supply +5v and gnd to the breadboard 
+    from breadboard external power supply +5v and gnd to the first pca9685  in chain to vcc and gnd 
+    and one gnd from the external power supply to the arduino for common gnd setup 
+connect the other pca9684 in the chain with 1st soder which has address 41 
+connect the other pca9684 in the chain with 2nd soder which has address 42 
+
+connect the servo with the pca9685 to the pins 0 in each of the board 
+
+create in jmri with address 
+1st board 0 poistion 1001
+2nd board 0 poistion 1017
+3nd board 0 postion 1033
+and so on 
+
+```
+
+## CMRI CONFIGURATION IN PANEL PRO
 
 ```
 JMRI PanelPro. When it is running click on edit preferences to get the following window
@@ -30,7 +55,7 @@ Also click on additional connection box and select the Baud rate to 9600 bps
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-pca9685-servo-turnout/adafruit_MultiBoard_dasichain.jpg)
 
 
-# soldering for pca9685 board for adddress configuation in dasi chain 
+## soldering for pca9685 board for adddress configuation in dasi chain 
 
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-pca9685-servo-turnout/pca9685%20soldering%20address%20chart.png)
 
