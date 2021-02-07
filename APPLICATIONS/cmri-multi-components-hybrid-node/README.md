@@ -3,7 +3,9 @@
 --- 
 
 
-![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-components-hybrid-node/IMG_6257.JPG)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-components-hybrid-node/CONNECTION-DETAILS.png)
+
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-multi-components-hybrid-node/CONNECTIONS.JPG)
 
 ---
 ## Connection details
