@@ -10,14 +10,21 @@
 ---
 ## Connection details
 ```
-scl and sda to the pca9685 pins to sda and scl 
-5v+ and gnd to the pca9685 pins to vcc and gnd
-5v+ and gnd to the pca9685 power points from 5v power external supply 
-5v+ and gnd to the ir sensor gnd and vcc pins 
-arduino pin 3 to the out pin of the ir sensor 
-arduino pin 13 to the red led with gnd 
++5v and gnd to the breadboard 
+scl and sda to the breadboard then connect the one risistor to the sda and another one to the  scl from +5v 
+then connect the +5v and gnd from breadboard to the pcf8574 and pca9685 vcc and gnd pins 
+then sda and scl from the breadboard to the pcf8574 and pca9685 scl and sda pins 
+then +5v and gnd to the pca9685 power input to the gnd and vcc from breadboard
+then +5v and gnd to the pcf8574 vcc and gnd pins from the breadboard
+connect the gnd from bradboard to the arduino gnd as the common ground 
+then from pcf8574 1st and 2nd board p0 to p7 pin to the short leg of the led 
+then from bradboard +5v pwersupply to the 220Oms resistors and another leg of the resistor to the long leg of the ledg. 
+then connect the servo to the pca9685 boards 
 
-dasy chain the pca9685 and connect the servo on the "0"th point of the pca9685
+addressing for servo will start from 0 - 31 in uno but in jmri it will start form 1001 to 1032 
+addressing for light/signals will start from 1033 to 1048 
+
+
 ```
 
 ## CMRI CONFIGURATION IN PANEL PRO
