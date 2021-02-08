@@ -10,13 +10,15 @@ Auto485 bus(DE_PIN); // arduino pin 2 for DE and RE pins
 CMRI cmri(CMRI_ADDR, 24, 48, bus); // defaults to a SMINI with address 0. SMINI = 24 inputs, 48 outputs
 
 int cmriInput = -1;
-
+ 
 enum SWITCH_STATES {
   STRAIGHT,
   TURN,
   OFF
 };
+
 SWITCH_STATES switchState = OFF;
+SWITCH_STATES previousState = OFF;
 
 void setup() {
   bus.begin(9600);
@@ -28,8 +30,11 @@ void setup() {
 void loop() {
 
   cmri.process();
+  
   cmriInput = cmri.get_bit(0);
+  
   delay(200);
+  
   switch (switchState) {
     case STRAIGHT:
       switchStraightOn();
@@ -56,16 +61,21 @@ void switchOff() {
 }
 
 void switchTurnOn() {
-  digitalWrite(OPEN_PIN, HIGH);
-  digitalWrite(CLOSE_PIN, LOW);
-  delay(200);
+  if (switchState != previousState) {
+    digitalWrite(OPEN_PIN, HIGH);
+    digitalWrite(CLOSE_PIN, LOW);
+    previousState = switchState;
+    delay(200);
+  }
   switchState = OFF;
 }
 
-
 void switchStraightOn() {
-  digitalWrite(OPEN_PIN, LOW);
-  digitalWrite(CLOSE_PIN, HIGH);
-  delay(200);
+  if (switchState != previousState) {
+    digitalWrite(OPEN_PIN, LOW);
+    digitalWrite(CLOSE_PIN, HIGH);
+    previousState = switchState;
+    delay(200);
+  }
   switchState = OFF;
 }
