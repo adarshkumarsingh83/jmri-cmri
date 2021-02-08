@@ -4,7 +4,7 @@
 
 ## Conection details 
 
-![img](https://github.com/adarshkumarsingh83/arduino/blob/master/APPLICATION/cmri-jmri-single-snap-turnout/connections.JPG)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-jmri-single-snap-turnout/cmri-jmri-single-snap-turnout.ino)
 
 ```
 connect the +5v and gnd to the bradboard from arduino 
