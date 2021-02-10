@@ -11,6 +11,7 @@
 Assumption: 
 Train can travel from both direction of the block 
 every block start will have IR sensor and end will also have IR sensor 
+train has to click both 1st and 2nd IR sensor one by one either of the direction otherwise it will not show as UnOccupoied even train left the block 
 
 1.connection the +5v and gnd to the breadboard 
 2.connection led1 and led2 to the breadboard gnd long leg (common cathod rgb led) 
