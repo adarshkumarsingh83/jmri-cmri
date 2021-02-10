@@ -96,18 +96,6 @@ void loop() {
 }
 
 
-bool canProceed(int sen1_A1, int sen2_A2,
-                int prevBlockSignal_A3, int nxtBlockSignal_A4) {
-
-  if (sen1_A1 < SENSOR_COMP_VALUE
-      || sen2_A2 < SENSOR_COMP_VALUE
-      || prevBlockSignal_A3 > BLOCK_SIGNAL_REC_VALUE
-      || nxtBlockSignal_A4 > BLOCK_SIGNAL_REC_VALUE) {
-    return true ;
-  }
-  return false;
-}
-
 void signal_G1_G2(int sen1_A1, int sen2_A2,
                   int prevBlockSignal_A3, int nxtBlockSignal_A4) {
 
