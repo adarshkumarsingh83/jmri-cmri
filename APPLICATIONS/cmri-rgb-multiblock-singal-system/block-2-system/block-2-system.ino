@@ -14,7 +14,7 @@
 #define  blockOccSignal 7 // The transmit pin for the previous and next block in the sequence
 #define  prevBlockRec A2// The recieve pin for the previous block in the sequence
 #define  nxtBlockRec A3// The recieve pin for the next block in the sequence
-#define DELAY_VALUE 200
+#define DELAY_VALUE 10
 #define ON  HIGH
 #define OFF LOW
 #define SENSOR_COMP_VALUE 500
@@ -22,7 +22,7 @@
 #define BLOCK_SIGNAL_SEND_VALUE 1023
 
 // to enable and display the console data print
-const bool displayOn = true;
+const bool displayOn = false;
 
 int sen1_A1 = -1;
 int sen2_A2 = -1;
@@ -49,7 +49,9 @@ void setup() {
 
   bus.begin(9600);
 
-  Serial.begin(9600);
+  if (displayOn) {
+    Serial.begin(9600);
+  }
 
   //Establish all of our pins at inputs or outputs
 
@@ -68,6 +70,16 @@ void setup() {
 void loop() {
 
   cmri.process();
+
+
+  if (signalState == ST_R1_R2_1 || signalState == ST_R1_R2_2 || signalState == ST_R1_R2_3) {
+    // setting sensor 0 with 1 active
+    cmri.set_bit(1, 1);
+  } else {
+    // setting sensor 0 with 0 in-active
+    cmri.set_bit(1, 0);
+  }
+
 
   sen1_A1 = analogRead(sens1);
   sen2_A2 = analogRead(sens2);
@@ -261,8 +273,6 @@ void signal1_R1_R2_(int sen1_A1, int sen2_A2) {
   delay(DELAY_VALUE);
 
   if ((sen1_A1 > SENSOR_COMP_VALUE) && (sen2_A2 < SENSOR_COMP_VALUE)) {
-    // setting sensor 0 with 1 active
-    cmri.set_bit(0, 1);
     signalState = ST_R1_R2_3; //switched to transition Red signal state
   }
 }
@@ -279,8 +289,6 @@ void signal2_R1_R2_(int sen1_A1, int sen2_A2) {
 
   if ((sen1_A1 < SENSOR_COMP_VALUE)
       && (sen2_A2 > SENSOR_COMP_VALUE)) {
-    // setting sensor 0 with 1 active
-    cmri.set_bit(0, 1);
     signalState = ST_R1_R2_3; //switched to transition Red signal state
   }
 }
@@ -297,10 +305,7 @@ void signal3_R1_R2_(int sen1_A1, int sen2_A2) {
   delay(DELAY_VALUE);
 
   if ((sen1_A1 > SENSOR_COMP_VALUE)
-      && (sen2_A2 > SENSOR_COMP_VALUE)) {
-
-    // setting sensor 0 with 0 in-active
-    cmri.set_bit(0, 0);
+      && (sen2_A2 > SENSOR_COMP_VALUE)) {        
     signalState = ST_G1_G2; //switched to Green unoccupied signal
   }
 }

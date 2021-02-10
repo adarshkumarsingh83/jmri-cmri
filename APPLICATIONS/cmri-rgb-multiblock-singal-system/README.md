@@ -2,7 +2,9 @@
 
 --- 
 
-![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-rgb-multiblock-singal-system/CONNECTIONS.JPG)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-rgb-multiblock-singal-system/CONNECTIONS-0.JPG)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-rgb-multiblock-singal-system/CONNECTIONS-1.JPG)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-rgb-multiblock-singal-system/CONNECTIONS-2.JPG)
 
 ## Connection Deatils 
 
