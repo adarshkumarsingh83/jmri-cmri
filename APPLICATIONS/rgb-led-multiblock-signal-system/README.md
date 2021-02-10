@@ -11,7 +11,8 @@
 Assumption: 
 Train can travel from both direction of the block 
 every block start will have IR sensor and end will also have IR sensor 
-train has to click both 1st and 2nd IR sensor one by one either of the direction otherwise it will not show as UnOccupoied even train left the block 
+train has to click both 1st and 2nd IR sensor one by one either of the direction 
+otherwise it will not show as UnOccupoied even train left the block 
 
 1.connection the +5v and gnd to the breadboard 
 2.connection led1 and led2 to the breadboard gnd long leg (common cathod rgb led) 
@@ -29,7 +30,8 @@ train has to click both 1st and 2nd IR sensor one by one either of the direction
 14. take one connection to the next block arduion and connect to the A2 pin of that 
 15. take previous block incomming occupied singal connection to the pin A2 of the arduino 
 16. take next block incomming occupied sinal cconnection to the pin A3 of the arduino 
-17. take the connection from gnd pin from arudino to the next and previous block gnd pins connect all gnd to tmake common ground bus for entre block system. 
+17. take the connection from gnd pin from arudino to the next and previous block gnd 
+	pins connect all gnd to tmake common ground bus for entre block system. 
 
 ```
 
