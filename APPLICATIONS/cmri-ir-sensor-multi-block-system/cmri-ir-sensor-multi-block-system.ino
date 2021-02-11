@@ -9,12 +9,12 @@
 
 enum SIGNAL_STATES {
   UNOCCUPIED,
-  OCCUPIED_FROM_START_OF_BLOCK,
-  OCCUPIED_FROM_END_OF_BLOCK,
-  OCCUPIED_BLOCK,
+  OCCUPYING_FROM_START_OF_BLOCK,
+  OCCUPYING_FROM_END_OF_BLOCK,
+  OCCUPIED,
 };
 
-
+// total no of sensor count 
 const int SENSOR_COUNT = 3;
 SIGNAL_STATES sensorsState[SENSOR_COUNT] = {UNOCCUPIED, UNOCCUPIED, UNOCCUPIED};
 SIGNAL_STATES stateCurrent = UNOCCUPIED;
@@ -25,6 +25,10 @@ const bool ENABLE_CONSOLE = false;
 int r;
 int c;
 int blockSensorVal[SENSOR_COUNT][2];
+/*   
+    todo add the number of pins for {startblockpin,endblockpin} 
+    max we can add 5 block which is 10 pins together 
+*/
 int blockSensor[SENSOR_COUNT][2] = {{3, 4}, {5, 6}, {7, 8}};
 
 
@@ -70,7 +74,7 @@ void loop() {
         }
         displayData(r, "unOccupiedBlock", blockSensorVal[r][0], blockSensorVal[r][1]);
         break;
-      case OCCUPIED_FROM_START_OF_BLOCK:
+      case OCCUPYING_FROM_START_OF_BLOCK:
         stateCurrent = occupiedFromEndOfBlock(statePrevious, blockSensorVal[r][0], blockSensorVal[r][1]);
         if (stateCurrent != statePrevious) {
           setCmriSingals(r, stateCurrent);
@@ -78,7 +82,7 @@ void loop() {
         }
         displayData(r, "occupiedFromEndOfBlock", blockSensorVal[r][0], blockSensorVal[r][1]);
         break;
-      case OCCUPIED_FROM_END_OF_BLOCK:
+      case OCCUPYING_FROM_END_OF_BLOCK:
         stateCurrent = occupiedFromStartOfBlock(statePrevious, blockSensorVal[r][0], blockSensorVal[r][1]);
         if (stateCurrent != statePrevious) {
           setCmriSingals(r, stateCurrent);
@@ -86,7 +90,7 @@ void loop() {
         }
         displayData(r, "occupiedFromStartOfBlock", blockSensorVal[r][0], blockSensorVal[r][1]);
         break;
-      case OCCUPIED_BLOCK:
+      case OCCUPIED:
         stateCurrent = occupiedBlock(statePrevious, blockSensorVal[r][0], blockSensorVal[r][1]);
         if (stateCurrent != statePrevious) {
           setCmriSingals(r, stateCurrent);
@@ -113,9 +117,9 @@ void setCmriSingals(int sensorNo, SIGNAL_STATES signalState) {
 SIGNAL_STATES unOccupiedBlock(SIGNAL_STATES signalState, int startSensor, int endSensor) {
 
   if (startSensor == ON  && endSensor == OFF) {
-    signalState = OCCUPIED_FROM_START_OF_BLOCK;// block is occupied entered from sens1
+    signalState = OCCUPYING_FROM_START_OF_BLOCK;// block is occupied entered from sens1
   } else if (startSensor == OFF  && endSensor == ON) {
-    signalState = OCCUPIED_FROM_END_OF_BLOCK;// block is occupied entered from sens2
+    signalState = OCCUPYING_FROM_END_OF_BLOCK;// block is occupied entered from sens2
   }
   return signalState;
 }
@@ -124,7 +128,7 @@ SIGNAL_STATES unOccupiedBlock(SIGNAL_STATES signalState, int startSensor, int en
 SIGNAL_STATES occupiedFromEndOfBlock(SIGNAL_STATES signalState, int startSensor, int endSensor) {
 
   if (startSensor == OFF && endSensor == ON) {
-    signalState = OCCUPIED_BLOCK; //switched to transition Red signal state
+    signalState = OCCUPIED; 
   }
   return signalState;
 }
@@ -133,7 +137,7 @@ SIGNAL_STATES occupiedFromEndOfBlock(SIGNAL_STATES signalState, int startSensor,
 SIGNAL_STATES occupiedFromStartOfBlock(SIGNAL_STATES signalState, int startSensor, int endSensor) {
 
   if (startSensor == ON  && endSensor == OFF) {
-    signalState = OCCUPIED_BLOCK; //switched to transition Red signal state
+    signalState = OCCUPIED;
   }
   return signalState;
 }
@@ -142,7 +146,7 @@ SIGNAL_STATES occupiedFromStartOfBlock(SIGNAL_STATES signalState, int startSenso
 SIGNAL_STATES occupiedBlock(SIGNAL_STATES signalState, int startSensor, int endSensor) {
 
   if ((startSensor == OFF) && (endSensor == OFF)) {
-    signalState = UNOCCUPIED; //switched to Green unoccupied signal
+    signalState = UNOCCUPIED; 
   }
   return signalState;
 }
