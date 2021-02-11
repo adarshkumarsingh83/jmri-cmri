@@ -3,6 +3,9 @@
 ----
 
 ### Connection details
+
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-ir-sensor-multi-block-system/connections.JPG)
+
 ```
 +5v and gnd from arduino to the breadboard of block 1 
 then supply the smae from breadboard of block 2 and block 3 
@@ -62,6 +65,9 @@ Node Type: SMINI
 ```
 
 ## Configure the Sensor
+
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-ir-sensor-multi-block-system/image1.png)
+
 ```
 Open Panel pro 
 tools -> table -> sensors ->  
@@ -88,6 +94,9 @@ NOTE: sensor address from 1001 to 1003 is already their if we want to extends th
 ```
 
 ## Configure in Layout Editor
+
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-ir-sensor-multi-block-system/image2.png)
+
 ```
 Click on Panel Pro window then top menu -> Panel -> New Panel -> Layout Editor 
 
