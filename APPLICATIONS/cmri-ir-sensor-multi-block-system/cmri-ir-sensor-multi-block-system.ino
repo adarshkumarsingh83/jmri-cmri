@@ -14,20 +14,20 @@ enum SIGNAL_STATES {
   OCCUPIED,
 };
 
-// total no of sensor count 
+// total no of sensor count
 const int SENSOR_COUNT = 3;
 SIGNAL_STATES sensorsState[SENSOR_COUNT] = {UNOCCUPIED, UNOCCUPIED, UNOCCUPIED};
 SIGNAL_STATES stateCurrent = UNOCCUPIED;
 SIGNAL_STATES statePrevious = UNOCCUPIED;
-const bool ENABLE_CONSOLE = false;
+// const bool ENABLE_CONSOLE = false;
 
 
 int r;
 int c;
 int blockSensorVal[SENSOR_COUNT][2];
-/*   
-    todo add the number of pins for {startblockpin,endblockpin} 
-    max we can add 5 block which is 10 pins together 
+/*
+    todo add the number of pins for {startblockpin,endblockpin}
+    max we can add 5 block which is 10 pins together
 */
 int blockSensor[SENSOR_COUNT][2] = {{3, 4}, {5, 6}, {7, 8}};
 
@@ -39,9 +39,11 @@ void setup() {
 
   bus.begin(9600);
 
-  if (ENABLE_CONSOLE) {
-    Serial.begin(9600);
-  }
+  /*
+    if (ENABLE_CONSOLE) {
+      Serial.begin(9600);
+    }
+  */
 
   for (r = 0; r < SENSOR_COUNT; r++) {
     for (c = 0; c < 2; c++) {
@@ -72,7 +74,7 @@ void loop() {
           setCmriSingals(r, stateCurrent);
           sensorsState[r] = stateCurrent;
         }
-        displayData(r, "unOccupiedBlock", blockSensorVal[r][0], blockSensorVal[r][1]);
+        //displayData(r, "unOccupiedBlock", blockSensorVal[r][0], blockSensorVal[r][1]);
         break;
       case OCCUPYING_FROM_START_OF_BLOCK:
         stateCurrent = occupiedFromEndOfBlock(statePrevious, blockSensorVal[r][0], blockSensorVal[r][1]);
@@ -80,7 +82,7 @@ void loop() {
           setCmriSingals(r, stateCurrent);
           sensorsState[r] = stateCurrent;
         }
-        displayData(r, "occupiedFromEndOfBlock", blockSensorVal[r][0], blockSensorVal[r][1]);
+        // displayData(r, "occupiedFromEndOfBlock", blockSensorVal[r][0], blockSensorVal[r][1]);
         break;
       case OCCUPYING_FROM_END_OF_BLOCK:
         stateCurrent = occupiedFromStartOfBlock(statePrevious, blockSensorVal[r][0], blockSensorVal[r][1]);
@@ -88,7 +90,7 @@ void loop() {
           setCmriSingals(r, stateCurrent);
           sensorsState[r] = stateCurrent;
         }
-        displayData(r, "occupiedFromStartOfBlock", blockSensorVal[r][0], blockSensorVal[r][1]);
+        // displayData(r, "occupiedFromStartOfBlock", blockSensorVal[r][0], blockSensorVal[r][1]);
         break;
       case OCCUPIED:
         stateCurrent = occupiedBlock(statePrevious, blockSensorVal[r][0], blockSensorVal[r][1]);
@@ -96,7 +98,7 @@ void loop() {
           setCmriSingals(r, stateCurrent);
           sensorsState[r] = stateCurrent;
         }
-        displayData(r, "occupiedBlock", blockSensorVal[r][0], blockSensorVal[r][1]);
+        // displayData(r, "occupiedBlock", blockSensorVal[r][0], blockSensorVal[r][1]);
         break;
     }
   }
@@ -128,7 +130,7 @@ SIGNAL_STATES unOccupiedBlock(SIGNAL_STATES signalState, int startSensor, int en
 SIGNAL_STATES occupiedFromEndOfBlock(SIGNAL_STATES signalState, int startSensor, int endSensor) {
 
   if (startSensor == OFF && endSensor == ON) {
-    signalState = OCCUPIED; 
+    signalState = OCCUPIED;
   }
   return signalState;
 }
@@ -146,13 +148,13 @@ SIGNAL_STATES occupiedFromStartOfBlock(SIGNAL_STATES signalState, int startSenso
 SIGNAL_STATES occupiedBlock(SIGNAL_STATES signalState, int startSensor, int endSensor) {
 
   if ((startSensor == OFF) && (endSensor == OFF)) {
-    signalState = UNOCCUPIED; 
+    signalState = UNOCCUPIED;
   }
   return signalState;
 }
 
-
-void displayData(int sensorNo, String message, int startSensor, int endSensor) {
+/*
+  void displayData(int sensorNo, String message, int startSensor, int endSensor) {
   if (ENABLE_CONSOLE) {
     Serial.print(sensorNo);
     Serial.println("  " + message);
@@ -161,4 +163,5 @@ void displayData(int sensorNo, String message, int startSensor, int endSensor) {
     Serial.println(endSensor);
     Serial.println();
   }
-}
+  }
+*/
