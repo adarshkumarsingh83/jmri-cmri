@@ -341,3 +341,44 @@ Note Repeate this for all the signal lights
           "provide address which is mentioned in the arduino code for red light or pin where red light is connected "
           in our case its 1044     
 ```
+
+## Panel pro Configuration 
+
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-mulit-component-node/panel-pro-layouteditor.png)
+
+```
+NOTE 
+for adding => click on the main top then click on shif key then place the selected component on layout editor 
+for moving => the component on Layout editor we have to use "command key " and then  select and move on desire place on editor 
+for delete => righ clik on component and click on delete 
+for rotate => right click and select rotate by xxx angel 
+
+
+Click on Panel Pro window then top menu -> Panel -> New Panel -> Layout Editor 
+
+1. click on RH right hand turnout and select the "Name" of the turnout and press the shift key and leave on the editor it will create a Right Hand turn out 
+2. click on LH left hand turnout and select the "Name" of the turnout and press the shift key and leave on the editor it will create a Left Hand turn out 
+  double cliek on turnout and select the rotate and then do it by 180 digree then both the RH and LH will come face to face then click on "command" 
+  key and increae the length of the turn out of both RH and LH 
+  once click on the buble of the turn out servo moter will change its position 
+3. then select the track segment from top then press shif key then join the anchor point of the LH and RH turnouts and for every track segment 
+  select the "BLOCK NAME" and "Block SEnsor Name" from the avaliable dropdown and it must be unique for every segment of the track with sensors on it 
+4.Click on "Anchor Point" Radio Button then press "Shit key" than do click on the editor we can see the start point is visible on the editor 
+  do the same for end point of the track 
+  Click on the "Track Segment" radio button then check "Mainline" and "Dashed" check button then  Block Name select the sensor name which we created earlier 
+  click on "Highlight" Checkbox and "Block Sensor" Name select from drop down sensor which we have created earlier 
+  then keep pressing "shift key" and select the point start and drag to the point end track light will apper 
+  then test the sensor by moving hand on the top of them and in editor track will turn into red 
+
+5. click on the Signal Head Icon and add it the layout editor for the turnout 
+  slect the signal and right clik on signal icon and then select the "edit logic" and add the logic 
+
+   procted sensor select the sensor for the block 
+   and select the turnot name on the drop down  
+
+then save the editor by CRT+ S and provide the name to that and select the location where we want to save the layout information 
+
+NOTE do the abo ve action for all the blocks in the arduino 
+```
+
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-mulit-component-node/layout-editor-signal-logic.png)
