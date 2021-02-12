@@ -372,9 +372,9 @@ Click on Panel Pro window then top menu -> Panel -> New Panel -> Layout Editor
 
 5. click on the Signal Head Icon and add it the layout editor for the turnout 
   slect the signal and right clik on signal icon and then select the "edit logic" and add the logic 
-
    procted sensor select the sensor for the block 
    and select the turnot name on the drop down  
+   now when ever the turnout is change the signal light will also change accordingly 
 
 then save the editor by CRT+ S and provide the name to that and select the location where we want to save the layout information 
 
