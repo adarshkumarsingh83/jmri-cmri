@@ -3,7 +3,7 @@
 ---
 
 ## FUNCTIONALITY 
-![img]()
+
 ```
 # SERVO TURNOUT 
 32 servo using PCA9685 address from 1001 to 10032 
@@ -26,6 +26,9 @@
 ```
 
 ## Connections details 
+
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-mulit-component-node/Connections.JPG)
+
 ```
 +5v External power supply to the breadboard 
 
@@ -158,11 +161,11 @@ Node Type: SMINI
 
 ```
 
-![img]()
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-mulit-component-node/all-components.png)
 
 ## Configure the Sensor
 
-![img]()
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-mulit-component-node/SENSORS-COFIG.png)
 
 ```
 Open Panel pro 
@@ -196,7 +199,7 @@ but while configuringg the sensor will start the address by 1001 in which 1000 i
 
 ## Configuring the servo
 
-![img]()
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-mulit-component-node/TURNOUTS-CONFIG.png)
 
 ```
 JMRI 
@@ -234,7 +237,8 @@ board no 2 with address 41 servo position  16 will be => 1032    use 1 bit study
 
 ## Configartion of the Signal heads leds 
 
-![img]()
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-mulit-component-node/1-SIGNALHEAD.png)
+
 ##for barod 1
 ```
 
@@ -290,7 +294,7 @@ Note Repeate this for all the signal lights
 
 ```
 
-![img]()
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-mulit-component-node/2-SIGNALHEAD.png)
 ## FOR BOARD 2
 ```
 PANEL PRO -> tools -> sinnals heads -> add 
