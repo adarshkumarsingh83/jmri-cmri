@@ -27,6 +27,30 @@ add the connection from IR sensor1 out pin to the pin11 of the mega
 add the connection from IR sensor2 out pin to the pin10 of the mega 
 ```
 
+
+### CMRI CONFIGURATION IN PANEL PRO
+```
+CMRI PanelPro. When it is running click on edit preferences ->  connections to get the following window
+
+set the following tabs
+
+System manufacturer = C/MRI
+
+System connection = Serial
+
+Setting
+
+Serial port: (select the port your arduino is connected to, you will find this on the arduino IDE)
+
+Connection Prefix: C
+
+Connection Name: (what ever you want to call it)
+
+Also click on additional connection box and select the Baud rate to 9600 bps
+
+```
+
+
 ## USIC_SUSIC NODE TYPE WITH 32BIT CARD 96 OUTPUT AND 32 INPUT 
 
 
@@ -34,6 +58,33 @@ add the connection from IR sensor2 out pin to the pin10 of the mega
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-32bit-card-node/image/node-32input-96output.png)
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-32bit-card-node/image/led-32input-96out.png)
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-32bit-card-node/image/sensor-32input-96out.png)
+
+
+### NODE CONFIGUATION IN JMRI 
+```
+CMRI PanelPro. ->  preferences ->  connections to get the following window
+
+click on add node 
+
+provide the node address bases on arduino stetch 
+Example below 
+ #define CMRI_ADDR 1
+
+in Node Address (UA) textbox 
+Node Type: USIC_SUSIC 
+
+Card Size: 32 Bit 
+
+Please select Card Type:  0 OutputCard 
+                          1 OutputCard
+                          2 OutputCard
+                          3 InputCard 
+
+Description: 96Output and 32 Input 
+
+ after providing above information click on "addd node" and then click on "done"
+ then click on save and restart the panel pro 
+```
 
 ### Code 
 
@@ -74,12 +125,84 @@ void loop() {
 }
 ```
 
+### LED CONFIGURATION IN JMRI 
+```
+Open Panel pro 
+tools -> table -> light ->  
+click on "add" sensor button 
+   Systemn Connection : C/MRI 
+   Hardware Address : 1001 // based on Arduino sketch 
+   User Name : provide any information 
+
+   Click on "Create" Button 
+
+
+NOTE : In Arduino code address for the light will start from 0 but in jmri it will start from 1 
+Example: 
+cmri.get_bit(0);
+param is light address 
+but while configuring the light will start the address by 1001 in which 1000 is arduino address and 1 is the sensor address 
+
+1001 and 1096 in jmri for led 
+```
+
+### SENSOR CONFIGURATION IN JMRI
+```
+Open Panel pro 
+tools -> table -> sensors ->  
+click on "add" sensor button 
+   Systemn Connection : C/MRI 
+   Hardware Address : 1001 // based on Arduino sketch 
+   User Name : provide any information 
+
+   Click on "Create" Button 
+
+
+   click on sensors window on top menu Defaults -> Initial Sensor state -> provide inactive in open popup window and -> click on "ok" button 
+
+
+NOTE : In Arduino code address for the sensor will start from 0 but in jmri it will start from 1 
+Example: 
+cmri.set_bit(0, xxx);
+1st param is sensor address and 2nd is the value we cant to send to jmri 
+but while configuringg the sensor will start the address by 1001 in which 1000 is arduino address and 1 is the sensor address 
+
+1001 and 1032 in jmri for sensors 
+```
+
 ## USIC_SUSIC NODE TYPE WITH 32BIT CARD 64 OUTPUT AND 64 INPUT 
 
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-32bit-card-node/image/2-64input-64-output.png)
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-32bit-card-node/image/node-64input-64output.png)
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-32bit-card-node/image/led-64input-64out.png)
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-32bit-card-node/image/sensor-64input-64out.png)
+
+
+### NODE CONFIGUATION IN JMRI 
+```
+CMRI PanelPro. ->  preferences ->  connections to get the following window
+
+click on add node 
+
+provide the node address bases on arduino stetch 
+Example below 
+ #define CMRI_ADDR 1
+
+in Node Address (UA) textbox 
+Node Type: USIC_SUSIC 
+
+Card Size: 32 Bit 
+
+Please select Card Type:  0 OutputCard 
+                          1 OutputCard
+                          2 InputCard
+                          3 InputCard 
+
+Description: 64Output and 64Input 
+
+ after providing above information click on "addd node" and then click on "done"
+ then click on save and restart the panel pro 
+```
 
 ### Code 
 
@@ -122,6 +245,51 @@ void loop() {
 }
 ```
 
+### LED CONFIGURATION IN JMRI 
+```
+Open Panel pro 
+tools -> table -> light ->  
+click on "add" sensor button 
+   Systemn Connection : C/MRI 
+   Hardware Address : 1001 // based on Arduino sketch 
+   User Name : provide any information 
+
+   Click on "Create" Button 
+
+
+NOTE : In Arduino code address for the light will start from 0 but in jmri it will start from 1 
+Example: 
+cmri.get_bit(0);
+param is light address 
+but while configuring the light will start the address by 1001 in which 1000 is arduino address and 1 is the sensor address 
+
+1001 and 1064 in jmri for led 
+```
+
+### SENSOR CONFIGURATION IN JMRI
+```
+Open Panel pro 
+tools -> table -> sensors ->  
+click on "add" sensor button 
+   Systemn Connection : C/MRI 
+   Hardware Address : 1001 // based on Arduino sketch 
+   User Name : provide any information 
+
+   Click on "Create" Button 
+
+
+   click on sensors window on top menu Defaults -> Initial Sensor state -> provide inactive in open popup window and -> click on "ok" button 
+
+
+NOTE : In Arduino code address for the sensor will start from 0 but in jmri it will start from 1 
+Example: 
+cmri.set_bit(0, xxx);
+1st param is sensor address and 2nd is the value we cant to send to jmri 
+but while configuringg the sensor will start the address by 1001 in which 1000 is arduino address and 1 is the sensor address 
+
+1001 and 1064 in jmri for sensors 
+```
+
 ## USIC_SUSIC NODE TYPE WITH 32BIT CARD 32 OUTPUT AND 96 INPUT 
 
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-32bit-card-node/image/3-96input-32-output.png)
@@ -129,6 +297,32 @@ void loop() {
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-32bit-card-node/image/led-96input-32-output.png)
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-32bit-card-node/image/sensor-96input-32-output.png)
 
+
+### NODE CONFIGUATION IN JMRI 
+```
+CMRI PanelPro. ->  preferences ->  connections to get the following window
+
+click on add node 
+
+provide the node address bases on arduino stetch 
+Example below 
+ #define CMRI_ADDR 1
+
+in Node Address (UA) textbox 
+Node Type: USIC_SUSIC 
+
+Card Size: 32 Bit 
+
+Please select Card Type:  0 OutputCard 
+                          1 InputCard
+                          2 InputCard
+                          3 InputCard 
+
+Description: 32Output and 96Input 
+
+ after providing above information click on "addd node" and then click on "done"
+ then click on save and restart the panel pro 
+```
 
 ### Code 
 
@@ -168,4 +362,49 @@ void loop() {
   cmri.set_bit(0, !digitalRead(SENSOR_1));
   cmri.set_bit(95, !digitalRead(SENSOR_2));
 }
+```
+
+### LED CONFIGURATION IN JMRI 
+```
+Open Panel pro 
+tools -> table -> light ->  
+click on "add" sensor button 
+   Systemn Connection : C/MRI 
+   Hardware Address : 1001 // based on Arduino sketch 
+   User Name : provide any information 
+
+   Click on "Create" Button 
+
+
+NOTE : In Arduino code address for the light will start from 0 but in jmri it will start from 1 
+Example: 
+cmri.get_bit(0);
+param is light address 
+but while configuring the light will start the address by 1001 in which 1000 is arduino address and 1 is the sensor address 
+
+1001 and 1032 in jmri for led 
+```
+
+### SENSOR CONFIGURATION IN JMRI
+```
+Open Panel pro 
+tools -> table -> sensors ->  
+click on "add" sensor button 
+   Systemn Connection : C/MRI 
+   Hardware Address : 1001 // based on Arduino sketch 
+   User Name : provide any information 
+
+   Click on "Create" Button 
+
+
+   click on sensors window on top menu Defaults -> Initial Sensor state -> provide inactive in open popup window and -> click on "ok" button 
+
+
+NOTE : In Arduino code address for the sensor will start from 0 but in jmri it will start from 1 
+Example: 
+cmri.set_bit(0, xxx);
+1st param is sensor address and 2nd is the value we cant to send to jmri 
+but while configuringg the sensor will start the address by 1001 in which 1000 is arduino address and 1 is the sensor address 
+
+1001 and 1096 in jmri for sensors 
 ```
