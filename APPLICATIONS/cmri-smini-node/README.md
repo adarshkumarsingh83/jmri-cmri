@@ -124,6 +124,8 @@ Example:
 cmri.get_bit(0);
 param is light address 
 but while configuring the light will start the address by 1001 in which 1000 is arduino address and 1 is the sensor address 
+
+1001 to 1048 light address configuration in jmri 
 ```
 
 ### SENSOR CONFIGURATION IN JMRI
@@ -146,4 +148,6 @@ Example:
 cmri.set_bit(0, xxx);
 1st param is sensor address and 2nd is the value we cant to send to jmri 
 but while configuringg the sensor will start the address by 1001 in which 1000 is arduino address and 1 is the sensor address 
+
+1001 to 1024 IR sensor address configuration in jmri 
 ```
