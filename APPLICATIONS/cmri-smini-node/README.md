@@ -123,7 +123,8 @@ NOTE : In Arduino code address for the light will start from 0 but in jmri it wi
 Example: 
 cmri.get_bit(0);
 param is light address 
-but while configuring the light will start the address by 1001 in which 1000 is arduino address and 1 is the sensor address 
+but while configuring the light will start the address by 1001 in which 1000 is arduino address and 1 is the sensor address
+
 
 1001 to 1048 light address configuration in jmri 
 ```
