@@ -20,15 +20,8 @@ Auto485 bus(DE_PIN); // arduino pin 2 for DE and RE pins
     32 added to ouput then currentoutput + 32
 */
 
-
-//USIC_SUSIC with address 0. USIC_SUSIC = 32 inputs, 96 outputs
-// CMRI cmri(CMRI_ADDR, 32, 96, bus);
-
 //USIC_SUSIC with address 0. USIC_SUSIC = 64 inputs, 64 outputs
-CMRI cmri(CMRI_ADDR, 128, 128, bus);
-
-//USIC_SUSIC with address 0. USIC_SUSIC = 96 inputs, 32 outputs
-// CMRI cmri(CMRI_ADDR, 96, 32, bus);
+CMRI cmri(CMRI_ADDR, 64, 64, bus);
 
 void setup() {
   bus.begin(9600);
