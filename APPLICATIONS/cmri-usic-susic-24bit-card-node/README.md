@@ -12,7 +12,7 @@
 
 ## connections 
 
-![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-24bit-card/image/connection.JPG)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-24bit-card-node/image/connection.JPG)
 
 ```
 connect the +5v and gnd to the breadboard 
@@ -29,10 +29,10 @@ add the connection from IR sensor2 out pin to the pin10 of the mega
 ## USIC_SUSIC NODE TYPE WITH 24BIT CARD 72 OUTPUT AND 24 INPUT 
 
 
-![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-24bit-card/image/1-24input-72output.png)
-![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-24bit-card/image/node-24input-72output.png)
-![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-24bit-card/image/led-24input-72out.png)
-![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-24bit-card/image/sensor-24input-72out.png)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-24bit-card-node/image/1-24input-72output.png)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-24bit-card-node/image/node-24input-72output.png)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-24bit-card-node/image/led-24input-72out.png)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-24bit-card-node/image/sensor-24input-72out.png)
 
 ### Code 
 
@@ -75,10 +75,10 @@ void loop() {
 
 ## USIC_SUSIC NODE TYPE WITH 24BIT CARD 48 OUTPUT AND 48 INPUT 
 
-![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-24bit-card/image/2-48input-48-output.png)
-![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-24bit-card/image/node-48input-48output.png)
-![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-24bit-card/image/led-48input-48out.png)
-![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-24bit-card/image/sensor-48input-48out.png)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-24bit-card-node/image/2-48input-48-output.png)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-24bit-card-node/image/node-48input-48output.png)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-24bit-card-node/image/led-48input-48out.png)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-24bit-card-node/image/sensor-48input-48out.png)
 
 ### Code 
 
@@ -123,10 +123,10 @@ void loop() {
 
 ## USIC_SUSIC NODE TYPE WITH 32BIT CARD 32 OUTPUT AND 96 INPUT 
 
-![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-24bit-card/image/3-72input-24-output.png)
-![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-24bit-card/image/node-72input-24outputs.png)
-![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-24bit-card/image/led-72input-24-output.png)
-![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-24bit-card/image/sensor-72input-24-output.png)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-24bit-card-node/image/3-72input-24-output.png)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-24bit-card-node/image/node-72input-24outputs.png)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-24bit-card-node/image/led-72input-24-output.png)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-24bit-card-node/image/sensor-72input-24-output.png)
 
 
 ### Code 
