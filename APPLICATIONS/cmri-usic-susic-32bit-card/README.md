@@ -4,11 +4,13 @@
 
 ## USIC_SUSIC NODE TYPE WITH 32BIT CARD 96 OUTPUT AND 32 INPUT 
 
-![img](https://github.com/adarshkumarsingh83/jmri-cmri/tree/main/APPLICATIONS/cmri-usic-susic-32bit-card/1-32input-96output.png)
 
-![img](https://github.com/adarshkumarsingh83/jmri-cmri/tree/main/APPLICATIONS/cmri-usic-susic-32bit-card/node-32input-96output.png)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-32bit-card/1-32input-96output.png)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-32bit-card/node-32input-96output.png)
+
 
 ### Code 
+
 ```
 //  a USIC_SUSIC with address 0. USIC_SUSIC = 32 inputs, 96 outputs
 // CMRI cmri(CMRI_ADDR, 32, 96, bus); 
@@ -42,10 +44,11 @@ void loop() {
 
 ## USIC_SUSIC NODE TYPE WITH 32BIT CARD 64 OUTPUT AND 64 INPUT 
 
-![img](https://github.com/adarshkumarsingh83/jmri-cmri/tree/main/APPLICATIONS/cmri-usic-susic-32bit-card/2-64input-64-output.png)
-![img](https://github.com/adarshkumarsingh83/jmri-cmri/tree/main/APPLICATIONS/cmri-usic-susic-32bit-card/node-64input-64output.png)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-32bit-card/2-64input-64-output.png)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-32bit-card/node-64input-64output.png)
 
 ### Code 
+
 ```
 //  a USIC_SUSIC with address 0. USIC_SUSIC = 64 inputs, 64 outputs
 // CMRI cmri(CMRI_ADDR, 64, 64, bus); 
@@ -80,10 +83,11 @@ void loop() {
 
 ## USIC_SUSIC NODE TYPE WITH 32BIT CARD 32 OUTPUT AND 96 INPUT 
 
-![img](https://github.com/adarshkumarsingh83/jmri-cmri/tree/main/APPLICATIONS/cmri-usic-susic-32bit-card/3-96input-32-output.png)
-![img](https://github.com/adarshkumarsingh83/jmri-cmri/tree/main/APPLICATIONS/cmri-usic-susic-32bit-card/node-96input-32output.png)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-32bit-card/3-96input-32-output.png)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-32bit-card/node-96input-32output.png)
 
 ### Code 
+
 ```
 //  a USIC_SUSIC with address 0. USIC_SUSIC = 96 inputs, 32 outputs
 // CMRI cmri(CMRI_ADDR, 96, 32, bus); 
