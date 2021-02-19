@@ -50,6 +50,7 @@ Also click on additional connection box and select the Baud rate to 9600 bps
 
 ```
 
+---
 
 ## USIC_SUSIC NODE TYPE WITH 32BIT CARD 96 OUTPUT AND 32 INPUT 
 
@@ -170,6 +171,11 @@ but while configuringg the sensor will start the address by 1001 in which 1000 i
 1001 and 1032 in jmri for sensors 
 ```
 
+
+---
+
+
+
 ## USIC_SUSIC NODE TYPE WITH 32BIT CARD 64 OUTPUT AND 64 INPUT 
 
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-32bit-card-node/image/2-64input-64-output.png)
@@ -289,6 +295,11 @@ but while configuringg the sensor will start the address by 1001 in which 1000 i
 
 1001 and 1064 in jmri for sensors 
 ```
+
+
+---
+
+
 
 ## USIC_SUSIC NODE TYPE WITH 32BIT CARD 32 OUTPUT AND 96 INPUT 
 
