@@ -2,6 +2,15 @@
 
 ---- 
 
+```
+ every card is having 32 bit so number of card added to the input or output
+ it will add 32 to the total of that 
+ eg 
+    32 added to input then currentinput + 32 
+    32 added to ouput then currentoutput + 32 
+
+```
+
 ## USIC_SUSIC NODE TYPE WITH 32BIT CARD 96 OUTPUT AND 32 INPUT 
 
 

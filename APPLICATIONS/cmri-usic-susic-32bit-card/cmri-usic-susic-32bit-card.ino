@@ -11,6 +11,16 @@
 
 Auto485 bus(DE_PIN); // arduino pin 2 for DE and RE pins
 
+
+/*
+ every card is having 32 bit so number of card added to the input or output
+ it will add 32 to the total of that 
+ eg 
+    32 added to input then currentinput + 32 
+    32 added to ouput then currentoutput + 32 
+*/
+
+
 //USIC_SUSIC with address 0. USIC_SUSIC = 32 inputs, 96 outputs
 // CMRI cmri(CMRI_ADDR, 32, 96, bus); 
 
