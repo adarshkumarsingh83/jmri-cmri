@@ -22,8 +22,23 @@ Connection Prefix: C
 Connection Name: (what ever you want to call it)
 
 Also click on additional connection box and select the Baud rate to 9600 bps
+```
 
+## NODE CONFIGURATION ON JMRI 
+```
+CMRI PanelPro. ->  preferences ->  connections to get the following window
 
+click on add node 
+
+provide the node address bases on arduino stetch 
+Example below 
+ #define CMRI_ADDR 1
+
+in Node Address (UA) textbox 
+Node Type: SMINI 
+
+ after providing above information click on "addd node" and then click on "done"
+ then click on save and restart the panel pro 
 
 click on confiugure nodes to bring up the nodes page
 
@@ -36,6 +51,12 @@ then click on configure nodes again so we can add the reminaing  Arduino one by 
 Each Arduino you add in this way will need a seperate node addresss. 
 
 Once this has all been done make sure you save the settings and restart PanelPro so that all the settings are implemented.
+
+```
+
+
+### light configuartion on panel pro 
+```
 
 Once PanelPro has restarted click on tools > tables > lights so we can add a light control for each Arduino.
 first Arduino the address will be 1001 and 
