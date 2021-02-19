@@ -36,7 +36,26 @@ Also click on additional connection box and select the Baud rate to 9600 bps
 
 ```
 
-### configure the nodes so click on "Configure C/MRI nodes" 
+### NODE CONFIGUATION IN JMRI
+
+```
+CMRI PanelPro. ->  preferences ->  connections to get the following window
+
+click on add node 
+
+provide the node address bases on arduino stetch 
+Example below 
+ #define CMRI_ADDR 1
+
+in Node Address (UA) textbox 
+Node Type: SMINI 
+
+ after providing above information click on "addd node" and then click on "done"
+ then click on save and restart the panel pro 
+```
+
+
+### Light configuration on jmri 
 ```
 Put 1 in the node address and then click add node button. then click done. save configuration and restart JMRI
 setup the lights control in the JMRI table. Click on tools > table > lights
