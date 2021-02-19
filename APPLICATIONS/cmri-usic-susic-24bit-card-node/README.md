@@ -10,6 +10,14 @@
     24 added to ouput then currentoutput + 24   
  ```
 
+### Tested on Mega
+- USIC_SUSIC NODE TYPE WITH 24BIT CARD 72 OUTPUT AND 24 INPUT
+- USIC_SUSIC NODE TYPE WITH 24BIT CARD 48 OUTPUT AND 48 INPUT
+- USIC_SUSIC NODE TYPE WITH 32BIT CARD 24 OUTPUT AND 72 INPUT
+- USIC_SUSIC NODE TYPE WITH 32BIT CARD 96 OUTPUT AND 96 INPUT
+- USIC_SUSIC NODE TYPE WITH 32BIT CARD 120 OUTPUT AND 120 INPUT
+
+
 ## connections 
 
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-24bit-card-node/image/connection.JPG)
@@ -548,7 +556,7 @@ but while configuringg the sensor will start the address by 1001 in which 1000 i
 
 ## USIC_SUSIC NODE TYPE WITH 32BIT CARD 120 OUTPUT AND 120 INPUT 
 
-![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-24bit-card-node/image/4-120input-120output.png)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-24bit-card-node/image/5-120input-120output.png)
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-24bit-card-node/image/node-120input-120output.png)
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-24bit-card-node/image/led-120input-120output.png)
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-24bit-card-node/image/sensor-120input-120output.png)
