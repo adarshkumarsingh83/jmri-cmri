@@ -11,6 +11,21 @@
 
 ```
 
+## connections 
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-32bit-card/image/connection.JPG)
+
+```
+connect the +5v and gnd to the breadboard 
+connect the short leg of the green and red led to the common gnd line of bredboard 
+connect the resistor to the long leg of the red and green led 
+connect the pin 13 and pin 12 to the long resistor of red and green led 
+
+add two IR sensors in breadboard 
+add the gnd and +5v to the vcc and gnd pin of the IR sensor 
+add the connection from IR sensor1 out pin to the pin11 of the mega 
+add the connection from IR sensor2 out pin to the pin10 of the mega 
+```
+
 ## USIC_SUSIC NODE TYPE WITH 32BIT CARD 96 OUTPUT AND 32 INPUT 
 
 
