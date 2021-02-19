@@ -19,8 +19,12 @@ add the connection from IR sensor1 out pin to the pin11 of the uno
 add the connection from IR sensor2 out pin to the pin10 of the uno 
 ```
 
-## SIMI NODE TYPE WITH 48 OUTPUT AND 24 INPUT 
 
+---
+
+
+
+## SIMI NODE TYPE WITH 48 OUTPUT AND 24 INPUT 
 
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-smini-node/image/24input-48output.png)
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-smini-node/image/node-24input-48output.png)
