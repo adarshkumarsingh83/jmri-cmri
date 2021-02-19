@@ -12,6 +12,7 @@
 ```
 
 ## connections 
+
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-32bit-card/image/connection.JPG)
 
 ```
