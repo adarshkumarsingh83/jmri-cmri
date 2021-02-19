@@ -45,7 +45,7 @@ add the connection from IR sensor2 out pin to the pin10 of the mega
 
 #define CMRI_ADDR 1
 #define RED_LED_PIN 13
-#define GREEN_LED_PIN 
+#define GREEN_LED_PIN 12
 #define SENSOR_1 11
 #define SENSOR_2 10
 
