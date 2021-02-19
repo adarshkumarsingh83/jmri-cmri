@@ -19,10 +19,10 @@ Auto485 bus(DE_PIN); // arduino pin 2 for DE and RE pins
  */
  
 //USIC_SUSIC with address 0. USIC_SUSIC = 24 inputs, 72 outputs
- CMRI cmri(CMRI_ADDR, 24, 72, bus);
+// CMRI cmri(CMRI_ADDR, 24, 72, bus);
 
 //USIC_SUSIC with address 0. USIC_SUSIC = 48 inputs, 48 outputs
-// CMRI cmri(CMRI_ADDR, 48, 48, bus);
+ CMRI cmri(CMRI_ADDR, 48, 48, bus);
 
 //USIC_SUSIC with address 0. USIC_SUSIC = 72 inputs, 24 outputs
 // CMRI cmri(CMRI_ADDR, 72, 24, bus);
@@ -39,8 +39,8 @@ void setup() {
 void loop() {
   cmri.process();
   digitalWrite(GREEN_LED_PIN, cmri.get_bit(0));
-  digitalWrite(RED_LED_PIN, cmri.get_bit(71));
+  digitalWrite(RED_LED_PIN, cmri.get_bit(47));
 
   cmri.set_bit(0, !digitalRead(SENSOR_1));
-  cmri.set_bit(23, !digitalRead(SENSOR_2));
+  cmri.set_bit(47, !digitalRead(SENSOR_2));
 }
