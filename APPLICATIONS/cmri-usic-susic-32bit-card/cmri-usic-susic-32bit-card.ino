@@ -42,8 +42,8 @@ void setup() {
 void loop() {
   cmri.process();
   digitalWrite(GREEN_LED_PIN, cmri.get_bit(0));
-  digitalWrite(RED_LED_PIN, cmri.get_bit(31));
+  digitalWrite(RED_LED_PIN, cmri.get_bit(63));
 
   cmri.set_bit(0, !digitalRead(SENSOR_1));
-  cmri.set_bit(95, !digitalRead(SENSOR_2));
+  cmri.set_bit(63, !digitalRead(SENSOR_2));
 }
