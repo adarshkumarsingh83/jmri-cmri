@@ -671,7 +671,7 @@ but while configuringg the sensor will start the address by 1001 in which 1000 i
 
 ## USIC_SUSIC NODE TYPE WITH 32BIT CARD 128 OUTPUT AND 128 INPUT 
 
-![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-32bit-card-node/image/5-128input-128outputs.png)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-32bit-card-node/image/6-128input-128outputs.png)
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-32bit-card-node/image/node-128input-128outputs.png)
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-32bit-card-node/image/led-128input-128outputs.png)
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-usic-susic-32bit-card-node/image/sensor-128input-128outputs.png)
