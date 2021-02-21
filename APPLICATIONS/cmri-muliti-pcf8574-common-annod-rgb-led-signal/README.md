@@ -245,3 +245,5 @@ Note Repeate this for all the signal lights
           "provide address which is mentioned in the arduino code for red light or pin where red light is connected "
           in our case its 1022        
 ```
+
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/cmri-muliti-pcf8574-common-annod-rgb-led-signal/image/SH.png)
