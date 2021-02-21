@@ -18,10 +18,10 @@
 ```
 connect sda and scl from arduino to the pcf8574 sda and scl pin 
 take +5v and gnd from arduino to the breadboard and then from their to pcf8574 vcc and gnd pin 
-from pcf8574 board pin p0 to p5 connect to the breadboard 6 resistors 
-connect the 2 connom annod leds to the resistos short led 
-log leg of the led will connect to the positive +ve of the breadboard 
-take pcf8574 other end vcc and connect to the breadboard +ve 
+from pcf8574 board pin p0 to p5 connect to the breadboard 6 resistors  for common annod leds 
+connect the 2 connom annod leds from short leg side to the resistos which was added earlier 
+then one long leg of the led will connect to the positive +ve of the breadboard 
+take pcf8574 other end vcc and connect to the breadboard +ve which long leg of leds are connected 
 take the +ve and gnd from breadboard and add to the two IR sensor on the breadboard 
 then connect the out pin of sensor1 to the A0 and out pin of the sensor2 to the A1 pin of the arduino 
 
