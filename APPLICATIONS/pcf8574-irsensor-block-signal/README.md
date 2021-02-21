@@ -2,14 +2,14 @@
 
 ---
 
-![img](https://github.com/adarshkumarsingh83/arduino/blob/master/APPLICATION/pcf8574-irsensor-block-signal/image/common-annod-led.png)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/tree/main/APPLICATIONS/pcf8574-irsensor-block-signal/image/common-annod-led.png)
 
-![img](https://github.com/adarshkumarsingh83/arduino/blob/master/APPLICATION/pcf8574-irsensor-block-signal/image/led-connection.png)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/tree/main/APPLICATIONS/pcf8574-irsensor-block-signal/image/led-connection.png)
 
 
-![img](https://github.com/adarshkumarsingh83/arduino/blob/master/APPLICATION/pcf8574-irsensor-block-signal/image/multi-node-connection.JPG)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/tree/main/APPLICATIONS/pcf8574-irsensor-block-signal/image/multi-node-connection.JPG)
 
-![img](https://github.com/adarshkumarsingh83/arduino/blob/master/APPLICATION/pcf8574-irsensor-block-signal/image/connection.JPG)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/tree/main/APPLICATIONS/pcf8574-irsensor-block-signal/image/connection.JPG)
 
 
 
