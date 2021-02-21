@@ -16,6 +16,8 @@
 ### Connections
 
 ```
+# follow the below same steps for all the block nodes in the system 
+
 connect sda and scl from arduino to the pcf8574 sda and scl pin 
 take +5v and gnd from arduino to the breadboard and then from their to pcf8574 vcc and gnd pin 
 from pcf8574 board pin p0 to p5 connect to the breadboard 6 resistors  for common annod leds 
