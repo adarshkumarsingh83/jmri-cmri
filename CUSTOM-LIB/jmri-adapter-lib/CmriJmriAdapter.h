@@ -23,8 +23,7 @@ class CmriJmriAdapter {
     int _jmriLightStartAddress;
     int _lightCount;
     CMRI * _cmri;
-    ExternalBoardAdapter externalBoardAdapter();
-
+    ExternalBoardAdapter externalBoardAdapter;
     char findTypeByJmriAddress(int  jmriAddress);
 
   public:
@@ -37,6 +36,7 @@ class CmriJmriAdapter {
       _turnoutCount = -1;
       _jmriLightStartAddress = -1;
       _lightCount = -1;
+      initCmriJmriAdapter();
     }
 
     void initCmriJmriAdapter();

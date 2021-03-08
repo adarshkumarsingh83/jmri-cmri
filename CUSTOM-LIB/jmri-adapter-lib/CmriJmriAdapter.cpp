@@ -7,7 +7,7 @@
 #include "./CmriJmriAdapter.h"
 
 void CmriJmriAdapter::initCmriJmriAdapter() {
-
+  externalBoardAdapter = ExternalBoardAdapter();
 }
 
 void CmriJmriAdapter::activateCmriSignal(int jmriSignalStartAddress, int signalCount) {
@@ -33,7 +33,7 @@ void CmriJmriAdapter::processJmri() {
     int totalJmriSignalAddress = _jmriSignalStartAddress + _signalCount;
     for (int i = _jmriSignalStartAddress; i < totalJmriSignalAddress; i++) {
       //todo conect to the respective implemenation
-      _cmri->get_bit(i);
+      externalBoardAdapter.processRequest('S', i, _cmri->get_bit(i));
     }
   }
 
@@ -41,7 +41,7 @@ void CmriJmriAdapter::processJmri() {
     int totalJmriTurnoutAddress = _jmriTurnoutStartAddress + _turnoutCount;
     for (int i = _jmriTurnoutStartAddress; i < totalJmriTurnoutAddress; i++) {
       //todo conect to the respective implemenation
-      _cmri->get_bit(i);
+      externalBoardAdapter.processRequest('T', i, _cmri->get_bit(i));
     }
   }
 
@@ -49,7 +49,7 @@ void CmriJmriAdapter::processJmri() {
     int totalJmriLightAddress = _jmriLightStartAddress + _lightCount;
     for (int i = _jmriLightStartAddress; i < totalJmriLightAddress; i++) {
       //todo conect to the respective implemenation
-      _cmri->get_bit(i);
+      externalBoardAdapter.processRequest('L', i, _cmri->get_bit(i));
     }
   }
 }
