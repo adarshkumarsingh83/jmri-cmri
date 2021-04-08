@@ -16,8 +16,8 @@ class ExternalBoardAdapter {
     int _turnoutCount;
     int _lightCount;
 
-    Pca9685Board *pca9685Board;
-    Pcf8574Board *pcf8574Board;
+    Pca9685Board pca9685Board;
+    Pcf8574Board pcf8574Board;
 
     void processSignalRequest(int pin, bool signalValue);
     void processLightRequest(int pin, bool signalValue);

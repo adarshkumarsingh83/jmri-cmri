@@ -7,7 +7,9 @@
 #include "./CmriJmriAdapter.h"
 
 void CmriJmriAdapter::initCmriJmriAdapter() {
-  externalBoardAdapter = ExternalBoardAdapter();
+  externalBoardAdapter.setSignal(_signalCount);
+  externalBoardAdapter.setTurnout(_turnoutCount);
+  externalBoardAdapter.setLight(_lightCount);
 }
 
 void CmriJmriAdapter::activateCmriSignal(int jmriSignalStartAddress, int signalCount) {

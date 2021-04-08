@@ -8,7 +8,8 @@
 
 
 void ExternalBoardAdapter::initAdapter() {
-  pca9685Board = &Pca9685Board(_signalCount + _lightCount);
+  pca9685Board.initPca9685Boards(_turnoutCount);
+  pcf8574Board.initPcf8574Boards(_signalCount + _lightCount);
 }
 
 void ExternalBoardAdapter::setSignal( int signalCount) {
@@ -33,24 +34,24 @@ void ExternalBoardAdapter::processRequest(char type, int jmriAddress, bool value
 
 void ExternalBoardAdapter::processSignalRequest(int pin, bool signalValue) {
   if (signalValue) {
-    //pcf8574Board->switchOn(pin);
+    pcf8574Board.switchOn(pin);
   } else {
-    //pcf8574Board->switchOff(pin);
+    pcf8574Board.switchOff(pin);
   }
 }
 
 void ExternalBoardAdapter::processLightRequest(int pin, bool signalValue) {
   if (signalValue) {
-    //pcf8574Board->switchOn(pin);
+    pcf8574Board.switchOn(pin);
   } else {
-    //pcf8574Board->switchOff(pin);
+    pcf8574Board.switchOff(pin);
   }
 }
 
 void ExternalBoardAdapter::processTurnoutRequest(int pin, bool throwValue) {
   if (throwValue) {
-    pca9685Board->throwSwitch(pin);
+    pca9685Board.throwSwitch(pin);
   } else {
-    pca9685Board->closeSwitch(pin);
+    pca9685Board.closeSwitch(pin);
   }
 }

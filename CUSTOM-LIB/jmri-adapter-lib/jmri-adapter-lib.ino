@@ -24,6 +24,7 @@ void setup() {
   bus.begin(9600);
   cmriJmriAdapter.activateCmriSignal(1001, 10);
   cmriJmriAdapter.activateCmriTurnout(1101, 10);
+  //todo turnout open and close range setting 
   cmriJmriAdapter.activateCmriLight(1201, 10);
   cmriJmriAdapter.initCmriJmriAdapter();
 }
