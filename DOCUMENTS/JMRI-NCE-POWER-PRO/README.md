@@ -2,6 +2,10 @@
 
 ---
 
+```
+Use the "Mac_OSX_VCP_Driver.zip" driver for mac os to show in system information 
+```
+
 ![img](/DOCUMENTS/JMRI-NCE-POWER-PRO/images/JMRI-NCE-POWER-PRO-CONNTECTIONS-SETTING.png)
 
 ## Adding loco 
