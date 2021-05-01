@@ -5,7 +5,7 @@
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/Nmra-Dcc-Accssory-Decoder-Basic/image/6N137-octocupler.JPG)
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/Nmra-Dcc-Accssory-Decoder-Basic/image/dcc-decoder-circuit.png)
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/Nmra-Dcc-Accssory-Decoder-Basic/image/circuit_connection.JPG)
-![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/Nmra-Dcc-Accssory-Decoder-Basic/image/circuit.JPG)
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/Nmra-Dcc-Accssory-Decoder-Basic/image/circuits.JPG)
 
 ## Connections details 
 ```
