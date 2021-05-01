@@ -2,10 +2,10 @@
 
 ---
 
-![img](APPLICATIONS/Nmra-Dcc-Accssory-Decoder-Basic/image/6N137-octocupler.JPG)
-![img](APPLICATIONS/Nmra-Dcc-Accssory-Decoder-Basic/image/dcc-decoder-circuit.png)
-![img](APPLICATIONS/Nmra-Dcc-Accssory-Decoder-Basic/image/circuit_connection.JPG)
-![img](APPLICATIONS/Nmra-Dcc-Accssory-Decoder-Basic/image/circuit.JPG)
+![img](Nmra-Dcc-Accssory-Decoder-Basic/image/6N137-octocupler.JPG)
+![img](Nmra-Dcc-Accssory-Decoder-Basic/image/dcc-decoder-circuit.png)
+![img](Nmra-Dcc-Accssory-Decoder-Basic/image/circuit_connection.JPG)
+![img](Nmra-Dcc-Accssory-Decoder-Basic/image/circuit.JPG)
 
 ## Connections details 
 ```
