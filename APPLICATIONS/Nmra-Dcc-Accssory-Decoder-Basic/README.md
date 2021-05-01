@@ -29,3 +29,8 @@ press accessory button on nce procab
 then type the acessory number which is metnioned on the arduino code then 
 press enter then use 1 or 2 button as shown in power cab for on and off operation 
 ```
+
+## To include lib 
+```
+Arduino -> tool -> manage lib -> "nmradcc"
+```
