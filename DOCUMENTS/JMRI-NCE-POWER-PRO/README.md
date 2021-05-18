@@ -42,7 +42,7 @@ click on the on button on the throrrle and use the functionf to control the loco
 ![img](/DOCUMENTS/JMRI-NCE-POWER-PRO/images/decoder-pro-throttle.png)
 
 ```
-Decoder Pro All Entries screen go to:  Edit / Preferences /  Defaults.
+Decoder/Panel Pro All Entries screen go to:  Edit / Preferences /  Defaults.
 
 all of the selections MUST BE set to NCE not internal. correct them as needed then click save.
 
