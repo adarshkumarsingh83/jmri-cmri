@@ -43,6 +43,6 @@ void setup() {
 }
 
 void loop() {
-
+  Serial.println(" __ ");
   Dcc.process();
 }
