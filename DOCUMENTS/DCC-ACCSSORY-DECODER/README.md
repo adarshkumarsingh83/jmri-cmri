@@ -31,3 +31,4 @@
 ![img](/DOCUMENTS/DCC-ACCSSORY-DECODER/image/dcc-decoder-circuit/12.JPG)
 ![img](/DOCUMENTS/DCC-ACCSSORY-DECODER/image/dcc-decoder-circuit/13.JPG)
 ![img](/DOCUMENTS/DCC-ACCSSORY-DECODER/image/dcc-decoder-circuit/14.JPG)
+![img](/DOCUMENTS/DCC-ACCSSORY-DECODER/image/dcc-decoder-circuit/15.JPG)
