@@ -49,7 +49,7 @@ import subprocess
 subprocess.call('/usr/local/sbin/mosquitto -c /usr/local/etc/mosquitto/mosquitto.conf',shell=True)
 ```
 * esc //to stop inserting text to file
-* w+q  // to save and exit the file 
+* :w+q  // to save and exit the file 
 * to run the scripty 
 	* python start-mos.py 
 
@@ -61,7 +61,7 @@ import subprocess
 subprocess.call('killall mosquitto',shell=True)
 ```
 * esc //to stop inserting text to file
-* w+q  // to save and exit the file 
+* :w+q  // to save and exit the file 
 * to run the scripty 
 	* python stop-mos.py 
 
