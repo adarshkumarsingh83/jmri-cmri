@@ -94,6 +94,25 @@ $ python stop-mos.py
 
 
 
+### start the mqtt server and connect the jmri to the mqtt server 
+```
+* $ python start-mos.py
+
+* panel pro -> preferences -> Connections 
+
+System Manufacturer => MQTT
+System connection => MQTT 
+Settings 
+   hostname : localhost
+   connection prefix : M 
+   Connection Name : MQTT 
+   check on additional connection setings 
+
+
+ save the connection it will be saved and connected to the mqtt server 
+
+
+```
 
 ![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/1.png)
 
@@ -103,14 +122,62 @@ $ python stop-mos.py
 
 ![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/4.png)
 
+### create a terunout  
+```
+Panel pro -> tools -> tables -> turnout -> 
+click on add button 
+
+ System Connection : MQTT 
+ Hardware ADdress : 1 
+ User Name : T1 
+
+ Click on Create button 
+ NOTE : Light and Turnout will share the same output address slots so don't use same for light and turnout 
+ NOTE : do it for the number of turnout we want to create 
+
+```
 ![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/5.png)
+
+### create a Light  
+```
+Panel pro -> tools -> tables -> Light -> 
+click on add button 
+
+ System Connection : MQTT 
+ Hardware ADdress : 3 
+ User Name : L3 
+
+ Click on Create button 
+ NOTE : Light and Turnout will share the same output address slots so don't use same for light and turnout 
+ NOTE : do it for the number of Light we want to create 
+
+
+```
 
 ![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/6.png)
 
 ![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/7.png)
 
+### Testing Turnout with MQTT 
+```
+start the terminal mqtt client to see the output of the jmri cmd executed behind the turnout and light button 
+
+$ mosquitto_sub -h localhost -v -t '/trains/track/#'
+
+and click on the T1 and T2 turnout button throw and close and see the output of them in the console of mqtt client 
+
+```
 ![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/8.png)
 
+### Testing Light with MQTT 
+```
+start the terminal mqtt client to see the output of the jmri cmd executed behind the turnout and light button 
+
+$ mosquitto_sub -h localhost -v -t '/trains/track/#'
+
+and click on the L3 and L4 light button on and off and see the output of them in the console of mqtt client 
+
+```
 ![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/9.png)
 
 
