@@ -70,22 +70,21 @@ subprocess.call('killall mosquitto',shell=True)
 
 ----
 
-
-
+## JMRI WILL CREATE FOLOWING CHANNEL IN MQTT
+* /trains/track/light/[LIGHT_NO] [STATUS] ON|OFF
+* /trains/track/turnout/[TURNOUT_NO] [STATUS] THROW|CLOSE
+* /trains/track/sensor/[SENSOR_NO] [STATUS] ACTIVE|INACTIVE
 
 ```
 $ python start-mos.py
 
 $ mosquitto_sub -h localhost -v -t '/trains/track/#'
-/trains/track/light/1 OFF
-/trains/track/light/ML1 OFF
-/trains/track/light/MQTTL1 ON
 /trains/track/light/3 OFF
-/trains/track/light/4 OFF
-/trains/track/turnout/MTT1 CLOSED
-/trains/track/turnout/2 CLOSED
+/trains/track/light/3 ON
+/trains/track/turnout/1 THROW
 /trains/track/turnout/1 CLOSED
-/trains/track/sensor/MQTTL1 INACTIVE
+/trains/track/sensor/1 INACTIVE
+/trains/track/sensor/1 ACTIVE
 
 $ python stop-mos.py
 
