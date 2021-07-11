@@ -92,15 +92,23 @@ $ python stop-mos.py
 ```
 
 
-![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/1.jpg)
-![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/2.jpg)
-![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/3.jpg)
-![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/4.jpg)
-![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/5.jpg)
-![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/6.jpg)
-![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/7.jpg)
-![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/8.jpg)
-![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/9.jpg)
+![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/1.png)
+
+![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/2.png)
+
+![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/3.png)
+
+![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/4.png)
+
+![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/5.png)
+
+![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/6.png)
+
+![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/7.png)
+
+![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/8.png)
+
+![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/9.png)
 
 
 
