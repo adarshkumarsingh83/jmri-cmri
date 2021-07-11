@@ -67,3 +67,40 @@ subprocess.call('killall mosquitto',shell=True)
 
 # JMRI WITH MQTT MOSQUITTO
 * [JMRI DOC LINK ](https://www.jmri.org/help/en/html/hardware/mqtt/index.shtml)
+
+----
+
+
+
+
+```
+$ python start-mos.py
+
+$ mosquitto_sub -h localhost -v -t '/trains/track/#'
+/trains/track/light/1 OFF
+/trains/track/light/ML1 OFF
+/trains/track/light/MQTTL1 ON
+/trains/track/light/3 OFF
+/trains/track/light/4 OFF
+/trains/track/turnout/MTT1 CLOSED
+/trains/track/turnout/2 CLOSED
+/trains/track/turnout/1 CLOSED
+/trains/track/sensor/MQTTL1 INACTIVE
+
+$ python stop-mos.py
+
+```
+
+
+![1](images/1.jpg)
+![2](images/2.jpg)
+![3](images/3.jpg)
+![4](images/4.jpg)
+![5](images/5.jpg)
+![6](images/6.jpg)
+![7](images/7.jpg)
+![8](images/8.jpg)
+![9](images/9.jpg)
+
+
+
