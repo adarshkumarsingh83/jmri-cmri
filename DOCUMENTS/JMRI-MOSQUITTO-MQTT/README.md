@@ -24,11 +24,13 @@ listener 1883                #To ensure listening on the appropriate port
 allow_anonymous true         #Allows JMRI to subscribe without an ID or password
 ```
 * esc //to stop inserting text to file
-* w+q  // to save and exit the file 
+* :w+q  // to save and exit the file 
 
-## start with configration  
-$ /usr/local/sbin/mosquitto -c /usr/local/etc/mosquitto/mosquitto.conf
-
+## Start with Configuration  
+* To Run with Default Configuration 
+	* $ /usr/local/sbin/mosquitto -c /usr/local/etc/mosquitto/mosquitto.conf
+* To Run with Custom Configuration 
+	* $ /usr/local/sbin/mosquitto -c ./mosquitto.conf
 
 ## To subscribe data on mqtt 
 ### open a new terminal window 
@@ -41,7 +43,7 @@ $ /usr/local/sbin/mosquitto -c /usr/local/etc/mosquitto/mosquitto.conf
 
 
 ## python script for start and stop the mosquitto
-### Start script 
+### Start script with default configuraiton 
 * vi start-mos.py
 ```
 import subprocess
@@ -52,6 +54,20 @@ subprocess.call('/usr/local/sbin/mosquitto -c /usr/local/etc/mosquitto/mosquitto
 * :w+q  // to save and exit the file 
 * to run the scripty 
 	* python start-mos.py 
+
+### Start script with custom configuraiton 
+* vi start-cust-mos.py
+```
+import subprocess
+
+subprocess.call('/usr/local/sbin/mosquitto -c ./mosquitto.conf',shell=True)
+```
+* esc //to stop inserting text to file
+* :w+q  // to save and exit the file 
+* to run the scripty 
+	* python start-cust-mos.py
+
+
 
 ### Stop script 
 * vi stop-mos.py
@@ -89,7 +105,6 @@ $ mosquitto_sub -h localhost -v -t '/trains/track/#'
 $ python stop-mos.py
 
 ```
-
 
 
 
