@@ -1,30 +1,30 @@
-/*
-   ESP8266 (Adafruit HUZZAH) Mosquitto MQTT Subscribe Example
-   Thomas Varnish (https://github.com/tvarnish), (https://www.instructables.com/member/Tango172)
-   Made as part of my MQTT Instructable - "How to use MQTT with the Raspberry Pi and ESP8266"
-*/
-#include <ESP8266WiFi.h> // Enables the ESP8266 to connect to the local network (via WiFi)
-#include <PubSubClient.h> // Allows us to connect to, and publish to the MQTT broker
 
-const int ledPin = 0; // This code uses the built-in led for visual feedback that a message has been received
+// Enables the ESP8266 to connect to the local network (via WiFi)
+#include <ESP8266WiFi.h> 
+// Allows us to connect to, and publish to the MQTT broker
+#include <PubSubClient.h> 
+
+// This code uses the built-in led for visual feedback that a message has been received
+const int ledPin = 0; 
 
 // WiFi
 // Make sure to update this for your own WiFi network!
-const char* ssid = "adarsh_radha_2G";
+const char* ssid = "adarsh_radha_2G"; // ESP8266 donot support 5G wifi connection 
 const char* wifi_password = "******";
 
 // MQTT
 const char* mqtt_server = "192.168.0.188";
-const char* mqtt_topic = "/trains/track/light";
+const char* mqtt_topic = "/trains/track/light/#";
 const char* clientID = "ESP8266_1";
 
 // Initialise the WiFi and MQTT Client objects
 WiFiClient wifiClient;
-PubSubClient client(mqtt_server, 1883, wifiClient); // 1883 is the listener port for the Broker
+// 1883 is the listener port for the Broker
+PubSubClient client(mqtt_server, 1883, wifiClient); 
 
 void subscribeMqttMessage(char* topic, byte* payload, unsigned int length) {
-
   String msg = getMessage(payload, length);
+  Serial.println(String(topic));
   Serial.println(msg);
   if (String(topic) == mqtt_topic) {
     if (msg == "ON") {
@@ -43,18 +43,10 @@ String getMessage(byte* message, unsigned int length) {
   return messageText;
 }
 
-bool mqttConnect() {
-/*
-  if (WiFi.status() != WL_CONNECTED) {
-    Serial.println("WIFI IS NOT CONNECTED");
-  } else {
-    Serial.println("WIFI IS CONNECTED");
-  }
-*/
+bool mqttConnect() {  
   // Connect to MQTT Server and subscribe to the topic
-  //if (client.connect(clientID, mqtt_username, mqtt_password)) {
   if (client.connect(clientID)) {
-        client.subscribe(mqtt_topic);
+      client.subscribe(mqtt_topic);
     return true;
   } else {
     return false;
@@ -62,14 +54,13 @@ bool mqttConnect() {
 }
 
 void setup() {
+  
   pinMode(ledPin, OUTPUT);
 
   // Switch the on-board LED off to start with
   digitalWrite(ledPin, HIGH);
 
   // Begin Serial on 115200
-  // Remember to choose the correct Baudrate on the Serial monitor!
-  // This is just for debugging purposes
   Serial.begin(115200);
 
   Serial.print("Connecting to ");
@@ -93,9 +84,8 @@ void setup() {
   // setCallback sets the function to be called when a message is received.
   client.setCallback(subscribeMqttMessage);
   if (mqttConnect()) {
-     Serial.println("Connected Successfully to MQTT Broker!");
-  }
-  else {
+    Serial.println("Connected Successfully to MQTT Broker!");
+  } else {
     Serial.println("Connection Failed!");
   }
 }
@@ -108,6 +98,5 @@ void loop() {
   // client.loop() just tells the MQTT client code to do what it needs to do itself (i.e. check for messages, etc.)
   client.loop();
   // Once it has done all it needs to do for this cycle, go back to checking if we are still connected.
-
   delay(1000);
 }
