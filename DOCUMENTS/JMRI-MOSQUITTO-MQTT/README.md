@@ -13,6 +13,7 @@ $ brew install mosquitto
 ## doucmentation 
 * [documentation](https://mosquitto.org/man/mosquitto-8.html)
 
+---
 
 ## To Create custom mosquitto.conf
 ### [for help ](https://mosquitto.org/man/mosquitto-conf-5.html)
@@ -25,6 +26,43 @@ allow_anonymous true         #Allows JMRI to subscribe without an ID or password
 ```
 * esc //to stop inserting text to file
 * :w+q  // to save and exit the file 
+
+---
+
+## To Create User and pwd 
+* create a file passwordfile.txt 
+```
+adarsh:pwd
+```
+* mosquitto_passwd -U passwordfile.txt 
+* this will convert the plane pwd into the encrypted into the passwordfile.txt file 
+
+### creating new pwd file pwd will be prompt once cmd is executed 
+* $ mosquitto_passwd -c passwordfile.txt user_name 
+```
+$ Password:
+$ Reenter password:
+```
+
+### appending into the exisisting pwd file 
+* $ mosquitto_passwd -b passwordfile.txt user_name password 
+* $ cat passwordfile.txt
+
+
+## Configurure the user and pwd in to the mosquitto.conf file 
+* vi mosquitto.conf
+* press i for insert then copy paste below content
+```
+log_type all                 #Equivalent to setting -v (verbose mode)
+listener 1883                #To ensure listening on the appropriate port
+allow_anonymous false         #Allows JMRI to subscribe without an ID or password
+passord_file ./passwordfile.txt
+
+```
+* esc //to stop inserting text to file
+* :w+q // to save and exit the file
+
+---
 
 ## Start with Configuration  
 * To Run with Default Configuration 
@@ -80,6 +118,9 @@ subprocess.call('killall mosquitto',shell=True)
 * :w+q  // to save and exit the file 
 * to run the scripty 
 	* python stop-mos.py 
+
+---
+  
 
 # JMRI WITH MQTT MOSQUITTO
 * [JMRI DOC LINK ](https://www.jmri.org/help/en/html/hardware/mqtt/index.shtml)
