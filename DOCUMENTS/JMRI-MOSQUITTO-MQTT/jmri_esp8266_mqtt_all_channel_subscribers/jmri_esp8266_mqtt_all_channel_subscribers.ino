@@ -9,7 +9,7 @@ const int ledPin = 0;
 
 // WiFi
 // Make sure to update this for your own WiFi network!
-const char* ssid = "adarsh_radha_2G"; // ESP8266 donot support 5G wifi connection
+const char* ssid = "adarsh_radha_2G"; // ESP8266 do not support 5G wifi connection
 const char* wifi_password = "******";
 
 // MQTT
