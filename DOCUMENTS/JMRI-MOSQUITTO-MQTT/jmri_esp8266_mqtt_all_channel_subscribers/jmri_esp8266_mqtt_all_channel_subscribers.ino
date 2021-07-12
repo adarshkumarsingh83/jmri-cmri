@@ -15,9 +15,9 @@ const char* wifi_password = "******";
 // MQTT
 const char* mqtt_server = "192.168.0.188";
 const char* mqtt_topic = "/trains/track/#";
-const char* mqtt_topic_light = "/trains/track/light/#";
-const char* mqtt_topic_turnout = "/trains/track/turnout/#";
-const char* mqtt_topic_sensor = "/trains/track/sensor/#";
+const char* mqtt_topic_light = "/trains/track/light/";
+const char* mqtt_topic_turnout = "/trains/track/turnout/";
+const char* mqtt_topic_sensor = "/trains/track/sensor/";
 const char* clientID = "ESP8266_1";
 
 // Initialise the WiFi and MQTT Client objects
@@ -26,29 +26,53 @@ WiFiClient wifiClient;
 PubSubClient client(mqtt_server, 1883, wifiClient);
 
 void subscribeMqttMessage(char* topic, byte* payload, unsigned int length) {
-  
-  String msg = getMessage(payload, length);
-  
-  Serial.println(String(topic));
-  Serial.println(msg);
 
-  if (String(topic) == mqtt_topic_light) {
+  String msg = getMessage(payload, length);
+  String mqttTopic = String(topic);
+  Serial.println();
+  Serial.println("MQTT DATA::=> "+mqttTopic+" "+msg);  
+
+  if (mqttTopic.startsWith(mqtt_topic_light)) {
+    String lightNumber = mqttTopic;
+    lightNumber.replace(mqtt_topic_light, "");
     if (msg == "ON") {
+      Serial.println();
+      Serial.print("Light Number ");
+      Serial.print(lightNumber + "  " + msg);
+      Serial.println();
       digitalWrite(ledPin, HIGH);
     } else if (msg == "OFF") {
+      Serial.println();
+      Serial.print("Light Number ");
+      Serial.print(lightNumber + "  " + msg);
+      Serial.println();
       digitalWrite(ledPin, LOW);
     }
-  } else if (String(topic) == mqtt_topic_turnout) {
-    if (msg == "THROW") {
-
-    } else if (msg == "CLOSE") {
-
+  } else if (mqttTopic.startsWith(mqtt_topic_turnout)) {
+    String turnoutNumber = mqttTopic;
+    turnoutNumber.replace(mqtt_topic_turnout, "");
+    if (msg == "THROWN") {
+      Serial.println("Turnout Number ");
+      Serial.print(turnoutNumber + "  " + msg);
+    } else if (msg == "CLOSED") {
+      Serial.println();
+      Serial.print("Turnout Number ");
+      Serial.print(turnoutNumber + "  " + msg);
+      Serial.println();
     }
-  } else if (String(topic) == mqtt_topic_sensor) {
+  } else if (mqttTopic.startsWith(mqtt_topic_sensor)) {
+    String sensorNumber = mqttTopic;
+    sensorNumber.replace(mqtt_topic_sensor, "");
     if (msg == "ACTIVE") {
-
+      Serial.println();
+      Serial.print("Sensor Number ");
+      Serial.print(sensorNumber + "  " + msg);
+      Serial.println();
     } else if (msg == "INACTIVE") {
-
+      Serial.println();
+      Serial.print("Sensor Number ");
+      Serial.print(sensorNumber + "  " + msg);
+      Serial.println();
     }
   }
 }

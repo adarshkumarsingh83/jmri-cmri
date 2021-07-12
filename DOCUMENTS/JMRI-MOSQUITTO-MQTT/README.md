@@ -204,7 +204,6 @@ and click on the L3 and L4 light button on and off and see the output of them in
 
 ```
 
-
 // Enables the ESP8266 to connect to the local network (via WiFi)
 #include <ESP8266WiFi.h>
 // Allows us to connect to, and publish to the MQTT broker
@@ -216,14 +215,14 @@ const int ledPin = 0;
 // WiFi
 // Make sure to update this for your own WiFi network!
 const char* ssid = "adarsh_radha_2G"; // ESP8266 donot support 5G wifi connection
-const char* wifi_password = "******";
+const char* wifi_password = "*********";
 
 // MQTT
 const char* mqtt_server = "192.168.0.188";
 const char* mqtt_topic = "/trains/track/#";
-const char* mqtt_topic_light = "/trains/track/light/#";
-const char* mqtt_topic_turnout = "/trains/track/turnout/#";
-const char* mqtt_topic_sensor = "/trains/track/sensor/#";
+const char* mqtt_topic_light = "/trains/track/light/";
+const char* mqtt_topic_turnout = "/trains/track/turnout/";
+const char* mqtt_topic_sensor = "/trains/track/sensor/";
 const char* clientID = "ESP8266_1";
 
 // Initialise the WiFi and MQTT Client objects
@@ -232,29 +231,53 @@ WiFiClient wifiClient;
 PubSubClient client(mqtt_server, 1883, wifiClient);
 
 void subscribeMqttMessage(char* topic, byte* payload, unsigned int length) {
-  
-  String msg = getMessage(payload, length);
-  
-  Serial.println(String(topic));
-  Serial.println(msg);
 
-  if (String(topic) == mqtt_topic_light) {
+  String msg = getMessage(payload, length);
+  String mqttTopic = String(topic);
+  Serial.println();
+  Serial.println("MQTT DATA::=> "+mqttTopic+" "+msg);  
+
+  if (mqttTopic.startsWith(mqtt_topic_light)) {
+    String lightNumber = mqttTopic;
+    lightNumber.replace(mqtt_topic_light, "");
     if (msg == "ON") {
+      Serial.println();
+      Serial.print("Light Number ");
+      Serial.print(lightNumber + "  " + msg);
+      Serial.println();
       digitalWrite(ledPin, HIGH);
     } else if (msg == "OFF") {
+      Serial.println();
+      Serial.print("Light Number ");
+      Serial.print(lightNumber + "  " + msg);
+      Serial.println();
       digitalWrite(ledPin, LOW);
     }
-  } else if (String(topic) == mqtt_topic_turnout) {
-    if (msg == "THROW") {
-
-    } else if (msg == "CLOSE") {
-
+  } else if (mqttTopic.startsWith(mqtt_topic_turnout)) {
+    String turnoutNumber = mqttTopic;
+    turnoutNumber.replace(mqtt_topic_turnout, "");
+    if (msg == "THROWN") {
+      Serial.println("Turnout Number ");
+      Serial.print(turnoutNumber + "  " + msg);
+    } else if (msg == "CLOSED") {
+      Serial.println();
+      Serial.print("Turnout Number ");
+      Serial.print(turnoutNumber + "  " + msg);
+      Serial.println();
     }
-  } else if (String(topic) == mqtt_topic_sensor) {
+  } else if (mqttTopic.startsWith(mqtt_topic_sensor)) {
+    String sensorNumber = mqttTopic;
+    sensorNumber.replace(mqtt_topic_sensor, "");
     if (msg == "ACTIVE") {
-
+      Serial.println();
+      Serial.print("Sensor Number ");
+      Serial.print(sensorNumber + "  " + msg);
+      Serial.println();
     } else if (msg == "INACTIVE") {
-
+      Serial.println();
+      Serial.print("Sensor Number ");
+      Serial.print(sensorNumber + "  " + msg);
+      Serial.println();
     }
   }
 }
@@ -326,3 +349,19 @@ void loop() {
 }
 
 ```
+
+### Connecting the Esp8266 with the Mosqutto mqtt server
+
+![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/11.png)
+
+### Connecting jmri panel pro with with the Mosqutto mqtt server
+![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/12.png)
+
+### Configuring Turnout and testing it till Esp8266/nodemcu  
+![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/13.png)
+
+### Configuring Light and testing it till Esp8266/nodemcu 
+![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/14.png)
+
+### Configuring Sensors and testing it till Esp8266/nodemcu 
+![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/15.png)
