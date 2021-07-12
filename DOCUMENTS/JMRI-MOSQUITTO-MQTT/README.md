@@ -34,7 +34,7 @@ allow_anonymous true         #Allows JMRI to subscribe without an ID or password
 ```
 adarsh:pwd
 ```
-* mosquitto_passwd -U passwordfile.txt 
+* $ mosquitto_passwd -U passwordfile.txt 
 * this will convert the plane pwd into the encrypted into the passwordfile.txt file 
 
 ### creating new pwd file pwd will be prompt once cmd is executed 
@@ -50,7 +50,7 @@ $ Reenter password:
 
 
 ## Configurure the user and pwd in to the mosquitto.conf file 
-* vi mosquitto.conf
+* $ vi mosquitto.conf
 * press i for insert then copy paste below content
 ```
 log_type all                 #Equivalent to setting -v (verbose mode)
@@ -120,7 +120,7 @@ subprocess.call('killall mosquitto',shell=True)
 	* python stop-mos.py 
 
 ---
-  
+
 
 # JMRI WITH MQTT MOSQUITTO
 * [JMRI DOC LINK ](https://www.jmri.org/help/en/html/hardware/mqtt/index.shtml)
