@@ -34,59 +34,63 @@ void subscribeMqttMessage(char* topic, byte* payload, unsigned int length) {
   Serial.println("MQTT DATA::=> " + mqttTopic + " " + msg);
 
   if (mqttTopic.startsWith(mqtt_topic_light)) {
-    String lightNumber = mqttTopic;
-    lightNumber.replace(mqtt_topic_light, "");
+    String lightNumberVar = mqttTopic;
+    lightNumberVar.replace(mqtt_topic_light, "");
+    int lightNumber = lightNumberVar.toInt();
     if (msg == "ON") {
       Serial.println();
       Serial.print("Light Number ");
-      Serial.print(lightNumber + "  " + msg);
+      Serial.print(lightNumberVar + "  " + msg);
       Serial.println();
       digitalWrite(ledPin, HIGH);
     } else if (msg == "OFF") {
       Serial.println();
       Serial.print("Light Number ");
-      Serial.print(lightNumber + "  " + msg);
+      Serial.print(lightNumberVar + "  " + msg);
       Serial.println();
       digitalWrite(ledPin, LOW);
     }
   } else if (mqttTopic.startsWith(mqtt_topic_turnout)) {
-    String turnoutNumber = mqttTopic;
-    turnoutNumber.replace(mqtt_topic_turnout, "");
+    String turnoutNumberVar = mqttTopic;
+    turnoutNumberVar.replace(mqtt_topic_turnout, "");
+    int turnoutNumber = turnoutNumberVar.toInt();
     if (msg == "THROWN") {
       Serial.println("Turnout Number ");
-      Serial.print(turnoutNumber + "  " + msg);
+      Serial.print(turnoutNumberVar + "  " + msg);
     } else if (msg == "CLOSED") {
       Serial.println();
       Serial.print("Turnout Number ");
-      Serial.print(turnoutNumber + "  " + msg);
+      Serial.print(turnoutNumberVar + "  " + msg);
       Serial.println();
     }
   } else if (mqttTopic.startsWith(mqtt_topic_sensor)) {
-    String sensorNumber = mqttTopic;
-    sensorNumber.replace(mqtt_topic_sensor, "");
+    String sensorNumberVar = mqttTopic;
+    sensorNumberVar.replace(mqtt_topic_sensor, "");
+    int sensorNumber = sensorNumberVar.toInt();
     if (msg == "ACTIVE") {
       Serial.println();
       Serial.print("Sensor Number ");
-      Serial.print(sensorNumber + "  " + msg);
+      Serial.print(sensorNumberVar + "  " + msg);
       Serial.println();
     } else if (msg == "INACTIVE") {
       Serial.println();
       Serial.print("Sensor Number ");
-      Serial.print(sensorNumber + "  " + msg);
+      Serial.print(sensorNumberVar + "  " + msg);
       Serial.println();
     }
   } else if (mqttTopic.startsWith(mqtt_topic_signalhead)) {
-    String signalhead = mqttTopic;
-    signalhead.replace(mqtt_topic_signalhead, "");
+    String signalheadVar = mqttTopic;
+    signalheadVar.replace(mqtt_topic_signalhead, "");
+    int signalhead = signalheadVar.toInt();
     if (msg == "ON") {
       Serial.println();
       Serial.print("Signalhead Number ");
-      Serial.print(signalhead + "  " + msg);
+      Serial.print(signalheadVar + "  " + msg);
       Serial.println();
     } else if (msg == "OFF") {
       Serial.println();
       Serial.print("Signalhead Number ");
-      Serial.print(signalhead + "  " + msg);
+      Serial.print(signalheadVar + "  " + msg);
       Serial.println();
     }
   }
