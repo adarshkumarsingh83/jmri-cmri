@@ -74,10 +74,17 @@ passord_file ./passwordfile.txt
 ### open a new terminal window 
 * mosquitto_sub -h localhost -v -t '/trains/#'
 
+### with the User name and pwd 
+* mosquitto_sub -h localhost -u username -P passowrd -v -t '/trains/#'
+
 ## To publish Data on mqtt 
 ### open a new terminal window 
 * mosquitto_pub -h localhost -t /trains/track/turnout/123 -r -m "CLOSED"
 * mosquitto_pub -h localhost -t /trains/track/turnout/123 -r -m "THROWN" 
+
+### with the User name and pwd 
+* mosquitto_pub -h localhost -u username -P passowrd -t /trains/track/turnout/123 -r -m "CLOSED"
+* mosquitto_pub -h localhost -u username -P passowrd -t /trains/track/turnout/123 -r -m "THROWN"  
 
 
 ## python script for start and stop the mosquitto
