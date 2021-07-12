@@ -10,16 +10,21 @@
 long lastMsg = 0;
 
 // WIFI SSID/Password
-const char* ssid = "REPLACE_WITH_YOUR_SSID";
-const char* password = "REPLACE_WITH_YOUR_PASSWORD";
+ //const char* ssid = "REPLACE_WITH_YOUR_SSID";
+  char* ssid = "adarsh_radha_2G";
+ //const char* password = "REPLACE_WITH_YOUR_PASSWORD";
+  char* password = "Endless@1309";
 
-// MQTT Broker IP address, example:
-//const char* mqtt_server = "192.168.1.144";
-const char* mqtt_server = "YOUR_MQTT_BROKER_IP_ADDRESS";
+// MQTT Broker IP address, 
+// On mac $ ipconfig getifaddr en0:
+//const char* mqtt_server = "YOUR_MQTT_BROKER_IP_ADDRESS";
+const char* mqtt_server = "192.168.0.188";
 
 // MQTT topics for reading and writing data 
-const String subscriberTopicChannel = "esp32/output";
-const String publisherTopicChannel = "esp32/input";
+//const char* subscriberTopicChannel = "esp32/output";
+const char* subscriberTopicChannel = "/trains/track/light";
+//const char* publisherTopicChannel = "esp32/input";
+const char* publisherTopicChannel = "/trains/track/light";
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -45,14 +50,14 @@ void callback(char* topic, byte* message, unsigned int length) {
   Serial.print("Message arrived on topic: ");
   Serial.print(topic);
   Serial.println();
-  // If a message is received on the topic esp32/output,
+  // If a message is received on the topic ,
   if (String(topic) == subscriberTopicChannel) {
-     String msg = getMessage()
+     String msg = getMessage(message,length);
      Serial.println(msg);
   }
 }
 
-public String getMessage() {
+ String getMessage(byte* message,int length) {
   String messageText;
   for (int i = 0; i < length; i++) {
     messageText += (char)message[i];
@@ -64,7 +69,7 @@ void reconnect() {
   while (!client.connected()) {
     Serial.print("Attempting MQTT connection...");
     // Attempt to connect
-    if (client.connect("ESP8266Client")) {
+    if (client.connect("ESP8266_1")) {
       Serial.println("connected");
       // Subscribe to Mqtt topics 
       client.subscribe(subscriberTopicChannel);
@@ -95,6 +100,6 @@ void loop() {
   if (now - lastMsg > 5000) { 
     lastMsg = now;
   
-    client.publish(publisherTopicChannel, "DATA TO PUBLISH TO JMRI");
+    //client.publish(publisherTopicChannel, "DATA TO PUBLISH TO JMRI");
   }
 }

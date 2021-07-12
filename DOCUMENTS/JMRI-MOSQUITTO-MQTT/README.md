@@ -32,12 +32,12 @@ $ /usr/local/sbin/mosquitto -c /usr/local/etc/mosquitto/mosquitto.conf
 
 ## To subscribe data on mqtt 
 ### open a new terminal window 
-* mosquitto_sub -h test.mosquitto.org -v -t '/trains/#'
+* mosquitto_sub -h localhost -v -t '/trains/#'
 
 ## To publish Data on mqtt 
 ### open a new terminal window 
-* mosquitto_pub -h test.mosquitto.org -t /trains/track/turnout/123 -r -m "CLOSED"
-* mosquitto_pub -h test.mosquitto.org -t /trains/track/turnout/123 -r -m "THROWN" 
+* mosquitto_pub -h localhost -t /trains/track/turnout/123 -r -m "CLOSED"
+* mosquitto_pub -h localhost -t /trains/track/turnout/123 -r -m "THROWN" 
 
 
 ## python script for start and stop the mosquitto
