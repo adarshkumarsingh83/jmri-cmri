@@ -18,7 +18,8 @@ const char* mqtt_topic = "/trains/track/#";
 const char* mqtt_topic_light = "/trains/track/light/";
 const char* mqtt_topic_turnout = "/trains/track/turnout/";
 const char* mqtt_topic_sensor = "/trains/track/sensor/";
-const char* clientID = "ESP8266_1";
+const char* mqtt_topic_signalhead = "/trains/track/signalhead/";
+const char* clientID = "JMRI_NODE_ESP8266_1";
 
 // Initialise the WiFi and MQTT Client objects
 WiFiClient wifiClient;
@@ -30,7 +31,7 @@ void subscribeMqttMessage(char* topic, byte* payload, unsigned int length) {
   String msg = getMessage(payload, length);
   String mqttTopic = String(topic);
   Serial.println();
-  Serial.println("MQTT DATA::=> "+mqttTopic+" "+msg);  
+  Serial.println("MQTT DATA::=> " + mqttTopic + " " + msg);
 
   if (mqttTopic.startsWith(mqtt_topic_light)) {
     String lightNumber = mqttTopic;
@@ -72,6 +73,20 @@ void subscribeMqttMessage(char* topic, byte* payload, unsigned int length) {
       Serial.println();
       Serial.print("Sensor Number ");
       Serial.print(sensorNumber + "  " + msg);
+      Serial.println();
+    }
+  } else if (mqttTopic.startsWith(mqtt_topic_signalhead)) {
+    String signalhead = mqttTopic;
+    signalhead.replace(mqtt_topic_signalhead, "");
+    if (msg == "ACTIVE") {
+      Serial.println();
+      Serial.print("Signalhead Number ");
+      Serial.print(signalhead + "  " + msg);
+      Serial.println();
+    } else if (msg == "INACTIVE") {
+      Serial.println();
+      Serial.print("Signalhead Number ");
+      Serial.print(signalhead + "  " + msg);
       Serial.println();
     }
   }
