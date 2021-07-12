@@ -13,7 +13,7 @@ long lastMsg = 0;
  //const char* ssid = "REPLACE_WITH_YOUR_SSID";
   char* ssid = "adarsh_radha_2G";
  //const char* password = "REPLACE_WITH_YOUR_PASSWORD";
-  char* password = "Endless@1309";
+  char* password = "******";
 
 // MQTT Broker IP address, 
 // On mac $ ipconfig getifaddr en0:
