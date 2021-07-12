@@ -78,12 +78,12 @@ void subscribeMqttMessage(char* topic, byte* payload, unsigned int length) {
   } else if (mqttTopic.startsWith(mqtt_topic_signalhead)) {
     String signalhead = mqttTopic;
     signalhead.replace(mqtt_topic_signalhead, "");
-    if (msg == "ACTIVE") {
+    if (msg == "ON") {
       Serial.println();
       Serial.print("Signalhead Number ");
       Serial.print(signalhead + "  " + msg);
       Serial.println();
-    } else if (msg == "INACTIVE") {
+    } else if (msg == "OFF") {
       Serial.println();
       Serial.print("Signalhead Number ");
       Serial.print(signalhead + "  " + msg);
