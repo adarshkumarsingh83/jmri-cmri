@@ -64,7 +64,7 @@ $ Reenter password:
 * $ cat passwordfile.txt
 
 
-## Configurure the user and pwd in to the mosquitto.conf file 
+## Configuring the user and pwd in to the mosquitto.conf file 
 * $ vi mosquitto.conf
 * press i for insert then copy paste below content
 ```
