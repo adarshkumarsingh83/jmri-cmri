@@ -10,7 +10,9 @@ const int ledPin = 0;
 // WiFi
 // Make sure to update this for your own WiFi network!
 const char* ssid = "adarsh_radha_2G"; // ESP8266 do not support 5G wifi connection
-const char* wifi_password = "******";
+const char* wifi_password = "********";
+const char* mqtt_username = "adarsh";
+const char* mqtt_password = "password";
 
 // MQTT
 const char* mqtt_server = "192.168.0.188";
@@ -106,7 +108,7 @@ String getMessage(byte* message, unsigned int length) {
 
 bool mqttConnect() {
   // Connect to MQTT Server and subscribe to the topic
-  if (client.connect(clientID)) {
+  if (client.connect(clientID, mqtt_username, mqtt_password)) {
     client.subscribe(mqtt_topic);
     return true;
   } else {

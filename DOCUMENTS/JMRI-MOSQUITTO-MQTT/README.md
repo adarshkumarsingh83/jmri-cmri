@@ -32,10 +32,25 @@ allow_anonymous true         #Allows JMRI to subscribe without an ID or password
 ## To Create User and pwd 
 * create a file passwordfile.txt 
 ```
-adarsh:pwd
+adarsh:password
 ```
 * $ mosquitto_passwd -U passwordfile.txt 
 * this will convert the plane pwd into the encrypted into the passwordfile.txt file 
+
+### Example 
+```
+$ vi passwordfile.txt
+$ cat passwordfile.txt 
+
+adarsh:endless
+
+$ mosquitto_passwd -U passwordfile.txt
+$ cat passwordfile.txt 
+
+adarsh:$7$101$wwBOuczh60K8AdjY$w9xVRzB02kNu64+cof8BNeBv/vbjQM9m+ey9G1B6TIxQmYZxrKwnR9L4v6e87bL4SwMgl/L98Qg8mnef9GKhhw==
+```
+
+
 
 ### creating new pwd file pwd will be prompt once cmd is executed 
 * $ mosquitto_passwd -c passwordfile.txt user_name 
@@ -56,13 +71,53 @@ $ Reenter password:
 log_type all                 #Equivalent to setting -v (verbose mode)
 listener 1883                #To ensure listening on the appropriate port
 allow_anonymous false         #Allows JMRI to subscribe without an ID or password
-passord_file ./passwordfile.txt
+password_file ./passwordfile.txt
 
 ```
 * esc //to stop inserting text to file
 * :w+q // to save and exit the file
 
+
+### Example 
+```
+$ mkdir mos-config
+$ cd mos-config/
+
+$ vi passwordfile.txt
+$ cat passwordfile.txt 
+
+adarsh:endless
+
+$ mosquitto_passwd -U passwordfile.txt
+$ cat passwordfile.txt 
+
+adarsh:$7$101$wwBOuczh60K8AdjY$w9xVRzB02kNu64+cof8BNeBv/vbjQM9m+ey9G1B6TIxQmYZxrKwnR9L4v6e87bL4SwMgl/L98Qg8mnef9GKhhw==
+
+$  vi mosquitto.conf
+-----------------------------------------------------------------------
+log_type all                 #Equivalent to setting -v (verbose mode)
+listener 1883                #To ensure listening on the appropriate port
+allow_anonymous false         #Allows JMRI to subscribe without an ID or password
+password_file ./passwordfile.txt
+-----------------------------------------------------------------------
+
+
+$ vi start-pwd-mos.py
+-----------------------
+import subprocess
+
+subprocess.call('/usr/local/sbin/mosquitto -c ./mosquitto.conf',shell=True)
+-----------------------
+
+$ python start-pwd-mos.py
+
+or 
+
+$ /usr/local/sbin/mosquitto -c mosquitto.conf
+```
+
 ---
+
 
 ## Start with Configuration  
 * To Run with Default Configuration 
@@ -75,7 +130,7 @@ passord_file ./passwordfile.txt
 * mosquitto_sub -h localhost -v -t '/trains/#'
 
 ### with the User name and pwd 
-* mosquitto_sub -h localhost -u username -P passowrd -v -t '/trains/#'
+* mosquitto_sub -h localhost -u username -P password -v -t '/trains/#'
 
 ## To publish Data on mqtt 
 ### open a new terminal window 
@@ -83,8 +138,8 @@ passord_file ./passwordfile.txt
 * mosquitto_pub -h localhost -t /trains/track/turnout/123 -r -m "THROWN" 
 
 ### with the User name and pwd 
-* mosquitto_pub -h localhost -u username -P passowrd -t /trains/track/turnout/123 -r -m "CLOSED"
-* mosquitto_pub -h localhost -u username -P passowrd -t /trains/track/turnout/123 -r -m "THROWN"  
+* mosquitto_pub -h localhost -u username -P password -t /trains/track/turnout/1 -r -m "CLOSED"
+* mosquitto_pub -h localhost -u username -P password -t /trains/track/turnout/1 -r -m "THROWN"  
 
 
 ## python script for start and stop the mosquitto
@@ -175,10 +230,19 @@ Settings
 
 
 ```
+### WITHOUT USERNAME AND PASSWORD 
 
 ![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/1.png)
 
 ![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/2.png)
+
+
+### WITH USERNAME AND PASSWORD 
+
+![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/16.png)
+
+
+### CREATING TURNOUT LIGHTS AND SENSORS IN PANELPRO 
 
 ![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/3.png)
 
@@ -340,7 +404,8 @@ String getMessage(byte* message, unsigned int length) {
 
 bool mqttConnect() {
   // Connect to MQTT Server and subscribe to the topic
-  if (client.connect(clientID)) {
+  // if (client.connect(clientID)) { //uncomment when user name and pwd is not enable in mqtt
+  if (client.connect(clientID, mqtt_username, mqtt_password)) {  // uncomment when user name and pwd is enable in mqtt
     client.subscribe(mqtt_topic);
     return true;
   } else {
@@ -413,3 +478,7 @@ void loop() {
 
 ### Configuring Sensors and testing it till Esp8266/nodemcu 
 ![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/15.png)
+
+
+### Testing with User name Pwd Configured MQTT with Esp8266/NODE MCU 
+![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/17.png)
