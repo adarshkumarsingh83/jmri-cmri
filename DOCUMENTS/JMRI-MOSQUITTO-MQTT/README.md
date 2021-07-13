@@ -51,7 +51,6 @@ adarsh:$7$101$wwBOuczh60K8AdjY$w9xVRzB02kNu64+cof8BNeBv/vbjQM9m+ey9G1B6TIxQmYZxr
 ```
 
 
-
 ### creating new pwd file pwd will be prompt once cmd is executed 
 * $ mosquitto_passwd -c passwordfile.txt user_name 
 ```
@@ -166,7 +165,6 @@ subprocess.call('/usr/local/sbin/mosquitto -c ./mosquitto.conf',shell=True)
 * :w+q  // to save and exit the file 
 * to run the scripty 
 	* python start-cust-mos.py
-
 
 
 ### Stop script 
@@ -306,6 +304,42 @@ and click on the L3 and L4 light button on and off and see the output of them in
 ```
 ![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/9.png)
 
+
+
+
+## Sensor Testing 
+
+![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/20.png)
+
+![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/21.png)
+
+### Active to Inactive 
+### Subscribing to the Sensor topic 
+* $ mosquitto_sub -h localhost -u adarsh -P password -v -t '/trains/#'
+```
+/trains/track/sensor/1 ACTIVE
+/trains/track/sensor/1 INACTIVE
+```
+
+### Publishing to the Sensor topic 
+* $ mosquitto_pub -h localhost -u adarsh -P password -t /trains/track/sensor/1 -r -m "INACTIVE"
+
+
+![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/19.png)
+
+
+### InActive to Active
+### Subscribing to the Sensor topic 
+* $ mosquitto_sub -h localhost -u adarsh -P password -v -t '/trains/#'
+```
+/trains/track/sensor/1 INACTIVE
+/trains/track/sensor/1 ACTIVE
+```
+
+### Publishing to the Sensor topic 
+* $ mosquitto_pub -h localhost -u adarsh -P password -t /trains/track/sensor/1 -r -m "ACTIVE"
+
+![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/18.png)
 
 
 # ESP8266/NODEMCU CLIENT FOR MOSQUITTO 

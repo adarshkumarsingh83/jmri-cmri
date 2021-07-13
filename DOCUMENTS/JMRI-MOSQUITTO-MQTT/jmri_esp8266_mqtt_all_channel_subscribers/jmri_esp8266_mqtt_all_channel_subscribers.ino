@@ -65,22 +65,7 @@ void subscribeMqttMessage(char* topic, byte* payload, unsigned int length) {
       Serial.print(turnoutNumberVar + "  " + msg);
       Serial.println();
     }
-  } else if (mqttTopic.startsWith(mqtt_topic_sensor)) {
-    String sensorNumberVar = mqttTopic;
-    sensorNumberVar.replace(mqtt_topic_sensor, "");
-    int sensorNumber = sensorNumberVar.toInt();
-    if (msg == "ACTIVE") {
-      Serial.println();
-      Serial.print("Sensor Number ");
-      Serial.print(sensorNumberVar + "  " + msg);
-      Serial.println();
-    } else if (msg == "INACTIVE") {
-      Serial.println();
-      Serial.print("Sensor Number ");
-      Serial.print(sensorNumberVar + "  " + msg);
-      Serial.println();
-    }
-  } else if (mqttTopic.startsWith(mqtt_topic_signalhead)) {
+  }  else if (mqttTopic.startsWith(mqtt_topic_signalhead)) {
     String signalheadVar = mqttTopic;
     signalheadVar.replace(mqtt_topic_signalhead, "");
     int signalhead = signalheadVar.toInt();
@@ -98,6 +83,17 @@ void subscribeMqttMessage(char* topic, byte* payload, unsigned int length) {
   }
 }
 
+/*
+ * pushing the sensor data to the mqtt for jmri 
+ */
+void pushSensorData(int sensorNo, String state) {
+  String sensor = String(sensorNo);
+  client.publish(mqtt_topic_sensor + "/" + sensor, state);
+}
+
+/*
+ * converting message from mqtt bytes to string 
+ */
 String getMessage(byte* message, unsigned int length) {
   String messageText;
   for (int i = 0; i < length; i++) {
