@@ -246,7 +246,7 @@ Settings
 
 ![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/4.png)
 
-### create a terunout  
+### create a turnout  
 ```
 Panel pro -> tools -> tables -> turnout -> 
 click on add button 
