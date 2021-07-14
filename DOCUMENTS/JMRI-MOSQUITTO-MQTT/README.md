@@ -305,6 +305,9 @@ and click on the L3 and L4 light button on and off and see the output of them in
 ![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/9.png)
 
 
+### Testing Signalhead with MQTT 
+[SIGNALHEADS TYPES DETAILS LINK](https://www.jmri.org/help/en/package/jmri/jmrit/beantable/SignalAddEdit.shtml)
+
 
 
 ## Sensor Testing 
