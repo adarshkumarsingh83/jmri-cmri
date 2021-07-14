@@ -131,6 +131,18 @@ $ /usr/local/sbin/mosquitto -c mosquitto.conf
 ### with the User name and pwd 
 * mosquitto_sub -h localhost -u username -P password -v -t '/trains/#'
 
+### create python excutable  
+* $ vi sub.py
+```
+import subprocess
+
+subprocess.call('mosquitto_sub -h localhost -u adarsh -P password -v -t /trains/#',shell=True)
+```
+* esc //to stop inserting text to file
+* :w+q  // to save and exit the file 
+* to run the scripty 
+  * python sub.py 
+
 ## To publish Data on mqtt 
 ### open a new terminal window 
 * mosquitto_pub -h localhost -t /trains/track/turnout/123 -r -m "CLOSED"
