@@ -372,19 +372,24 @@ and click on the L3 and L4 light button on and off and see the output of them in
 
 // This code uses the built-in led for visual feedback that a message has been received
 const int ledPin = 0;
+#define THROWN "THROWN"
+#define CLOSED "CLOSED"
+#define ON "ON"
+#define OFF "OFF"
 
 // WiFi
 // Make sure to update this for your own WiFi network!
-const char* ssid = "adarsh_radha_2G"; // ESP8266 donot support 5G wifi connection
-const char* wifi_password = "*********";
+const char* ssid = "adarsh_radha_2G"; // ESP8266 do not support 5G wifi connection
+const char* wifi_password = "******";
+const char* mqtt_username = "adarsh";
+const char* mqtt_password = "password";
 
 // MQTT
-const char* mqtt_server = "192.168.0.188";
+const char* mqtt_server = "192.168.0.188"; // find this ip using ipconfig or check in router
 const char* mqtt_topic = "/trains/track/#";
 const char* mqtt_topic_light = "/trains/track/light/";
 const char* mqtt_topic_turnout = "/trains/track/turnout/";
-const char* mqtt_topic_sensor = "/trains/track/sensor/";
-const char* clientID = "ESP8266_1";
+const char* clientID = "JMRI_SUBSCRIBER_NODE_ESP8266_1";
 
 // Initialise the WiFi and MQTT Client objects
 WiFiClient wifiClient;
@@ -396,53 +401,62 @@ void subscribeMqttMessage(char* topic, byte* payload, unsigned int length) {
   String msg = getMessage(payload, length);
   String mqttTopic = String(topic);
   Serial.println();
-  Serial.println("MQTT DATA::=> "+mqttTopic+" "+msg);  
-
+  Serial.println("MQTT DATA::=> " + mqttTopic + " " + msg);
+  Serial.println();
+  //all the light are started with 1 onwards to 1999 address on jmri
   if (mqttTopic.startsWith(mqtt_topic_light)) {
-    String lightNumber = mqttTopic;
-    lightNumber.replace(mqtt_topic_light, "");
-    if (msg == "ON") {
+    String lightNumberVar = mqttTopic;
+    lightNumberVar.replace(mqtt_topic_light, "");
+    int lightNumber = lightNumberVar.toInt();
+    if (msg == ON) {
       Serial.println();
       Serial.print("Light Number ");
-      Serial.print(lightNumber + "  " + msg);
+      Serial.print(lightNumberVar + "  " + msg);
       Serial.println();
       digitalWrite(ledPin, HIGH);
-    } else if (msg == "OFF") {
+    } else if (msg == OFF) {
       Serial.println();
       Serial.print("Light Number ");
-      Serial.print(lightNumber + "  " + msg);
+      Serial.print(lightNumberVar + "  " + msg);
       Serial.println();
       digitalWrite(ledPin, LOW);
     }
   } else if (mqttTopic.startsWith(mqtt_topic_turnout)) {
-    String turnoutNumber = mqttTopic;
-    turnoutNumber.replace(mqtt_topic_turnout, "");
-    if (msg == "THROWN") {
-      Serial.println("Turnout Number ");
-      Serial.print(turnoutNumber + "  " + msg);
-    } else if (msg == "CLOSED") {
-      Serial.println();
-      Serial.print("Turnout Number ");
-      Serial.print(turnoutNumber + "  " + msg);
-      Serial.println();
-    }
-  } else if (mqttTopic.startsWith(mqtt_topic_sensor)) {
-    String sensorNumber = mqttTopic;
-    sensorNumber.replace(mqtt_topic_sensor, "");
-    if (msg == "ACTIVE") {
-      Serial.println();
-      Serial.print("Sensor Number ");
-      Serial.print(sensorNumber + "  " + msg);
-      Serial.println();
-    } else if (msg == "INACTIVE") {
-      Serial.println();
-      Serial.print("Sensor Number ");
-      Serial.print(sensorNumber + "  " + msg);
-      Serial.println();
+    String numberVar = mqttTopic;
+    numberVar.replace(mqtt_topic_turnout, "");
+    int number = numberVar.toInt();
+    if (number >= 2000 && number < 3000) { //all the turnout are started with 2000 onwards to 2999 address on jmri
+      if (msg == THROWN) {
+        Serial.println();
+        Serial.print("Turnout Number ");
+        Serial.print(numberVar + "  " + msg);
+        Serial.println();
+      } else if (msg == CLOSED) {
+        Serial.println();
+        Serial.print("Turnout Number ");
+        Serial.print(numberVar + "  " + msg);
+        Serial.println();
+      }
+    } else if (number >= 3000) { // all the signal are started with 3000 onwards address on jmri
+      if (msg == THROWN) {
+        Serial.println();
+        Serial.print("Signal Number ");
+        Serial.print(numberVar + " ON" );
+        Serial.println();
+      } else if (msg == CLOSED) {
+        Serial.println();
+        Serial.print("Signal Number ");
+        Serial.print(numberVar + " OFF");
+        Serial.println();
+      }
     }
   }
 }
 
+
+/*
+   converting message from mqtt bytes to string
+*/
 String getMessage(byte* message, unsigned int length) {
   String messageText;
   for (int i = 0; i < length; i++) {
@@ -453,8 +467,7 @@ String getMessage(byte* message, unsigned int length) {
 
 bool mqttConnect() {
   // Connect to MQTT Server and subscribe to the topic
-  // if (client.connect(clientID)) { //uncomment when user name and pwd is not enable in mqtt
-  if (client.connect(clientID, mqtt_username, mqtt_password)) {  // uncomment when user name and pwd is enable in mqtt
+  if (client.connect(clientID, mqtt_username, mqtt_password)) {
     client.subscribe(mqtt_topic);
     return true;
   } else {
@@ -509,7 +522,6 @@ void loop() {
   // Once it has done all it needs to do for this cycle, go back to checking if we are still connected.
   delay(1000);
 }
-
 ```
 
 ### Connecting the Esp8266 with the Mosqutto mqtt server
