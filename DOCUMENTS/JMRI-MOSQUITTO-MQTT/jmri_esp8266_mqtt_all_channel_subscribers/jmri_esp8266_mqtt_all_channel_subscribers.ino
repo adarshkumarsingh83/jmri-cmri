@@ -19,7 +19,7 @@ const char* mqtt_username = "adarsh";
 const char* mqtt_password = "password";
 
 // MQTT
-const char* mqtt_server = "192.168.0.188";
+const char* mqtt_server = "192.168.0.188"; // find this ip using ipconfig or check in router
 const char* mqtt_topic = "/trains/track/#";
 const char* mqtt_topic_light = "/trains/track/light/";
 const char* mqtt_topic_turnout = "/trains/track/turnout/";
