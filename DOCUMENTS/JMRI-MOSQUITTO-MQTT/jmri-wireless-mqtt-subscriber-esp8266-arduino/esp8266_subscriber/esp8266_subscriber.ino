@@ -4,6 +4,8 @@
 // Allows us to connect to, and publish to the MQTT broker
 #include <PubSubClient.h>
 
+boolean messageReady = false;
+String message = "";
 
 // WiFi
 // Make sure to update this for your own WiFi network!
@@ -33,6 +35,24 @@ void subscribeMqttMessage(char* topic, byte* payload, unsigned int length) {
   doc["mqttTopic"] = mqttTopic;
   doc["mqttTopicValue"] = mqttTopicValue;
   serializeJson(doc, Serial);
+
+  // Reading the response
+  while (messageReady == false) { // blocking but that's ok
+    if (Serial.available()) {
+      message = Serial.readString();
+      messageReady = true;
+    }
+  }
+  // Attempt to deserialize the JSON-formatted message
+  DeserializationError error = deserializeJson(doc, message);
+  if (error) {
+    Serial.print(F("ESP deserializeJson() failed: "));
+    Serial.println(error.c_str());
+    return;
+  }
+
+  // giving acknoledgement for action perform to jmri 
+  client.publish(doc["mqttTopic"], doc["mqttTopicValue"]);
 }
 
 

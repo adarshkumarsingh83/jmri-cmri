@@ -98,7 +98,7 @@ void loop() {
         }
 
       }
-
+       serializeJson(doc, Serial);
     }
   }
   messageReady = false;
