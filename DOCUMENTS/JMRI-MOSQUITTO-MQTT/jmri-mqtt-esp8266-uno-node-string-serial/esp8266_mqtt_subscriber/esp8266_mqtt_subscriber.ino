@@ -7,7 +7,7 @@
 // WiFi
 // Make sure to update this for your own WiFi network!
 const char* ssid = "adarsh_radha_2G"; // ESP8266 do not support 5G wifi connection
-const char* wifi_password = "Endless@1309";
+const char* wifi_password = "*******";
 const char* mqtt_username = "adarsh";
 const char* mqtt_password = "password";
 
