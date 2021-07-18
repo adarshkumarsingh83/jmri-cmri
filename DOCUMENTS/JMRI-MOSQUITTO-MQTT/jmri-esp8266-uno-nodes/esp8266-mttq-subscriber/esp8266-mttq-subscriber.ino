@@ -3,7 +3,7 @@
 #include <ESP8266WiFi.h>
 // Allows us to connect to, and publish to the MQTT broker
 #include <PubSubClient.h>
-#include <Wire.h>
+#include <ArduinoJson.h>
 
 #define LIGHT "LIGHT"
 #define TURNOUT "TURNOUT"
@@ -32,9 +32,9 @@ void subscribeMqttMessage(char* topic, byte* payload, unsigned int length) {
 
   String mqttTopicValue = getMessage(payload, length);
   String mqttTopic = String(topic);
-  Serial.println();
-  Serial.println("MQTT DATA::=> " + mqttTopic + " " + mqttTopicValue);
-  Serial.println();
+  //Serial.println();
+  //Serial.println("MQTT DATA::=> " + mqttTopic + " " + mqttTopicValue);
+  //Serial.println();
 
   if (mqttTopic.startsWith(mqtt_topic_light)) {
     String lightNumberVar = mqttTopic;
@@ -48,13 +48,13 @@ void subscribeMqttMessage(char* topic, byte* payload, unsigned int length) {
 }
 
 void pushDataToSlave(String type, String id, String value) {
-  payload = "{\"type\":\"" + type + "\",\"id\":\"" + id + "\",\"value\":\"" + value + "\"}";
+  StaticJsonDocument<200> doc;
+  doc["type"] = type;
+  doc["id"] = id;
+  doc["value"] = value;
   Serial.println();
-  Serial.println(payload);
+  serializeJson(doc, Serial);
   Serial.println();
-  Wire.beginTransmission(8);
-  Wire.write(payload.c_str());
-  Wire.endTransmission();
 }
 
 
@@ -83,8 +83,7 @@ void setup() {
 
   // Begin Serial on 115200
   Serial.begin(115200);
-  Wire.begin(4, 5); //SDA, SCL
-  
+
   Serial.print("Connecting to ");
   Serial.println(ssid);
 
