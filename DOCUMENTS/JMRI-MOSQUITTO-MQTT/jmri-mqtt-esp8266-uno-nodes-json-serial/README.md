@@ -1,4 +1,4 @@
-# jmri mqtt subscriber esp8266 master arduino uno slave serial communication 
+# jmri mqtt subscriber esp8266 master arduino uno slave serial JSON communication 
 
 ---
 
