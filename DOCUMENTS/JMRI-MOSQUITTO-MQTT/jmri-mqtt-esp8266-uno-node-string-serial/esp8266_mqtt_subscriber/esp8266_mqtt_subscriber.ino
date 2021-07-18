@@ -4,8 +4,6 @@
 // Allows us to connect to, and publish to the MQTT broker
 #include <PubSubClient.h>
 
-#define LIGHT "L"
-#define TURNOUT "T"
 // WiFi
 // Make sure to update this for your own WiFi network!
 const char* ssid = "adarsh_radha_2G"; // ESP8266 do not support 5G wifi connection
@@ -39,19 +37,18 @@ void subscribeMqttMessage(char* topic, byte* payload, unsigned int length) {
   if (mqttTopic.startsWith(mqtt_topic_light)) {
     String lightNumberVar = mqttTopic;
     lightNumberVar.replace(mqtt_topic_light, "");
-    pushDataToSlave(LIGHT, lightNumberVar, mqttTopicValue);
+    pushDataToSlave( lightNumberVar, mqttTopicValue);
   } else if (mqttTopic.startsWith(mqtt_topic_turnout)) {
     String numberVar = mqttTopic;
     numberVar.replace(mqtt_topic_turnout, "");
-    pushDataToSlave(TURNOUT, numberVar, mqttTopicValue);
+    pushDataToSlave( numberVar, mqttTopicValue);
   }
 }
 
-void pushDataToSlave(String type, String id, String value) {
-  Serial.println();
-  payload = type + ":" + id + ":" + value;
+void pushDataToSlave(String id, String value) {
+  value = value.substring(0, 2);
+  payload = id + ":" + value + "\n";
   Serial.write(payload.c_str());
-  Serial.println();
 }
 
 
