@@ -36,4 +36,5 @@ take the rx pin of the nodemcu/esp8266 and connect to the tx pin of the arduino
 
 ```
 
+
 ![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/jmri-mqtt-esp8266-uno-node-string-serial/con.JPG)
