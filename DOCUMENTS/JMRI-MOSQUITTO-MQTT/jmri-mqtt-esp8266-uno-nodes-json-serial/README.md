@@ -33,3 +33,9 @@ tx pin of the esp8266 to the rx pin of the arduino uno
 rx pin of the esp8266 to the tx pin of the arduino uno 
 
 ````
+
+
+
+
+
+![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/jmri-mqtt-esp8266-uno-nodes-json-serial/con.JPG)
