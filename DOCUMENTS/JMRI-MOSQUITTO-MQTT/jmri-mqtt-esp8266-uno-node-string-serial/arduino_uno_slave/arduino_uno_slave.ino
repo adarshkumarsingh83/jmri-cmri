@@ -1,13 +1,15 @@
-
+#include "CircularQueue.cpp"
 
 #define THROWN "TH"
 #define CLOSED "CL"
 #define ON "ON"
 #define OFF "OF"
 
+const CircularQueue<String> queue = CircularQueue<String>(20, "mqtt-msg");
+
 void processCall(String message) {
-  message.trim();
   Serial.println(message);
+  message.trim();
   String number = message.substring(0, 4);
   String value = message.substring(5);
 
@@ -48,7 +50,15 @@ void setup() {
 void loop() {
   // Monitor serial communication
   while (Serial.available()) {
-    processCall(Serial.readString());
+    String message = Serial.readString();
+    if (message != "") {
+      queue.push(message);
+    }
   }
+
+  while (!queue.isEmpty()) {
+    processCall(queue.pop());
+  }
+
   delay(200);
 }
