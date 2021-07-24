@@ -15,6 +15,9 @@
 ![img](/DOCUMENTS/DCC-ACCSSORY-DECODER/image/Diodes-symbol.png)
 
 
+## TO CONFIGURE JMRI WITH NCE POWER PRO 
+![img](/DOCUMENTS/DCC-ACCSSORY-DECODER/image/nce_jmri_connection.png)
+
 
 # STEP BY STEP CIRCCUIT BUILDING 
 
@@ -34,3 +37,7 @@
 ![img](/DOCUMENTS/DCC-ACCSSORY-DECODER/image/dcc-decoder-circuit/13.JPG)
 ![img](/DOCUMENTS/DCC-ACCSSORY-DECODER/image/dcc-decoder-circuit/14.JPG)
 ![img](/DOCUMENTS/DCC-ACCSSORY-DECODER/image/dcc-decoder-circuit/15.JPG)
+
+
+
+
