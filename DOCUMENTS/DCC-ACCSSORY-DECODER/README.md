@@ -18,6 +18,9 @@
 ## TO CONFIGURE JMRI WITH NCE POWER PRO 
 ![img](/DOCUMENTS/DCC-ACCSSORY-DECODER/image/nce_jmri_connection.png)
 
+## connection details with circuit
+![img](/DOCUMENTS/DCC-ACCSSORY-DECODER/image/connections.JPG)
+
 
 # STEP BY STEP CIRCCUIT BUILDING 
 

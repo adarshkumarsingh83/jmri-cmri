@@ -7,6 +7,9 @@
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/Nmra-Dcc-Accssory-Decoder-Basic/image/circuit_connection.JPG)
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/Nmra-Dcc-Accssory-Decoder-Basic/image/circuit.JPG)
 
+
+
+
 ## Connections details 
 ```
 connect the 6N137 octocopolr 
@@ -22,6 +25,7 @@ take jumper from pin 6 after the +5v joint and then connect to the arduino pin 2
 connect the pin 8 directly tot he +5v 
 
 ```
+![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/APPLICATIONS/Nmra-Dcc-Accssory-Decoder-Basic/image/connections.JPG)
 
 ## NCE poewr pro 
 ```
