@@ -34,7 +34,6 @@ void notifyDccAccTurnoutOutput(uint16_t Addr, uint8_t Direction, uint8_t OutputP
 }
 
 void setup() {
-
   Serial.begin(115200);
   pinMode(RED_LED, OUTPUT);
   pinMode(GREEN_LED, OUTPUT);
@@ -43,6 +42,6 @@ void setup() {
 }
 
 void loop() {
-  Serial.println(" __ ");
+  //Serial.println(" __ ");
   Dcc.process();
 }
