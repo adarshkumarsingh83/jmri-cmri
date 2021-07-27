@@ -359,6 +359,8 @@ and click on the L3 and L4 light button on and off and see the output of them in
 
 # ESP8266/NODEMCU CLIENT FOR MOSQUITTO 
 
+### search for "PubSubClient" lib and install it before compiling 
+
 ---
 
 ![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/images/10.png)
