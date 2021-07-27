@@ -7,7 +7,7 @@
 // WiFi
 // Make sure to update this for your own WiFi network!
 const char* ssid = "adarsh_radha_2G"; // ESP8266 do not support 5G wifi connection
-const char* wifi_password = "Endless@1309";
+const char* wifi_password = "*******";
 const char* mqtt_username = "adarsh";
 const char* mqtt_password = "password";
 
@@ -16,6 +16,7 @@ const char* mqtt_server = "192.168.0.188"; // find this ip using ipconfig or che
 const char* mqtt_topic = "/trains/track/#";
 const char* mqtt_topic_light = "/trains/track/light/";
 const char* mqtt_topic_turnout = "/trains/track/turnout/";
+const char* mqtt_topic_signalhead = "/trains/track/signalhead/";
 const char* clientID = "JMRI_SUBSCRIBER_NODE_ESP8266_1";
 
 String payload = "";
@@ -42,12 +43,16 @@ void subscribeMqttMessage(char* topic, byte* payload, unsigned int length) {
     String numberVar = mqttTopic;
     numberVar.replace(mqtt_topic_turnout, "");
     pushDataToSlave( numberVar, mqttTopicValue);
+  } else if (mqttTopic.startsWith(mqtt_topic_signalhead)) {
+    String numberVar = mqttTopic;
+    numberVar.replace(mqtt_topic_signalhead, "");
+    pushDataToSlave( numberVar, mqttTopicValue);
   }
 }
 
 void pushDataToSlave(String id, String value) {
-  value=value.substring(0,2);
-  payload = id + ":" + value+"\n";
+  value = value.substring(0, 2);
+  payload = id + ":" + value + "\n";
   Serial.write(payload.c_str());
 }
 
