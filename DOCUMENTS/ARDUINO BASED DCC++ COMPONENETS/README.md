@@ -9,6 +9,7 @@
 * JMRI -- http://jmri.org/
 
 ### Installation of CMRI 
+### [download the cmri lib](https://github.com/adarshkumarsingh83/jmri-cmri/raw/main/DOCUMENTS/ARDUINO%20BASED%20DCC%2B%2B%20COMPONENETS/ArduinoCMRI-master.zip)
 ```
 
 CMRI library
@@ -118,7 +119,7 @@ Also click on additional connection box and select the Baud rate to 9600 bps
 
 ### Installation of 485 cmri connector lib 
 ---
-
+[download 485 cmri connector lib](https://github.com/adarshkumarsingh83/jmri-cmri/raw/main/DOCUMENTS/ARDUINO%20BASED%20DCC%2B%2B%20COMPONENETS/Auto485-master.zip)
 ```
 RS485 library
 https://github.com/madleech/Auto485
