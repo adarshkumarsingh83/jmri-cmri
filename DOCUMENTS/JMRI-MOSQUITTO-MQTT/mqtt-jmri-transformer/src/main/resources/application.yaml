@@ -1,0 +1,18 @@
+server:
+  servlet:
+    context-path: /amt
+  port: 8090
+
+# Custom property mqtt configuration
+mqtt-properties:
+  host: tcp://localhost:1883
+  clientId: adarsh-model-trains-transformer-
+  username: adarsh
+  password: password
+  topicSub: /trains/track/#
+  topicPub: /trains/amt/node/
+  cleanSession: true
+  connectionTimeout: 300
+  keepAliveInterval: 60
+  # If this property is set to true, the connection will be automatically reconnected when disconnected
+  automaticReconnect: true
