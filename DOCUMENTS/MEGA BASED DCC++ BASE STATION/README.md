@@ -2,6 +2,7 @@
 ![img](https://github.com/adarshkumarsingh83/jmri-cmri/blob/main/DOCUMENTS/MEGA%20BASED%20DCC%2B%2B%20BASE%20STATION/mega%20cmri.png)
 
 ### 1 step (download the dcc++ software code for ardiuno)
+### [DOWNLOAD LINK FOR LIB](https://github.com/adarshkumarsingh83/jmri-cmri/raw/main/DOCUMENTS/MEGA%20BASED%20DCC%2B%2B%20BASE%20STATION/BaseStation-master.zip)
 ```
 Download the cmri code from the below url repository 
 https://github.com/DccPlusPlus/BaseStation
