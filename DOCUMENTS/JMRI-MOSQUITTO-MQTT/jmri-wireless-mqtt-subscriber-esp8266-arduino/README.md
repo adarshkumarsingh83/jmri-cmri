@@ -2,6 +2,13 @@
 
 ----
 
+## Lib installtion 
+
+### search for "PubSubClient" lib and install it before compiling 
+### or install this lib for location [PubSubClient lib ](https://github.com/adarshkumarsingh83/jmri-cmri/raw/main/DOCUMENTS/JMRI-MOSQUITTO-MQTT/lib/pubsubclient.zip)
+
+----
+
 ### Connection details 
 ```
 conect the gnd from arduino to the -ve line of the breadboard 
