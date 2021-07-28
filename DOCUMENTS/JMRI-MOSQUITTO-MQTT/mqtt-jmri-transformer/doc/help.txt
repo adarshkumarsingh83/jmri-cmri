@@ -1,1 +1,0 @@
-https://github.com/gregwhitaker/springboot-mqtt-example/tree/master/mqtt-service
