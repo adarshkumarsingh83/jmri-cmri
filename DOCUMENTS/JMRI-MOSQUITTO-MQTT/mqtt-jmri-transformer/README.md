@@ -14,7 +14,8 @@
 * $ mvn spring-boot:run 
 
 
-
+### To run the mqtt where application will publish data 
+* $ mosquitto_sub -h localhost -u adarsh -P password -v -t '/amt/node/#'
 
 # [mosquitto mqtt](https://mosquitto.org/)
 

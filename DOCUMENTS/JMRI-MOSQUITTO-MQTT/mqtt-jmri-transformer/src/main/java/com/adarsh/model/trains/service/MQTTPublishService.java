@@ -9,18 +9,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageHeaders;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 
 @Slf4j
-@Component
+@Service
 public class MQTTPublishService {
 
     @Autowired
     MqttClient mqttClient;
 
-    @Autowired
+   /* @Autowired
     private IntegrationFlow mqttOutboundFlow;
 
     public void publishDataToMqtt(final String data) {
@@ -36,8 +36,7 @@ public class MQTTPublishService {
                 return new MessageHeaders(Collections.EMPTY_MAP);
             }
         });
-    }
-
+    }*/
 
     public void publish(final String topic, final String payload, int qos, boolean retained)
             throws MqttPersistenceException, MqttException {
@@ -46,8 +45,7 @@ public class MQTTPublishService {
         mqttMessage.setQos(qos);
         mqttMessage.setRetained(retained);
         mqttClient.publish(topic, mqttMessage);
-        //mqttClient.publish(topic, payload.getBytes(), qos, retained);
-        mqttClient.disconnect();
+        //mqttClient.disconnect();
     }
 
 }

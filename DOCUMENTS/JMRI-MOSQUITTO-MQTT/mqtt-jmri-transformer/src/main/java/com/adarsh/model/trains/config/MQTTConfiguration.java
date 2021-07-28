@@ -22,7 +22,7 @@ import org.springframework.integration.mqtt.outbound.MqttPahoMessageHandler;
 })
 public class MQTTConfiguration {
 
-    public static final String DEVICE_WILL_TOPIC = "amt/transformer/will-topic";
+    public static final String DEVICE_WILL_TOPIC = "/amt/transformer/status";
 
     @Bean
     public MqttConnectOptions mqttConnectOptions(MqttProperties mqttProperties) {
@@ -48,7 +48,7 @@ public class MQTTConfiguration {
 
     @Bean
     public MqttClient mqttClient(MqttProperties mqttProperties, MqttConnectOptions options) throws MqttException {
-        MqttClient mqttClient = new MqttClient(mqttProperties.getHost(), mqttProperties.getClientId()+System.currentTimeMillis());
+        MqttClient mqttClient = new MqttClient(mqttProperties.getHost(), mqttProperties.getClientId() + System.currentTimeMillis());
         mqttClient.connect(options);
         return mqttClient;
     }
@@ -58,11 +58,11 @@ public class MQTTConfiguration {
                                        MqttPahoClientFactory mqttClientFactory,
                                        MQTTMessageHandler mqttMessageHandler) {
         return IntegrationFlows.from(
-                new MqttPahoMessageDrivenChannelAdapter(settings.getClientId()+System.currentTimeMillis(), mqttClientFactory, settings.getTopicSub()))
+                new MqttPahoMessageDrivenChannelAdapter(settings.getClientId() + System.currentTimeMillis(), mqttClientFactory, settings.getTopicSub()))
                 .handle(mqttMessageHandler)
                 .get();
     }
-
+/*
     @Bean
     public IntegrationFlow mqttOutboundFlow(MqttProperties settings,
                                             MqttPahoClientFactory mqttClientFactory) {
@@ -70,5 +70,6 @@ public class MQTTConfiguration {
         mqttPahoMessageHandler.setDefaultTopic(settings.getTopicPub());
         return f -> f.handle(mqttPahoMessageHandler);
     }
+*/
 
 }
