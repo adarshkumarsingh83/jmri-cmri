@@ -13,6 +13,9 @@
 ### To Run this application 
 * $ mvn spring-boot:run 
 
+### To Run Executable jar of application 
+* $ java -jar ./target/mqtt-jmri-transformer-0.0.1-SNAPSHOT.jar
+
 
 ### To run the mqtt where application will publish data 
 * $ mosquitto_sub -h localhost -u adarsh -P password -v -t '/amt/node/#'
