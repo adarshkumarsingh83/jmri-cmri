@@ -10,6 +10,11 @@ import org.springframework.messaging.MessageHandler;
 import org.springframework.messaging.MessagingException;
 import org.springframework.stereotype.Component;
 
+/*
+ * @author Adarsh
+ * @author $LastChangedBy: adarsh $
+ * @version $Revision: 0001 $, $Date:: 15/6/20 10:12 AM#$
+ */
 
 @Slf4j
 @Component
@@ -20,7 +25,6 @@ public class MQTTMessageHandler implements MessageHandler {
     final static private String mqtt_topic_turnout = "/trains/track/turnout/";
     final static private String mqtt_topic_signalhead = "/trains/track/signalhead/";
     final static private String THROWN = "THROWN";
-    final static private String CLOSED = "CLOSED";
     final static private String ON = "ON";
     final static private String OFF = "OFF";
 

@@ -2,7 +2,6 @@ package com.adarsh.model.trains.config;
 
 import com.adarsh.model.trains.beans.MqttProperties;
 import com.adarsh.model.trains.handler.MQTTMessageHandler;
-import org.eclipse.paho.client.mqttv3.IMqttClient;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
@@ -14,7 +13,12 @@ import org.springframework.integration.dsl.IntegrationFlows;
 import org.springframework.integration.mqtt.core.DefaultMqttPahoClientFactory;
 import org.springframework.integration.mqtt.core.MqttPahoClientFactory;
 import org.springframework.integration.mqtt.inbound.MqttPahoMessageDrivenChannelAdapter;
-import org.springframework.integration.mqtt.outbound.MqttPahoMessageHandler;
+
+/*
+ * @author Adarsh
+ * @author $LastChangedBy: adarsh $
+ * @version $Revision: 0001 $, $Date:: 15/6/20 10:12 AM#$
+ */
 
 @Configuration
 @EnableConfigurationProperties({
@@ -62,14 +66,5 @@ public class MQTTConfiguration {
                 .handle(mqttMessageHandler)
                 .get();
     }
-/*
-    @Bean
-    public IntegrationFlow mqttOutboundFlow(MqttProperties settings,
-                                            MqttPahoClientFactory mqttClientFactory) {
-        MqttPahoMessageHandler mqttPahoMessageHandler = new MqttPahoMessageHandler(settings.getClientId()+System.currentTimeMillis(), mqttClientFactory);
-        mqttPahoMessageHandler.setDefaultTopic(settings.getTopicPub());
-        return f -> f.handle(mqttPahoMessageHandler);
-    }
-*/
 
 }

@@ -18,6 +18,7 @@ mqtt-properties:
   automaticReconnect: true
 
 
+# Custom property for nodes configuration
 node:
   configurations:
     nodes:
