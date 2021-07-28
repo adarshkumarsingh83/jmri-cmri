@@ -16,6 +16,13 @@
 
 ### To run the mqtt where application will publish data 
 * $ mosquitto_sub -h localhost -u adarsh -P password -v -t '/amt/node/#'
+```
+/amt/node/1/light/1000 ON
+/amt/node/1/turnout/2000 THROWN
+/amt/node/1/signal/3003 ON
+/amt/node/1/signal/3002 OFF
+/amt/node/1/signal/3001 OFF
+```
 
 # [mosquitto mqtt](https://mosquitto.org/)
 
