@@ -23,7 +23,7 @@ node:
   configurations:
     nodes:
       -
-        nodeNo: 1
+        nodeId: 1
         lightStartAddress: 1000
         lightCount: 10
         turnoutStartAddress: 2000
@@ -31,7 +31,7 @@ node:
         signalStartAddress: 3000
         signalCount: 37
       -
-        nodeNo: 2
+        nodeId: 2
         lightStartAddress: 1100
         lightCount: 27
         turnoutStartAddress: 2100
@@ -39,7 +39,7 @@ node:
         signalStartAddress: 3100
         signalCount: 80
       -
-        nodeNo: 3
+        nodeId: 3
         lightStartAddress: 1200
         lightCount: 7
         turnoutStartAddress: 2200
@@ -47,7 +47,7 @@ node:
         signalStartAddress: 3200
         signalCount: 87
       -
-        nodeNo: 4
+        nodeId: 4
         lightStartAddress: 1300
         lightCount: 23
         turnoutStartAddress: 2300
@@ -55,7 +55,7 @@ node:
         signalStartAddress: 3300
         signalCount: 24
       -
-        nodeNo: 5
+        nodeId: 5
         lightStartAddress: 1400
         lightCount: 45
         turnoutStartAddress: 2400
@@ -63,7 +63,7 @@ node:
         signalStartAddress: 3400
         signalCount: 80
       -
-        nodeNo: 6
+        nodeId: 6
         lightStartAddress: 1500
         lightCount: 10
         turnoutStartAddress: 2500
@@ -71,7 +71,7 @@ node:
         signalStartAddress: 3500
         signalCount: 37
       -
-        nodeNo: 7
+        nodeId: 7
         lightStartAddress: 1600
         lightCount: 27
         turnoutStartAddress: 2600
@@ -79,7 +79,7 @@ node:
         signalStartAddress: 3600
         signalCount: 80
       -
-        nodeNo: 8
+        nodeId: 8
         lightStartAddress: 1700
         lightCount: 7
         turnoutStartAddress: 2700
@@ -87,7 +87,7 @@ node:
         signalStartAddress: 3700
         signalCount: 87
       -
-        nodeNo: 9
+        nodeId: 9
         lightStartAddress: 1800
         lightCount: 23
         turnoutStartAddress: 2800
@@ -95,7 +95,7 @@ node:
         signalStartAddress: 3800
         signalCount: 24
       -
-        nodeNo: 10
+        nodeId: 10
         lightStartAddress: 1900
         lightCount: 45
         turnoutStartAddress: 2900

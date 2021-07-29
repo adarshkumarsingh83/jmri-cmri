@@ -16,19 +16,48 @@
 ### To Run Executable jar of application 
 * $ java -jar ./target/mqtt-jmri-transformer-0.0.1-SNAPSHOT.jar
 
+## TO ENABLE ENDPOINTS 
+> ENABLE THE PROPERTIES in  src/main/resources/application.properties
+```
+amt.mqtt.transform.endpoints.enabled=true
+amt.mqtt.transform.endpoints.store.size=50
+```
+
+### TO ACCESS THE END POINTS 
+* curl -X GET http://localhost:8090/amt/node/<nodeId>
+* curl -X GET http://localhost:8090/amt/node/1
+
+
+## TO ENABLE THE PUBLISHING BACK TO THE MQTT 
+> ENABLE THE PROPERTIES in  src/main/resources/application.properties
+```
+amt.mqtt.transform.publish=true
+```
 
 ### To run the mqtt where application will publish data 
 * $ mosquitto_sub -h localhost -u adarsh -P password -v -t '/amt/node/#'
 ```
 /amt/node/1/light/1000 ON
+/amt/node/1/light/1000 OFF
+
 /amt/node/1/turnout/2000 THROWN
+/amt/node/1/turnout/2000 CLOSE
+
 /amt/node/1/signal/3003 ON
 /amt/node/1/signal/3002 OFF
 /amt/node/1/signal/3001 OFF
+
+/amt/node/1/signal/3003 OFF
+/amt/node/1/signal/3002 OFF
+/amt/node/1/signal/3001 OFF
+
 ```
 
-# [mosquitto mqtt](https://mosquitto.org/)
 
+
+---
+
+# [mosquitto mqtt](https://mosquitto.org/)
 
 ## To install brew 
 $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"

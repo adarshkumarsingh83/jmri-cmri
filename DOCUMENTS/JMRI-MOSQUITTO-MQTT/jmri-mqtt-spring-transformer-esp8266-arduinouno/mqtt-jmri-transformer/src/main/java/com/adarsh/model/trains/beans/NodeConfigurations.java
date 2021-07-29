@@ -20,7 +20,7 @@ public class NodeConfigurations {
 
     @Data
     public static class Nodes {
-        Integer nodeNo;
+        String nodeId;
         Integer lightStartAddress;
         Integer lightCount;
         Integer turnoutStartAddress;
