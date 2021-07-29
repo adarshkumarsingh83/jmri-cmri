@@ -16,7 +16,7 @@
 * $ mvn spring-boot:run 
 
 ### To Run Executable jar of application 
-* $ java -jar ./target/mqtt-jmri-transformer-0.0.1-SNAPSHOT.jar
+* $ java -jar ./target/amt-jmri-mqtt-transformer.jar
 
 ## TO ENABLE JMRI MQTT DATA ENDPOINTS 
 > ENABLE THE PROPERTIES in  src/main/resources/application.properties

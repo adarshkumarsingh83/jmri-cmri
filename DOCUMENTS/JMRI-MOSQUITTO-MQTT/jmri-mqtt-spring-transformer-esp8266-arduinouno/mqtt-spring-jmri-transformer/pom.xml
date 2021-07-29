@@ -13,10 +13,10 @@
 	</parent>
 
 	<groupId>com.adarsh.model.trains</groupId>
-	<artifactId>mqtt-jmri-transformer</artifactId>
+	<artifactId>mqtt-spring-jmri-transformer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<name>mqtt-jmri-transformer</name>
+	<name>mqtt-spring-jmri-transformer</name>
 	<description>Mqtt Jmri Transformer Application</description>
 
 	<properties>
@@ -65,6 +65,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>amt-jmri-mqtt-transformer</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
