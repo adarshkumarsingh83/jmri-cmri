@@ -2,7 +2,8 @@
 
 > Jmri will push the data to the mqtt 
 > transformer application will read the data from mqtt topics and transform that data 
-> and push back to the mqtt node wise topics for each esp8266 node will have only relevant data
+> and push back to the mqtt node wise, also store in end points cache if enabled for serving data via rest endpoints   
+> topics for each esp8266 node will have only relevant data
 > this will reduce the processing on the esp8266 so that it can handle node specific data properly.
 
 ----
