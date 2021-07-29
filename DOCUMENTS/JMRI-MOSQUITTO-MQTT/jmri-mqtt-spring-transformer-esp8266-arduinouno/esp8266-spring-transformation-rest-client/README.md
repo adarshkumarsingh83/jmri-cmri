@@ -27,4 +27,4 @@ take the rx pin of the nodemcu/esp8266 and connect to the tx pin of the arduino
 ```
 
 
-![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/jmri-mqtt-spring-transformer-esp8266-arduinouno/esp8266-spring-transformation-rest-client/con.JPG)
+![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/jmri-mqtt-spring-transformer-esp8266-arduinouno/image/con.JPG)
