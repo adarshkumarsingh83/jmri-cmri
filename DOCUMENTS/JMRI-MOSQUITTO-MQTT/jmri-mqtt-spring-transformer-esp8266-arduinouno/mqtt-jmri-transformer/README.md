@@ -24,7 +24,7 @@ amt.mqtt.transform.endpoints.store.size=50
 ```
 
 ### TO ACCESS THE END POINTS 
-* curl -X GET http://localhost:8090/amt/node/<nodeId>
+> curl -X GET http://localhost:8090/amt/node/<nodeId>
 * curl -X GET http://localhost:8090/amt/node/1
 
 
