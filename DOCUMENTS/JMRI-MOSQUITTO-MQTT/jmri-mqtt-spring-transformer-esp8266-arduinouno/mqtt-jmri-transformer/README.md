@@ -19,7 +19,10 @@
 ## TO ENABLE ENDPOINTS 
 > ENABLE THE PROPERTIES in  src/main/resources/application.properties
 ```
+# for enabling the endpoints data 
 amt.mqtt.transform.endpoints.enabled=true
+
+# storage cache capacity for the enpoints 
 amt.mqtt.transform.endpoints.store.size=50
 ```
 
