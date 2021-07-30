@@ -21,15 +21,12 @@ import java.util.List;
 public class NodeConfigurations {
 
     public List<Nodes> nodes;
-    @NotBlank(message = "lightStartingAddress is mandatory properties in configuration ")
     @NotNull(message = "lightStartingAddress is mandatory properties in configuration ")
-    Integer lightStartingAddress;
-    @NotBlank(message = "turnoutStartingAddress is mandatory properties in configuration ")
+    Integer lightStartingAddress = 0;
     @NotNull(message = "turnoutStartingAddress is mandatory properties in configuration ")
-    Integer turnoutStartingAddress;
-    @NotBlank(message = "signalStartingAddress is mandatory properties in configuration ")
+    Integer turnoutStartingAddress = 0;
     @NotNull(message = "signalStartingAddress is mandatory properties in configuration ")
-    Integer signalStartingAddress;
+    Integer signalStartingAddress = 0;
 
     @Data
     public static class Nodes {
