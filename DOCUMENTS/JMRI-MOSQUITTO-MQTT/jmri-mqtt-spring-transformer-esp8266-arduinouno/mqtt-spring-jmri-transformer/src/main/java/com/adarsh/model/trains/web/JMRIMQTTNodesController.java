@@ -6,6 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @Slf4j
 @RestController
 public class JMRIMQTTNodesController {
@@ -20,7 +22,7 @@ public class JMRIMQTTNodesController {
 
 
     @PostMapping("/node/{nodeId}")
-    public String postNodeData(@PathVariable("nodeId") String nodeId, @RequestBody RequestBean data) throws Exception {
+    public String postNodeData(@PathVariable("nodeId") String nodeId, @Valid @RequestBody RequestBean data) throws Exception {
         try {
             this.mqttService.publish(data.getTopic(), data.getData(), 1, false);
         }catch (Exception e){

@@ -44,15 +44,18 @@ amt.mqtt.transform.publish=true
 ```
 node:
   configurations:
+    lightStartingAddress: 1000   #starting address of the light in whole layout its mandatory value 
+    turnoutStartingAddress: 2000 #starting address of the turnout in whole layout its mandatory value 
+    signalStartingAddress: 3000  #starting address of the signal in whole layout its mandatory value 
     nodes:
       -
-        nodeId: 1   # node id/name publish topic will be formed with this id only  
-        lightStartAddress: 1000    # starting address of the light in node 1
-        lightCount: 10             # no of light configured in node 1
-        turnoutStartAddress: 2000  # starting address of the turnout in node 1
-        turnoutCount: 15           # no of turnout configured in node 1
-        signalStartAddress: 3000   # starting address of the signal in node 1
-        signalCount: 37            # no of signal configured in node 1 
+        nodeId: 1                  # node id/name publish topic will be formed with this id only  
+        lightStartAddress: 1000    # starting address of the light in node 1 ,if not configured then configure with 0 value 
+        lightCount: 10             # no of light configured in node 1 ,if not configured then configure with 0 value 
+        turnoutStartAddress: 2000  # starting address of the turnout in node 1 ,if not configured then configure with 0 value 
+        turnoutCount: 15           # no of turnout configured in node 1 ,if not configured then configure with 0 value 
+        signalStartAddress: 3000   # starting address of the signal in node 1 ,if not configured then configure with 0 value 
+        signalCount: 37            # no of signal configured in node 1 ,if not configured then configure with 0 value  
                                    # every light address in jmri for particular node that is the count 
                                    # every led in signal is having one count so if 3 led in signal count is 3
                                    # if signal is having 2 light red and green then 2 will be count for signal 
@@ -62,9 +65,12 @@ node:
 # Custom property for nodes configuration
 node:
   configurations:
+    lightStartingAddress: 1000 
+    turnoutStartingAddress: 2000
+    signalStartingAddress: 3000
     nodes:
       -
-        nodeId: 1   #node id/name publish topic will be formed with this id only  
+        nodeId: 1   
         lightStartAddress: 1000  
         lightCount: 10
         turnoutStartAddress: 2000

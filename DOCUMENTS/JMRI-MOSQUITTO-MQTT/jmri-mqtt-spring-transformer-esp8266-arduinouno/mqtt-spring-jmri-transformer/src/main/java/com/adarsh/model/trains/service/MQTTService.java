@@ -66,7 +66,7 @@ public class MQTTService {
             if (mqttTopic.startsWith(MQTT_TOPIC_LIGHT)) {
                 Integer numberVar = Integer.parseInt(mqttTopic.replace(MQTT_TOPIC_LIGHT, ""));
                 //  to find out the node and then push the data to that topic
-                NodeConfigurations.Nodes node = this.getNode("L", numberVar);
+                NodeConfigurations.Nodes node = this.getNode(LIGHT, numberVar);
                 if (transformationPublish) {
                     this.publish(properties.getTopicPub() + node.getNodeId() + "/light/" + numberVar, status, 1, false);
                 }
@@ -78,7 +78,7 @@ public class MQTTService {
                 if (numberVar >= nodeConfigurations.getTurnoutStartingAddress()
                         && numberVar < nodeConfigurations.getSignalStartingAddress()) {
                     //  to find out the node and then push the data to that node topic
-                    NodeConfigurations.Nodes node = this.getNode("T", numberVar);
+                    NodeConfigurations.Nodes node = this.getNode(TURNOUT, numberVar);
                     if (transformationPublish) {
                         this.publish(properties.getTopicPub() + node.getNodeId() + "/turnout/" + numberVar, status, 1, false);
                     }
@@ -92,7 +92,7 @@ public class MQTTService {
                         status = OFF;
                     }
                     //  to find out the node and then push the data to that node topic
-                    NodeConfigurations.Nodes node = this.getNode("S", numberVar);
+                    NodeConfigurations.Nodes node = this.getNode(SIGNAL, numberVar);
                     if (transformationPublish) {
                         this.publish(properties.getTopicPub() + node.getNodeId() + "/signal/" + numberVar, status, 1, false);
                     }
@@ -103,7 +103,7 @@ public class MQTTService {
             } else if (mqttTopic.startsWith(MQTT_TOPIC_SIGNAL_HEAD)) {
                 //  to find out the node and then push the data to that node topic
                 Integer numberVar = Integer.parseInt(mqttTopic.replace(MQTT_TOPIC_SIGNAL_HEAD, ""));
-                NodeConfigurations.Nodes node = this.getNode("S", numberVar);
+                NodeConfigurations.Nodes node = this.getNode(SIGNAL, numberVar);
                 if (transformationPublish) {
                     this.publish(properties.getTopicPub() + node.getNodeId() + "/signal/" + numberVar, status, 1, false);
                 }
@@ -116,14 +116,30 @@ public class MQTTService {
 
     private NodeConfigurations.Nodes getNode(String type, Integer number) {
         return nodeConfigurations.getNodes().stream().filter(e -> {
-            if (type.equalsIgnoreCase("L")) {
-                return number >= e.getLightStartAddress() && number <= e.getLightStartAddress() + e.getLightCount() ? true : false;
-            } else if (type.equalsIgnoreCase("T")) {
-                return number >= e.getTurnoutStartAddress() && number <= e.getTurnoutStartAddress() + e.getTurnoutCount() ? true : false;
-            } else if (type.equalsIgnoreCase("S")) {
-                return number >= e.getSignalStartAddress() && number <= e.getSignalStartAddress() + e.getSignalCount() ? true : false;
-            }
-            return false;
+            if (type.equalsIgnoreCase(LIGHT)) {
+                if (e.getLightStartAddress() != null && e.getLightStartAddress() != 0
+                        && e.getLightCount() != null && e.getLightCount() != 0) {
+                    return number >= e.getLightStartAddress()
+                            && number <= e.getLightStartAddress() + e.getLightCount() ? true : false;
+                } else {
+                    return false;
+                }
+            } else if (type.equalsIgnoreCase(TURNOUT)) {
+                if (e.getTurnoutStartAddress() != null && e.getTurnoutStartAddress() != 0
+                        && e.getTurnoutCount() != null && e.getTurnoutCount() != 0) {
+                    return number >= e.getTurnoutStartAddress() && number <= e.getTurnoutStartAddress() + e.getTurnoutCount() ? true : false;
+                } else {
+                    return false;
+                }
+            } else if (type.equalsIgnoreCase(SIGNAL)) {
+                if (e.getSignalStartAddress() != null && e.getSignalStartAddress() != 0
+                        && e.getSignalCount() != null && e.getSignalCount() != 0) {
+                    return number >= e.getSignalStartAddress() && number <= e.getSignalStartAddress() + e.getSignalCount() ? true : false;
+                } else {
+                    return false;
+                }
+            } else
+                return false;
         }).findFirst().get();
     }
 

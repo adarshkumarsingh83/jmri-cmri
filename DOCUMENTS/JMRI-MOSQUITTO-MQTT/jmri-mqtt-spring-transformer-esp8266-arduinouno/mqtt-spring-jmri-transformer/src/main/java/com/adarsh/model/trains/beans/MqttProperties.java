@@ -4,6 +4,10 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.validation.annotation.Validated;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 /*
  * @author Adarsh
@@ -13,13 +17,25 @@ import org.springframework.context.annotation.Primary;
 
 @Data
 @Primary
+@Validated
 @Configuration
 @ConfigurationProperties(prefix = "mqtt-properties")
 public class MqttProperties {
+
+    @NotBlank(message = "mqtt host url is mandatory properties in configuration ")
+    @NotNull(message = "mqtt host url is mandatory properties in configuration ")
     private String host;
+    @NotBlank(message = "clientId is mandatory properties in configuration ")
+    @NotNull(message = "clientId is mandatory properties in configuration ")
     private String clientId;
+    @NotBlank(message = "mqtt username is mandatory properties in configuration ")
+    @NotNull(message = "mqtt username is mandatory properties in configuration ")
     private String username;
+    @NotBlank(message = "mqtt password is mandatory properties in configuration ")
+    @NotNull(message = "mqtt password is mandatory properties in configuration ")
     private String password;
+    @NotBlank(message = "mqtt jmri subscribe topic is mandatory properties in configuration ")
+    @NotNull(message = "mqtt jmri subscribe topic is mandatory properties in configuration ")
     private String topicSub;
     private String topicPub;
     private Boolean cleanSession;
