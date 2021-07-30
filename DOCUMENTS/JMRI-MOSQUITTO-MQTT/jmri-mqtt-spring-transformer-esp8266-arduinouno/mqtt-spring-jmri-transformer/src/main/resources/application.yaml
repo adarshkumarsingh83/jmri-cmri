@@ -21,6 +21,9 @@ mqtt-properties:
 # Custom property for nodes configuration
 node:
   configurations:
+    lightStartingAddress: 1000
+    turnoutStartingAddress: 2000
+    signalStartingAddress: 3000
     nodes:
       -
         nodeId: 1

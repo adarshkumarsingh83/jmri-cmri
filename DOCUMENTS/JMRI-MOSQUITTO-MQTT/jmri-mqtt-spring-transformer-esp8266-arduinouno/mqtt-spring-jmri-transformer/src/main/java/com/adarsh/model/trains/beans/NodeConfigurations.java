@@ -17,6 +17,9 @@ import java.util.List;
 public class NodeConfigurations {
 
     public List<Nodes> nodes;
+    Integer lightStartingAddress;
+    Integer turnoutStartingAddress;
+    Integer signalStartingAddress;
 
     @Data
     public static class Nodes {

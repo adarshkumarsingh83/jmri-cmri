@@ -34,7 +34,7 @@ public class MQTTService {
     private final static String TURNOUT = "TURNOUT";
     private final static String MQTT_TOPIC_LIGHT = "/trains/track/light/";
     private final static String MQTT_TOPIC_TURNOUT = "/trains/track/turnout/";
-    private final static String MQTT_TOPIC_SIGNALHEAD = "/trains/track/signalhead/";
+    private final static String MQTT_TOPIC_SIGNAL_HEAD = "/trains/track/signalhead/";
 
     @Value("${amt.mqtt.transform.publish}")
     Boolean transformationPublish;
@@ -67,22 +67,23 @@ public class MQTTService {
                 Integer numberVar = Integer.parseInt(mqttTopic.replace(MQTT_TOPIC_LIGHT, ""));
                 //  to find out the node and then push the data to that topic
                 NodeConfigurations.Nodes node = this.getNode("L", numberVar);
-                if(transformationPublish) {
+                if (transformationPublish) {
                     this.publish(properties.getTopicPub() + node.getNodeId() + "/light/" + numberVar, status, 1, false);
                 }
-                if(transformationEndpointsEnabled){
-                    store.get(node.getNodeId()).enqueue(LIGHT+":"+numberVar+":"+status);
+                if (transformationEndpointsEnabled) {
+                    store.get(node.getNodeId()).enqueue(LIGHT + ":" + numberVar + ":" + status);
                 }
             } else if (mqttTopic.startsWith(MQTT_TOPIC_TURNOUT)) {
                 Integer numberVar = Integer.parseInt(mqttTopic.replace(MQTT_TOPIC_TURNOUT, ""));
-                if (numberVar < 3000) {
+                if (numberVar >= nodeConfigurations.getTurnoutStartingAddress()
+                        && numberVar < nodeConfigurations.getSignalStartingAddress()) {
                     //  to find out the node and then push the data to that node topic
                     NodeConfigurations.Nodes node = this.getNode("T", numberVar);
-                    if(transformationPublish) {
+                    if (transformationPublish) {
                         this.publish(properties.getTopicPub() + node.getNodeId() + "/turnout/" + numberVar, status, 1, false);
                     }
-                    if(transformationEndpointsEnabled){
-                        store.get(node.getNodeId()).enqueue(TURNOUT+":"+numberVar+":"+status);
+                    if (transformationEndpointsEnabled) {
+                        store.get(node.getNodeId()).enqueue(TURNOUT + ":" + numberVar + ":" + status);
                     }
                 } else {
                     if (status.equalsIgnoreCase(THROWN)) {
@@ -92,22 +93,22 @@ public class MQTTService {
                     }
                     //  to find out the node and then push the data to that node topic
                     NodeConfigurations.Nodes node = this.getNode("S", numberVar);
-                    if(transformationPublish) {
+                    if (transformationPublish) {
                         this.publish(properties.getTopicPub() + node.getNodeId() + "/signal/" + numberVar, status, 1, false);
                     }
-                    if(transformationEndpointsEnabled){
-                        store.get(node.getNodeId()).enqueue(SIGNAL+":"+numberVar+":"+status);
+                    if (transformationEndpointsEnabled) {
+                        store.get(node.getNodeId()).enqueue(SIGNAL + ":" + numberVar + ":" + status);
                     }
                 }
-            } else if (mqttTopic.startsWith(MQTT_TOPIC_SIGNALHEAD)) {
+            } else if (mqttTopic.startsWith(MQTT_TOPIC_SIGNAL_HEAD)) {
                 //  to find out the node and then push the data to that node topic
-                Integer numberVar = Integer.parseInt(mqttTopic.replace(MQTT_TOPIC_SIGNALHEAD, ""));
+                Integer numberVar = Integer.parseInt(mqttTopic.replace(MQTT_TOPIC_SIGNAL_HEAD, ""));
                 NodeConfigurations.Nodes node = this.getNode("S", numberVar);
-                if(transformationPublish) {
+                if (transformationPublish) {
                     this.publish(properties.getTopicPub() + node.getNodeId() + "/signal/" + numberVar, status, 1, false);
                 }
-                if(transformationEndpointsEnabled){
-                    store.get(node.getNodeId()).enqueue(SIGNAL+":"+numberVar+":"+status);
+                if (transformationEndpointsEnabled) {
+                    store.get(node.getNodeId()).enqueue(SIGNAL + ":" + numberVar + ":" + status);
                 }
             }
         }
