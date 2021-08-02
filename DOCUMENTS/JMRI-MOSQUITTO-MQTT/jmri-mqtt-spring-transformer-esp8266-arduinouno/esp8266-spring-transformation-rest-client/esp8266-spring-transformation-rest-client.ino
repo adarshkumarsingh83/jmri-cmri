@@ -22,10 +22,14 @@ void setup() {
 }
 
 void loop() {
-  delay(500);
   if ((WiFiMulti.run() == WL_CONNECTED)) {
     serverResponse = httpGETRequest(SERVER_URL);
     // todo with the server response
+    if (serverResponse != "") {
+      pushDataToSlave(serverResponse);
+      delay(200);
+    }
+    
   } else {
     Serial.println("WiFi Disconnected");
   }
@@ -44,7 +48,7 @@ String httpGETRequest(const char* serverName) {
   String payload = "";
 
   if (httpResponseCode > 0) {
-    Serial.println("HTTP Response code: " + String(httpResponseCode));
+    //Serial.println("HTTP Response code: " + String(httpResponseCode));
     payload = http.getString();
   }
   else {
@@ -56,7 +60,7 @@ String httpGETRequest(const char* serverName) {
 }
 
 void pushDataToSlave(String value) {
-  value = value.substring(0, 2);
+  value = value.substring(2, value.length());
   value = value + "\n";
   Serial.write(value.c_str());
 }

@@ -27,7 +27,7 @@ public class MQTTService {
 
     private final static Map<String, CircularQueue<String>> store = new HashMap<>();
     private final static String ON = "ON";
-    private final static String OFF = "OFF";
+    private final static String OFF = "OF";
     private final static String THROWN = "THROWN";
     private final static String LIGHT = "LIGHT";
     private final static String SIGNAL = "SIGNAL";
@@ -67,11 +67,12 @@ public class MQTTService {
                 Integer numberVar = Integer.parseInt(mqttTopic.replace(MQTT_TOPIC_LIGHT, ""));
                 //  to find out the node and then push the data to that topic
                 NodeConfigurations.Nodes node = this.getNode(LIGHT, numberVar);
+                status = (status.equalsIgnoreCase(ON) ? ON : OFF);
                 if (transformationPublish) {
                     this.publish(properties.getTopicPub() + node.getNodeId() + "/light/" + numberVar, status, 1, false);
                 }
                 if (transformationEndpointsEnabled) {
-                    store.get(node.getNodeId()).enqueue(LIGHT + ":" + numberVar + ":" + status);
+                    store.get(node.getNodeId()).enqueue("L" + ":" + numberVar + ":" + status);
                 }
             } else if (mqttTopic.startsWith(MQTT_TOPIC_TURNOUT)) {
                 Integer numberVar = Integer.parseInt(mqttTopic.replace(MQTT_TOPIC_TURNOUT, ""));
@@ -79,36 +80,34 @@ public class MQTTService {
                         && numberVar < nodeConfigurations.getSignalStartingAddress()) {
                     //  to find out the node and then push the data to that node topic
                     NodeConfigurations.Nodes node = this.getNode(TURNOUT, numberVar);
+                    status = (status.equalsIgnoreCase(THROWN) ? "TH" : "CL");
                     if (transformationPublish) {
                         this.publish(properties.getTopicPub() + node.getNodeId() + "/turnout/" + numberVar, status, 1, false);
                     }
                     if (transformationEndpointsEnabled) {
-                        store.get(node.getNodeId()).enqueue(TURNOUT + ":" + numberVar + ":" + status);
+                        store.get(node.getNodeId()).enqueue("T" + ":" + numberVar + ":" + status);
                     }
                 } else {
-                    if (status.equalsIgnoreCase(THROWN)) {
-                        status = ON;
-                    } else {
-                        status = OFF;
-                    }
                     //  to find out the node and then push the data to that node topic
                     NodeConfigurations.Nodes node = this.getNode(SIGNAL, numberVar);
+                    status = (status.equalsIgnoreCase(THROWN) ? ON : OFF);
                     if (transformationPublish) {
                         this.publish(properties.getTopicPub() + node.getNodeId() + "/signal/" + numberVar, status, 1, false);
                     }
                     if (transformationEndpointsEnabled) {
-                        store.get(node.getNodeId()).enqueue(SIGNAL + ":" + numberVar + ":" + status);
+                        store.get(node.getNodeId()).enqueue("S" + ":" + numberVar + ":" + status);
                     }
                 }
             } else if (mqttTopic.startsWith(MQTT_TOPIC_SIGNAL_HEAD)) {
                 //  to find out the node and then push the data to that node topic
                 Integer numberVar = Integer.parseInt(mqttTopic.replace(MQTT_TOPIC_SIGNAL_HEAD, ""));
                 NodeConfigurations.Nodes node = this.getNode(SIGNAL, numberVar);
+                status = (status.equalsIgnoreCase(ON) ? ON : OFF);
                 if (transformationPublish) {
                     this.publish(properties.getTopicPub() + node.getNodeId() + "/signal/" + numberVar, status, 1, false);
                 }
                 if (transformationEndpointsEnabled) {
-                    store.get(node.getNodeId()).enqueue(SIGNAL + ":" + numberVar + ":" + status);
+                    store.get(node.getNodeId()).enqueue("S" + ":" + numberVar + ":" + status);
                 }
             }
         }
