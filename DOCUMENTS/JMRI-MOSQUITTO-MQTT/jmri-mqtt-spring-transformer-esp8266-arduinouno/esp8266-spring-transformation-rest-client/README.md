@@ -13,7 +13,7 @@ const char* wifi_password = "*******";
 > spring transformation rest service url configured in Config.h file 
 * "http://localhost:8090/amt/node/<NODE_ID>";
 ```
-const char* SERVER_URL = "http://localhost:8090/amt/node/1";
+const char* SERVER_URL = "http://192.168.0.188:8090/amt/node/1";
 ```
 
 
