@@ -172,7 +172,7 @@ node:
 ```
 
 
-### To run the mqtt where application will publish data 
+### To subscribe the mqtt topic where application will publish data after transformation  
 * $ mosquitto_sub -h localhost -u adarsh -P password -v -t '/amt/node/#'
 ```
 /amt/node/1/light/1000 ON
