@@ -176,17 +176,17 @@ node:
 * $ mosquitto_sub -h localhost -u adarsh -P password -v -t '/amt/node/#'
 ```
 /amt/node/1/light/1000 ON
-/amt/node/1/light/1000 OFF
+/amt/node/1/light/1000 OF
 
-/amt/node/1/turnout/2000 THROWN
-/amt/node/1/turnout/2000 CLOSE
+/amt/node/1/turnout/2000 TH
+/amt/node/1/turnout/2000 CL
 
 /amt/node/1/signal/3003 ON
-/amt/node/1/signal/3002 OFF
-/amt/node/1/signal/3001 OFF
+/amt/node/1/signal/3002 OF
+/amt/node/1/signal/3001 OF
 
-/amt/node/1/signal/3003 OFF
-/amt/node/1/signal/3002 OFF
-/amt/node/1/signal/3001 OFF
+/amt/node/1/signal/3003 OF
+/amt/node/1/signal/3002 OF
+/amt/node/1/signal/3001 OF
 
 ```
