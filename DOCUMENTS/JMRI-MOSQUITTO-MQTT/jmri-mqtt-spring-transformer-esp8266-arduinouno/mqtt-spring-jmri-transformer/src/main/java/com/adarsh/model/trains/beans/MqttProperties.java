@@ -38,6 +38,9 @@ public class MqttProperties {
     @NotNull(message = "mqtt jmri subscribe topic is mandatory properties in configuration ")
     private String topicSub;
     private String topicPub;
+    private String lightTopic;
+    private String turnoutTopic;
+    private String signalTopic;
     private Boolean cleanSession;
     private Integer connectionTimeout;
     private Integer keepAliveInterval;

@@ -32,9 +32,6 @@ public class MQTTService {
     private final static String LIGHT = "LIGHT";
     private final static String SIGNAL = "SIGNAL";
     private final static String TURNOUT = "TURNOUT";
-    private final static String MQTT_TOPIC_LIGHT = "/trains/track/light/";
-    private final static String MQTT_TOPIC_TURNOUT = "/trains/track/turnout/";
-    private final static String MQTT_TOPIC_SIGNAL_HEAD = "/trains/track/signalhead/";
 
     @Value("${amt.mqtt.transform.publish}")
     Boolean transformationPublish;
@@ -63,8 +60,8 @@ public class MQTTService {
 
     public void transformData(String mqttTopic, String status) throws Exception {
         if (!mqttTopic.isEmpty()) {
-            if (mqttTopic.startsWith(MQTT_TOPIC_LIGHT)) {
-                Integer numberVar = Integer.parseInt(mqttTopic.replace(MQTT_TOPIC_LIGHT, ""));
+            if (mqttTopic.startsWith(properties.getLightTopic())) {
+                Integer numberVar = Integer.parseInt(mqttTopic.replace(properties.getLightTopic(), ""));
                 //  to find out the node and then push the data to that topic
                 NodeConfigurations.Nodes node = this.getNode(LIGHT, numberVar);
                 status = (status.equalsIgnoreCase(ON) ? ON : OFF);
@@ -74,8 +71,8 @@ public class MQTTService {
                 if (transformationEndpointsEnabled) {
                     store.get(node.getNodeId()).enqueue("L" + ":" + numberVar + ":" + status);
                 }
-            } else if (mqttTopic.startsWith(MQTT_TOPIC_TURNOUT)) {
-                Integer numberVar = Integer.parseInt(mqttTopic.replace(MQTT_TOPIC_TURNOUT, ""));
+            } else if (mqttTopic.startsWith(properties.getTurnoutTopic())) {
+                Integer numberVar = Integer.parseInt(mqttTopic.replace(properties.getTurnoutTopic(), ""));
                 if (numberVar >= nodeConfigurations.getTurnoutStartingAddress()
                         && numberVar < nodeConfigurations.getSignalStartingAddress()) {
                     //  to find out the node and then push the data to that node topic
@@ -98,9 +95,9 @@ public class MQTTService {
                         store.get(node.getNodeId()).enqueue("S" + ":" + numberVar + ":" + status);
                     }
                 }
-            } else if (mqttTopic.startsWith(MQTT_TOPIC_SIGNAL_HEAD)) {
+            } else if (mqttTopic.startsWith(properties.getSignalTopic())) {
                 //  to find out the node and then push the data to that node topic
-                Integer numberVar = Integer.parseInt(mqttTopic.replace(MQTT_TOPIC_SIGNAL_HEAD, ""));
+                Integer numberVar = Integer.parseInt(mqttTopic.replace(properties.getSignalTopic(), ""));
                 NodeConfigurations.Nodes node = this.getNode(SIGNAL, numberVar);
                 status = (status.equalsIgnoreCase(ON) ? ON : OFF);
                 if (transformationPublish) {

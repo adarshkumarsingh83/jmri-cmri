@@ -39,6 +39,26 @@ amt.mqtt.transform.endpoints.store.size=50
 amt.mqtt.transform.publish=true
 ```
 
+### TO CONFIGURE THE MQTT FOR THE APLICATION 
+```
+# Custom property mqtt configuration
+mqtt-properties:
+  host: tcp://localhost:1883                        #mqtt host and port 
+  clientId: adarsh-model-trains-transformer-        #client id for the application for mqtt 
+  username: adarsh                                  #mqtt username
+  password: password                                #mqtt password
+  topicSub: /trains/track/#                         #mqtt jmri root topic to subscribe  
+  lightTopic: /trains/track/light/                  #mqtt jmri light topic to subscribe  
+  turnoutTopic: /trains/track/turnout/              #mqtt jmri turnout topic to subscribe  
+  signalTopic: /trains/track/signalhead/            #mqtt jmri signalhead topic to subscribe
+  topicPub: /amt/node/                              #application publish topic prefix 
+  cleanSession: true                                #session clearing config 
+  connectionTimeout: 300                            #connection timeout config 
+  keepAliveInterval: 60                             #connection keepalive config 
+  automaticReconnect: true                          #connection automatic reconnected when disconnected if true 
+
+```
+
 ## TO CONFIGURING THE NODES DATA ON APPLICATION 
 > CONFIGURE THE VALUES in  src/main/resources/application.yaml
 ```

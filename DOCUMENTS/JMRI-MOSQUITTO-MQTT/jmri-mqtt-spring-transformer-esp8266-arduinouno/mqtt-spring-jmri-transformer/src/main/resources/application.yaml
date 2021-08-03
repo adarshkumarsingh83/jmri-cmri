@@ -1,6 +1,6 @@
 server:
   servlet:
-    context-path: /amt
+    context-path: /amt    #context path for the rest services
   port: 8090
 
 # Custom property mqtt configuration
@@ -10,11 +10,13 @@ mqtt-properties:
   username: adarsh
   password: password
   topicSub: /trains/track/#
+  lightTopic: /trains/track/light/
+  turnoutTopic: /trains/track/turnout/
+  signalTopic: /trains/track/signalhead/
   topicPub: /amt/node/
   cleanSession: true
   connectionTimeout: 300
   keepAliveInterval: 60
-  # If this property is set to true, the connection will be automatically reconnected when disconnected
   automaticReconnect: true
 
 
