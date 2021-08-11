@@ -164,7 +164,7 @@ public class MQTTService {
 
 
     public String nodeWiseDataGenerated(String type, NodeConfigurations.Nodes node, Integer inputPin, String state) {
-        System.out.print(inputPin+":");
+        System.out.print(inputPin + ":");
         if (type.equals(TURNOUT)) {
             inputPin = (inputPin - node.getTurnoutStartAddress());
             inputPin = (inputPin * 2);

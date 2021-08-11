@@ -32,7 +32,7 @@ node:
         lightStartAddress: 10000
         lightCount: 10
         turnoutStartAddress: 20000
-        turnoutCount: 15
+        turnoutCount: 16
         signalStartAddress: 30000
         signalCount: 36
         turnoutBoardCount: 3
