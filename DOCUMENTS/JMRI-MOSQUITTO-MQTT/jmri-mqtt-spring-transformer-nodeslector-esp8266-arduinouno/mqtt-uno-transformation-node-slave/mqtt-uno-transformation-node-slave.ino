@@ -1,39 +1,71 @@
 #include "Config.h"
 
+
 void processCall(String message) {
-  Serial.println(message);
-  message.trim();
-  String number = message.substring(0, 4);
-  String value = message.substring(5);
 
-  //Serial.println(number + " - " + value);
+  Serial.println("Message " + message);
 
-  int id = atoi(number.c_str());
+  String idNumber = message.substring(0, 5);
+  int jmriId = atoi(idNumber.c_str());
+  if (jmriId >=  SIGNAL_START_ADDRESS) {
+    
+    String signalLight1 = message.substring(0, 14);
+    
+    //Serial.println("signalLight1 " + signalLight1);
 
-  if (id >= LIGHT_START_ADDRESS && id <= TURNOUT_START_ADDRESS) { //all the light are started with 1000 onwards to 1999 address on jmri
-    if (value == ON) {
-      Serial.println("Light Number " + number + "  " + value);
-    } else if (value == OFF) {
-      Serial.println("Light Number " + number + "  " + value);
-    }
+    String boardNumber = signalLight1.substring(7, 8);
+    String pinNumber = signalLight1.substring(10, 11);
+    String value = signalLight1.substring(12);
+    int boardId = atoi(boardNumber.c_str());
+    int pinId = atoi(pinNumber.c_str());
+    doExecute(jmriId, boardId, pinId, value);
 
-  } else if (id >= TURNOUT_START_ADDRESS && id < SIGNAL_START_ADDRESS) { //all the turnout are started with 2000 onwards to 2999 address on jmri
-    if (value == THROWN) {
-      Serial.println("Turnout Number " + number + "  " + value);
-    } else if (value == CLOSED) {
-      Serial.println("Turnout Number " + number + "  " + value);
-    }
+    String signalLight2 = message.substring(15, 29);
 
-  } else if (id >= SIGNAL_START_ADDRESS) { // all the signal are started with 3000 onwards address on jmri
-    if (value == THROWN) {
-      Serial.println("Signal Number " + number + " ON");
-    } else if (value == CLOSED) {
-      Serial.println("Signal Number " + number + " OFF");
-    }
+    //Serial.println("signalLight2 " + signalLight2);
+
+    idNumber = signalLight2.substring(0, 5);
+    jmriId = atoi(idNumber.c_str());
+    boardNumber = signalLight2.substring(7, 8);
+    pinNumber = signalLight2.substring(10, 11);
+    value = signalLight2.substring(12);
+    boardId = atoi(boardNumber.c_str());
+    pinId = atoi(pinNumber.c_str());
+    doExecute(jmriId, boardId, pinId, value);
+
+    String signalLight3 = message.substring(30);
+
+    //Serial.println("signalLight3 " + signalLight3);
+    
+    idNumber = signalLight3.substring(0, 5);
+    jmriId = atoi(idNumber.c_str());
+    boardNumber = signalLight3.substring(7, 8);
+    pinNumber = signalLight3.substring(10, 11);
+    value = signalLight3.substring(12);
+    boardId = atoi(boardNumber.c_str());
+    pinId = atoi(pinNumber.c_str());
+    doExecute(jmriId, boardId, pinId, value);
+
+  } else {
+    String boardNumber = message.substring(7, 8);
+    String pinNumber = message.substring(10, 11);
+    String value = message.substring(12);
+    int boardId = atoi(boardNumber.c_str());
+    int pinId = atoi(pinNumber.c_str());
+    doExecute(jmriId, boardId, pinId, value);
   }
 
 }
 
+void doExecute(int jmriId, int boardId, int pinId, String state) {
+  Serial.print("Number " );
+  Serial.print(jmriId );
+  Serial.print(" Board Number ");
+  Serial.print(boardId );
+  Serial.print(" Pin Number ");
+  Serial.print( pinId );
+  Serial.println(" Value " + state);
+}
 
 void setup() {
   Serial.begin(115200);

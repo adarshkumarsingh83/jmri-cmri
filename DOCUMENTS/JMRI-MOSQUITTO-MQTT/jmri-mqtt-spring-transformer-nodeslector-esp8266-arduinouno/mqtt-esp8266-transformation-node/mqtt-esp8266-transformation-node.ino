@@ -16,31 +16,8 @@ PubSubClient client(mqtt_server, 1883, wifiClient);
 void subscribeMqttMessage(char* topic, byte* payload, unsigned int length) {
 
   String mqttTopicValue = getMessage(payload, length);
-  String mqttTopic = String(topic);
-
-  //Serial.println();
-  //Serial.println("MQTT DATA::=> " + mqttTopic + " " + mqttTopicValue);
-  //Serial.println();
-
-  if (mqttTopic.startsWith(mqtt_topic_light)) {
-    String lightNumberVar = mqttTopic;
-    lightNumberVar.replace(mqtt_topic_light, "");
-    pushDataToSlave( lightNumberVar, mqttTopicValue);
-  } else if (mqttTopic.startsWith(mqtt_topic_turnout)) {
-    String numberVar = mqttTopic;
-    numberVar.replace(mqtt_topic_turnout, "");
-    pushDataToSlave( numberVar, mqttTopicValue);
-  } else if (mqttTopic.startsWith(mqtt_topic_signalhead)) {
-    String numberVar = mqttTopic;
-    numberVar.replace(mqtt_topic_signalhead, "");
-    pushDataToSlave( numberVar, mqttTopicValue);
-  }
-}
-
-void pushDataToSlave(String id, String value) {
-  value = value.substring(0, 2);
-  payload = id + ":" + value + "\n";
-  Serial.write(payload.c_str());
+  
+  Serial.write(mqttTopicValue.c_str());
 }
 
 /*
@@ -51,7 +28,7 @@ String getMessage(byte* message, unsigned int length) {
   for (int i = 0; i < length; i++) {
     messageText += (char)message[i];
   }
-  return messageText;
+  return messageText+"\n";
 }
 
 bool mqttConnect() {

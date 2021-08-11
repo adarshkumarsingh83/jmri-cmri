@@ -49,6 +49,7 @@ public class ApplicationTest {
         ApplicationTest applicationTest = new ApplicationTest();
         NodeConfigurations.Nodes node = new NodeConfigurations.Nodes();
         node.setTurnoutBoardCount(2);
+
         node.setTurnoutCount((node.getTurnoutBoardCount() * 16) / 2);
         node.setLightBoardCount(5);
         node.setSignalCount(30);
@@ -77,3 +78,4 @@ public class ApplicationTest {
         }
     }
 }
+

@@ -41,6 +41,7 @@ public class MqttProperties {
     private String lightTopic;
     private String turnoutTopic;
     private String signalTopic;
+    private String errorTopic;
     private Boolean cleanSession;
     private Integer connectionTimeout;
     private Integer keepAliveInterval;

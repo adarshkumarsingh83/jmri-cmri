@@ -29,6 +29,9 @@ amt.mqtt.transform.endpoints.enabled=true
 
 # storage cache capacity for the enpoints 
 amt.mqtt.transform.endpoints.store.size=50
+
+# to combine the output of the 3 aspect signal into one payload 
+amt.three.output.signal.joiner=true
 ```
 
 ### TO ACCESS THE MQTT DATA VIA END POINTS 
@@ -42,7 +45,7 @@ amt.mqtt.transform.endpoints.store.size=50
 amt.mqtt.transform.publish=true
 ```
 
-### TO CONFIGURE THE MQTT FOR THE APLICATION 
+### TO CONFIGURE THE MQTT FOR THE APPLICATION 
 ```
 # Custom property mqtt configuration
 mqtt-properties:
@@ -196,22 +199,23 @@ node:
         lightBoardCount: 8
 ```
 
+### To subscribe the mqtt application error topic 
+* $ mosquitto_sub -h localhost -u adarsh -P password -v -t '/amt/erros/#'
 
 ### To subscribe the mqtt topic where application will publish data after transformation  
 * $ mosquitto_sub -h localhost -u adarsh -P password -v -t '/amt/node/#'
 ```
-/amt/node/1/light/10001 10001:03:13:ON
-/amt/node/1/light/10001 10001:03:13:OF
+/amt/node/1/light/ 10001:05:04:ON
+/amt/node/1/light/ 10001:05:04:OF
+/amt/node/1/light/ 10002:05:05:ON
+/amt/node/1/light/ 10002:05:05:OF
 
-/amt/node/1/turnout/20001 20001:00:00:TH
-/amt/node/1/turnout/20001 20001:00:01:CL
+/amt/node/1/turnout/ 20001:00:00:TH
+/amt/node/1/turnout/ 20001:00:01:CL
 
-/amt/node/1/signal/30003 30003:02:00:ON
-/amt/node/1/signal/30002 30001:02:00:OF
-/amt/node/1/signal/30001 30001:02:00:OF
-
-/amt/node/1/signal/30003 30003:02:00:OF
-/amt/node/1/signal/30002 30001:02:00:OF
-/amt/node/1/signal/30001 30001:02:00:OF
+/amt/node/1/signal/ 30003:03:02:ON|30002:03:01:OF|30001:03:00:OF
+/amt/node/1/signal/ 30003:03:02:OF|30002:03:01:ON|30001:03:00:OF
+/amt/node/1/signal/ 30003:03:02:OF|30002:03:01:OF|30001:03:00:ON
+/amt/node/1/signal/ 30003:03:02:OF|30002:03:01:OF|30001:03:00:OF
 
 ```

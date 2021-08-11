@@ -30,6 +30,12 @@ const char* clientID = "JMRI_SUBSCRIBER_NODE_ESP8266_1";
 ```
 
 
+## To Open Two arduino sperate ide on mac 
+* $ open -n -a Arduino
+* -n = open new instance even when one is already running
+* -a xxx = open application xxx
+
+
 ### Connection details 
 
 ```

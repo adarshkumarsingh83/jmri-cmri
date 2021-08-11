@@ -13,7 +13,10 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /*
  * @author Adarsh
@@ -26,13 +29,13 @@ import java.util.Map;
 public class MQTTService {
 
     final public static Map<String, CircularQueue<String>> store = new HashMap<>();
+    final public static List<String> cache = new LinkedList<>();
     final public static String ON = "ON";
     final public static String OFF = "OF";
     final public static String TH = "TH";
     final public static String CL = "CL";
     final public static String LIGHT = "LIGHT";
     final public static String THROWN = "THROWN";
-    final public static String CLOSE = "CLOSE";
     final public static String SIGNAL = "SIGNAL";
     final public static String TURNOUT = "TURNOUT";
 
@@ -44,6 +47,9 @@ public class MQTTService {
 
     @Value("${amt.mqtt.transform.endpoints.store.size}")
     Integer storeSize;
+
+    @Value("${amt.three.output.signal.joiner}")
+    Boolean threeOutputSignalJoiner;
 
     @Autowired
     MqttClient mqttClient;
@@ -62,84 +68,115 @@ public class MQTTService {
     }
 
     public void transformData(String mqttTopic, String status) throws Exception {
-        if (!mqttTopic.isEmpty()) {
-            if (mqttTopic.startsWith(properties.getLightTopic())) {
-                Integer numberVar = Integer.parseInt(mqttTopic.replace(properties.getLightTopic(), ""));
-                //  to find out the node and then push the data to that topic
-                NodeConfigurations.Nodes node = this.getNode(LIGHT, numberVar);
+        try {
 
-                status = (status.equalsIgnoreCase(ON) ? ON : OFF);
-                status = this.nodeWiseDataGenerated(LIGHT, node, numberVar, status);
-                if (transformationPublish) {
-                    this.publish(properties.getTopicPub() + node.getNodeId() + "/light/" + numberVar, status, 1, false);
-                }
-                if (transformationEndpointsEnabled) {
-                    store.get(node.getNodeId()).enqueue(status);
-                }
+            if (!mqttTopic.isEmpty()) {
+                if (mqttTopic.startsWith(properties.getLightTopic())) {
+                    Integer jmriId = Integer.parseInt(mqttTopic.replace(properties.getLightTopic(), ""));
+                    //  to find out the node and then push the data to that topic
+                    NodeConfigurations.Nodes node = this.getNode(LIGHT, jmriId);
 
-            } else if (mqttTopic.startsWith(properties.getTurnoutTopic())) {
-                Integer numberVar = Integer.parseInt(mqttTopic.replace(properties.getTurnoutTopic(), ""));
-                if (numberVar >= nodeConfigurations.getTurnoutStartingAddress()
-                        && numberVar < nodeConfigurations.getSignalStartingAddress()) {
-                    //  to find out the node and then push the data to that node topic
-                    NodeConfigurations.Nodes node = this.getNode(TURNOUT, numberVar);
-                    status = (status.equalsIgnoreCase(THROWN) ? TH : CL);
-                    status = this.nodeWiseDataGenerated(TURNOUT, node, numberVar, status);
+                    status = (status.equalsIgnoreCase(ON) ? ON : OFF);
+                    status = this.nodeWiseDataGenerated(LIGHT, node, jmriId, status);
                     if (transformationPublish) {
-                        this.publish(properties.getTopicPub() + node.getNodeId() + "/turnout/" + numberVar, status, 1, false);
+                        this.publish(properties.getTopicPub() + node.getNodeId() + "/light/", jmriId + ":" + status, 1, false);
                     }
                     if (transformationEndpointsEnabled) {
-                        store.get(node.getNodeId()).enqueue(status);
+                        store.get(node.getNodeId()).enqueue(jmriId + ":" + status);
                     }
-                } else {
+
+                } else if (mqttTopic.startsWith(properties.getTurnoutTopic())) {
+                    Integer jmriId = Integer.parseInt(mqttTopic.replace(properties.getTurnoutTopic(), ""));
+                    if (jmriId >= nodeConfigurations.getTurnoutStartingAddress()
+                            && jmriId < nodeConfigurations.getSignalStartingAddress()) {
+                        //  to find out the node and then push the data to that node topic
+                        NodeConfigurations.Nodes node = this.getNode(TURNOUT, jmriId);
+                        status = (status.equalsIgnoreCase(THROWN) ? TH : CL);
+                        status = this.nodeWiseDataGenerated(TURNOUT, node, jmriId, status);
+                        if (transformationPublish) {
+                            this.publish(properties.getTopicPub() + node.getNodeId() + "/turnout/", jmriId + ":" + status, 1, false);
+                        }
+                        if (transformationEndpointsEnabled) {
+                            store.get(node.getNodeId()).enqueue(jmriId + ":" + status);
+                        }
+                    } else {
+                        //  to find out the node and then push the data to that node topic
+                        NodeConfigurations.Nodes node = this.getNode(SIGNAL, jmriId);
+                        status = (status.equalsIgnoreCase(THROWN) ? ON : OFF);
+                        status = this.nodeWiseDataGenerated(SIGNAL, node, jmriId, status);
+
+                        if (threeOutputSignalJoiner) {
+                            if (cache.size() < 3) {
+                                cache.add(jmriId + ":" + status);
+                            }
+                            if (cache.size() == 3) {
+                                String signalData = cache.stream().collect(Collectors.joining("|"));
+
+                                if (transformationPublish) {
+                                    this.publish(properties.getTopicPub() + node.getNodeId() + "/signal/", signalData, 1, false);
+                                }
+                                if (transformationEndpointsEnabled) {
+                                    store.get(node.getNodeId()).enqueue(signalData);
+                                }
+
+
+                                cache.clear();
+                            }
+                        } else {
+                            store.get(node.getNodeId()).enqueue(jmriId + ":" + status);
+                        }
+                    }
+                } else if (mqttTopic.startsWith(properties.getSignalTopic())) {
                     //  to find out the node and then push the data to that node topic
-                    NodeConfigurations.Nodes node = this.getNode(SIGNAL, numberVar);
-                    status = (status.equalsIgnoreCase(THROWN) ? ON : OFF);
-                    status = this.nodeWiseDataGenerated(SIGNAL, node, numberVar, status);
-                    if (transformationPublish) {
-                        this.publish(properties.getTopicPub() + node.getNodeId() + "/signal/" + numberVar, status, 1, false);
+                    Integer jmriId = Integer.parseInt(mqttTopic.replace(properties.getSignalTopic(), ""));
+                    NodeConfigurations.Nodes node = this.getNode(SIGNAL, jmriId);
+                    status = (status.equalsIgnoreCase(ON) ? ON : OFF);
+                    status = this.nodeWiseDataGenerated(SIGNAL, node, jmriId, status);
+                    if (threeOutputSignalJoiner) {
+                        if (cache.size() < 3) {
+                            cache.add(jmriId + ":" + status);
+                        }
+                        if (cache.size() == 3) {
+                            String signalData = cache.stream().collect(Collectors.joining("|"));
+                            if (transformationPublish) {
+                                this.publish(properties.getTopicPub() + node.getNodeId() + "/signal/", signalData, 1, false);
+                            }
+                            if (transformationEndpointsEnabled) {
+                                store.get(node.getNodeId()).enqueue(signalData);
+                            }
+                            cache.clear();
+                        }
+                    } else {
+                        store.get(node.getNodeId()).enqueue(jmriId + ":" + status);
                     }
-                    if (transformationEndpointsEnabled) {
-                        store.get(node.getNodeId()).enqueue(status);
-                    }
-                }
-            } else if (mqttTopic.startsWith(properties.getSignalTopic())) {
-                //  to find out the node and then push the data to that node topic
-                Integer numberVar = Integer.parseInt(mqttTopic.replace(properties.getSignalTopic(), ""));
-                NodeConfigurations.Nodes node = this.getNode(SIGNAL, numberVar);
-                status = (status.equalsIgnoreCase(ON) ? ON : OFF);
-                status = this.nodeWiseDataGenerated(SIGNAL, node, numberVar, status);
-                if (transformationPublish) {
-                    this.publish(properties.getTopicPub() + node.getNodeId() + "/signal/" + numberVar, status, 1, false);
-                }
-                if (transformationEndpointsEnabled) {
-                    store.get(node.getNodeId()).enqueue(status);
                 }
             }
+        } catch (Exception e) {
+            this.publish(properties.getErrorTopic(), mqttTopic + ":" + status, 1, false);
         }
     }
 
-    private NodeConfigurations.Nodes getNode(String type, Integer number) {
+    private NodeConfigurations.Nodes getNode(String type, Integer jmriId) {
         return nodeConfigurations.getNodes().stream().filter(e -> {
             if (type.equalsIgnoreCase(LIGHT)) {
                 if (e.getLightStartAddress() != null && e.getLightStartAddress() != 0
                         && e.getLightCount() != null && e.getLightCount() != 0) {
-                    return number >= e.getLightStartAddress()
-                            && number <= e.getLightStartAddress() + e.getLightCount() ? true : false;
+                    return jmriId >= e.getLightStartAddress()
+                            && jmriId <= e.getLightStartAddress() + e.getLightCount() ? true : false;
                 } else {
                     return false;
                 }
             } else if (type.equalsIgnoreCase(TURNOUT)) {
                 if (e.getTurnoutStartAddress() != null && e.getTurnoutStartAddress() != 0
                         && e.getTurnoutCount() != null && e.getTurnoutCount() != 0) {
-                    return number >= e.getTurnoutStartAddress() && number <= e.getTurnoutStartAddress() + e.getTurnoutCount() ? true : false;
+                    return jmriId >= e.getTurnoutStartAddress() && jmriId <= e.getTurnoutStartAddress() + e.getTurnoutCount() ? true : false;
                 } else {
                     return false;
                 }
             } else if (type.equalsIgnoreCase(SIGNAL)) {
                 if (e.getSignalStartAddress() != null && e.getSignalStartAddress() != 0
                         && e.getSignalCount() != null && e.getSignalCount() != 0) {
-                    return number >= e.getSignalStartAddress() && number <= e.getSignalStartAddress() + e.getSignalCount() ? true : false;
+                    return jmriId >= e.getSignalStartAddress() && jmriId <= e.getSignalStartAddress() + e.getSignalCount() ? true : false;
                 } else {
                     return false;
                 }
@@ -163,30 +200,31 @@ public class MQTTService {
     }
 
 
-    public String nodeWiseDataGenerated(String type, NodeConfigurations.Nodes node, Integer inputPin, String state) {
-        System.out.print(inputPin + ":");
+    public String nodeWiseDataGenerated(String type, NodeConfigurations.Nodes node, Integer jmriId, String state) {
+        System.out.print(jmriId + ":");
         if (type.equals(TURNOUT)) {
-            inputPin = (inputPin - node.getTurnoutStartAddress());
-            inputPin = (inputPin * 2);
+            jmriId = (jmriId - node.getTurnoutStartAddress());
+            jmriId = (jmriId * 2);
             if (state.equals(TH)) {
-                inputPin = inputPin - 1;
+                jmriId = jmriId - 1;
             }
-            // todo find board and pin for the turnout based on configuration
-            return this.findBoardPin(node, inputPin, state);
+            //  find board and pin for the turnout based on configuration
+            return this.findBoardPin(node, jmriId, state);
         } else if (type.equals(SIGNAL)) {
-            inputPin = (inputPin - node.getSignalStartAddress()) + (node.getTurnoutBoardCount() * 16);
-            // todo find board and pin for the signal based on configuration
-            return this.findBoardPin(node, inputPin, state);
+            jmriId = (jmriId - node.getSignalStartAddress()) + (node.getTurnoutBoardCount() * 16);
+            //  find board and pin for the signal based on configuration
+            return this.findBoardPin(node, jmriId, state);
         } else if (type.equals(LIGHT)) {
-            inputPin = (inputPin - node.getLightStartAddress()) + (node.getTurnoutBoardCount() * 16) + node.getSignalCount();
-            // todo find board and pin for the light based on configuration
-            return this.findBoardPin(node, inputPin, state);
+            jmriId = (jmriId - node.getLightStartAddress()) + (node.getTurnoutBoardCount() * 16) + node.getSignalCount();
+            //  find board and pin for the light based on configuration
+            return this.findBoardPin(node, jmriId, state);
         }
         return null;
     }
 
     public void publish(final String topic, final String payload, int qos, boolean retained)
             throws MqttException {
+        log.info("::=>  Topic {}  payload {}", topic, payload);
         MqttMessage mqttMessage = new MqttMessage();
         mqttMessage.setPayload(payload.getBytes());
         mqttMessage.setQos(qos);

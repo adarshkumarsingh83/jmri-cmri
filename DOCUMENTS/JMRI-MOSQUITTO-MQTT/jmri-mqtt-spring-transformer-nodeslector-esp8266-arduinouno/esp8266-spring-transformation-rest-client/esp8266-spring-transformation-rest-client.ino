@@ -29,7 +29,7 @@ void loop() {
       pushDataToSlave(serverResponse);
       delay(200);
     }
-    
+
   } else {
     Serial.println("WiFi Disconnected");
   }
@@ -60,7 +60,6 @@ String httpGETRequest(const char* serverName) {
 }
 
 void pushDataToSlave(String value) {
-  value = value.substring(2, value.length());
   value = value + "\n";
   Serial.write(value.c_str());
 }
