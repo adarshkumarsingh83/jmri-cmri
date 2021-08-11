@@ -1,4 +1,4 @@
-# JMRI MQTT DATA TRANSFORMER APPLICATION 
+# JMRI MQTT DATA TRANSFORMER NODE SELECTOR APPLICATION 
 
 > Jmri will push the data to the mqtt 
 > transformer application configured with nodes and its details like no of turnout, no of signals, no of light in the node
