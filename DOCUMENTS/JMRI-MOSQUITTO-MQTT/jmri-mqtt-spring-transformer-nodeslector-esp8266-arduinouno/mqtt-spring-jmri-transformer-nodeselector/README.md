@@ -24,14 +24,19 @@
 ## TO ENABLE JMRI MQTT DATA ENDPOINTS 
 > ENABLE THE PROPERTIES in  src/main/resources/application.properties
 ```
-# for enabling the endpoints data 
-amt.mqtt.transform.endpoints.enabled=true
-
-# storage cache capacity for the enpoints 
+## TO ENABLE THE REST API ENDPOINT FOR SERVING DATA  
+amt.mqtt.transform.endpoints.enabled=false
+## REST API ENDPOINT CACHE SIZE 
 amt.mqtt.transform.endpoints.store.size=50
 
-# to combine the output of the 3 aspect signal into one payload 
-amt.three.output.signal.joiner=true
+
+### ENABLE EITHER OF ONE OUTPUT TYPE 
+### TRIPLE OUTPUT SIGNAL OUTPUT
+#amt.output.signal.joiner=3
+### DUAL OUTPUT SIGNAL OUTPUT
+# amt.output.signal.joiner=2
+### SIGNAL OUTPUT SIGNAL OUTPUT
+amt.output.signal.joiner=1
 ```
 
 ### TO ACCESS THE MQTT DATA VIA END POINTS 

@@ -1,10 +1,20 @@
 #include "Config.h"
 #include "Pca9685BoardManager.h"
 
+String light;
+String jId ;
+String bId ;
+String pId ;
+String val;
+int jmriId ;
+int boardId ;
+int pinId ;
+
 Pca9685BoardManager pcaBoardManager;
 
 void setup() {
   Serial.begin(115200);
+  Serial.flush();
   pcaBoardManager.initPca9685Boards();
 }
 
@@ -19,84 +29,75 @@ void loop() {
   delay(200);
 }
 
-
-void processCall(String message) {
-
-  Serial.println("Message " + message);
-  char type = message.charAt(0);
+void displayData(String message) {
+  Serial.println("Orignal Message  " + message);
   message = message.substring(2);
+  Serial.println("Message After type removal  " + message);
+
+  String light1 = message.substring(0, 14);
+  message = message.substring(15);
+  Serial.println("Message 1 " + light1);
+
+  if (message.length() >= 14) {
+    String light2 = message.substring(0, 14);
+    message = message.substring(15);
+    Serial.println("Message 2 " + light2);
+
+    if (message.length() >= 14) {
+      String light3 = message.substring(0, 14);
+      message = message.substring(15);
+      Serial.println("Message 3 " + light3);
+    }
+  }
+}
+
+
+void processCall(String msg) {
+
+  Serial.println("Message " + msg);
+  char type = msg.charAt(0);
+  msg = msg.substring(2);
 
   if (type == S) {
-    String idNumber = message.substring(0, 5);
-    int jmriId = atoi(idNumber.c_str());
-    String signalLight1 = message.substring(0, 14);
-    String boardNumber = signalLight1.substring(7, 8);
-    String pinNumber = signalLight1.substring(10, 11);
-    String value = signalLight1.substring(12, 14);
-    int boardId = atoi(boardNumber.c_str());
-    int pinId = atoi(pinNumber.c_str());
-    //Serial.println("signalLight1 " + signalLight1);
-    //doExecute(jmriId, boardId, pinId, value);
 
-    if (value == ON) {
-      pcaBoardManager.switchOn(boardId, pinId);
-    } else {
-      pcaBoardManager.switchOff( boardId, pinId);
+    doExecute(msg);
+    msg = msg.substring(15);
+
+    if (msg.length() >= 14) {
+
+      doExecute(msg);
+      msg = msg.substring(15);
+
+      if (msg.length() >= 14) {
+
+        doExecute(msg);
+      }
     }
-
-    String signalLight2 = message.substring(15, 29);
-    idNumber = signalLight2.substring(0, 5);
-    jmriId = atoi(idNumber.c_str());
-    boardNumber = signalLight2.substring(7, 8);
-    pinNumber = signalLight2.substring(10, 11);
-    value = signalLight2.substring(12, 14);
-    boardId = atoi(boardNumber.c_str());
-    pinId = atoi(pinNumber.c_str());
-    //Serial.println("signalLight2 " + signalLight2);
-    //doExecute(jmriId, boardId, pinId, value);
-
-    if (value == ON) {
-      pcaBoardManager.switchOn(boardId, pinId);
-    } else {
-      pcaBoardManager.switchOff( boardId, pinId);
-    }
-
-
-    String signalLight3 = message.substring(30);
-    idNumber = signalLight3.substring(0, 5);
-    jmriId = atoi(idNumber.c_str());
-    boardNumber = signalLight3.substring(7, 8);
-    pinNumber = signalLight3.substring(10, 11);
-    value = signalLight3.substring(12, 14);
-    boardId = atoi(boardNumber.c_str());
-    pinId = atoi(pinNumber.c_str());
-    //Serial.println("signalLight3 " + signalLight3);
-    //doExecute(jmriId, boardId, pinId, value);
-
-    if (value == ON) {
-      pcaBoardManager.switchOn(boardId, pinId);
-    } else {
-      pcaBoardManager.switchOff( boardId, pinId);
-    }
-
   } else {
-    String idNumber = message.substring(0, 5);
-    int jmriId = atoi(idNumber.c_str());
-    String boardNumber = message.substring(7, 8);
-    String pinNumber = message.substring(10, 11);
-    String value = message.substring(12, 14);
-    int boardId = atoi(boardNumber.c_str());
-    int pinId = atoi(pinNumber.c_str());
-    doExecute(jmriId, boardId, pinId, value);
+
+    jId = msg.substring(0, 5);
+    bId = msg.substring(6, 8);
+    pId = msg.substring(9, 11);
+    val = msg.substring(12, 14);
+
+    jmriId = atoi(jId.c_str());
+    boardId = atoi(bId.c_str());
+    pinId = atoi(pId.c_str());
+
+    Serial.println("boardNumber " + bId);
+    Serial.println("pinNumber " + pId);
+    Serial.println("value " + val);
+
+    doPrint(msg, jmriId, boardId, pinId, val);
 
     if (type == T ) {
-      if (value == THROWN) {
+      if (val == THROWN) {
         pcaBoardManager.switchThrow(boardId, pinId);
       } else {
         pcaBoardManager.switchClose( boardId, pinId);
       }
     } else if ( type == L) {
-      if (value == ON) {
+      if (val == ON) {
         pcaBoardManager.switchOn(boardId, pinId);
       } else {
         pcaBoardManager.switchOff( boardId, pinId);
@@ -105,7 +106,34 @@ void processCall(String message) {
   }
 }
 
-void doExecute(int jmriId, int boardId, int pinId, String state) {
+void doExecute(String msg) {
+  light = msg.substring(0, 14);
+  jId = light.substring(0, 5);
+  bId = light.substring(6, 8);
+  pId = light.substring(9, 11);
+  val = light.substring(12, 14);
+
+  jmriId = atoi(jId.c_str());
+  boardId = atoi(bId.c_str());
+  pinId = atoi(pId.c_str());
+
+  Serial.println("boardNumber " + bId);
+  Serial.println("pinNumber " + pId);
+  Serial.println("value " + val);
+
+
+  //doPrint(light,jmriId, boardId, pinId, val);
+
+  if (val == ON) {
+    pcaBoardManager.switchOn(boardId, pinId);
+  } else {
+    pcaBoardManager.switchOff( boardId, pinId);
+  }
+
+}
+
+void doPrint(String input, int jmriId, int boardId, int pinId, String state) {
+  Serial.println("Input " + input);
   Serial.print("Number " );
   Serial.print(jmriId );
   Serial.print(" Board Number ");
