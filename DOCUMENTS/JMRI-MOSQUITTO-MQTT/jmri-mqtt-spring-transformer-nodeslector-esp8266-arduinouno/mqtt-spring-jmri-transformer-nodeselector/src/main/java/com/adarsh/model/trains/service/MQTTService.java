@@ -79,10 +79,10 @@ public class MQTTService {
                     status = (status.equalsIgnoreCase(ON) ? ON : OFF);
                     status = this.nodeWiseDataGenerated(LIGHT, node, jmriId, status);
                     if (transformationPublish) {
-                        this.publish(properties.getTopicPub() + node.getNodeId() + "/light/", jmriId + ":" + status, 1, false);
+                        this.publish(properties.getTopicPub() + node.getNodeId() + "/light/", "L:"+jmriId + ":" + status, 1, false);
                     }
                     if (transformationEndpointsEnabled) {
-                        store.get(node.getNodeId()).enqueue(jmriId + ":" + status);
+                        store.get(node.getNodeId()).enqueue("L:"+jmriId + ":" + status);
                     }
 
                 } else if (mqttTopic.startsWith(properties.getTurnoutTopic())) {
@@ -94,10 +94,10 @@ public class MQTTService {
                         status = (status.equalsIgnoreCase(THROWN) ? TH : CL);
                         status = this.nodeWiseDataGenerated(TURNOUT, node, jmriId, status);
                         if (transformationPublish) {
-                            this.publish(properties.getTopicPub() + node.getNodeId() + "/turnout/", jmriId + ":" + status, 1, false);
+                            this.publish(properties.getTopicPub() + node.getNodeId() + "/turnout/", "T:"+jmriId + ":" + status, 1, false);
                         }
                         if (transformationEndpointsEnabled) {
-                            store.get(node.getNodeId()).enqueue(jmriId + ":" + status);
+                            store.get(node.getNodeId()).enqueue("T:"+jmriId + ":" + status);
                         }
                     } else {
                         //  to find out the node and then push the data to that node topic
@@ -113,17 +113,15 @@ public class MQTTService {
                                 String signalData = cache.stream().collect(Collectors.joining("|"));
 
                                 if (transformationPublish) {
-                                    this.publish(properties.getTopicPub() + node.getNodeId() + "/signal/", signalData, 1, false);
+                                    this.publish(properties.getTopicPub() + node.getNodeId() + "/signal/", "S:"+signalData, 1, false);
                                 }
                                 if (transformationEndpointsEnabled) {
-                                    store.get(node.getNodeId()).enqueue(signalData);
+                                    store.get(node.getNodeId()).enqueue("S:"+signalData);
                                 }
-
-
                                 cache.clear();
                             }
                         } else {
-                            store.get(node.getNodeId()).enqueue(jmriId + ":" + status);
+                            store.get(node.getNodeId()).enqueue("S:"+jmriId + ":" + status);
                         }
                     }
                 } else if (mqttTopic.startsWith(properties.getSignalTopic())) {
@@ -139,15 +137,15 @@ public class MQTTService {
                         if (cache.size() == 3) {
                             String signalData = cache.stream().collect(Collectors.joining("|"));
                             if (transformationPublish) {
-                                this.publish(properties.getTopicPub() + node.getNodeId() + "/signal/", signalData, 1, false);
+                                this.publish(properties.getTopicPub() + node.getNodeId() + "/signal/", "S:"+signalData, 1, false);
                             }
                             if (transformationEndpointsEnabled) {
-                                store.get(node.getNodeId()).enqueue(signalData);
+                                store.get(node.getNodeId()).enqueue("S:"+signalData);
                             }
                             cache.clear();
                         }
                     } else {
-                        store.get(node.getNodeId()).enqueue(jmriId + ":" + status);
+                        store.get(node.getNodeId()).enqueue("S:"+jmriId + ":" + status);
                     }
                 }
             }

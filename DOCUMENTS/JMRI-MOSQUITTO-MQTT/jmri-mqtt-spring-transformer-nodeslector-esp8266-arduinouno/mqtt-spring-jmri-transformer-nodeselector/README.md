@@ -205,17 +205,17 @@ node:
 ### To subscribe the mqtt topic where application will publish data after transformation  
 * $ mosquitto_sub -h localhost -u adarsh -P password -v -t '/amt/node/#'
 ```
-/amt/node/1/light/ 10001:05:04:ON
-/amt/node/1/light/ 10001:05:04:OF
-/amt/node/1/light/ 10002:05:05:ON
-/amt/node/1/light/ 10002:05:05:OF
+/amt/node/1/light/ L:10001:05:04:ON
+/amt/node/1/light/ L:10001:05:04:OF
+/amt/node/1/light/ L:10002:05:05:ON
+/amt/node/1/light/ L:10002:05:05:OF
 
-/amt/node/1/turnout/ 20001:00:00:TH
-/amt/node/1/turnout/ 20001:00:01:CL
+/amt/node/1/turnout/ T:20001:00:00:TH
+/amt/node/1/turnout/ T:20001:00:01:CL
 
-/amt/node/1/signal/ 30003:03:02:ON|30002:03:01:OF|30001:03:00:OF
-/amt/node/1/signal/ 30003:03:02:OF|30002:03:01:ON|30001:03:00:OF
-/amt/node/1/signal/ 30003:03:02:OF|30002:03:01:OF|30001:03:00:ON
-/amt/node/1/signal/ 30003:03:02:OF|30002:03:01:OF|30001:03:00:OF
+/amt/node/1/signal/ S:30003:03:02:ON|30002:03:01:OF|30001:03:00:OF
+/amt/node/1/signal/ S:30003:03:02:OF|30002:03:01:ON|30001:03:00:OF
+/amt/node/1/signal/ S:30003:03:02:OF|30002:03:01:OF|30001:03:00:ON
+/amt/node/1/signal/ S:30003:03:02:OF|30002:03:01:OF|30001:03:00:OF
 
 ```
