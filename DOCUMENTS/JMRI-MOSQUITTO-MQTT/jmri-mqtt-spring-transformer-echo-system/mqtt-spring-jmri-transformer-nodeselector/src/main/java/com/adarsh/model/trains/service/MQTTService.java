@@ -31,19 +31,20 @@ public class MQTTService {
     final public static Map<String, CircularQueue<String>> store = new HashMap<>();
     final public static List<String> cache2 = new LinkedList<>();
     final public static List<String> cache3 = new LinkedList<>();
+    final public static String EMPTY = "";
+    final public static String COLLEN = ":";
+    final public static String CONNECTION = "|";
+    final public static String ZERO = "0";
+    final public static String LIGHT_PREFIX = "L:";
+    final public static String TURNOUT_PREFIX = "T:";
+    final public static String SIGNAL_PREFIX = "S:";
     final public static String ON = "ON";
     final public static String OFF = "OF";
     final public static String TH = "TH";
     final public static String CL = "CL";
-    final public static String LIGHT = "LIGHT";
-    final public static String LIGHT_PREFIX = "L:";
-    final public static String TURNOUT_PREFIX = "T:";
-    final public static String SIGNAL_PREFIX = "S:";
-    final public static String COLLEN = ":";
-    final public static String CONNECTION = "|";
-    final public static String ZERO = "0";
     final public static String THROWN = "THROWN";
     final public static String CLOSED = "CLOSED";
+    final public static String LIGHT = "LIGHT";
     final public static String SIGNAL = "SIGNAL";
     final public static String TURNOUT = "TURNOUT";
 
@@ -62,18 +63,22 @@ public class MQTTService {
 
     @PostConstruct
     public void init() {
-        nodeConfigurations.getNodes().stream().forEach(node -> {
-            store.put(node.getNodeId(), new CircularQueue<String>(node.getApiEndpointCacheSize()));
-        });
+        if (transformationEndpointsEnabled) {
+            nodeConfigurations.getNodes().stream().forEach(node -> {
+                log.debug("Api Endpoint Cache Enabled node= {} with size={} ", node.getNodeId(), node.getApiEndpointCacheSize());
+                store.put(node.getNodeId(), new CircularQueue<String>(node.getApiEndpointCacheSize()));
+            });
+        }
     }
 
     public void transformData(String mqttTopic, String jmriState) throws Exception {
+        log.debug("Mqtt transformData mqttTopic= {} with jmriState={} ", mqttTopic, jmriState);
         try {
             if (!mqttTopic.isEmpty()) {
                 if (mqttTopic.startsWith(properties.getLightTopic())) {
                     this.processLight(mqttTopic, jmriState);
                 } else if (mqttTopic.startsWith(properties.getTurnoutTopic())) {
-                    Integer jmriId = Integer.parseInt(mqttTopic.replace(properties.getTurnoutTopic(), ""));
+                    Integer jmriId = Integer.parseInt(mqttTopic.replace(properties.getTurnoutTopic(), EMPTY));
                     if (jmriId >= nodeConfigurations.getTurnoutStartingAddress()
                             && jmriId < nodeConfigurations.getSignal2LStartingAddress()) {
                         this.processTurnout(jmriId, jmriState);
@@ -81,17 +86,18 @@ public class MQTTService {
                         this.processSignal(jmriId, jmriState);
                     }
                 } else if (mqttTopic.startsWith(properties.getSignalTopic())) {
-                    Integer jmriId = Integer.parseInt(mqttTopic.replace(properties.getSignalTopic(), ""));
+                    Integer jmriId = Integer.parseInt(mqttTopic.replace(properties.getSignalTopic(), EMPTY));
                     this.processSignal(jmriId, jmriState);
                 }
             }
         } catch (Exception e) {
             this.publish(properties.getErrorTopic(), mqttTopic + COLLEN + jmriState, 1, false);
-            log.error("Exception {}", e);
+            log.error("Exception while data transformation  mqttTopic= {} with jmriState={} exception={}", mqttTopic, jmriState, e);
         }
     }
 
     private void processSignal(Integer jmriId, String jmriState) throws Exception {
+        log.debug("processSignal jmriId= {} with jmriState={} ", jmriId, jmriState);
         //  to find out the node and then push the data to that node topic
         NodeConfigurations.Nodes node = this.getNode(SIGNAL, jmriId);
 
@@ -104,7 +110,7 @@ public class MQTTService {
             jmriState = this.nodeWiseDataGenerated(SIGNAL, node, jmriId, jmriState);
             if (jmriId >= node.getSignal3LStartAddress()) {
                 if (cache3.size() < 3) {
-                    cache3.add(jmriId + ":" + jmriState);
+                    cache3.add(jmriId + COLLEN + jmriState);
                 }
                 if (cache3.size() == 3) {
 
@@ -137,11 +143,12 @@ public class MQTTService {
                 }
             }
         } else {
-            log.info("Node not found for jmriId {} jmriState {}", jmriId, jmriState);
+            log.info("Node not found for Signal jmriId= {} jmriState {}", jmriId, jmriState);
         }
     }
 
     private void processTurnout(Integer jmriId, String jmriState) throws Exception {
+        log.debug("processTurnout jmriId= {} with jmriState={} ", jmriId, jmriState);
         //  to find out the node and then push the data to that node topic
         NodeConfigurations.Nodes node = this.getNode(TURNOUT, jmriId);
         if (node != null) {
@@ -152,12 +159,13 @@ public class MQTTService {
                 store.get(node.getNodeId()).enqueue(TURNOUT_PREFIX + jmriId + COLLEN + jmriState);
             }
         } else {
-            log.info("Node not found for jmriId {} jmriState {}", jmriId, jmriState);
+            log.info("Node not found for Turnout jmriId= {} jmriState {}", jmriId, jmriState);
         }
     }
 
     private void processLight(String mqttTopic, String jmriState) throws Exception {
         Integer jmriId = Integer.parseInt(mqttTopic.replace(properties.getLightTopic(), ""));
+        log.debug("processLight jmriId= {} with jmriState={} ", jmriId, jmriState);
         //  to find out the node and then push the data to that topic
         NodeConfigurations.Nodes node = this.getNode(LIGHT, jmriId);
         if (node != null) {
@@ -168,7 +176,7 @@ public class MQTTService {
                 store.get(node.getNodeId()).enqueue(LIGHT_PREFIX + jmriId + COLLEN + jmriState);
             }
         } else {
-            log.info("Node not found for mqttTopic {} jmriState {}", mqttTopic, jmriState);
+            log.info("Node not found for Light jmriId= {} jmriState {}", jmriId, jmriState);
         }
     }
 
@@ -248,7 +256,7 @@ public class MQTTService {
 
     public void publish(final String topic, final String payload, int qos, boolean retained)
             throws MqttException {
-        log.info("::=>  Topic {}  payload {}", topic, payload);
+        log.debug("Publishing to Mqtt after transformation  Topic={}  payload={}", topic, payload);
         MqttMessage mqttMessage = new MqttMessage();
         mqttMessage.setPayload(payload.getBytes());
         mqttMessage.setQos(qos);

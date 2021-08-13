@@ -36,11 +36,11 @@ node:
         turnoutStartAddress: 10000
         turnoutCount: 16                 # 2 pins for each turnout (16 * 2) /16 => 16
         signal2LStartAddress: 20000
-        signal2LCount: 32                # 2 pins for each signals (16 * 2) => 32
+        signal2LCount: 64                # 2 pins for each signals light  total 16 turnout and every turnout has 2 splitter track (16 * 2 * 2) => 64
         signal3LStartAddress: 30000
         signal3LCount: 30                # 3 pins for each signals (10 * 3) => 30
         turnoutBoardCount: 2             # (turnoutCount * 2)/16 :=>  (16 * 2) / 16 => 2
-        lightBoardCount: 5               # (lightCount + signal2LCount + signal3LCount) /16 :=>  (5+32+30)/16 =>  5
+        lightBoardCount: 9               # (lightCount + signal2LCount + signal3LCount) /16 :=>  (5+32+30)/16 =>  5
         lightPublishTopic: /amt/node/1/light/
         turnoutPublishTopic: /amt/node/1/turnout/
         signalPublishTopic: /amt/node/1/signal/
@@ -50,12 +50,12 @@ node:
         lightStartAddress: 1100
         lightCount: 5
         turnoutStartAddress: 10100
-        turnoutCount: 48
+        turnoutCount: 15
         signal2LStartAddress: 20100
-        signal2LCount: 81
+        signal2LCount: 60
         signal3LStartAddress: 30100
-        signal3LCount: 81
-        turnoutBoardCount: 6
+        signal3LCount: 30
+        turnoutBoardCount: 2
         lightBoardCount: 7
         lightPublishTopic: /amt/node/2/light/
         turnoutPublishTopic: /amt/node/2/turnout/

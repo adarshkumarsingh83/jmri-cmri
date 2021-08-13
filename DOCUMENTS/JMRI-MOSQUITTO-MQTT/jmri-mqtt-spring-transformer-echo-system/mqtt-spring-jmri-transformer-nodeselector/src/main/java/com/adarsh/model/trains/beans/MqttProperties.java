@@ -37,7 +37,6 @@ public class MqttProperties {
     @NotBlank(message = "mqtt jmri subscribe topic is mandatory properties in configuration ")
     @NotNull(message = "mqtt jmri subscribe topic is mandatory properties in configuration ")
     private String topicSub;
-    private String topicPub;
     private String lightTopic;
     private String turnoutTopic;
     private String signalTopic;

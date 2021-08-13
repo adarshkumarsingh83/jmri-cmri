@@ -29,12 +29,12 @@ public class MQTTMessageHandler implements MessageHandler {
         try {
             String topic = message.getHeaders().get(TOPIC_HEADER_NAME) + "";
             String data = message.getPayload().toString();
-            log.info("TOPIC " + topic + " Received Message: " + data);
+            log.info("Message Received on Mqtt topic={} with Data={} ", topic, data);
             // implementation to put back to the proper topic back in mqtt
-            mqttService.transformData(topic, data);
+            this.mqttService.transformData(topic, data);
 
         } catch (Exception e) {
-            log.error(e.getMessage());
+            log.error("Exception while handle message in Mqtt Handler ", e.getMessage());
         }
     }
 }
