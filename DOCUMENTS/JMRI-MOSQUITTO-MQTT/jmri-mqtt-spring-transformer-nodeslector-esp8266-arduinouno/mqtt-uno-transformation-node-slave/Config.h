@@ -1,3 +1,9 @@
+/*
+   Adarsh Model Trains
+   Developed by Adarsh kumar
+   Support adarshkumarsingh83@gmail.com
+*/
+
 #ifndef Config_h
 #define Config_h
 #include "Arduino.h"
@@ -10,10 +16,11 @@
 #define CLOSED "CL"
 #define ON "ON"
 #define OFF "OF"
+#define MSG_SIZE  14
 
 /*----------------------------------------------------------------------------------*/
-// MUST BE EQUAL TO THE CONFIGURATION DEFINED IN SPRING  
-// APPLICATION NODE DEFINATION THEN ONLY THIS WILL WORK 
+// MUST BE EQUAL TO THE CONFIGURATION DEFINED IN SPRING
+// APPLICATION NODE DEFINATION THEN ONLY THIS WILL WORK
 
 #define LIGHT_START_ADDRESS 10000
 #define LIGHT_COUNTS 10

@@ -1,3 +1,9 @@
+/*
+   Adarsh Model Trains
+   Developed by Adarsh kumar
+   Support adarshkumarsingh83@gmail.com
+*/
+
 #include "Config.h"
 #include "Pca9685BoardManager.h"
 
@@ -29,28 +35,6 @@ void loop() {
   delay(200);
 }
 
-void displayData(String message) {
-  Serial.println("Orignal Message  " + message);
-  message = message.substring(2);
-  Serial.println("Message After type removal  " + message);
-
-  String light1 = message.substring(0, 14);
-  message = message.substring(15);
-  Serial.println("Message 1 " + light1);
-
-  if (message.length() >= 14) {
-    String light2 = message.substring(0, 14);
-    message = message.substring(15);
-    Serial.println("Message 2 " + light2);
-
-    if (message.length() >= 14) {
-      String light3 = message.substring(0, 14);
-      message = message.substring(15);
-      Serial.println("Message 3 " + light3);
-    }
-  }
-}
-
 
 void processCall(String msg) {
 
@@ -60,54 +44,37 @@ void processCall(String msg) {
 
   if (type == S) {
 
-    doExecute(msg);
+    doExecute(msg, S);
     msg = msg.substring(15);
 
-    if (msg.length() >= 14) {
+    if (msg.length() >= MSG_SIZE) {
 
-      doExecute(msg);
+      doExecute(msg, S);
       msg = msg.substring(15);
 
-      if (msg.length() >= 14) {
+      if (msg.length() >= MSG_SIZE) {
 
-        doExecute(msg);
+        doExecute(msg, S);
+
       }
     }
-  } else {
+  } else if (type == T) {
 
-    jId = msg.substring(0, 5);
-    bId = msg.substring(6, 8);
-    pId = msg.substring(9, 11);
-    val = msg.substring(12, 14);
+    doExecute(msg, T);
 
-    jmriId = atoi(jId.c_str());
-    boardId = atoi(bId.c_str());
-    pinId = atoi(pId.c_str());
+  } else if (type == L) {
 
-    doPrint(light, jId, bId, pId, val);
+    doExecute(msg, L);
 
-    if (type == T ) {
-      if (val == THROWN) {
-        pcaBoardManager.switchThrow(boardId, pinId);
-      } else {
-        pcaBoardManager.switchClose( boardId, pinId);
-      }
-    } else if ( type == L) {
-      if (val == ON) {
-        pcaBoardManager.switchOn(boardId, pinId);
-      } else {
-        pcaBoardManager.switchOff( boardId, pinId);
-      }
-    }
   }
 }
 
-void doExecute(String msg) {
-  light = msg.substring(0, 14);
+void doExecute(String msg , char type) {
+  light = msg.substring(0, MSG_SIZE);
   jId = light.substring(0, 5);
   bId = light.substring(6, 8);
   pId = light.substring(9, 11);
-  val = light.substring(12, 14);
+  val = light.substring(12, MSG_SIZE);
 
   jmriId = atoi(jId.c_str());
   boardId = atoi(bId.c_str());
@@ -115,10 +82,18 @@ void doExecute(String msg) {
 
   doPrint(light, jId, bId, pId, val);
 
-  if (val == ON) {
-    pcaBoardManager.switchOn(boardId, pinId);
-  } else {
-    pcaBoardManager.switchOff( boardId, pinId);
+  if (type == T ) {
+    if (val == THROWN) {
+      pcaBoardManager.switchThrow(boardId, pinId);
+    } else {
+      pcaBoardManager.switchClose( boardId, pinId);
+    }
+  } else if ( type == L || type == S) {
+    if (val == ON) {
+      pcaBoardManager.switchOn(boardId, pinId);
+    } else {
+      pcaBoardManager.switchOff( boardId, pinId);
+    }
   }
 
 }
