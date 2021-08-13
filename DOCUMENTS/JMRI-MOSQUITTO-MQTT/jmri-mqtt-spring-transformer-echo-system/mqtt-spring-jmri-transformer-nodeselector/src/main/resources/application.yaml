@@ -67,9 +67,9 @@ node:
         turnoutStartAddress: 10200
         turnoutCount: 15
         signal2LStartAddress: 20200
-        signal2LCount: 30
+        signal2LCount: 60
         signal3LStartAddress: 30200
-        signal3LCount: 13
+        signal3LCount: 18
         turnoutBoardCount: 2
         lightBoardCount: 6
         lightPublishTopic: /amt/node/3/light/
