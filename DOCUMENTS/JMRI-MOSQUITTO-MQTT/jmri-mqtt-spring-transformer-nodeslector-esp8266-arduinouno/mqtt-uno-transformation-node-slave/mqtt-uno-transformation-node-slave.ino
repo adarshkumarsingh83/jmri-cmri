@@ -84,11 +84,7 @@ void processCall(String msg) {
     boardId = atoi(bId.c_str());
     pinId = atoi(pId.c_str());
 
-    Serial.println("boardNumber " + bId);
-    Serial.println("pinNumber " + pId);
-    Serial.println("value " + val);
-
-    doPrint(msg, jmriId, boardId, pinId, val);
+    doPrint(light, jId, bId, pId, val);
 
     if (type == T ) {
       if (val == THROWN) {
@@ -117,12 +113,7 @@ void doExecute(String msg) {
   boardId = atoi(bId.c_str());
   pinId = atoi(pId.c_str());
 
-  Serial.println("boardNumber " + bId);
-  Serial.println("pinNumber " + pId);
-  Serial.println("value " + val);
-
-
-  //doPrint(light,jmriId, boardId, pinId, val);
+  doPrint(light, jId, bId, pId, val);
 
   if (val == ON) {
     pcaBoardManager.switchOn(boardId, pinId);
@@ -132,13 +123,6 @@ void doExecute(String msg) {
 
 }
 
-void doPrint(String input, int jmriId, int boardId, int pinId, String state) {
-  Serial.println("Input " + input);
-  Serial.print("Number " );
-  Serial.print(jmriId );
-  Serial.print(" Board Number ");
-  Serial.print(boardId );
-  Serial.print(" Pin Number ");
-  Serial.print( pinId );
-  Serial.println(" Value " + state);
+void doPrint(String input, String jmriId, String boardId, String pinId, String state) {
+  Serial.println("Input " + input + " Number " + jmriId + " Board Number " + boardId + " Pin Number " + pinId + " Value " + state);
 }
