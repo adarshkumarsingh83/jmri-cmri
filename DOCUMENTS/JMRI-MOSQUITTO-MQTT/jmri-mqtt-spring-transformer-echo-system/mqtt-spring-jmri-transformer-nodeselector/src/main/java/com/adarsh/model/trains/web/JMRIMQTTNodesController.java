@@ -12,6 +12,9 @@ import javax.validation.Valid;
 @RestController
 public class JMRIMQTTNodesController {
 
+    private static final String PROCESSED_FAILED = "PROCESSED-FAILED";
+    private static final String PROCESSED_SUCCESS = "PROCESSED-SUCCESS";
+
     @Autowired
     MQTTService mqttService;
 
@@ -25,9 +28,9 @@ public class JMRIMQTTNodesController {
     public String postNodeData(@PathVariable("nodeId") String nodeId, @Valid @RequestBody RequestBean data) throws Exception {
         try {
             this.mqttService.publish(data.getTopic(), data.getData(), 1, false);
-        }catch (Exception e){
-            return "PROCESSED-FAILED";
+        } catch (Exception e) {
+            return PROCESSED_FAILED;
         }
-        return "PROCESSED-SUCCESS";
+        return PROCESSED_SUCCESS;
     }
 }
