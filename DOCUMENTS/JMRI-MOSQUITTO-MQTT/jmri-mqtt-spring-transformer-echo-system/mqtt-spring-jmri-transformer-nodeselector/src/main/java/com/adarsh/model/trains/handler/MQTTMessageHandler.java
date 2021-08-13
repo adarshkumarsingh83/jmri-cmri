@@ -20,7 +20,6 @@ public class MQTTMessageHandler implements MessageHandler {
 
     private final static String TOPIC_HEADER_NAME = "mqtt_receivedTopic";
 
-
     @Autowired
     MQTTService mqttService;
 

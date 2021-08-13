@@ -14,7 +14,6 @@ mqtt-properties:
   turnoutTopic: /trains/track/turnout/
   signalTopic: /trains/track/signalhead/
   errorTopic: /amt/erros/
-  topicPub: /amt/node/
   cleanSession: true
   connectionTimeout: 300
   keepAliveInterval: 60
