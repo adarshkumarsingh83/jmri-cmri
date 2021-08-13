@@ -17,7 +17,8 @@
 #define ON "ON"
 #define OFF "OF"
 #define MSG_SIZE  14
-
+#define BROAD_RATE 115200
+#define DELAY_TIME 200
 /*----------------------------------------------------------------------------------*/
 // MUST BE EQUAL TO THE CONFIGURATION DEFINED IN SPRING
 // APPLICATION NODE DEFINATION THEN ONLY THIS WILL WORK

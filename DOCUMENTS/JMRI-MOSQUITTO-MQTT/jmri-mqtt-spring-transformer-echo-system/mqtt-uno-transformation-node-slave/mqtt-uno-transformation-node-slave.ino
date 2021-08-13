@@ -19,7 +19,7 @@ int pinId ;
 Pca9685BoardManager pcaBoardManager;
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(BROAD_RATE);
   Serial.flush();
   pcaBoardManager.initPca9685Boards();
 }
@@ -32,7 +32,7 @@ void loop() {
       processCall(message);
     }
   }
-  delay(200);
+  delay(DELAY_TIME);
 }
 
 
