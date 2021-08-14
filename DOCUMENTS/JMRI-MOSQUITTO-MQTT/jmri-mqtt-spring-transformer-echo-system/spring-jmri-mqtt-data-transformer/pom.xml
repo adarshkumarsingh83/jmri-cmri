@@ -13,11 +13,11 @@
 	</parent>
 
 	<groupId>com.adarsh.model.trains</groupId>
-	<artifactId>mqtt-spring-jmri-transformer-nodeselector</artifactId>
+	<artifactId>spring-jmri-mqtt-data-transformer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<name>mqtt-spring-jmri-transformer-nodeselector</name>
-	<description>Mqtt Jmri Transformer Node selector Application</description>
+	<name>spring-jmri-mqtt-data-transformer</name>
+	<description>Spring Jmri Mqtt Data Transformer And Node Selector Application</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -69,7 +69,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>mqtt-spring-jmri-transformer-nodeselector</finalName>
+		<finalName>spring-jmri-mqtt-data-transformer</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
