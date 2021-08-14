@@ -20,6 +20,8 @@
 #define BROAD_RATE 115200
 #define DELAY_TIME 200
 #define TOTAL_BOARD_PIN 16
+#define PWM_LIGHT_FREQUENCY 1000
+#define PWM_TURNOUT_FREQUENCY 50 
 
 /*----------------------------------------------------------------------------------*/
 // MUST BE EQUAL TO THE CONFIGURATION DEFINED IN SPRING

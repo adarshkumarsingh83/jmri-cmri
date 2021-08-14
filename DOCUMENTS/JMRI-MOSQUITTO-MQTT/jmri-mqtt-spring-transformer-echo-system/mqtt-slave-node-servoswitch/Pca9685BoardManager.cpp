@@ -38,14 +38,12 @@ void Pca9685BoardManager::initPca9685Boards() {
     if (NO_OF_TOTAL_BOARDS > 0 && NO_OF_TURNOUT_BOARDS != 0) {
       for (i = 0; i <  NO_OF_TURNOUT_BOARDS; i++) {
         _pca9685Boards[i].setBoardAddress(_boardAddress[i]);
-        _pca9685Boards[i].setPwmFrequency(_pwmFrequency);
         _pca9685Boards[i].initPca9685(T);
       }
     }
     if (NO_OF_TOTAL_BOARDS > 0 && NO_OF_LIGHT_BOARDS != 0) {
       for ( ; i < NO_OF_TOTAL_BOARDS; i++) {
-        _pca9685Boards[i].setBoardAddress(_boardAddress[i]);
-        _pca9685Boards[i].setPwmFrequency(_pwmFrequency);
+        _pca9685Boards[i].setBoardAddress(_boardAddress[i]);        
         _pca9685Boards[i].initPca9685(L);
       }
     }

@@ -11,6 +11,11 @@
 #include <Arduino.h>
 //#include "Adafruit_PWMServoDriver.h"
 
+typedef struct {
+  int _openState;
+  int _closeState;
+  bool _isOpen;
+} Pca9685Pin;
 
 class Pca9685 {
 
@@ -18,6 +23,7 @@ class Pca9685 {
     char _type;
     int _boardsAddress;
     int _pwmFrequency;
+    Pca9685Pin * _pca9685PinList;
     bool * _pca9685PinStateList;
     //Adafruit_PWMServoDriver _pwm;
 
@@ -27,6 +33,7 @@ class Pca9685 {
     void initPca9685(char type);
     void setBoardAddress(int boardsAddress);
     void setPwmFrequency(int pwmFrequency);
+    bool setSwitchOpenCloseRange(int pinNo, int openRange, int closeRange);
     void turnoutThrow(int pinNo);
     void turnoutClose(int pinNo);
     void ledOn(int pinNo);
