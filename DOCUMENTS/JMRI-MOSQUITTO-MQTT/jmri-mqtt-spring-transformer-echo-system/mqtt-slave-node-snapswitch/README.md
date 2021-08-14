@@ -1,4 +1,4 @@
-# Arduino Uno/mega client for processing 
+# Arduino Uno/mega client for Snapeswitch and led signals 
 
 ---
 
@@ -6,11 +6,12 @@
 > gnd will be common in both the devices 
 
 
-### Configuration of the starting address of the light turnout and signals 
+### Configuration of the number of boards based on the turnout light and 2 and 3 led signals 
+> msut match in node configuraiton in transformer 
 ```
-#define LIGHT_START_ADDRESS 1000
-#define TURNOUT_START_ADDRESS 2000
-#define SIGNAL_START_ADDRESS 3000
+#define NO_OF_TURNOUT_BOARDS 3
+#define NO_OF_LIGHT_BOARDS 3
+#define NO_OF_TOTAL_BOARDS 6
 ```
 
 ## To Open Two arduino sperate ide on mac 

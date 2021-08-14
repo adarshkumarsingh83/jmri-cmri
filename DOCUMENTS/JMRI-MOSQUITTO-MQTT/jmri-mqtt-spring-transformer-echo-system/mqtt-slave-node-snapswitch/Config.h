@@ -19,8 +19,6 @@
 #define MSG_SIZE  14
 #define BROAD_RATE 115200
 #define DELAY_TIME 200
-#define TOTAL_BOARD_PIN 16
-
 /*----------------------------------------------------------------------------------*/
 // MUST BE EQUAL TO THE CONFIGURATION DEFINED IN SPRING
 // APPLICATION NODE DEFINATION THEN ONLY THIS WILL WORK
@@ -32,4 +30,5 @@
 /*----------------------------------------------------------------------------------*/
 
 
+#define TOTAL_BOARD_PIN 16
 #endif

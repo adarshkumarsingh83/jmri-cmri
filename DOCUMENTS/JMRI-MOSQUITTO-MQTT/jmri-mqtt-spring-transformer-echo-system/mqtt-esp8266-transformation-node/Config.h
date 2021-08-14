@@ -1,3 +1,10 @@
+
+/*
+   Adarsh Model Trains
+   Developed by Adarsh kumar
+   Support adarshmodeltrains@gmail.com
+*/
+
 #ifndef Config_h
 #define Config_h
 #include "Arduino.h"
@@ -21,5 +28,8 @@ const char* mqtt_topic_signalhead = "/amt/node/1/signal/";
 
 // change the node "number/name"  based on the node 
 const char* clientID = "JMRI_SUBSCRIBER_NODE_ESP8266_1";
+
+#define BROAD_RATE 115200
+#define DELAY_TIME 1000
 
 #endif

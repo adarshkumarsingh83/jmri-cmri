@@ -1,3 +1,8 @@
+/*
+   Adarsh Model Trains
+   Developed by Adarsh kumar
+   Support adarshmodeltrains@gmail.com
+*/
 
 // Enables the ESP8266 to connect to the local network (via WiFi)
 #include <ESP8266WiFi.h>
@@ -5,7 +10,8 @@
 #include <PubSubClient.h>
 #include"Config.h"
 
-String payload = "";
+String mqttTopicValue;
+String messageText;
 
 // Initialise the WiFi and MQTT Client objects
 WiFiClient wifiClient;
@@ -15,20 +21,22 @@ PubSubClient client(mqtt_server, 1883, wifiClient);
 
 void subscribeMqttMessage(char* topic, byte* payload, unsigned int length) {
 
-  String mqttTopicValue = getMessage(payload, length);
-  
+  mqttTopicValue = getMessage(payload, length);
+
   Serial.write(mqttTopicValue.c_str());
+
+  mqttTopicValue = "";
 }
 
 /*
    converting message from mqtt bytes to string
 */
 String getMessage(byte* message, unsigned int length) {
-  String messageText;
+  messageText = "";
   for (int i = 0; i < length; i++) {
     messageText += (char)message[i];
   }
-  return messageText+"\n";
+  return messageText + "\n";
 }
 
 bool mqttConnect() {
@@ -44,7 +52,7 @@ bool mqttConnect() {
 void setup() {
 
   // Begin Serial on 115200
-  Serial.begin(115200);
+  Serial.begin(BROAD_RATE);
 
   Serial.print("Connecting to ");
   Serial.println(ssid);
@@ -82,5 +90,5 @@ void loop() {
   // client.loop() just tells the MQTT client code to do what it needs to do itself (i.e. check for messages, etc.)
   client.loop();
   // Once it has done all it needs to do for this cycle, go back to checking if we are still connected.
-  delay(1000);
+  delay(DELAY_TIME);
 }
