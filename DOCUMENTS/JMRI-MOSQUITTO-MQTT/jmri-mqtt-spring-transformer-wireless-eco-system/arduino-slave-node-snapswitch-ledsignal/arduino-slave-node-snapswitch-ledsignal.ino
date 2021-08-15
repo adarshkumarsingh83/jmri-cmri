@@ -76,26 +76,27 @@ void doExecute(String msg , char type) {
   pId = light.substring(9, 11);
   val = light.substring(12, MSG_SIZE);
 
-  jmriId = atoi(jId.c_str());
   boardId = atoi(bId.c_str());
   pinId = atoi(pId.c_str());
 
   doPrint(light, jId, bId, pId, val);
-
-  if (type == T ) {
-    if (val == THROWN) {
-      pcaBoardManager.switchThrow(boardId, pinId);
-    } else {
-      pcaBoardManager.switchClose( boardId, pinId);
+  if (boardId <= NO_OF_TOTAL_BOARDS) {
+    if (type == T ) {
+      if (val == THROWN) {
+        pcaBoardManager.switchThrow(boardId, pinId);
+      } else {
+        pcaBoardManager.switchClose( boardId, pinId);
+      }
+    } else if ( type == L || type == S) {
+      if (val == ON) {
+        pcaBoardManager.switchOn(boardId, pinId);
+      } else {
+        pcaBoardManager.switchOff( boardId, pinId);
+      }
     }
-  } else if ( type == L || type == S) {
-    if (val == ON) {
-      pcaBoardManager.switchOn(boardId, pinId);
-    } else {
-      pcaBoardManager.switchOff( boardId, pinId);
-    }
+  } else {
+    Serial.println("BOARD NUMBER EXCEEDED THE NO OF BOARD CONFIGURED ");
   }
-
 }
 
 void doPrint(String input, String jmriId, String boardId, String pinId, String state) {

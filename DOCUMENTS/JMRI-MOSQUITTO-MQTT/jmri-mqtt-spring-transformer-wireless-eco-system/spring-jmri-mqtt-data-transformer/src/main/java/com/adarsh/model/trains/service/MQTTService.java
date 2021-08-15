@@ -35,7 +35,7 @@ public class MQTTService {
     final public static String COLLEN = ":";
     final public static String CONNECTION = "|";
     final public static String ZERO = "0";
-    final public static String LIGHT_PREFIX = "L:";
+    final public static String LIGHT_PREFIX = "L:0";
     final public static String TURNOUT_PREFIX = "T:";
     final public static String SIGNAL_PREFIX = "S:";
     final public static String ON = "ON";
@@ -76,18 +76,33 @@ public class MQTTService {
         try {
             if (!mqttTopic.isEmpty()) {
                 if (mqttTopic.startsWith(properties.getLightTopic())) {
-                    this.processLight(mqttTopic, jmriState);
+                    Integer jmriId = Integer.parseInt(mqttTopic.replace(properties.getLightTopic(), EMPTY));
+                    if (jmriId >= nodeConfigurations.getLightStartingAddress()
+                            && jmriId < nodeConfigurations.getTurnoutStartingAddress()) {
+                        this.processLight(jmriId, jmriState);
+                    } else {
+                        log.error("JmriId for Light Type is not Valid Id={} which is defined in Configuration", jmriId);
+                        this.publish(properties.getErrorTopic(), "Invalid jmriid for light type " + jmriId, 1, false);
+                    }
                 } else if (mqttTopic.startsWith(properties.getTurnoutTopic())) {
                     Integer jmriId = Integer.parseInt(mqttTopic.replace(properties.getTurnoutTopic(), EMPTY));
                     if (jmriId >= nodeConfigurations.getTurnoutStartingAddress()
                             && jmriId < nodeConfigurations.getSignal2LStartingAddress()) {
                         this.processTurnout(jmriId, jmriState);
-                    } else {
+                    } else if (jmriId >= nodeConfigurations.getSignal2LStartingAddress()) {
                         this.processSignal(jmriId, jmriState);
+                    } else {
+                        log.error("JmriId for Turnout|Signals Type is not Valid Id={} which is defined in Configuration", jmriId);
+                        this.publish(properties.getErrorTopic(), "Invalid jmriid for turnout|signal type " + jmriId, 1, false);
                     }
                 } else if (mqttTopic.startsWith(properties.getSignalTopic())) {
                     Integer jmriId = Integer.parseInt(mqttTopic.replace(properties.getSignalTopic(), EMPTY));
-                    this.processSignal(jmriId, jmriState);
+                    if (jmriId >= nodeConfigurations.getSignal2LStartingAddress()) {
+                        this.processSignal(jmriId, jmriState);
+                    } else {
+                        log.error("JmriId for Signals Type is not Valid Id={} which is defined in Configuration", jmriId);
+                        this.publish(properties.getErrorTopic(), "Invalid jmriid for signal type " + jmriId, 1, false);
+                    }
                 }
             }
         } catch (Exception e) {
@@ -98,6 +113,7 @@ public class MQTTService {
 
     private void processSignal(Integer jmriId, String jmriState) throws Exception {
         log.debug("processSignal jmriId= {} with jmriState={} ", jmriId, jmriState);
+
         //  to find out the node and then push the data to that node topic
         NodeConfigurations.Nodes node = this.getNode(SIGNAL, jmriId);
 
@@ -144,6 +160,7 @@ public class MQTTService {
             }
         } else {
             log.info("Node not found for Signal jmriId= {} jmriState {}", jmriId, jmriState);
+            this.publish(properties.getErrorTopic(), "Node not Found for Signal " + jmriId + " state " + jmriState, 1, false);
         }
     }
 
@@ -160,11 +177,11 @@ public class MQTTService {
             }
         } else {
             log.info("Node not found for Turnout jmriId= {} jmriState {}", jmriId, jmriState);
+            this.publish(properties.getErrorTopic(), "Node not Found for Turnout" + jmriId + " state " + jmriState, 1, false);
         }
     }
 
-    private void processLight(String mqttTopic, String jmriState) throws Exception {
-        Integer jmriId = Integer.parseInt(mqttTopic.replace(properties.getLightTopic(), ""));
+    private void processLight(Integer jmriId, String jmriState) throws Exception {
         log.debug("processLight jmriId= {} with jmriState={} ", jmriId, jmriState);
         //  to find out the node and then push the data to that topic
         NodeConfigurations.Nodes node = this.getNode(LIGHT, jmriId);
@@ -177,6 +194,7 @@ public class MQTTService {
             }
         } else {
             log.info("Node not found for Light jmriId= {} jmriState {}", jmriId, jmriState);
+            this.publish(properties.getErrorTopic(), "Node not Found for Light" + jmriId + " state " + jmriState, 1, false);
         }
     }
 
@@ -198,12 +216,20 @@ public class MQTTService {
                     return false;
                 }
             } else if (type.equalsIgnoreCase(SIGNAL)) {
-                if (e.getSignal2LStartAddress() != null && e.getSignal2LStartAddress() != 0
-                        && e.getSignal2LCount() != null && e.getSignal2LCount() != 0) {
-                    return jmriId >= e.getSignal2LStartAddress() && jmriId <= e.getSignal2LStartAddress() + e.getSignal2LCount() ? true : false;
-                } else if (e.getSignal3LStartAddress() != null && e.getSignal3LStartAddress() != 0
-                        && e.getSignal3LCount() != null && e.getSignal3LCount() != 0) {
-                    return jmriId >= e.getSignal3LStartAddress() && jmriId <= e.getSignal3LStartAddress() + e.getSignal3LCount() ? true : false;
+                if (jmriId >= e.getSignal3LStartAddress()) {
+                    if (e.getSignal3LStartAddress() != null && e.getSignal3LStartAddress() != 0
+                            && e.getSignal3LCount() != null && e.getSignal3LCount() != 0) {
+                        return jmriId >= e.getSignal3LStartAddress() && jmriId <= e.getSignal3LStartAddress() + e.getSignal3LCount() ? true : false;
+                    } else {
+                        return false;
+                    }
+                } else if (jmriId >= e.getSignal2LStartAddress() && jmriId < e.getSignal3LStartAddress()) {
+                    if (e.getSignal2LStartAddress() != null && e.getSignal2LStartAddress() != 0
+                            && e.getSignal2LCount() != null && e.getSignal2LCount() != 0) {
+                        return jmriId >= e.getSignal2LStartAddress() && jmriId <= e.getSignal2LStartAddress() + e.getSignal2LCount() ? true : false;
+                    } else {
+                        return false;
+                    }
                 } else {
                     return false;
                 }

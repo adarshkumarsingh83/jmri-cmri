@@ -7,7 +7,7 @@
 #include "Config.h"
 #include "Pca9685BoardManager.h"
 
-String light;
+String comp;
 String jId ;
 String bId ;
 String pId ;
@@ -16,7 +16,8 @@ int jmriId ;
 int boardId ;
 int pinId ;
 
-Pca9685BoardManager pcaBoardManager;
+
+const Pca9685BoardManager pcaBoardManager;
 
 void setup() {
   Serial.begin(BROAD_RATE);
@@ -70,32 +71,33 @@ void processCall(String msg) {
 }
 
 void doExecute(String msg , char type) {
-  light = msg.substring(0, MSG_SIZE);
-  jId = light.substring(0, 5);
-  bId = light.substring(6, 8);
-  pId = light.substring(9, 11);
-  val = light.substring(12, MSG_SIZE);
+  comp = msg.substring(0, MSG_SIZE);
+  jId = comp.substring(0, 5);
+  bId = comp.substring(6, 8);
+  pId = comp.substring(9, 11);
+  val = comp.substring(12, MSG_SIZE);
 
-  jmriId = atoi(jId.c_str());
   boardId = atoi(bId.c_str());
   pinId = atoi(pId.c_str());
 
-  doPrint(light, jId, bId, pId, val);
-
-  if (type == T ) {
-    if (val == THROWN) {
-      pcaBoardManager.switchThrow(boardId, pinId);
-    } else {
-      pcaBoardManager.switchClose( boardId, pinId);
+  doPrint(comp, jId, bId, pId, val);
+  if (boardId <= NO_OF_TOTAL_BOARDS) {
+    if (type == T ) {
+      if (val == THROWN) {
+        pcaBoardManager.switchThrow(boardId, pinId);
+      } else {
+        pcaBoardManager.switchClose( boardId, pinId);
+      }
+    } else if ( type == L || type == S) {
+      if (val == ON) {
+        pcaBoardManager.switchOn(boardId, pinId);
+      } else {
+        pcaBoardManager.switchOff( boardId, pinId);
+      }
     }
-  } else if ( type == L || type == S) {
-    if (val == ON) {
-      pcaBoardManager.switchOn(boardId, pinId);
-    } else {
-      pcaBoardManager.switchOff( boardId, pinId);
-    }
+  } else {
+    Serial.println("BOARD NUMBER EXCEEDED THE NO OF BOARD CONFIGURED ");
   }
-
 }
 
 void doPrint(String input, String jmriId, String boardId, String pinId, String state) {

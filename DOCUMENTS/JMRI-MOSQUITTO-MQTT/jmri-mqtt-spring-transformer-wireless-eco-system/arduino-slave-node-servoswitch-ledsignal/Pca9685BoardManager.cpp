@@ -8,11 +8,11 @@
 
 #include <Arduino.h>
 #include "Pca9685BoardManager.h"
-
+#include "Config.h"
 
 void Pca9685BoardManager::initPca9685Boards() {
 
-  if ((NO_OF_TURNOUT_BOARDS + NO_OF_LIGHT_BOARDS) > 0 && (NO_OF_TURNOUT_BOARDS + NO_OF_LIGHT_BOARDS) < 65) {
+  if ((NO_OF_TOTAL_BOARDS) > 0 && (NO_OF_TOTAL_BOARDS) < 65) {
 
     Serial.print("Total Pca9685 boards for Turnout and Light ");
     Serial.println(NO_OF_TOTAL_BOARDS);
@@ -33,24 +33,27 @@ void Pca9685BoardManager::initPca9685Boards() {
       return;
     }
 
-    _pca9685Boards = new Pca9685[NO_OF_TOTAL_BOARDS];
-    int i = 0;
-    if (NO_OF_TOTAL_BOARDS > 0 && NO_OF_TURNOUT_BOARDS != 0) {
-      for (i = 0; i <  NO_OF_TURNOUT_BOARDS; i++) {
-        _pca9685Boards[i].setBoardAddress(_boardAddress[i]);
-        _pca9685Boards[i].initPca9685(T);
-      }
-    }
-    if (NO_OF_TOTAL_BOARDS > 0 && NO_OF_LIGHT_BOARDS != 0) {
-      for ( ; i < NO_OF_TOTAL_BOARDS; i++) {
-        _pca9685Boards[i].setBoardAddress(_boardAddress[i]);        
-        _pca9685Boards[i].initPca9685(L);
+    if (index <= 0) {
+      _pca9685Boards = new Pca9685[NO_OF_TOTAL_BOARDS];
+      while (index < NO_OF_TOTAL_BOARDS) {
+        if ( index < NO_OF_TURNOUT_BOARDS) {
+          _pca9685Boards[index].setBoardAddress(_boardAddress[index]);
+          _pca9685Boards[index].initPca9685(T);
+          Serial.print(" value of Index ");
+          Serial.println(index);
+        } else  {
+          _pca9685Boards[index].setBoardAddress(_boardAddress[index]);
+          _pca9685Boards[index].initPca9685(L);
+          Serial.print(" value of Index ");
+          Serial.println(index);
+        }
+        delay(50);
+        index++;
       }
     }
   } else {
     Serial.println("invalid arguments supplied ");
   }
-
 }
 
 bool Pca9685BoardManager::switchThrow(int boardId, int pinId) {

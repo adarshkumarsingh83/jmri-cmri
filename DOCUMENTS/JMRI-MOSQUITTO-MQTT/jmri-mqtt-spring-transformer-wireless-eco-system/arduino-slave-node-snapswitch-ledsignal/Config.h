@@ -19,14 +19,15 @@
 #define MSG_SIZE  14
 #define BROAD_RATE 115200
 #define DELAY_TIME 200
+#define PWM_FREQUENCY 1000
 /*----------------------------------------------------------------------------------*/
 // MUST BE EQUAL TO THE CONFIGURATION DEFINED IN SPRING
 // APPLICATION NODE DEFINATION THEN ONLY THIS WILL WORK
 
 
-#define NO_OF_TURNOUT_BOARDS 3
-#define NO_OF_LIGHT_BOARDS 3
-#define NO_OF_TOTAL_BOARDS 6
+#define NO_OF_TURNOUT_BOARDS 2
+#define NO_OF_LIGHT_BOARDS 1
+#define NO_OF_TOTAL_BOARDS 11
 /*----------------------------------------------------------------------------------*/
 
 
