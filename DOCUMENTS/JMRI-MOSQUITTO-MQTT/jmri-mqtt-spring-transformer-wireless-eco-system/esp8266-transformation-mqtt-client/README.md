@@ -29,6 +29,17 @@ const char* clientID = "JMRI_SUBSCRIBER_NODE_ESP8266_1";
 
 ```
 
+## Lib installtion 
+
+### search for "PubSubClient" lib and install it before compiling 
+### or install this lib for location [PubSubClient lib ](https://github.com/adarshkumarsingh83/jmri-cmri/raw/main/DOCUMENTS/JMRI-MOSQUITTO-MQTT/lib/pubsubclient.zip)
+
+### jmri configuration 
+* all sensors will start from 1 to limit 
+* all the light are started with 1000 onwards to 9999 address on jmri
+* all the turnout are started with 10000 onwards to 19999 address on jmri
+* all the 2 led signal are started with 20000 onwards to 29999 
+* all the 3 led signal are started with 30000 onwards to address on jmri support
 
 ## To Open Two arduino sperate ide on mac 
 * $ open -n -a Arduino
