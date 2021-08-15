@@ -23,6 +23,7 @@ class Pca9685 {
     char _type;
     int _boardsAddress;
     int _pwmFrequency;
+    int _boardNumber;
     Pca9685Pin * _pca9685PinList;
     bool * _pca9685PinStateList;
     //Adafruit_PWMServoDriver _pwm;
@@ -30,7 +31,7 @@ class Pca9685 {
   public:
     Pca9685() {
     }
-    void initPca9685(char type);
+    void initPca9685(char type, int boardNumber);
     void setBoardAddress(int boardsAddress);
     void setPwmFrequency(int pwmFrequency);
     bool setSwitchOpenCloseRange(int pinNo, int openRange, int closeRange);

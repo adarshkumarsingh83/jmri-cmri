@@ -38,12 +38,12 @@ void Pca9685BoardManager::initPca9685Boards() {
       while (index < NO_OF_TOTAL_BOARDS) {
         if ( index < NO_OF_TURNOUT_BOARDS) {
           _pca9685Boards[index].setBoardAddress(_boardAddress[index]);
-          _pca9685Boards[index].initPca9685(T);
+          _pca9685Boards[index].initPca9685(T, index);
           Serial.print(" value of Index ");
           Serial.println(index);
         } else  {
           _pca9685Boards[index].setBoardAddress(_boardAddress[index]);
-          _pca9685Boards[index].initPca9685(L);
+          _pca9685Boards[index].initPca9685(L, index);
           Serial.print(" value of Index ");
           Serial.println(index);
         }
