@@ -9,9 +9,7 @@ ESP8266WiFiMulti WiFiMulti;
 
 String id ;
 String val;
-String payload;
 String message;
-bool flag = true;
 
 void setup() {
   Serial.begin(115200);
@@ -39,19 +37,9 @@ void loop() {
           httpPostRequest(PAYLOAD_FROUNT + id + PAYLOAD_BACK_INACTIVE);
         }
         message = "";
-        payload = "";
       }
     }
     delay(DELAY_TIME);
-    if (flag) {
-      id = "1";
-      httpPostRequest(PAYLOAD_FROUNT + id + PAYLOAD_BACK_ACTIVE);
-      flag = false;
-    } else {
-      id = "1";
-      httpPostRequest(PAYLOAD_FROUNT + id + PAYLOAD_BACK_INACTIVE);
-      flag = true;
-    }
   } else {
     Serial.println("WiFi Disconnected");
   }

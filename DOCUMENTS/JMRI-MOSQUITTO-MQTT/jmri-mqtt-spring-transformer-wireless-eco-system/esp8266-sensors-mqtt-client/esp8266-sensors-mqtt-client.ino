@@ -11,8 +11,6 @@
 #include <PubSubClient.h>
 #include"Config.h"
 
-
-bool sensorState = false;
 String message;
 
 // Initialise the WiFi and MQTT Client objects
@@ -21,17 +19,6 @@ WiFiClient wifiClient;
 // 1883 is the listener port for the Broker
 PubSubClient client(MQTT_SERVER, 1883, wifiClient);
 
-
-void pushSensorsData() {
-  delay(DELAY_TIME);
-  if (sensorState) {
-    publishSensorData("1", ACTIVE);
-    sensorState = false;
-  } else {
-    publishSensorData("1", INACTIVE);
-    sensorState = true;
-  }
-}
 
 /*
    pushing the sensor data to the mqtt for jmri
@@ -104,11 +91,8 @@ void loop() {
       } else {
         publishSensorData(id, INACTIVE);
       }
-      message = "";     
+      message = "";
     }
   }
-
-   pushSensorsData();
-
   delay(DELAY_TIME);
 }
