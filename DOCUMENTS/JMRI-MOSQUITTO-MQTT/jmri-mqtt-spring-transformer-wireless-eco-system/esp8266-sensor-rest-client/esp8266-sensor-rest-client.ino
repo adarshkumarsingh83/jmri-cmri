@@ -34,13 +34,9 @@ void loop() {
         id = message.substring(0, 5); // 10000
         val = message.substring(6, 8); // AC | IN
         if (val == ACT) {
-          val = "ACTIVE";
-          payload =  "{\"topic\": \"/trains/track/sensor/" + id + "\", \"data\": \"" + val + "\"}";
-          httpPostRequest(payload);
+          httpPostRequest(PAYLOAD_FROUNT + id + PAYLOAD_BACK_ACTIVE);
         } else {
-          val = "INACTIVE";
-          payload =  "{\"topic\": \"/trains/track/sensor/" + id + "\", \"data\": \"" + val + "\"}";
-          httpPostRequest(payload);
+          httpPostRequest(PAYLOAD_FROUNT + id + PAYLOAD_BACK_INACTIVE);
         }
         message = "";
         payload = "";
@@ -49,15 +45,11 @@ void loop() {
     delay(DELAY_TIME);
     if (flag) {
       id = "1";
-      val = "ACTIVE";
-      payload =  "{\"topic\": \"/trains/track/sensor/" + id + "\", \"data\": \"" + val + "\"}";
-      httpPostRequest(payload);
+      httpPostRequest(PAYLOAD_FROUNT + id + PAYLOAD_BACK_ACTIVE);
       flag = false;
     } else {
       id = "1";
-      val = "INACTIVE";
-      payload =  "{\"topic\": \"/trains/track/sensor/" + id + "\", \"data\": \"" + val + "\"}";
-      httpPostRequest(payload);
+      httpPostRequest(PAYLOAD_FROUNT + id + PAYLOAD_BACK_INACTIVE);
       flag = true;
     }
   } else {
@@ -74,9 +66,9 @@ int httpPostRequest(String payload) {
   // Send HTTP POST request
   int httpResponseCode = http.POST(payload);
   if (httpResponseCode > 0) {
-    Serial.println("Payload " + payload + "Response code: " + String(httpResponseCode));
+    Serial.println("Payload " + payload + " Response code: " + String(httpResponseCode) + " Response " + http.getString());
   } else {
-    Serial.println("Payload " + payload + "Error code: " + String(httpResponseCode));
+    Serial.println("Payload " + payload + " Error code: " + String(httpResponseCode) + " Response " + http.getString());
   }
   http.end();
   return httpResponseCode;

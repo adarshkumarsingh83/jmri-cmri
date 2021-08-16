@@ -4,7 +4,7 @@
 
 // ESP8266 do not support 5G wifi connection
 const char* WIFI_SSID = "adarsh_radha_2G";
-const char* WIFI_PASSWROD = "*******";
+const char* WIFI_PASSWROD = "**********";
 
 // IP OF THE SERVER MACHINE WHERE SPRING TRANSFORMER IS RUNNING
 const char* SERVER_URL = "http://192.168.0.188:8090/amt/node/1";
@@ -18,5 +18,9 @@ const char* CONTENT_TYPE_VAL = "application/json";
 #define ACTIVE "ACTIVE"
 #define INACTIVE "INACTIVE"
 #define ACT "AC"
+
+#define PAYLOAD_FROUNT "{\"topic\": \"/trains/track/sensor/"
+#define PAYLOAD_BACK_ACTIVE "\", \"data\": \"ACTIVE\"}"
+#define PAYLOAD_BACK_INACTIVE "\", \"data\": \"INACTIVE\"}"
 
 #endif
