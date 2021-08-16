@@ -12,9 +12,8 @@
 #include"Config.h"
 
 
-String mqttTopicValue;
-String messageText;
 bool sensorState = false;
+String message;
 
 // Initialise the WiFi and MQTT Client objects
 WiFiClient wifiClient;
@@ -26,10 +25,10 @@ PubSubClient client(MQTT_SERVER, 1883, wifiClient);
 void pushSensorsData() {
   delay(DELAY_TIME);
   if (sensorState) {
-    publishSensorData(1, ACTIVE);
+    publishSensorData("1", ACTIVE);
     sensorState = false;
   } else {
-    publishSensorData(1, INACTIVE);
+    publishSensorData("1", INACTIVE);
     sensorState = true;
   }
 }
@@ -37,8 +36,8 @@ void pushSensorsData() {
 /*
    pushing the sensor data to the mqtt for jmri
 */
-void publishSensorData(int sensorNo, String state) {
-  String topic = JMRI_MQTT_SENSOR_TOPIC + String(sensorNo);
+void publishSensorData(String sensorNo, String state) {
+  String topic = JMRI_MQTT_SENSOR_TOPIC + sensorNo;
   Serial.print(topic + " " + state);
   Serial.println();
   client.publish(topic.c_str(), state.c_str());
@@ -70,7 +69,7 @@ void setup() {
   // Wait until the connection has been confirmed before continuing
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
-    Serial.print(".");
+    //Serial.print(".");
   }
 
   // Debugging - Output the IP Address of the ESP8266
@@ -95,7 +94,21 @@ void loop() {
   client.loop();
   // Once it has done all it needs to do for this cycle, go back to checking if we are still connected.
 
-  pushSensorsData();
+  while (Serial.available()) {
+    String message = Serial.readString();
+    if (message != "") {
+      String id = message.substring(0, 5); // 10000
+      String val = message.substring(6, 8); // AC | IN
+      if (val == ACT) {
+        publishSensorData(id, ACTIVE);
+      } else {
+        publishSensorData(id, INACTIVE);
+      }
+      message = "";     
+    }
+  }
+
+   pushSensorsData();
 
   delay(DELAY_TIME);
 }

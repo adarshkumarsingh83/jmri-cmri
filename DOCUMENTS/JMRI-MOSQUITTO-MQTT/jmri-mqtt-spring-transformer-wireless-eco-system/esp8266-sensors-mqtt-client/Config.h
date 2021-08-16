@@ -11,7 +11,7 @@
 // WiFi
 // Make sure to update this for your own WiFi network!
 const char* SS_ID = "adarsh_radha_2G"; // ESP8266 do not support 5G wifi connection
-const char* WIFI_PWD = "******";
+const char* WIFI_PWD = "*******";
 const char*  MQTT_USER = "adarsh";
 const char*  MQTT_PWD = "password";
 
@@ -27,8 +27,9 @@ const String JMRI_MQTT_SENSOR_TOPIC = "/trains/track/sensor/";
 const char* CLIENT_ID = "JMRI_NODE_ESP8266_PUBLISHING_1";
 
 #define BROAD_RATE 115200
-#define DELAY_TIME 1000
+#define DELAY_TIME 5000
 #define ACTIVE "ACTIVE"
 #define INACTIVE "INACTIVE"
+#define ACT "AC"
 
 #endif
