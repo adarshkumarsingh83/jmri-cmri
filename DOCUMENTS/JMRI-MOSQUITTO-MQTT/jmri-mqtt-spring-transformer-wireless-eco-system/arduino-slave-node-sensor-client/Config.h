@@ -12,8 +12,8 @@
 #define JMRI_SENSOR_START_ADDRESS 10000
 #define BROAD_RATE 115200
 #define DELAY_TIME 5000
-#define ACTIVE ":AC"
-#define INACTIVE ":IN"
+#define ACTIVE ":AC\n"
+#define INACTIVE ":IN\n"
 #define TOTAL_SENSORS 5
 
 
