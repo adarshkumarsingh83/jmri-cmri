@@ -6,14 +6,20 @@
 */
 
 #include "Config.h"
-
+#include "CtSensor.h"
 
 bool flag = true;
 int address = 1;
 
+int blockNo = 0;
+CtSensor ctSensor;
+
 void setup() {
   Serial.begin(BROAD_RATE);
   Serial.flush();
+  ctSensor.initCtSensor(NO_OF_BLOCKS);
+  ctSensor.setSensorPin(1, 7);
+  ctSensor.setSensorPin(2, 6);
 }
 
 void loop() {
@@ -24,6 +30,16 @@ void loop() {
     sendData(String(JMRI_SENSOR_START_ADDRESS + address) + INACTIVE);
     flag = true;
   }
+
+  for (blockNo = 1 ; blockNo <= NO_OF_BLOCKS; blockNo++) {
+    bool isBlockOccuipied = ctSensor.isSensorActive(blockNo);
+    if (isBlockOccuipied) {
+      sendData(String(JMRI_SENSOR_START_ADDRESS + blockNo) + ACTIVE);
+    } else {
+      sendData(String(JMRI_SENSOR_START_ADDRESS + blockNo) + INACTIVE);
+    }
+  }
+
   delay(DELAY_TIME);
 }
 

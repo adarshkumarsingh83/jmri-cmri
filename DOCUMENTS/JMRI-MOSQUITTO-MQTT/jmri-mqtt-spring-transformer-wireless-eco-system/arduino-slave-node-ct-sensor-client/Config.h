@@ -14,7 +14,7 @@
 #define DELAY_TIME 5000
 #define ACTIVE ":AC\n"
 #define INACTIVE ":IN\n"
-#define TOTAL_SENSORS 5
+#define NO_OF_BLOCKS 2
 
 
 #endif
