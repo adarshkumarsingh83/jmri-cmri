@@ -67,4 +67,4 @@
 
 ### [ESP8266 MQTT SUBSCRIBER CONFIGURATION ](esp8266-transformation-mqtt-client/README.md)		
 
-### [ESP8266 REST CLIENT CONFIGURATION ](esp8266-transformer-rest-client/README.md)	
+### [ESP8266 REST CLIENT SUBSCRIBER CONFIGURATION ](esp8266-transformer-rest-client/README.md)	
