@@ -11,7 +11,7 @@
 
 ----
 
-### ![MQTT SETUP GUILDE LINK ](/MQTT-SETTUP-README.md)
+### ![MQTT SETUP GUILDE LINK ](./MQTT-SETTUP-README.md)
 
 
 ### Connection details from esp to the arduino 
