@@ -11,7 +11,7 @@
 
 ----
 
-### ![MQTT SETUP GUILDE LINK ](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/jmri-mqtt-spring-transformer-wireless-eco-system/MQTT-SETUP-README.md)
+### ![MQTT SETUP GUILDE LINK ](MQTT-SETUP-README.md)
 
 
 ### Connection details from esp to the arduino 
