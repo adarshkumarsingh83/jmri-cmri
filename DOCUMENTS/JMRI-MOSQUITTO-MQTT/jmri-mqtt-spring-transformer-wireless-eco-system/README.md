@@ -19,12 +19,15 @@
 ### CONFIGURATIONS STEPS 
 * java 8 runtime installation 
 * Mqtt installation and start see [MQTT SETUP GUILDE LINK ](MQTT-SETUP-README.md)
-* jmri installation and configured with mqtt 
+* jmri installation and configured with mqtt see [JMRI MQTT CONNECTION SETUP AND TESTING ](JMRI-MQTT-SETUP-README.md)
 * 
 
 ----
 
 ### [MQTT SETUP GUILDE LINK ](MQTT-SETUP-README.md)
+
+
+### [JMRI MQTT CONNECTION SETUP AND TESTING LIGHT SIGNAL TURNOUT SENSORS ](JMRI-MQTT-SETUP-README.md)
 
 
 ### Connection details from esp to the arduino 
