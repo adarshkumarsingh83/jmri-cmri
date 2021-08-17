@@ -39,7 +39,7 @@
 * forwarding data to arduino with servo turnout configuration 
 	* [link for configuraiton and deplayment and setup ]()		
 * forwarding data to arduino with relay switich snap turnout configuraion 
-	* [link for configuraiton and deplayment and setup ]()		 
+	* [link for configuraiton and deplayment and setup ](arduino-slave-node-snapswitch-ledsignal/README.md)		 
 
 ---
 
@@ -74,6 +74,8 @@
 ### [ESP8266 MQTT SUBSCRIBER CONFIGURATION ](esp8266-transformation-mqtt-client/README.md)		
 
 ### [ESP8266 REST CLIENT SUBSCRIBER CONFIGURATION ](esp8266-transformer-rest-client/README.md)	
+
+### [ARDUINO RELAYSWITCH SNAP TURNOUT & SIGNALS NODE CONFIGURATION ](arduino-slave-node-snapswitch-ledsignal/README.md)	
 
 
 ## FOR SENSORS | BLOCK OCCUPANCY SENSORS 
