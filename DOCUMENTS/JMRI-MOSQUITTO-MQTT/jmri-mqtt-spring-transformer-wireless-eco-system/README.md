@@ -85,3 +85,7 @@
 ### [ESP8266 MQTT PUBLISHER CONFIGURATION  ](esp8266-sensors-mqtt-client/README.md)	
 
 ### [ESP8266 REST CLIENT PUBLISHER CONFIGURATION ](esp8266-sensor-rest-client/README.md)	
+
+### [ARDUINO IR SENSORS NODE CONFIGURATION  ](arduino-slave-node-ir-sensor-client/README.md)	
+
+### [ARDUINO CT SENSORS NODE CONFIGURATION ](arduino-slave-node-ct-sensor-client/README.md)	
