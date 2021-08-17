@@ -26,10 +26,11 @@
 ---
 
 ### ESP code 
-	* for reading data directly via mqtt topic using esp8266 
-		* [link for configuraiton and deplayment and setup ]()		
-	* for reading data from the rest service of the spring transformer application 
-		* [link for configuraiton and deplayment and setup ]()		
+
+* for reading data directly via mqtt topic using esp8266 
+	* [link for configuraiton and deplayment and setup ]()		
+* for reading data from the rest service of the spring transformer application 
+	* [link for configuraiton and deplayment and setup ]()		
 
 ### ARDUINO code
 * forwarding data to arduino with servo turnout configuration 
