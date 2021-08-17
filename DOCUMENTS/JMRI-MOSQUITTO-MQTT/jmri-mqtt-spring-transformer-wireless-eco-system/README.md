@@ -22,28 +22,28 @@
 * jmri installation and configured with mqtt see [JMRI MQTT CONNECTION SETUP AND TESTING ](JMRI-MQTT-SETUP-README.md)
 * spring data transformation application installation and execution details see [SPRING TRANSFORMATOIN APPLICATION ](spring-jmri-mqtt-data-transformer/README.md)
 * reading data after transformaton 
-	* FOR READING DATA DIRECTLY VIA MQTT TOPIC 
-		* 		
-	* FOR READING DATA FROM THE REST SERVICE OF THE SPRING TRANSFORMATION APPLICATION 
-		*
+	* for reading data directly via mqtt topic using esp8266 
+		* [link for configuraiton and deplayment and setup ]()		
+	* for reading data from the rest service of the spring transformer application 
+		* [link for configuraiton and deplayment and setup ]()		
 
 * forwarding data to arduino with servo turnout configuration 
-	* 
+	* [link for configuraiton and deplayment and setup ]()		
 * forwarding data to arduino with relay switich snap turnout configuraion 
-	* 
+	* [link for configuraiton and deplayment and setup ]()		 
 
 ---
 
 * configuraing the sensros for block occupancy 
 	* direclty publishing data to the MQTT topic 
-		*
+		* [link for configuraiton and deplayment and setup ]()		
 	* publishing data to the spring transforer application via rest endpoints 
-		* 
+		* [link for configuraiton and deplayment and setup ]()		
 * configuring ir sensor based block decection arduino node 
-	*
+	* [link for configuraiton and deplayment and setup ]()		
 
 * configuring ct sensor based block decection arduino node 		
-	* 
+	* [link for configuraiton and deplayment and setup ]()		
 
 
 ----
