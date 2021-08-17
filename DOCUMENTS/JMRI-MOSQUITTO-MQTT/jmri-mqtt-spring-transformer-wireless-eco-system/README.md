@@ -7,7 +7,7 @@
 > node wise topics for each esp8266 node will have only relevant data\
 > this will reduce the processing on the esp8266 so that it can handle node specific data properly. \
 > esp8266 will read data from mqtt nodewise topic or can direclty make http rest endpoint call to spring application and get the data \
-> esp8266 will pass the data to the arduino uno/mega via serial line and arduino will do the rest for signals, turnouts, or lights \
+> esp8266 will pass the data to the arduino uno or mega via serial line and arduino will do the rest for signals, turnouts, or lights \
 
 ### ASSUMPTIONS 
 * ALL LIGHTS WILL START FROM 1000 ONWARDS 
