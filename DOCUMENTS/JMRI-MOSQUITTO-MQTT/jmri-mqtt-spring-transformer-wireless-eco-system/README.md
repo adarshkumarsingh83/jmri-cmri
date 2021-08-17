@@ -66,4 +66,4 @@
 ### [SPRING TRANSFORMATOIN APPLICATION SETUP AND EXECUTION ](spring-jmri-mqtt-data-transformer/README.md)
 
 
-### [Connection details from esp to the arduino](ESP-ARDUINO-CONNECTON-README.md)
+### [CONNECTION DETAILS FOR ESP AND ARDUINO ](ESP-ARDUINO-CONNECTON-README.md)
