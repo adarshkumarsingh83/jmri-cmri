@@ -2,7 +2,7 @@
 
 ----
 
-# [mosquitto mqtt](https://mosquitto.org/)
+# [mosquitto mqtt offical site and documentation ](https://mosquitto.org/)
 
 ## To install brew 
 $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
