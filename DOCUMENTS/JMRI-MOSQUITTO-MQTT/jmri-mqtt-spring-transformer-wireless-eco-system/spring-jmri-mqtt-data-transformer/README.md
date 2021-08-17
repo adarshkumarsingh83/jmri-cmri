@@ -16,10 +16,10 @@
 * $ mvn spring-boot:run 
 
 ### To Run Executable jar of application 
-* $ java -jar ./target/amt-jmri-mqtt-transformer.jar
+* $ java -jar ./target/spring-jmri-mqtt-data-transformer.jar
 
 ### To pass the customized configuration file 
-* $ java -jar ./target/amt-jmri-mqtt-transformer.jar --spring.config.location=classpath:/application.properties,classpath:/application.yaml
+* $ java -jar ./target/spring-jmri-mqtt-data-transformer.jar --spring.config.location=classpath:/application.properties,classpath:/application.yaml
 
 ## TO ENABLE JMRI MQTT DATA ENDPOINTS 
 > ENABLE THE PROPERTIES in  src/main/resources/application.properties
