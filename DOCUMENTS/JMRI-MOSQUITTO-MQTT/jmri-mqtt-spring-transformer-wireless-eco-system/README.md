@@ -45,7 +45,7 @@
 ### ESP code 
 * configuraing the sensros for block occupancy 
 	* direclty publishing data to the MQTT topic 
-		* [link for configuraiton and deplayment and setup ]()		
+		* [link for configuraiton and deplayment and setup ](esp8266-sensors-mqtt-client/README.md)		
 	* publishing data to the spring transforer application via rest endpoints 
 		* [link for configuraiton and deplayment and setup ](esp8266-sensor-rest-client/README.md)		
 
@@ -65,8 +65,16 @@
 
 ### [CONNECTION DETAILS FOR ESP AND ARDUINO ](ESP-ARDUINO-CONNECTON-README.md)
 
+
+## FOR SIGNAL LIGHT AND TURNOUT 
+
 ### [ESP8266 MQTT SUBSCRIBER CONFIGURATION ](esp8266-transformation-mqtt-client/README.md)		
 
 ### [ESP8266 REST CLIENT SUBSCRIBER CONFIGURATION ](esp8266-transformer-rest-client/README.md)	
+
+
+## FOR SENSORS 
+
+### [ESP8266 MQTT PUBLISHER CONFIGURATION  ](esp8266-sensors-mqtt-client/README.md)	
 
 ### [ESP8266 REST CLIENT PUBLISHER CONFIGURATION ](esp8266-sensor-rest-client/README.md)	
