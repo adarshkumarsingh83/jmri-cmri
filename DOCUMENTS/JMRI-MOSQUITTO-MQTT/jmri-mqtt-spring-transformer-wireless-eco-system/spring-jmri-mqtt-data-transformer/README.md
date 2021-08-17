@@ -272,7 +272,7 @@ node:
 * $  mosquitto_sub -h localhost -u adarsh -P password -v -t '/trains/track/#'
 
 ### To subscribe the mqtt application error topic 
-* $ mosquitto_sub -h localhost -u adarsh -P password -v -t '/amt/erros/#'
+* $ mosquitto_sub -h localhost -u adarsh -P password -v -t '/amt/errors/#'
 
 ### To subscribe the spring transformer connection  error topic 
 * $ mosquitto_sub -h localhost -u adarsh -P password -v -t '/amt/transformer/#'

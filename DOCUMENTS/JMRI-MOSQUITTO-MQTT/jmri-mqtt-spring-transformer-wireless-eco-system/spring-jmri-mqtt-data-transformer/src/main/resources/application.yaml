@@ -13,7 +13,7 @@ mqtt-properties:
   lightTopic: /trains/track/light/
   turnoutTopic: /trains/track/turnout/
   signalTopic: /trains/track/signalhead/
-  errorTopic: /amt/erros/
+  errorTopic: /amt/errors
   cleanSession: true
   connectionTimeout: 300
   keepAliveInterval: 60

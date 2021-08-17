@@ -26,7 +26,7 @@ import org.springframework.integration.mqtt.inbound.MqttPahoMessageDrivenChannel
 })
 public class MQTTConfiguration {
 
-    public static final String DEVICE_WILL_TOPIC = "/amt/transformer/status";
+    public static final String DEVICE_WILL_TOPIC = "/amt/errors";
 
     @Bean
     public MqttConnectOptions mqttConnectOptions(MqttProperties mqttProperties) {
