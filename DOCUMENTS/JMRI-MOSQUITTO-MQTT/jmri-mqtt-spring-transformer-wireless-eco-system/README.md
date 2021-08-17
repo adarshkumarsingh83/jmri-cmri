@@ -67,15 +67,15 @@
 ### ESP code 
 * configuraing the sensros for block occupancy 
 	* direclty publishing data to the MQTT topic 
-		* [link for configuraiton and deplayment and setup ](esp8266-sensors-mqtt-client/README.md)		
+		* [link for configuraiton and deployment and setup ](esp8266-sensors-mqtt-client/README.md)		
 	* publishing data to the spring transforer application via rest endpoints 
-		* [link for configuraiton and deplayment and setup ](esp8266-sensor-rest-client/README.md)		
+		* [link for configuraiton and deployment and setup ](esp8266-sensor-rest-client/README.md)		
 
 ### ARDUINO code 		
 * configuring ir sensor based block decection arduino node 
-	* [link for configuraiton and deplayment and setup ]()		
+	* [link for configuraiton and deployment and setup ]()		
 * configuring ct sensor based block decection arduino node 		
-	* [link for configuraiton and deplayment and setup ]()		
+	* [link for configuraiton and deployment and setup ]()		
 
 ----
 
