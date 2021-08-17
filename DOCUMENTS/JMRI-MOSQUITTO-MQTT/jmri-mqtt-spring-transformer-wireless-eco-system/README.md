@@ -30,9 +30,9 @@
 ### ESP code 
 
 * for reading data directly via mqtt topic using esp8266 
-	* [link for configuraiton and deplayment and setup ]()		
+	* [link for configuraiton and deplayment and setup ](esp8266-transformation-mqtt-client/README.md)		
 * for reading data from the rest service of the spring transformer application 
-	* [link for configuraiton and deplayment and setup ]()		
+	* [link for configuraiton and deplayment and setup ](esp8266-transformer-rest-client/README.md)		
 
 ### ARDUINO code
 * forwarding data to arduino with servo turnout configuration 
@@ -59,11 +59,12 @@
 
 ### [MQTT SETUP GUILDE LINK ](MQTT-SETUP-README.md)
 
-
 ### [JMRI MQTT CONNECTION SETUP AND TESTING LIGHT SIGNAL TURNOUT SENSORS ](JMRI-MQTT-SETUP-README.md)
-
 
 ### [SPRING TRANSFORMATOIN APPLICATION SETUP AND EXECUTION ](spring-jmri-mqtt-data-transformer/README.md)
 
-
 ### [CONNECTION DETAILS FOR ESP AND ARDUINO ](ESP-ARDUINO-CONNECTON-README.md)
+
+### [ESP8266 MQTT SUBSCRIBER CONFIGURATION ](esp8266-transformation-mqtt-client/README.md)		
+
+### [ESP8266 REST CLIENT CONFIGURATION ](esp8266-transformer-rest-client/README.md)	
