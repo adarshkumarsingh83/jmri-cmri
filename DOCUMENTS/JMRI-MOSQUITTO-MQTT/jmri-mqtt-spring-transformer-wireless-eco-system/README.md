@@ -47,7 +47,7 @@
 	* direclty publishing data to the MQTT topic 
 		* [link for configuraiton and deplayment and setup ]()		
 	* publishing data to the spring transforer application via rest endpoints 
-		* [link for configuraiton and deplayment and setup ]()		
+		* [link for configuraiton and deplayment and setup ](esp8266-sensor-rest-client/README.md)		
 
 ### ARDUINO code 		
 * configuring ir sensor based block decection arduino node 
@@ -68,3 +68,5 @@
 ### [ESP8266 MQTT SUBSCRIBER CONFIGURATION ](esp8266-transformation-mqtt-client/README.md)		
 
 ### [ESP8266 REST CLIENT SUBSCRIBER CONFIGURATION ](esp8266-transformer-rest-client/README.md)	
+
+### [ESP8266 REST CLIENT PUBLISHER CONFIGURATION ](esp8266-sensor-rest-client/README.md)	
