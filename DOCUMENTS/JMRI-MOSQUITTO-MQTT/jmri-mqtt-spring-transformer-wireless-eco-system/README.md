@@ -9,6 +9,7 @@
 > esp8266 will read data from mqtt nodewise topic or can direclty make http rest endpoint call to spring application and get the data \
 > esp8266 will pass the data to the arduino uno or mega via serial line and arduino will do the rest for signals, turnouts, or lights \
 
+
 ### ASSUMPTIONS 
 * ALL LIGHTS WILL START FROM 1000 ONWARDS 
 * ALL TURNOUT WILL START FROM 10000 ONWARDS 
