@@ -11,7 +11,7 @@
 
 ----
 
-### ![MQTT SETUP GUILDE LINK ](MQTT-SETUP-README.md)
+### [MQTT SETUP GUILDE LINK ](MQTT-SETUP-README.md)
 
 
 ### Connection details from esp to the arduino 
@@ -23,4 +23,4 @@ take the rx pin of the nodemcu/esp8266 and connect to the tx pin of the arduino
 
 ```
 
-![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/jmri-mqtt-spring-transformer-esp8266-arduinouno/image/con.JPG)
+![img](image/con.JPG)
