@@ -15,6 +15,13 @@
 * ALL 2LED SIGNAL WILL START FROM 20000 ONWARDS 
 * ALL 3LED SIGNAL WILL START FROM 30000 ONWARDS 
 
+
+### CONFIGURATIONS STEPS 
+* java 8 runtime installation 
+* Mqtt installation and start see [MQTT SETUP GUILDE LINK ](MQTT-SETUP-README.md)
+* jmri installation and configured with mqtt 
+* 
+
 ----
 
 ### [MQTT SETUP GUILDE LINK ](MQTT-SETUP-README.md)
