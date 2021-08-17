@@ -21,9 +21,10 @@
 * Mqtt installation and start see [MQTT SETUP GUILDE LINK ](MQTT-SETUP-README.md)
 * jmri installation and configured with mqtt see [JMRI MQTT CONNECTION SETUP AND TESTING ](JMRI-MQTT-SETUP-README.md)
 * spring data transformation application installation and execution details see [SPRING TRANSFORMATOIN APPLICATION ](spring-jmri-mqtt-data-transformer/README.md)
-* reading data after transformaton 
+* reading data after transformaton see below section 
 
 ---
+
 
 ### ESP code 
 
