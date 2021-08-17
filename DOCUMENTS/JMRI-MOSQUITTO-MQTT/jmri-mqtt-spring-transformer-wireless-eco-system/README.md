@@ -35,6 +35,12 @@
 
 ## FOR LIGHT TURNOUT AND SIGNALS 
 
+### BELOW COMBINATION OF IMPLEMENTATION CAN BE DONE FOR SIGNAL TURNOUT AND LIGHT 
+* Esp code direct mqtt subsciber -> Arduino code servo turnout and led switch 
+* Esp code direct mqtt subsciber -> Arduino code relay switch turnout and led switch 
+* Esp code rest client subsciber -> Arduino code servo turnout and led switch 
+* Esp code rest client subsciber -> Arduino code relay switch turnout and led switch 
+
 ### ESP code 
 
 * for reading data directly via mqtt topic using esp8266 
@@ -51,6 +57,12 @@
 ---
 
 ## FOR SENSORS | BLOCK OCCUPANCY SENSORS 
+
+### BELOW COMBINATION OF IMPLEMENTATION CAN BE DONE FOR SENSORS 
+* Esp code direct mqtt publisher -> Arduino ir sensor
+* Esp code direct mqtt publisher -> Arduino ct sensor 
+* Esp code rest client publisher -> Arduino ir sensor
+* Esp code rest client publisher -> Arduino ct sensor 
 
 ### ESP code 
 * configuraing the sensros for block occupancy 
