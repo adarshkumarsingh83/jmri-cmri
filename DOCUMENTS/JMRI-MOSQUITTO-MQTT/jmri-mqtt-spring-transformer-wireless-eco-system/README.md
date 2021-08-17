@@ -26,6 +26,7 @@
 
 ---
 
+## FOR LIGHT TURNOUT AND SIGNALS 
 
 ### ESP code 
 
@@ -41,6 +42,8 @@
 	* [link for configuraiton and deplayment and setup ]()		 
 
 ---
+
+## FOR SENSORS | BLOCK OCCUPANCY SENSORS 
 
 ### ESP code 
 * configuraing the sensros for block occupancy 
