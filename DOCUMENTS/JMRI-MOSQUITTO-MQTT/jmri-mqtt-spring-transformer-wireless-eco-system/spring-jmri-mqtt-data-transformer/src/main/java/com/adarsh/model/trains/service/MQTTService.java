@@ -10,12 +10,8 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.PostConstruct;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /*
@@ -29,8 +25,8 @@ import java.util.stream.Collectors;
 public class MQTTService {
 
     final public static Map<String, CircularQueue<String>> store = new HashMap<>();
-    final public static List<String> cache2 = new LinkedList<>();
-    final public static List<String> cache3 = new LinkedList<>();
+    final public static Map<String, List<String>> cache2Led = new HashMap<>();
+    final public static Map<String, List<String>> cache3Led = new HashMap<>();
     final public static String EMPTY = "";
     final public static String COLLEN = ":";
     final public static String CONNECTION = "|";
@@ -63,12 +59,16 @@ public class MQTTService {
 
     @PostConstruct
     public void init() {
-        if (transformationEndpointsEnabled) {
-            nodeConfigurations.getNodes().stream().forEach(node -> {
-                log.debug("Api Endpoint Cache Enabled node= {} with size={} ", node.getNodeId(), node.getApiEndpointCacheSize());
+
+        nodeConfigurations.getNodes().stream().forEach(node -> {
+            log.debug("Api Endpoint Cache Enabled node= {} with size={} ", node.getNodeId(), node.getApiEndpointCacheSize());
+            if (transformationEndpointsEnabled) {
                 store.put(node.getNodeId(), new CircularQueue<String>(node.getApiEndpointCacheSize()));
-            });
-        }
+            }
+            cache2Led.put(node.getNodeId(), new ArrayList<String>(2));
+            cache3Led.put(node.getNodeId(), new ArrayList<String>(3));
+        });
+
     }
 
     public void transformData(String mqttTopic, String jmriState) throws Exception {
@@ -125,32 +125,38 @@ public class MQTTService {
             }
             jmriState = this.nodeWiseDataGenerated(SIGNAL, node, jmriId, jmriState);
             if (jmriId >= node.getSignal3LStartAddress()) {
-                if (cache3.size() < 3) {
-                    cache3.add(jmriId + COLLEN + jmriState);
-                }
-                if (cache3.size() == 3) {
 
-                    String signalData = cache3.stream().distinct().collect(Collectors.joining(CONNECTION));
+                if (cache3Led.get(node.getNodeId()).size() < 3) {
+                    cache3Led.get(node.getNodeId()).add(jmriId + COLLEN + jmriState);
+                }
+
+                if (cache3Led.get(node.getNodeId()).size() == 3) {
+
+                    String signalData = cache3Led.get(node.getNodeId()).stream().distinct().collect(Collectors.joining(CONNECTION));
                     this.publish(node.getSignalPublishTopic(), SIGNAL_PREFIX + signalData, 1, false);
 
                     if (transformationEndpointsEnabled) {
                         store.get(node.getNodeId()).enqueue(SIGNAL_PREFIX + signalData);
                     }
-                    cache3.clear();
+
+                    cache3Led.get(node.getNodeId()).clear();
                 }
             } else if (jmriId >= node.getSignal2LStartAddress()) {
-                if (cache2.size() < 2) {
-                    cache2.add(jmriId + COLLEN + jmriState);
-                }
-                if (cache2.size() == 2) {
 
-                    String signalData = cache2.stream().distinct().collect(Collectors.joining(CONNECTION));
+                if (cache2Led.get(node.getNodeId()).size() < 2) {
+                    cache2Led.get(node.getNodeId()).add(jmriId + COLLEN + jmriState);
+                }
+
+                if (cache2Led.get(node.getNodeId()).size() == 2) {
+
+                    String signalData = cache2Led.get(node.getNodeId()).stream().distinct().collect(Collectors.joining(CONNECTION));
                     this.publish(node.getSignalPublishTopic(), SIGNAL_PREFIX + signalData, 1, false);
 
                     if (transformationEndpointsEnabled) {
                         store.get(node.getNodeId()).enqueue(SIGNAL_PREFIX + signalData);
                     }
-                    cache2.clear();
+
+                    cache2Led.get(node.getNodeId()).clear();
                 }
             } else {
                 this.publish(node.getSignalPublishTopic(), SIGNAL_PREFIX + jmriId + COLLEN + jmriState, 1, false);
