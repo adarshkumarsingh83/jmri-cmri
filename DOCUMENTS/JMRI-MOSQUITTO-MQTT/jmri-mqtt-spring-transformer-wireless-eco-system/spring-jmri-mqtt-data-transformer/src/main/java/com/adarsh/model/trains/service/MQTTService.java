@@ -10,6 +10,7 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
 import javax.annotation.PostConstruct;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -28,6 +29,8 @@ public class MQTTService {
     final public static Map<String, List<String>> cache2Led = new HashMap<>();
     final public static Map<String, List<String>> cache3Led = new HashMap<>();
     final public static String EMPTY = "";
+    final public static Integer led2 = 2;
+    final public static Integer led3 = 3;
     final public static String COLLEN = ":";
     final public static String CONNECTION = "|";
     final public static String ZERO = "0";
@@ -65,8 +68,8 @@ public class MQTTService {
             if (transformationEndpointsEnabled) {
                 store.put(node.getNodeId(), new CircularQueue<String>(node.getApiEndpointCacheSize()));
             }
-            cache2Led.put(node.getNodeId(), new ArrayList<String>(2));
-            cache3Led.put(node.getNodeId(), new ArrayList<String>(3));
+            cache2Led.put(node.getNodeId(), new ArrayList<String>(led2));
+            cache3Led.put(node.getNodeId(), new ArrayList<String>(led3));
         });
 
     }
@@ -126,11 +129,11 @@ public class MQTTService {
             jmriState = this.nodeWiseDataGenerated(SIGNAL, node, jmriId, jmriState);
             if (jmriId >= node.getSignal3LStartAddress()) {
 
-                if (cache3Led.get(node.getNodeId()).size() < 3) {
+                if (cache3Led.get(node.getNodeId()).size() < led3) {
                     cache3Led.get(node.getNodeId()).add(jmriId + COLLEN + jmriState);
                 }
 
-                if (cache3Led.get(node.getNodeId()).size() == 3) {
+                if (cache3Led.get(node.getNodeId()).size() == led3) {
 
                     String signalData = cache3Led.get(node.getNodeId()).stream().distinct().collect(Collectors.joining(CONNECTION));
                     this.publish(node.getSignalPublishTopic(), SIGNAL_PREFIX + signalData, 1, false);
@@ -143,11 +146,11 @@ public class MQTTService {
                 }
             } else if (jmriId >= node.getSignal2LStartAddress()) {
 
-                if (cache2Led.get(node.getNodeId()).size() < 2) {
+                if (cache2Led.get(node.getNodeId()).size() < led2) {
                     cache2Led.get(node.getNodeId()).add(jmriId + COLLEN + jmriState);
                 }
 
-                if (cache2Led.get(node.getNodeId()).size() == 2) {
+                if (cache2Led.get(node.getNodeId()).size() == led2) {
 
                     String signalData = cache2Led.get(node.getNodeId()).stream().distinct().collect(Collectors.joining(CONNECTION));
                     this.publish(node.getSignalPublishTopic(), SIGNAL_PREFIX + signalData, 1, false);
