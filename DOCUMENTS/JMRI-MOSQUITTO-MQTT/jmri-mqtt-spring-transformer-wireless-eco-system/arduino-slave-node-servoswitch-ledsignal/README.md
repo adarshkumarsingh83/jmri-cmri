@@ -14,6 +14,35 @@
 #define NO_OF_TOTAL_BOARDS 6
 ```
 
+### Configuration of the open and close range for the servo moter 
+> use the callibration application "servo-turnout-calibration" for the finding the open and close range 
+> for the each servo and feed in the array board wise for each pin 
+
+```
+int turnoutRange[][TOTAL_BOARD_PIN][RANGE_TYPE] = {
+  {  // BOARD 0 
+    {OPEN_RANGE, CLOSE_RANGE},  // PIN 0
+    {OPEN_RANGE, CLOSE_RANGE}   // PIN 1
+    ........
+   },
+   {  // BOARD 1 
+    {OPEN_RANGE, CLOSE_RANGE},  // PIN 0
+    {OPEN_RANGE, CLOSE_RANGE}   // PIN 1
+    ........
+   },
+   
+   ........
+   ........
+   
+   {  // BOARD N 
+    {OPEN_RANGE, CLOSE_RANGE},  // PIN 0
+    {OPEN_RANGE, CLOSE_RANGE}   // PIN 1
+    ........
+   }
+};
+```
+
+
 ## To Open Two arduino sperate ide on mac 
 * $ open -n -a Arduino
 * -n = open new instance even when one is already running
