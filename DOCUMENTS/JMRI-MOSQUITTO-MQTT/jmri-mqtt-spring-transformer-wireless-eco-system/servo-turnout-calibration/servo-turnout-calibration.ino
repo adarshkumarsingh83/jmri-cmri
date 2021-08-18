@@ -1,18 +1,15 @@
 #include <Wire.h>
+#include"Config.h"
 #include "Adafruit_PWMServoDriver.h"
-
-#define SERVO_FREQ 50 // Analog servos run at ~50 Hz updates
-
-uint8_t servoNumber = 0; // address of servo to be calibrated
 
 String readString;
 int servoArmPosition;
 
 // called this way, it uses the default address 0x40,
-Adafruit_PWMServoDriver servoDriver = Adafruit_PWMServoDriver(0x40);
+Adafruit_PWMServoDriver servoDriver = Adafruit_PWMServoDriver(_boardAddress[boardInChain]);
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(BROAD_RATE);
   servoArmPosition = 1500; // Initial position
   servoDriver.begin();
   servoDriver.setOscillatorFrequency(25000000);
@@ -31,7 +28,7 @@ void setup() {
   servoDriver.writeMicroseconds(servoNumber, servoArmPosition);
   Serial.println("Centre point:");
   Serial.println(servoArmPosition);
-  delay(10);
+  delay(DELAY_TIME);
 }
 
 void loop() {
