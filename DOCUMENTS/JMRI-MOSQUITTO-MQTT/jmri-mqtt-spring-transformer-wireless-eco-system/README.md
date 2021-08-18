@@ -52,7 +52,8 @@
 
 ### ARDUINO code
 * forwarding data to arduino with servo turnout configuration 
-	* [link for configuraiton and deplayment and setup ](arduino-slave-node-servoswitch-ledsignal/README.md)		
+	* [link for configuraiton and deplayment and setup ](arduino-slave-node-servoswitch-ledsignal/README.md)	
+	* [link for configuration and connnection for PCA9685 board &  arduino ](PCA9685-README.md)	
 * forwarding data to arduino with relay switich snap turnout configuraion 
 	* [link for configuraiton and deplayment and setup ](arduino-slave-node-snapswitch-ledsignal/README.md)		 
 
@@ -86,6 +87,8 @@
 ### [JMRI MQTT CONNECTION SETUP AND TESTING LIGHT SIGNAL TURNOUT SENSORS ](JMRI-MQTT-SETUP-README.md)
 
 ### [CONNECTION DETAILS FOR ESP AND ARDUINO ](ESP-ARDUINO-CONNECTON-README.md)
+
+### [CONNECTION DETAILS FOR PCA9685 BOARD AND ARDUINO ](PCA9685-README.md)
 
 
 ## SPRING TRANSFORMER APPLICATION 
