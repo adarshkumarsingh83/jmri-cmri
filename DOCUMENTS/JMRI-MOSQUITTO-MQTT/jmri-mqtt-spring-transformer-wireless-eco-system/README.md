@@ -2,6 +2,7 @@
 
 > Jmri will push the data to the mqtt topic \
 > spring transformer application configured with nodes and its details like no of turnout, no of signals, no of light in the node \
+> every nodes has PCA9685 boards configured in series for turnout light and signals \
 > transformer application will read the data from mqtt topics which is pushed by jmri and transform that data node wise  \
 > and push back to the mqtt for specific nodes, also store data in end points cache if enabled for serving data via rest endpoints  \
 > node wise topics for each esp8266 node will have only relevant data\
