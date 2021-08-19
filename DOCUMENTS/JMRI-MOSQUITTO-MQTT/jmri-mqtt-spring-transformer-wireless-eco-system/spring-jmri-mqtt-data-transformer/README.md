@@ -1,10 +1,10 @@
 # JMRI MQTT DATA TRANSFORMER NODE SELECTOR APPLICATION 
 
-> Jmri will push the data to the mqtt 
-> transformer application configured with nodes and its details like no of turnout, no of signals, no of light in the node
-> transformer application will read the data from mqtt topics which is pushed by jmri and transform that data 
-> and push back to the mqtt node wise, also store in end points cache if enabled for serving data via rest endpoints   
-> topics for each esp8266 node will have only relevant data only 
+> Jmri will push the data to the mqtt  \
+> transformer application configured with nodes and its details like no of turnout, no of signals, no of light in the node \
+> transformer application will read the data from mqtt topics which is pushed by jmri and transform that data \
+> and push back to the mqtt node wise, also store in end points cache if enabled for serving data via rest endpoints \  
+> topics for each esp8266 node will have only relevant data only \
 > this will reduce the processing on the esp8266 so that it can handle node specific data properly.
 
 ----
@@ -19,8 +19,8 @@
 * $ java -jar spring-jmri-mqtt-data-transformer.jar
 
 ### To pass the customized configuration file 
-> for production profile with external configuration file passed from cmd line 
-> NOTE COPY THE application.yaml and application.properties file from doc directory of this application
+> for production profile with external configuration file passed from cmd line \
+> NOTE COPY THE application.yaml and application.properties file from doc directory of this application \
 > in the same directory where jar file is present then execute the below cmd 
 * java -jar -Dspring.profiles.active=prod spring-jmri-mqtt-data-transformer.jar --spring.config.name=application
 * or
