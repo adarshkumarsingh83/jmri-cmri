@@ -15,6 +15,17 @@
 #define NO_OF_BLOCKS 3
 ```
 
+## IR Sensors pins configuration for arduino in Config.h
+```
+// IR SENSORS PIN CONFIGURATION 
+  const int sensorPin[NO_OF_BLOCKS][PINS] = {
+  {BLOCK_1_END_PIN, BLOCK_1_START_PIN },
+  {BLOCK_2_END_PIN, BLOCK_2_START_PIN },
+  ..........
+  {BLOCK_N_END_PIN, BLOCK_N_START_PIN }
+  };
+```
+
 ## To Open Two arduino sperate ide on mac 
 * $ open -n -a Arduino
 * -n = open new instance even when one is already running

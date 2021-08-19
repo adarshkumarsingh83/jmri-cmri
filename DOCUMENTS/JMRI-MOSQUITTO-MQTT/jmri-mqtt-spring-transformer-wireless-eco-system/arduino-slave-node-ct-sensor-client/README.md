@@ -15,6 +15,18 @@
 #define NO_OF_BLOCKS 3
 ```
 
+### CT Sensors configuration for arduino in Config.h 
+```
+// CT SENSORS PIN CONFIGURATION 
+  const int sensorPin[NO_OF_BLOCKS][PINS] = {
+  BLOCK_1__PIN,
+  BLOCK_2_PIN,
+  ..........
+  BLOCK_N_PIN
+  };
+
+ ```
+
 ## To Open Two arduino sperate ide on mac 
 * $ open -n -a Arduino
 * -n = open new instance even when one is already running
