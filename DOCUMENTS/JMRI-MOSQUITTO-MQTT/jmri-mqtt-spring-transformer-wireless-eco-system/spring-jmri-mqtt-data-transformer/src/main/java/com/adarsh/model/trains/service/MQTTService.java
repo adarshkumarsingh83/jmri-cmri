@@ -10,7 +10,6 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.PostConstruct;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -28,6 +27,8 @@ public class MQTTService {
     final public static Map<String, CircularQueue<String>> store = new HashMap<>();
     final public static Map<String, List<String>> cache2Led = new HashMap<>();
     final public static Map<String, List<String>> cache3Led = new HashMap<>();
+    final public static Map<String, Long> cache2LedTime = new HashMap<>();
+    final public static Map<String, Long> cache3LedTime = new HashMap<>();
     final public static String EMPTY = "";
     final public static Integer led2 = 2;
     final public static Integer led3 = 3;
@@ -70,6 +71,8 @@ public class MQTTService {
             }
             cache2Led.put(node.getNodeId(), new ArrayList<String>(led2));
             cache3Led.put(node.getNodeId(), new ArrayList<String>(led3));
+            cache2LedTime.put(node.getNodeId(), 0L);
+            cache3LedTime.put(node.getNodeId(), 0L);
         });
 
     }
@@ -131,6 +134,7 @@ public class MQTTService {
 
                 if (cache3Led.get(node.getNodeId()).size() < led3) {
                     cache3Led.get(node.getNodeId()).add(jmriId + COLLEN + jmriState);
+                    cache3LedTime.put(node.getNodeId(), System.currentTimeMillis());
                 }
 
                 if (cache3Led.get(node.getNodeId()).size() == led3) {
@@ -148,6 +152,7 @@ public class MQTTService {
 
                 if (cache2Led.get(node.getNodeId()).size() < led2) {
                     cache2Led.get(node.getNodeId()).add(jmriId + COLLEN + jmriState);
+                    cache2LedTime.put(node.getNodeId(), System.currentTimeMillis());
                 }
 
                 if (cache2Led.get(node.getNodeId()).size() == led2) {
@@ -171,6 +176,19 @@ public class MQTTService {
             log.info("Node not found for Signal jmriId= {} jmriState {}", jmriId, jmriState);
             this.publish(properties.getErrorTopic(), "Node not Found for Signal " + jmriId + " state " + jmriState, 1, false);
         }
+    }
+
+    public void flushCache(NodeConfigurations.Nodes node, Map<String, List<String>> cache) throws Exception {
+        log.debug("flushCache nodeId= {} ", node.getNodeId());
+
+        String signalData = cache.get(node.getNodeId()).stream().distinct().collect(Collectors.joining(CONNECTION));
+        this.publish(node.getSignalPublishTopic(), SIGNAL_PREFIX + signalData, 1, false);
+
+        if (transformationEndpointsEnabled) {
+            store.get(node.getNodeId()).enqueue(SIGNAL_PREFIX + signalData);
+        }
+
+        cache.get(node.getNodeId()).clear();
     }
 
     private void processTurnout(Integer jmriId, String jmriState) throws Exception {

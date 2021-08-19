@@ -13,6 +13,7 @@ import org.springframework.integration.dsl.IntegrationFlows;
 import org.springframework.integration.mqtt.core.DefaultMqttPahoClientFactory;
 import org.springframework.integration.mqtt.core.MqttPahoClientFactory;
 import org.springframework.integration.mqtt.inbound.MqttPahoMessageDrivenChannelAdapter;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 /*
  * @author Adarsh
@@ -20,6 +21,7 @@ import org.springframework.integration.mqtt.inbound.MqttPahoMessageDrivenChannel
  * @version $Revision: 0001 $, $Date:: 15/6/20 10:12 AM#$
  */
 
+@EnableScheduling
 @Configuration
 @EnableConfigurationProperties({
         MqttProperties.class

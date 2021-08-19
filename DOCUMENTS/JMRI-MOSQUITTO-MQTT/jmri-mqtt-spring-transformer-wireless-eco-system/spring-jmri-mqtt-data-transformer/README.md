@@ -74,14 +74,15 @@ node:
     turnoutStartingAddress: 10000 #starting address of the turnout in whole layout its mandatory value 
     signal2LStartingAddress: 20000  #starting address of the 2 light signal in whole layout its mandatory value 
     signal3LStartingAddress: 30000  #starting address of the 3 light signal in whole layout its mandatory value 
+    signalCacheClearingTime: 5000   #2Led 3Led signal cache clearence time in case some things is stuck it will flush to topic 
     nodes:
       -
         nodeId: 1                                   # node id/name publish topic will be formed with this id only
         turnoutBoardCount: 3                        # total number of pca9685 configured for turnouts in arduino node
         lightBoardCount: 6                          # total number of pca9685 configured for signal and lights in arduino node
-        lightPublishTopic: /amt/node/1/light/       # light publish topic after transformation 
-        turnoutPublishTopic: /amt/node/1/turnout/   # turnout publish topic after transformation 
-        signalPublishTopic: /amt/node/1/signal/     # signal publish topic after transformation 
+        lightPublishTopic: /amt/node/1/light/       # light publish topic after transformation for particular node 
+        turnoutPublishTopic: /amt/node/1/turnout/   # turnout publish topic after transformation for particular node 
+        signalPublishTopic: /amt/node/1/signal/     # signal publish topic after transformation for particular node 
         apiEndpointCacheSize: 10                    # api enpoint cache size 
         lightStartAddress: 1000                     # starting address of the light in node 1 ,if not configured then configure with 0 value 
         lightCount: 10                              # no of light configured in node 1 ,if not configured then configure with 0 value 
@@ -105,6 +106,7 @@ node:
     turnoutStartingAddress: 10000
     signal2LStartingAddress: 20000
     signal3LStartingAddress: 30000
+    signalCacheClearingTime: 5000
     nodes:
       -
         nodeId: 1

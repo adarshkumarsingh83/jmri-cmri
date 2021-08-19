@@ -29,6 +29,9 @@ public class NodeConfigurations {
     Integer signal2LStartingAddress = 0;
     @NotNull(message = "signal3LStartingAddress is mandatory properties in configuration ")
     Integer signal3LStartingAddress = 0;
+    @NotNull(message = "signalCacheClearingTime is mandatory properties in configuration ")
+    Integer signalCacheClearingTime = 0;
+
 
     @Data
     public static class Nodes {
