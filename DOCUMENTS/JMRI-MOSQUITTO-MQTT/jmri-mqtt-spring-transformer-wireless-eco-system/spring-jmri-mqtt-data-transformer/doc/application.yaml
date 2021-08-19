@@ -1,5 +1,5 @@
 spring:
-  profiles: default
+  profiles: prod
 
 server:
   servlet:

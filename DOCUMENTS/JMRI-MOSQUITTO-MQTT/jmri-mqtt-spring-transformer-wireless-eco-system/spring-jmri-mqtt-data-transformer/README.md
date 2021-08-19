@@ -15,11 +15,16 @@
 ### To Run this application 
 * $ mvn spring-boot:run 
 
-### To Run Executable jar of application 
-* $ java -jar ./target/spring-jmri-mqtt-data-transformer.jar
+### To Run Executable jar of application with default configuration with default profile  
+* $ java -jar spring-jmri-mqtt-data-transformer.jar
 
 ### To pass the customized configuration file 
-* $ java -jar ./target/spring-jmri-mqtt-data-transformer.jar --spring.config.location=classpath:/application.properties,classpath:/application.yaml
+> for production profile with external configuration file passed from cmd line 
+> NOTE COPY THE application.yaml and application.properties file from doc directory of this application
+> in the same directory where jar file is present then execute the below cmd 
+* java -jar -Dspring.profiles.active=prod spring-jmri-mqtt-data-transformer.jar --spring.config.name=application
+* or
+* java -jar -Dspring.profiles.active=prod spring-jmri-mqtt-data-transformer.jar --spring.config.location=./
 
 ## TO ENABLE JMRI MQTT DATA ENDPOINTS 
 > ENABLE THE PROPERTIES in  src/main/resources/application.properties
