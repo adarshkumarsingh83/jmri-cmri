@@ -18,13 +18,13 @@ void setup() {
   Serial.begin(BROAD_RATE);
   Serial.flush();
   blockSensors.initBlockSensors(NO_OF_BLOCKS);
-  blockSensors.setBlockSensorPins(1, 13, 12);
-  blockSensors.setBlockSensorPins(2, 11, 10);
-  blockSensors.setBlockSensorPins(3, 9, 8);
+  for (int i = 0; i < NO_OF_BLOCKS; i++) {
+    blockSensors.setBlockSensorPins(i + 1, sensorPin[i][0], sensorPin[i][1]);
+  }
 }
 
 void loop() {
-  
+
   if (flag) {
     sendData(String(JMRI_SENSOR_START_ADDRESS + address) + ACTIVE);
     flag = false;

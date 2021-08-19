@@ -18,5 +18,20 @@
 #define INACTIVE ":IN\n"
 #define NO_OF_BLOCKS 3
 
+/*
+ * IR SENSORS PIN CONFIGURATION 
+  const int sensorPin[NO_OF_BLOCKS][PINS] = {
+  {BLOCK_1_END_PIN, BLOCK_1_START_PIN },
+  {BLOCK_2_END_PIN, BLOCK_2_START_PIN },
+  ..........
+  {BLOCK_N_END_PIN, BLOCK_N_START_PIN }
+  };
+*/
+#define PINS 2
+const int sensorPin[NO_OF_BLOCKS][PINS] = {
+  {13, 12 },
+  {11, 10 },
+  {9, 8}
+};
 
 #endif

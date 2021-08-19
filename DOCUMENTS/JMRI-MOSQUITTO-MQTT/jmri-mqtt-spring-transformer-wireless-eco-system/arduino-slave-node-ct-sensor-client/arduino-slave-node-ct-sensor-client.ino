@@ -18,8 +18,9 @@ void setup() {
   Serial.begin(BROAD_RATE);
   Serial.flush();
   ctSensor.initCtSensor(NO_OF_BLOCKS);
-  ctSensor.setSensorPin(1, 7);
-  ctSensor.setSensorPin(2, 6);
+  for (int i = 0; i < NO_OF_BLOCKS; i++) {
+    ctSensor.setSensorPin(i + 1, sensorPin[i]);
+  }
 }
 
 void loop() {
@@ -39,7 +40,6 @@ void loop() {
       sendData(String(JMRI_SENSOR_START_ADDRESS + blockNo) + INACTIVE);
     }
   }
-
   delay(DELAY_TIME);
 }
 
