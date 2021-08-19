@@ -19,7 +19,7 @@
 ```
 // CT SENSORS PIN CONFIGURATION 
   const int sensorPin[NO_OF_BLOCKS][PINS] = {
-  BLOCK_1__PIN,
+  BLOCK_1_PIN,
   BLOCK_2_PIN,
   ..........
   BLOCK_N_PIN
