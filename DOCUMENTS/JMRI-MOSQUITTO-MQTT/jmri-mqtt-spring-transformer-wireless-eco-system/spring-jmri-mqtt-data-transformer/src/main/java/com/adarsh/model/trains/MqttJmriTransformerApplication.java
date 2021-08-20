@@ -26,12 +26,11 @@ import java.nio.file.Paths;
 public class MqttJmriTransformerApplication {
 
     public static void main(String[] args) {
-        // SpringApplication.run(MqttJmriTransformerApplication.class, args);
         SpringApplication application = new SpringApplication(MqttJmriTransformerApplication.class);
         application.setBanner(new Banner() {
             @Override
             public void printBanner(Environment environment, Class<?> sourceClass, PrintStream out) {
-                String banner = readBanner(); // REPLACE WITH ANY STRING
+                String banner = readBanner();
                 out.print(banner);
             }
         });
@@ -40,11 +39,12 @@ public class MqttJmriTransformerApplication {
 
     private static String readBanner() {
         try {
-            String banner = new String(Files.readAllBytes(Paths.get(ResourceUtils.getFile("classpath:amt-banner.txt").toURI())), StandardCharsets.UTF_8);
+            String banner = new String(Files.readAllBytes(
+                    Paths.get(ResourceUtils.getFile("classpath:amt-banner.txt").toURI())), StandardCharsets.UTF_8);
             return banner;
-
         } catch (IOException ex) {
-            return "Banner not found";
+            return "  Developed by: Adarsh kumar\n" +
+                    " For Support: adarshmodeltrains@gmail.com\n\n\n";
         }
     }
 }
