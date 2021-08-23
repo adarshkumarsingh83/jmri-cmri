@@ -46,16 +46,17 @@
 
 ### ESP code 
 
+* for reading data directly via mqtt topic using esp8266 
+	* [link for configuraiton and deplayment and setup ](esp8266-transformation-mqtt-client/README.md)		
+	
+* for reading data from the rest service of the spring transformer application 
+	* [link for configuraiton and deplayment and setup ](esp8266-transformer-rest-client/README.md)		
+
 * for reading data from the rest service of the spring transformer application and executing directly with snap turnout and light  
 	* [link for configuraiton and deplayment and setup ](esp8266-transformer-rest-client-snapswitch-signal-node/README.md)	
 
 * for reading data from the rest service of the spring transformer application and executing directly with servo turnout and light  
-	* [link for configuraiton and deplayment and setup ](esp8266-transformer-rest-client-servowitch-signal-node/README.md)		
-
-* for reading data directly via mqtt topic using esp8266 
-	* [link for configuraiton and deplayment and setup ](esp8266-transformation-mqtt-client/README.md)		
-* for reading data from the rest service of the spring transformer application 
-	* [link for configuraiton and deplayment and setup ](esp8266-transformer-rest-client/README.md)		
+	* [link for configuraiton and deplayment and setup ](esp8266-transformer-rest-client-servowitch-signal-node/README.md)	
 
 ### ARDUINO code
 * forwarding data to arduino with servo turnout configuration 
