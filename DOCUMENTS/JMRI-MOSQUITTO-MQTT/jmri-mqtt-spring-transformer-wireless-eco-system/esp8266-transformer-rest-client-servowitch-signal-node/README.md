@@ -1,4 +1,4 @@
-# Esp8266 Rest client for Snapeswitch and led signals 
+# Esp8266 Rest client for Servo turnout switch and led signals 
 
 ---
 
