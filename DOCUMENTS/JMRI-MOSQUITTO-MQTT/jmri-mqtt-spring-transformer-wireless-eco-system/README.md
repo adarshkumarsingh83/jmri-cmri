@@ -58,6 +58,12 @@
 * for reading data from the rest service of the spring transformer application and executing directly with servo turnout and light  
 	* [link for configuraiton and deplayment and setup ](esp8266-transformer-rest-client-servowitch-signal-node/README.md)	
 
+* for reading data from the mqtt topic of the spring transformer application and executing directly with snap turnout and light  
+	* [link for configuraiton and deplayment and setup ](esp8266-transformer-mqtt-client-snapswitch-signal-node/README.md)	
+
+* for reading data from the mqtt topic of the spring transformer application and executing directly with servo turnout and light  
+	* [link for configuraiton and deplayment and setup ](esp8266-transformer-mqtt-client-servowitch-signal-node/README.md)	
+
 ### ARDUINO code
 * forwarding data to arduino with servo turnout configuration 
 	* [link for configuraiton and deplayment and setup ](arduino-slave-node-servoswitch-ledsignal/README.md)	
