@@ -38,7 +38,7 @@
 
 ## FOR LIGHT TURNOUT AND SIGNALS 
 
-### BELOW COMBINATION OF IMPLEMENTATION CAN BE USE FOR SIGNAL TURNOUT AND LIGHT 
+## BELOW COMBINATION OF IMPLEMENTATION CAN BE USE FOR SIGNAL TURNOUT AND LIGHT 
 * Esp code direct mqtt subsciber -> Arduino code servo turnout and led switch 
 * Esp code direct mqtt subsciber -> Arduino code relay switch turnout and led switch 
 * Esp code rest client subsciber -> Arduino code servo turnout and led switch 
@@ -64,9 +64,11 @@
 
 ---
 
-### BELOW IMPLEMENTATION CAN BE USE FOR SIGNAL TURNOUT AND LIGHT 
+## BELOW IMPLEMENTATION CAN BE USE FOR SIGNAL TURNOUT AND LIGHT 
 * Esp code direct mqtt subsciber servo turnout and led switch 
 * Esp code direct mqtt subsciber relay switch turnout and led switch 
+
+### ESP code 
 
 * for reading data from the rest service of the spring transformer application and executing directly with snap turnout and light  
 	* [link for configuraiton and deplayment and setup ](esp8266-transformer-rest-client-snapswitch-signal-node/README.md)	
@@ -84,7 +86,7 @@
 
 ## FOR SENSORS | BLOCK OCCUPANCY SENSORS 
 
-### BELOW COMBINATION OF IMPLEMENTATION CAN BE DONE FOR SENSORS 
+## BELOW COMBINATION OF IMPLEMENTATION CAN BE DONE FOR SENSORS 
 * Esp code direct mqtt publisher -> Arduino ir sensor
 * Esp code direct mqtt publisher -> Arduino ct sensor 
 * Esp code rest client publisher -> Arduino ir sensor
