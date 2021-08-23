@@ -28,6 +28,6 @@ via scl which is D1 on esp and sda which D2 on Esp
 
 ![img](/DOCUMENTS/JMRI-MOSQUITTO-MQTT/jmri-mqtt-spring-transformer-esp8266-arduinouno/image/esp8266-pca9685.jpg)
 
-![img](DOCUMENTS/JMRI-MOSQUITTO-MQTT/jmri-mqtt-spring-transformer-wireless-eco-system/image/esp-pca9685.png)
+![img](./image/esp-pca9685.png)
 
 
