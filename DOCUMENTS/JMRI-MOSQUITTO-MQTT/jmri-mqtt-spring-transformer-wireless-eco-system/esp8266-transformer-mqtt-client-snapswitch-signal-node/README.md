@@ -1,4 +1,4 @@
-# Esp8266 mqtt client for Snapeswitch and led signals 
+# Esp8266 Rest client for Snapeswitch and led signals 
 
 ---
 

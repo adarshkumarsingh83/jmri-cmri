@@ -1,4 +1,4 @@
-# Esp8266 Rest client for Servo turnout switch and led signals 
+# Esp8266 mqtt client for Servo turnout switch and led signals 
 
 ---
 
@@ -42,7 +42,6 @@ int turnoutRange[][TOTAL_BOARD_PIN][RANGE_TYPE] = {
    }
 };
 ```
-
 
 
 ## To Open Two arduino sperate ide on mac 
