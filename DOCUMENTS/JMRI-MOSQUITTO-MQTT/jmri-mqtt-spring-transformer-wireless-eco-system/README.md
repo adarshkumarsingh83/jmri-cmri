@@ -62,8 +62,6 @@
 	* [link for configuraiton and deplayment and setup ](arduino-slave-node-snapswitch-ledsignal/README.md)		
 
 
----
-
 ## BELOW IMPLEMENTATION CAN BE USE FOR SIGNAL TURNOUT AND LIGHT 
 * Esp code direct mqtt subsciber servo turnout and led switch 
 * Esp code direct mqtt subsciber relay switch turnout and led switch 
