@@ -44,9 +44,6 @@
 * Esp code rest client subsciber -> Arduino code servo turnout and led switch 
 * Esp code rest client subsciber -> Arduino code relay switch turnout and led switch 
 
-### BELOW IMPLEMENTATION CAN BE USE FOR SIGNAL TURNOUT AND LIGHT 
-* Esp code direct mqtt subsciber servo turnout and led switch 
-* Esp code direct mqtt subsciber relay switch turnout and led switch 
 
 ### ESP code 
 
@@ -55,6 +52,21 @@
 	
 * for reading data from the rest service of the spring transformer application 
 	* [link for configuraiton and deplayment and setup ](esp8266-transformer-rest-client/README.md)		
+
+
+### ARDUINO code
+* forwarding data to arduino with servo turnout configuration 
+	* [link for configuraiton and deplayment and setup ](arduino-slave-node-servoswitch-ledsignal/README.md)	
+	* [link for configuration and connnection for PCA9685 board &  arduino ](PCA9685-README.md)	
+* forwarding data to arduino with relay switich snap turnout configuraion 
+	* [link for configuraiton and deplayment and setup ](arduino-slave-node-snapswitch-ledsignal/README.md)		
+
+
+---
+
+### BELOW IMPLEMENTATION CAN BE USE FOR SIGNAL TURNOUT AND LIGHT 
+* Esp code direct mqtt subsciber servo turnout and led switch 
+* Esp code direct mqtt subsciber relay switch turnout and led switch 
 
 * for reading data from the rest service of the spring transformer application and executing directly with snap turnout and light  
 	* [link for configuraiton and deplayment and setup ](esp8266-transformer-rest-client-snapswitch-signal-node/README.md)	
@@ -67,13 +79,6 @@
 
 * for reading data from the mqtt topic of the spring transformer application and executing directly with servo turnout and light  
 	* [link for configuraiton and deplayment and setup ](esp8266-transformer-mqtt-client-servowitch-signal-node/README.md)	
-
-### ARDUINO code
-* forwarding data to arduino with servo turnout configuration 
-	* [link for configuraiton and deplayment and setup ](arduino-slave-node-servoswitch-ledsignal/README.md)	
-	* [link for configuration and connnection for PCA9685 board &  arduino ](PCA9685-README.md)	
-* forwarding data to arduino with relay switich snap turnout configuraion 
-	* [link for configuraiton and deplayment and setup ](arduino-slave-node-snapswitch-ledsignal/README.md)		 
 
 ---
 
