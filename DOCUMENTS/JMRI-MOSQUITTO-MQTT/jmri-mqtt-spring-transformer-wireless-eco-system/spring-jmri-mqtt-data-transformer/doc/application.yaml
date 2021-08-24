@@ -30,18 +30,18 @@ node:
     turnoutStartingAddress: 10000
     signal2LStartingAddress: 20000
     signal3LStartingAddress: 30000
-    signalCacheClearingTime: 8000        # after every 5 sec job will clean the cache if its not updated for last 8 sec and if any stale data in cache for specific node
+    signalCacheClearingTime: 8000        # after every 5 sec job will clean the cache if it is not updated for last 8 sec and if any stale data in cache for specific node
     nodes:
       -
         nodeId: 1
         lightStartAddress: 1000
-        lightCount: 5                    # 1 ins for each light
+        lightCount: 5                    # 1 pin for each light
         turnoutStartAddress: 10000
-        turnoutCount: 16                 # 2 pins for each turnout (16 * 2) /16 => 16
+        turnoutCount: 16                 # 2 pins for each turnout each board can have only 8 turnout so :: (16 * 2) /16 => 16
         signal2LStartAddress: 20000
-        signal2LCount: 64                # 2 pins for each signals light  total 16 turnout and every turnout has 2 splitter track (16 * 2 * 2) => 64
+        signal2LCount: 64                # 2 pins for each signal light total 16 turnout and every turnout has 2 splitter track (16 * 2 * 2) => 64
         signal3LStartAddress: 30000
-        signal3LCount: 30                # 3 pins for each signals (10 * 3) => 30
+        signal3LCount: 30                # 3 pins for each signal (10 * 3) => 30
         turnoutBoardCount: 2             # (turnoutCount * 2)/16 :=>  (16 * 2) / 16 => 2
         lightBoardCount: 9               # (lightCount + signal2LCount + signal3LCount) /16 :=>  (5+32+30)/16 =>  5
         lightPublishTopic: /amt/node/1/light/
