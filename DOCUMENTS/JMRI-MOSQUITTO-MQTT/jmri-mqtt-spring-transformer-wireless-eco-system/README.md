@@ -118,10 +118,10 @@
 	* [link for configuraiton and deplayment and setup ](esp8266-transformation-rest-client-ir-sensor-node/README.md)	
 
 * for posting data to the mqtt topic directly for ct sensors 
-	* [link for configuraiton and deplayment and setup ](esp8266-transformation-rest-client-ct-sensor-node/README.md)	
+	* [link for configuraiton and deplayment and setup ](esp8266-transformation-mqtt-client-ct-sensor-node/README.md)	
 
 * for posting data to the mqtt topic directly for ir sensors 
-	* [link for configuraiton and deplayment and setup ](esp8266-transformation-rest-client-ir-sensor-node/README.md)	
+	* [link for configuraiton and deplayment and setup ](esp8266-transformation-mqtt-client-ir-sensor-node/README.md)	
 
 
 
