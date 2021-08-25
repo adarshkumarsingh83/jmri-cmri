@@ -103,6 +103,28 @@
 * configuring ct sensor based block decection arduino node 		
 	* [link for configuraiton and deployment and setup ]()		
 
+
+
+## BELOW IMPLEMENTATION CAN BE USE FOR CT SENSOR AND IR SENSORS  
+* Esp code direct mqtt publisher for ir and ct sensors 
+* Esp code direct rest client for ir and ct sensors 
+
+### ESP code 
+
+* for posting data to the rest service of the spring transformer application for ct sensors 
+	* [link for configuraiton and deplayment and setup ](esp8266-transformation-rest-client-ct-sensor-node/README.md)	
+
+* for posting data to the rest service of the spring transformer application for ir sensors  
+	* [link for configuraiton and deplayment and setup ](esp8266-transformation-rest-client-ir-sensor-node/README.md)	
+
+* for posting data to the mqtt topic directly for ct sensors 
+	* [link for configuraiton and deplayment and setup ](esp8266-transformation-rest-client-ct-sensor-node/README.md)	
+
+* for posting data to the mqtt topic directly for ir sensors 
+	* [link for configuraiton and deplayment and setup ](esp8266-transformation-rest-client-ir-sensor-node/README.md)	
+
+
+
 ----
 
 ### [MQTT SETUP GUILDE LINK ](MQTT-SETUP-README.md)
