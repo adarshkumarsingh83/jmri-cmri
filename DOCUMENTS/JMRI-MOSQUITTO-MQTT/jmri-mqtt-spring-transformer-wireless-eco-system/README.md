@@ -62,7 +62,7 @@
 	* [link for configuraiton and deplayment and setup ](arduino-slave-node-snapswitch-ledsignal/README.md)		
 
 
-## BELOW IMPLEMENTATION CAN BE USE FOR SIGNAL TURNOUT AND LIGHT 
+## BELOW IMPLEMENTATION CAN BE USE FOR SIGNAL TURNOUT AND LIGHT DIRECTLY ON ESP8266 OR ESP32
 * Esp code direct mqtt subsciber servo turnout and led switch 
 * Esp code direct mqtt subsciber relay switch turnout and led switch 
 
@@ -105,7 +105,7 @@
 
 
 
-## BELOW IMPLEMENTATION CAN BE USE FOR CT SENSOR AND IR SENSORS  
+## BELOW IMPLEMENTATION CAN BE USE FOR CT SENSOR AND IR SENSORS DIRECTLY ON ESP8266 OR ESP32
 * Esp code direct mqtt publisher for ir and ct sensors 
 * Esp code direct rest client for ir and ct sensors 
 
