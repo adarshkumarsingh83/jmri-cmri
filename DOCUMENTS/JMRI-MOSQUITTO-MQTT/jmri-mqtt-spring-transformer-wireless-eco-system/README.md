@@ -43,28 +43,28 @@
 	jmri -> mqtt -> springtransformer -> mqtt -> esp -> arduino -> pca9685 -> ledsignal|servoturnout|relayswitch snapturnout 
 ### Upstream data 
 	ct sensor | irsensor -> arduino -> esp -> mqtt -> jmri 
-![img](image/dig1.png)
+![img](image/dig11.png)
 
 ## Data flow 
 ### Downstream data 
 	jmri -> mqtt -> springtransformer -> restapi -> esp -> arduino -> pca9685 -> ledsignal|servoturnout|relayswitch snapturnout 
 ### Upstream data 
 	ct sensor | irsensor -> arduino -> esp -> restapi -> spring transformer -> mqtt -> jmri 
-![img](image/dig3.png)
+![img](image/dig33.png)
 
 ## Data flow 
 ### Downstream data 
 	jmri -> mqtt -> springtransformer -> mqtt -> esp -> pca9685 -> ledsignal|servoturnout|relayswitch snapturnout 
 ### Upstream data
 	ct sensor | irsensor ->  esp -> mqtt -> jmri 
-![img](image/dig2.png)
+![img](image/dig22.png)
 
 ## Data flow 
 ### Downstream data 
 	jmri -> mqtt -> springtransformer -> restapi -> esp -> pca9685 -> ledsignal|servoturnout|relayswitch snapturnout 
 ### Upstream data
 	ct sensor | irsensor -> esp -> restapi -> spring transformer -> mqtt -> jmri 
-![img](image/dig4.png)
+![img](image/dig44.png)
 
 
 ## FOR LIGHT TURNOUT AND SIGNALS 
