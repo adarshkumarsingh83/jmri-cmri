@@ -1,8 +1,8 @@
 # JMRI MQTT DATA TRANSFORMER NODE SELECTOR APPLICATION
 
-### [click to download jar](spring-jmri-mqtt-data-transformer.jar)
+### [click to download jar](../doc/spring-jmri-mqtt-data-transformer.jar)
 
-### [click to download application config file](application.config.file.zip)
+### [click to download application config file](../doc/application.config.file.zip)
 
 
 ### To Run Executable jar of application with default configuration with default profile  
