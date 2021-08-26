@@ -1,4 +1,4 @@
-# JMRI MQTT SPRING TRANSFORMER ESP AND ARDUINO WIRELESS ECO SYSTEM 
+# JMRI MQTT WIRELESS ECO SYSTEM 
 
 > Jmri will push the data to the mqtt topic \
 > spring transformer application configured with nodes and its details like no of turnout, no of signals, no of light in the node \
