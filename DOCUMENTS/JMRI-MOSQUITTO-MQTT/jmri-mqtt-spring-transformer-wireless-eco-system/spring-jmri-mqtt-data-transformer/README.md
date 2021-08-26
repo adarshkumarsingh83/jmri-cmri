@@ -85,9 +85,7 @@ node:
         nodeId: 1                                   # node id/name publish topic will be formed with this id only
         turnoutBoardCount: 3                        # total number of pca9685 configured for turnouts in arduino node
         lightBoardCount: 6                          # total number of pca9685 configured for signal and lights in arduino node
-        lightPublishTopic: /amt/node/1/light/       # light publish topic after transformation for particular node 
-        turnoutPublishTopic: /amt/node/1/turnout/   # turnout publish topic after transformation for particular node 
-        signalPublishTopic: /amt/node/1/signal/     # signal publish topic after transformation for particular node 
+        nodeSubscriptionTopic: /amt/node/1/data/    # topic for every node for reading data from spring transformation application
         apiEndpointCacheSize: 10                    # api enpoint cache size 
         lightStartAddress: 1000                     # starting address of the light in node 1 ,if not configured then configure with 0 value 
         lightCount: 10                              # no of light configured in node 1 ,if not configured then configure with 0 value 
@@ -111,7 +109,7 @@ node:
     turnoutStartingAddress: 10000
     signal2LStartingAddress: 20000
     signal3LStartingAddress: 30000
-    signalCacheClearingTime: 5000
+    signalCacheClearingTime: 8000        # after every 5 sec job will clean the cache if its not updated for last 8 sec and if any stale data in cache for specific node
     nodes:
       -
         nodeId: 1
@@ -125,9 +123,7 @@ node:
         signal3LCount: 30                # 3 pins for each signals (10 * 3) => 30
         turnoutBoardCount: 2             # (turnoutCount * 2)/16 :=>  (16 * 2) / 16 => 2
         lightBoardCount: 9               # (lightCount + signal2LCount + signal3LCount) /16 :=>  (5+32+30)/16 =>  5
-        lightPublishTopic: /amt/node/1/light/
-        turnoutPublishTopic: /amt/node/1/turnout/
-        signalPublishTopic: /amt/node/1/signal/
+        nodeSubscriptionTopic: /amt/node/1/data/  # topic for every node for reading data from spring transformation application
         apiEndpointCacheSize: 10
       -
         nodeId: 2
@@ -141,9 +137,7 @@ node:
         signal3LCount: 30
         turnoutBoardCount: 2
         lightBoardCount: 7
-        lightPublishTopic: /amt/node/2/light/
-        turnoutPublishTopic: /amt/node/2/turnout/
-        signalPublishTopic: /amt/node/2/signal/
+        nodeSubscriptionTopic: /amt/node/2/data/
         apiEndpointCacheSize: 10
       -
         nodeId: 3
@@ -157,9 +151,7 @@ node:
         signal3LCount: 18
         turnoutBoardCount: 2
         lightBoardCount: 6
-        lightPublishTopic: /amt/node/3/light/
-        turnoutPublishTopic: /amt/node/3/turnout/
-        signalPublishTopic: /amt/node/3/signal/
+        nodeSubscriptionTopic: /amt/node/3/data/
         apiEndpointCacheSize: 10
       -
         nodeId: 4
@@ -173,9 +165,7 @@ node:
         signal3LCount: 24
         turnoutBoardCount: 2
         lightBoardCount: 3
-        lightPublishTopic: /amt/node/4/light/
-        turnoutPublishTopic: /amt/node/4/turnout/
-        signalPublishTopic: /amt/node/4/signal/
+        nodeSubscriptionTopic: /amt/node/4/data/
         apiEndpointCacheSize: 10
       -
         nodeId: 5
@@ -189,9 +179,7 @@ node:
         signal3LCount: 80
         turnoutBoardCount: 10
         lightBoardCount: 8
-        lightPublishTopic: /amt/node/5/light/
-        turnoutPublishTopic: /amt/node/5/turnout/
-        signalPublishTopic: /amt/node/5/signal/
+        nodeSubscriptionTopic: /amt/node/5/data/
         apiEndpointCacheSize: 10
       -
         nodeId: 6
@@ -205,9 +193,7 @@ node:
         signal3LCount: 45
         turnoutBoardCount: 2
         lightBoardCount: 4
-        lightPublishTopic: /amt/node/6/light/
-        turnoutPublishTopic: /amt/node/6/turnout/
-        signalPublishTopic: /amt/node/6/signal/
+        nodeSubscriptionTopic: /amt/node/6/data/
         apiEndpointCacheSize: 10
       -
         nodeId: 7
@@ -221,9 +207,7 @@ node:
         signal3LCount: 80
         turnoutBoardCount: 6
         lightBoardCount: 6
-        lightPublishTopic: /amt/node/7/light/
-        turnoutPublishTopic: /amt/node/7/turnout/
-        signalPublishTopic: /amt/node/7/signal/
+        nodeSubscriptionTopic: /amt/node/7/data/
         apiEndpointCacheSize: 10
       -
         nodeId: 8
@@ -237,9 +221,7 @@ node:
         signal3LCount: 87
         turnoutBoardCount: 3
         lightBoardCount: 6
-        lightPublishTopic: /amt/node/8/light/
-        turnoutPublishTopic: /amt/node/8/turnout/
-        signalPublishTopic: /amt/node/8/signal/
+        nodeSubscriptionTopic: /amt/node/8/data/
         apiEndpointCacheSize: 10
       -
         nodeId: 9
@@ -253,9 +235,7 @@ node:
         signal3LCount: 24
         turnoutBoardCount: 3
         lightBoardCount: 3
-        lightPublishTopic: /amt/node/9/light/
-        turnoutPublishTopic: /amt/node/9/turnout/
-        signalPublishTopic: /amt/node/9/signal/
+        nodeSubscriptionTopic: /amt/node/9/data/
         apiEndpointCacheSize: 10
       -
         nodeId: 10
@@ -269,11 +249,8 @@ node:
         signal3LCount: 80
         turnoutBoardCount: 3
         lightBoardCount: 8
-        lightPublishTopic: /amt/node/10/light/
-        turnoutPublishTopic: /amt/node/10/turnout/
-        signalPublishTopic: /amt/node/10/signal/
+        nodeSubscriptionTopic: /amt/node/10/data/
         apiEndpointCacheSize: 10
-
 ```
 ### To subscribe the mqtt jmri topic with original jmri messages  
 * $  mosquitto_sub -h localhost -u adarsh -P password -v -t '/trains/track/#'
