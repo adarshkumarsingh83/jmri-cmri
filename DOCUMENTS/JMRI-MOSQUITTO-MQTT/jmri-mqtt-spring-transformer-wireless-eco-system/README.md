@@ -39,13 +39,17 @@
 # Implementation types 
 
 ## Data flow 
-### jmri -> mqtt -> spring transformer -> mqtt -> esp -> arduino -> pca9685 -> signal|turnout
-### ct sensor | irsensor -> arduino -> esp -> mqtt -> jmri 
+### Downstream data 
+	* jmri -> mqtt -> spring transformer -> mqtt -> esp -> arduino -> pca9685 -> signal|turnout
+### Upstream data 
+	*  ct sensor | irsensor -> arduino -> esp -> mqtt -> jmri 
 ![img](image/dig1.png)
 
 ## Data flow 
-### jmri -> mqtt -> spring transformer -> rest api -> esp -> arduino -> pca9685 -> signal|turnout
-### ct sensor | irsensor -> arduino -> esp -> rest api -> spring transformer -> mqtt -> jmri 
+### Downstream data 
+	*  jmri -> mqtt -> spring transformer -> rest api -> esp -> arduino -> pca9685 -> signal|turnout
+### Upstream data 
+	*  ct sensor | irsensor -> arduino -> esp -> rest api -> spring transformer -> mqtt -> jmri 
 ![img](image/dig3.png)
 
 ## Data flow 
