@@ -1,8 +1,8 @@
 # JMRI MQTT DATA TRANSFORMER NODE SELECTOR APPLICATION
 
-### [click to download jar](../doc/spring-jmri-mqtt-data-transformer.jar)
+### [click to download jar](https://github.com/adarshkumarsingh83/jmri-cmri/raw/main/DOCUMENTS/JMRI-MOSQUITTO-MQTT/jmri-mqtt-spring-transformer-wireless-eco-system/spring-jmri-mqtt-data-transformer/doc/spring-jmri-mqtt-data-transformer.jar)
 
-### [click to download application config file](../doc/application.config.file.zip)
+### [click to download application config file](https://github.com/adarshkumarsingh83/jmri-cmri/raw/main/DOCUMENTS/JMRI-MOSQUITTO-MQTT/jmri-mqtt-spring-transformer-wireless-eco-system/spring-jmri-mqtt-data-transformer/doc/application.config.file.zip)
 
 
 ### To Run Executable jar of application with default configuration with default profile  
