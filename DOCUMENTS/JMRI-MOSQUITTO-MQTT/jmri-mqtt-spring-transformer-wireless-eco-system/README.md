@@ -40,9 +40,9 @@
 
 ## Data flow 
 ### Downstream data 
-	* jmri -> mqtt -> spring transformer -> mqtt -> esp -> arduino -> pca9685 -> led signal | servo turnout | snap relay switch turnout 
+	jmri -> mqtt -> spring transformer -> mqtt -> esp -> arduino -> pca9685 -> led signal | servo turnout | snap relay switch turnout 
 ### Upstream data 
-	*  ct sensor | irsensor -> arduino -> esp -> mqtt -> jmri 
+	ct sensor | irsensor -> arduino -> esp -> mqtt -> jmri 
 ![img](image/dig1.png)
 
 ## Data flow 
