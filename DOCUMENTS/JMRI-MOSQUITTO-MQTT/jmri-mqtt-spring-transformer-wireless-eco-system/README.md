@@ -36,15 +36,26 @@
 
 ---
 
-## FOR LIGHT TURNOUT AND SIGNALS 
+# Implementation types 
 
+### jmri -> mqtt -> spring transformer -> mqtt -> esp -> arduino -> pca9685 -> signal|turnout
+### ct sensor | irsensor -> arduino -> esp -> mqtt -> jmri 
 ![img](image/dig1.png)
 
+### jmri -> mqtt -> spring transformer -> rest api -> esp -> arduino -> pca9685 -> signal|turnout
+### ct sensor | irsensor -> arduino -> esp -> rest api -> spring transformer -> mqtt -> jmri 
 ![img](image/dig3.png)
 
+### jmri -> mqtt -> spring transformer -> mqtt -> esp -> pca9685 -> signal|turnout
+### ct sensor | irsensor ->  esp -> mqtt -> jmri 
 ![img](image/dig2.png)
 
+### jmri -> mqtt -> spring transformer -> rest api -> esp -> pca9685 -> signal|turnout
+### ct sensor | irsensor -> esp -> rest api -> spring transformer -> mqtt -> jmri 
 ![img](image/dig4.png)
+
+
+## FOR LIGHT TURNOUT AND SIGNALS 
 
 ## BELOW COMBINATION OF IMPLEMENTATION CAN BE USE FOR SIGNAL TURNOUT AND LIGHT 
 * Esp code direct mqtt subsciber -> Arduino code servo turnout and led switch 
