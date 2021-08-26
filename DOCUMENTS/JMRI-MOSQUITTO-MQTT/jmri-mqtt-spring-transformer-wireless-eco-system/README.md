@@ -38,6 +38,14 @@
 
 ## FOR LIGHT TURNOUT AND SIGNALS 
 
+![img](image/dig1.png)
+
+![img](image/dig3.png)
+
+![img](image/dig2.png)
+
+![img](image/dig4.png)
+
 ## BELOW COMBINATION OF IMPLEMENTATION CAN BE USE FOR SIGNAL TURNOUT AND LIGHT 
 * Esp code direct mqtt subsciber -> Arduino code servo turnout and led switch 
 * Esp code direct mqtt subsciber -> Arduino code relay switch turnout and led switch 
