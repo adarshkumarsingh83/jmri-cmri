@@ -46,9 +46,7 @@ public class NodeConfigurations {
         Integer signal3LCount;
         Integer turnoutBoardCount;
         Integer lightBoardCount;
-        String lightPublishTopic;
-        String turnoutPublishTopic;
-        String signalPublishTopic;
+        String nodeSubscriptionTopic;
         Integer apiEndpointCacheSize;
     }
 }

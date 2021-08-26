@@ -140,7 +140,7 @@ public class MQTTService {
                 if (cache3Led.get(node.getNodeId()).size() == led3) {
 
                     String signalData = cache3Led.get(node.getNodeId()).stream().distinct().collect(Collectors.joining(CONNECTION));
-                    this.publish(node.getSignalPublishTopic(), SIGNAL_PREFIX + signalData, 1, false);
+                    this.publish(node.getNodeSubscriptionTopic(), SIGNAL_PREFIX + signalData, 1, false);
 
                     if (transformationEndpointsEnabled) {
                         store.get(node.getNodeId()).enqueue(SIGNAL_PREFIX + signalData);
@@ -158,7 +158,7 @@ public class MQTTService {
                 if (cache2Led.get(node.getNodeId()).size() == led2) {
 
                     String signalData = cache2Led.get(node.getNodeId()).stream().distinct().collect(Collectors.joining(CONNECTION));
-                    this.publish(node.getSignalPublishTopic(), SIGNAL_PREFIX + signalData, 1, false);
+                    this.publish(node.getNodeSubscriptionTopic(), SIGNAL_PREFIX + signalData, 1, false);
 
                     if (transformationEndpointsEnabled) {
                         store.get(node.getNodeId()).enqueue(SIGNAL_PREFIX + signalData);
@@ -167,7 +167,7 @@ public class MQTTService {
                     cache2Led.get(node.getNodeId()).clear();
                 }
             } else {
-                this.publish(node.getSignalPublishTopic(), SIGNAL_PREFIX + jmriId + COLLEN + jmriState, 1, false);
+                this.publish(node.getNodeSubscriptionTopic(), SIGNAL_PREFIX + jmriId + COLLEN + jmriState, 1, false);
                 if (transformationEndpointsEnabled) {
                     store.get(node.getNodeId()).enqueue(SIGNAL_PREFIX + jmriId + COLLEN + jmriState);
                 }
@@ -182,7 +182,7 @@ public class MQTTService {
         log.debug("flushCache nodeId= {} ", node.getNodeId());
 
         String signalData = cache.get(node.getNodeId()).stream().distinct().collect(Collectors.joining(CONNECTION));
-        this.publish(node.getSignalPublishTopic(), SIGNAL_PREFIX + signalData, 1, false);
+        this.publish(node.getNodeSubscriptionTopic(), SIGNAL_PREFIX + signalData, 1, false);
 
         if (transformationEndpointsEnabled) {
             store.get(node.getNodeId()).enqueue(SIGNAL_PREFIX + signalData);
@@ -198,7 +198,7 @@ public class MQTTService {
         if (node != null) {
             jmriState = (jmriState.equalsIgnoreCase(THROWN) ? TH : CL);
             jmriState = this.nodeWiseDataGenerated(TURNOUT, node, jmriId, jmriState);
-            this.publish(node.getTurnoutPublishTopic(), TURNOUT_PREFIX + jmriId + COLLEN + jmriState, 1, false);
+            this.publish(node.getNodeSubscriptionTopic(), TURNOUT_PREFIX + jmriId + COLLEN + jmriState, 1, false);
             if (transformationEndpointsEnabled) {
                 store.get(node.getNodeId()).enqueue(TURNOUT_PREFIX + jmriId + COLLEN + jmriState);
             }
@@ -215,7 +215,7 @@ public class MQTTService {
         if (node != null) {
             jmriState = (jmriState.equalsIgnoreCase(ON) ? ON : OFF);
             jmriState = this.nodeWiseDataGenerated(LIGHT, node, jmriId, jmriState);
-            this.publish(node.getLightPublishTopic(), LIGHT_PREFIX + jmriId + COLLEN + jmriState, 1, false);
+            this.publish(node.getNodeSubscriptionTopic(), LIGHT_PREFIX + jmriId + COLLEN + jmriState, 1, false);
             if (transformationEndpointsEnabled) {
                 store.get(node.getNodeId()).enqueue(LIGHT_PREFIX + jmriId + COLLEN + jmriState);
             }
