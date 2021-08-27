@@ -4,6 +4,10 @@
 
 ### [click to download application config file](https://github.com/adarshkumarsingh83/jmri-cmri/raw/main/DOCUMENTS/JMRI-MOSQUITTO-MQTT/jmri-mqtt-spring-transformer-wireless-eco-system/spring-jmri-mqtt-data-transformer/doc/application.config.file.zip)
 
+## Min Requirement 
+* java runtime 8 
+* mosquitto mqtt server 
+* yaml editor to edit configuration files 
 
 ### To Run Executable jar of application with default configuration with default profile  
 * $ java -jar spring-jmri-mqtt-data-transformer.jar
