@@ -36,6 +36,9 @@ public class NodeConfigurations {
     @Data
     public static class Nodes {
         String nodeId;
+        Boolean enableNode;
+        Boolean enablePublishing;
+        Boolean enableRestApi;
         Integer lightStartAddress;
         Integer lightCount;
         Integer turnoutStartAddress;

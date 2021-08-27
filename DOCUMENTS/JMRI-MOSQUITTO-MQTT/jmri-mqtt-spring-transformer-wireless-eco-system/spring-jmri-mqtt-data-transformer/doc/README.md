@@ -16,12 +16,6 @@
 * or
 * java -jar -Dspring.profiles.active=prod spring-jmri-mqtt-data-transformer.jar --spring.config.location=./
 
-## TO ENABLE JMRI MQTT DATA ENDPOINTS 
-> ENABLE THE PROPERTIES in  src/main/resources/application.properties
-```
-## TO ENABLE THE REST API ENDPOINT FOR SERVING DATA  
-amt.mqtt.transform.endpoints.enabled=false
-```
 
 ### TO ACCESS THE MQTT DATA VIA END POINTS 
 > curl -X GET http://localhost:8090/amt/node/[nodeId]
@@ -60,23 +54,26 @@ mqtt-properties:
 
 ```
 
-## TO CONFIGURING THE NODES DATA ON APPLICATION 
+## TO CONFIGURING THE NODES DATA ON APPLICATION
 > CONFIGURE THE VALUES in  src/main/resources/application.yaml
 ```
 node:
   configurations:
-    lightStartingAddress: 1000   #starting address of the light in whole layout its mandatory value 
-    turnoutStartingAddress: 10000 #starting address of the turnout in whole layout its mandatory value 
-    signal2LStartingAddress: 20000  #starting address of the 2 light signal in whole layout its mandatory value 
-    signal3LStartingAddress: 30000  #starting address of the 3 light signal in whole layout its mandatory value 
-    signalCacheClearingTime: 5000   #2Led 3Led signal cache clearence time in case some things is stuck it will flush to topic 
+    lightStartingAddress: 1000                      #starting address of the light in whole layout its mandatory value 
+    turnoutStartingAddress: 10000                   #starting address of the turnout in whole layout its mandatory value 
+    signal2LStartingAddress: 20000                  #starting address of the 2 light signal in whole layout its mandatory value 
+    signal3LStartingAddress: 30000                  #starting address of the 3 light signal in whole layout its mandatory value 
+    signalCacheClearingTime: 5000                   #2Led 3Led signal cache clearence time in case some things is stuck it will flush to topic 
     nodes:
       -
         nodeId: 1                                   # node id/name publish topic will be formed with this id only
+        enableNode: true                            # enable the node to processing for jmri data
+        enablePublishing: true                      # enable the node to publishing process data to the mqtt topic
+        enableRestApi: false                        # to enable the rest service for the node
+        apiEndpointCacheSize: 10                    # cache for rest api to hold the data for service call        
         turnoutBoardCount: 3                        # total number of pca9685 configured for turnouts in arduino node
         lightBoardCount: 6                          # total number of pca9685 configured for signal and lights in arduino node
         nodeSubscriptionTopic: /amt/node/1/data/    # topic for every node for reading data from spring transformation application
-        apiEndpointCacheSize: 10                    # api enpoint cache size 
         lightStartAddress: 1000                     # starting address of the light in node 1 ,if not configured then configure with 0 value 
         lightCount: 10                              # no of light configured in node 1 ,if not configured then configure with 0 value 
         turnoutStartAddress: 10000                  # starting address of the turnout in node 1 ,if not configured then configure with 0 value 
@@ -89,34 +86,41 @@ node:
                                                     # every led in signal is having one count so if 3 led in signal count is 3
                                                     # if signal is having 2 light red and green then 2 will be count for signal 
 ```
-## samples which is configured by default 
+## samples which is configured by default
 ```
 
 # Custom property for nodes configuration
 node:
   configurations:
-    lightStartingAddress: 1000
-    turnoutStartingAddress: 10000
-    signal2LStartingAddress: 20000
-    signal3LStartingAddress: 30000
-    signalCacheClearingTime: 8000        # after every 5 sec job will clean the cache if its not updated for last 8 sec and if any stale data in cache for specific node
+    lightStartingAddress: 1000                    #starting address of the light in whole layout its mandatory value
+    turnoutStartingAddress: 10000                 #starting address of the turnout in whole layout its mandatory value
+    signal2LStartingAddress: 20000                #starting address of the 2 light signal in whole layout its mandatory value
+    signal3LStartingAddress: 30000                #starting address of the 3 light signal in whole layout its mandatory value
+    signalCacheClearingTime: 8000                 # after every 5 sec job will clean the cache if its not updated for last 8 sec and if any stale data in cache for specific node
     nodes:
       -
-        nodeId: 1
+        nodeId: 1                                 # node id/name publish topic will be formed with this id only
+        enableNode: true                          # enable the node to processing for jmri data
+        enablePublishing: true                    # enable the node to publishing process data to the mqtt topic
+        enableRestApi: false                      # to enable the rest service for the node
+        apiEndpointCacheSize: 10                  # cache for rest api to hold the data for service call
         lightStartAddress: 1000
-        lightCount: 5                    # 1 ins for each light
+        lightCount: 5                             # 1 ins for each light
         turnoutStartAddress: 10000
-        turnoutCount: 16                 # 2 pins for each turnout (16 * 2) /16 => 16
+        turnoutCount: 16                          # 2 pins for each turnout (16 * 2) /16 => 16
         signal2LStartAddress: 20000
-        signal2LCount: 64                # 2 pins for each signals light  total 16 turnout and every turnout has 2 splitter track (16 * 2 * 2) => 64
+        signal2LCount: 64                         # 2 pins for each signals light  total 16 turnout and every turnout has 2 splitter track (16 * 2 * 2) => 64
         signal3LStartAddress: 30000
-        signal3LCount: 30                # 3 pins for each signals (10 * 3) => 30
-        turnoutBoardCount: 2             # (turnoutCount * 2)/16 :=>  (16 * 2) / 16 => 2
-        lightBoardCount: 9               # (lightCount + signal2LCount + signal3LCount) /16 :=>  (5+32+30)/16 =>  5
+        signal3LCount: 30                         # 3 pins for each signals (10 * 3) => 30
+        turnoutBoardCount: 2                      # (turnoutCount * 2)/16 :=>  (16 * 2) / 16 => 2
+        lightBoardCount: 9                        # (lightCount + signal2LCount + signal3LCount) /16 :=>  (5+32+30)/16 =>  5
         nodeSubscriptionTopic: /amt/node/1/data/  # topic for every node for reading data from spring transformation application
-        apiEndpointCacheSize: 10
+
       -
         nodeId: 2
+        enableNode: true
+        enablePublishing: true
+        enableRestApi: false
         lightStartAddress: 1100
         lightCount: 5
         turnoutStartAddress: 10100
@@ -131,6 +135,9 @@ node:
         apiEndpointCacheSize: 10
       -
         nodeId: 3
+        enableNode: true
+        enablePublishing: true
+        enableRestApi: false
         lightStartAddress: 1200
         lightCount: 7
         turnoutStartAddress: 10200
@@ -145,6 +152,9 @@ node:
         apiEndpointCacheSize: 10
       -
         nodeId: 4
+        enableNode: true
+        enablePublishing: true
+        enableRestApi: false
         lightStartAddress: 1300
         lightCount: 23
         turnoutStartAddress: 10300
@@ -159,6 +169,9 @@ node:
         apiEndpointCacheSize: 10
       -
         nodeId: 5
+        enableNode: true
+        enablePublishing: true
+        enableRestApi: false
         lightStartAddress: 1400
         lightCount: 45
         turnoutStartAddress: 10400
@@ -173,6 +186,9 @@ node:
         apiEndpointCacheSize: 10
       -
         nodeId: 6
+        enableNode: true
+        enablePublishing: true
+        enableRestApi: false
         lightStartAddress: 1500
         lightCount: 10
         turnoutStartAddress: 10500
@@ -187,6 +203,9 @@ node:
         apiEndpointCacheSize: 10
       -
         nodeId: 7
+        enableNode: true
+        enablePublishing: true
+        enableRestApi: false
         lightStartAddress: 1600
         lightCount: 12
         turnoutStartAddress: 10600
@@ -201,6 +220,9 @@ node:
         apiEndpointCacheSize: 10
       -
         nodeId: 8
+        enableNode: true
+        enablePublishing: true
+        enableRestApi: false
         lightStartAddress: 1700
         lightCount: 7
         turnoutStartAddress: 10700
@@ -215,6 +237,9 @@ node:
         apiEndpointCacheSize: 10
       -
         nodeId: 9
+        enableNode: true
+        enablePublishing: true
+        enableRestApi: false
         lightStartAddress: 1800
         lightCount: 23
         turnoutStartAddress: 10800
@@ -229,6 +254,9 @@ node:
         apiEndpointCacheSize: 10
       -
         nodeId: 10
+        enableNode: true
+        enablePublishing: true
+        enableRestApi: false
         lightStartAddress: 1900
         lightCount: 45
         turnoutStartAddress: 10900
