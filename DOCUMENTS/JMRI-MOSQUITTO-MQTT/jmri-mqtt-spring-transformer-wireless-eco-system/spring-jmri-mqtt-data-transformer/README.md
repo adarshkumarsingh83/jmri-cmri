@@ -109,22 +109,21 @@ node:
     nodes:
       -
         nodeId: 1                                 # node id/name publish topic will be formed with this id only
-        enableNode: true                          # enable the node to processing for jmri data
-        enablePublishing: true                    # enable the node to publishing process data to the mqtt topic
+        enableNode: true                          # enable the node to process for jmri data
+        enablePublishing: true                    # enable the node to publish process data to the mqtt topic
         enableRestApi: false                      # to enable the rest service for the node
         apiEndpointCacheSize: 10                  # cache for rest api to hold the data for service call
         lightStartAddress: 1000
-        lightCount: 5                             # 1 ins for each light
+        lightCount: 5                             # 1 pin for each light on the pca9685 board
         turnoutStartAddress: 10000
-        turnoutCount: 16                          # 2 pins for each turnout (16 * 2) /16 => 16
+        turnoutCount: 16                          # 2 pins for each turnout on the pca9685 board (16 * 2) /16 => 16
         signal2LStartAddress: 20000
-        signal2LCount: 64                         # 2 pins for each signals light  total 16 turnout and every turnout has 2 splitter track (16 * 2 * 2) => 64
+        signal2LCount: 64                         # 2 pins for each signal light on the pca9685 board  total 16 turnout and every turnout has 2 splitter track (16 * 2 * 2) => 64
         signal3LStartAddress: 30000
-        signal3LCount: 30                         # 3 pins for each signals (10 * 3) => 30
+        signal3LCount: 30                         # 3 pins for each signal on the pca9685 board  (10 * 3) => 30
         turnoutBoardCount: 2                      # (turnoutCount * 2)/16 :=>  (16 * 2) / 16 => 2
         lightBoardCount: 9                        # (lightCount + signal2LCount + signal3LCount) /16 :=>  (5+32+30)/16 =>  5
         nodeSubscriptionTopic: /amt/node/1/data/  # topic for every node for reading data from spring transformation application
-
       -
         nodeId: 2
         enableNode: true
