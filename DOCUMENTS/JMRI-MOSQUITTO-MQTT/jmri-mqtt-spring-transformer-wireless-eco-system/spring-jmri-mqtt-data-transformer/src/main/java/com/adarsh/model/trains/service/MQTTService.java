@@ -61,7 +61,7 @@ public class MQTTService {
     @PostConstruct
     public void init() {
         nodeConfigurations.getNodes().stream().forEach(node -> {
-            log.debug("Node Id ={}  Node Enabled ={} Publishing Enabled ={}  Rest ApiEnabled ={} Api Cache Size ={}",
+            log.info("Node Id ={}  Node Enabled ={} Publishing Enabled ={}  Rest ApiEnabled ={} Api Cache Size ={}",
                     node.getNodeId(), node.getEnableNode(), node.getEnablePublishing(), node.getEnableRestApi(), node.getApiEndpointCacheSize());
             if (node.getEnableNode()) {
                 if (node.getEnableRestApi()) {
