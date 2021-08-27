@@ -61,9 +61,8 @@ public class MQTTService {
     @PostConstruct
     public void init() {
         nodeConfigurations.getNodes().stream().forEach(node -> {
-            log.debug("Node Id ={}  Enabled ={} ", node.getNodeId(), node.getEnableNode());
-            log.debug("Publishing  Enabled ={}  Rest ApiEnabled ", node.getEnablePublishing(), node.getEnableRestApi());
-            log.debug("Api Endpoint Cache size={} ", node.getApiEndpointCacheSize());
+            log.debug("Node Id ={}  Node Enabled ={} Publishing Enabled ={}  Rest ApiEnabled ={} Api Cache Size ={}",
+                    node.getNodeId(), node.getEnableNode(), node.getEnablePublishing(), node.getEnableRestApi(), node.getApiEndpointCacheSize());
             if (node.getEnableNode()) {
                 if (node.getEnableRestApi()) {
                     store.put(node.getNodeId(), new CircularQueue<String>(node.getApiEndpointCacheSize()));
@@ -142,8 +141,9 @@ public class MQTTService {
                 if (cache3Led.get(node.getNodeId()).size() == led3) {
 
                     String signalData = cache3Led.get(node.getNodeId()).stream().distinct().collect(Collectors.joining(CONNECTION));
-                    this.publish(node.getNodeSubscriptionTopic(), SIGNAL_PREFIX + signalData, 1, false);
-
+                    if (node.getEnablePublishing()) {
+                        this.publish(node.getNodeSubscriptionTopic(), SIGNAL_PREFIX + signalData, 1, false);
+                    }
                     if (node.getEnableRestApi()) {
                         store.get(node.getNodeId()).enqueue(SIGNAL_PREFIX + signalData);
                     }
@@ -160,8 +160,9 @@ public class MQTTService {
                 if (cache2Led.get(node.getNodeId()).size() == led2) {
 
                     String signalData = cache2Led.get(node.getNodeId()).stream().distinct().collect(Collectors.joining(CONNECTION));
-                    this.publish(node.getNodeSubscriptionTopic(), SIGNAL_PREFIX + signalData, 1, false);
-
+                    if (node.getEnablePublishing()) {
+                        this.publish(node.getNodeSubscriptionTopic(), SIGNAL_PREFIX + signalData, 1, false);
+                    }
                     if (node.getEnableRestApi()) {
                         store.get(node.getNodeId()).enqueue(SIGNAL_PREFIX + signalData);
                     }
@@ -169,7 +170,9 @@ public class MQTTService {
                     cache2Led.get(node.getNodeId()).clear();
                 }
             } else {
-                this.publish(node.getNodeSubscriptionTopic(), SIGNAL_PREFIX + jmriId + COLLEN + jmriState, 1, false);
+                if (node.getEnablePublishing()) {
+                    this.publish(node.getNodeSubscriptionTopic(), SIGNAL_PREFIX + jmriId + COLLEN + jmriState, 1, false);
+                }
                 if (node.getEnableRestApi()) {
                     store.get(node.getNodeId()).enqueue(SIGNAL_PREFIX + jmriId + COLLEN + jmriState);
                 }
@@ -180,22 +183,19 @@ public class MQTTService {
         }
     }
 
-    public void flushCache(NodeConfigurations.Nodes node, Map<String, List<String>> cache) throws Exception {
-        log.debug("flushCache nodeId= {} ", node.getNodeId());
-        String signalData = cache.get(node.getNodeId()).stream().distinct().collect(Collectors.joining(CONNECTION));
-        this.publish(node.getNodeSubscriptionTopic(), SIGNAL_PREFIX + signalData, 1, false);
-        store.get(node.getNodeId()).enqueue(SIGNAL_PREFIX + signalData);
-        cache.get(node.getNodeId()).clear();
-    }
-
     private void processTurnout(Integer jmriId, String jmriState) throws Exception {
         log.debug("processTurnout jmriId= {} with jmriState={} ", jmriId, jmriState);
         //  to find out the node and then push the data to that node topic
         NodeConfigurations.Nodes node = this.getNode(TURNOUT, jmriId);
         if (node != null && node.getEnableNode()) {
+
             jmriState = (jmriState.equalsIgnoreCase(THROWN) ? TH : CL);
             jmriState = this.nodeWiseDataGenerated(TURNOUT, node, jmriId, jmriState);
-            this.publish(node.getNodeSubscriptionTopic(), TURNOUT_PREFIX + jmriId + COLLEN + jmriState, 1, false);
+
+            if (node.getEnablePublishing()) {
+                this.publish(node.getNodeSubscriptionTopic(), TURNOUT_PREFIX + jmriId + COLLEN + jmriState, 1, false);
+            }
+
             if (node.getEnableRestApi()) {
                 store.get(node.getNodeId()).enqueue(TURNOUT_PREFIX + jmriId + COLLEN + jmriState);
             }
@@ -210,9 +210,14 @@ public class MQTTService {
         //  to find out the node and then push the data to that topic
         NodeConfigurations.Nodes node = this.getNode(LIGHT, jmriId);
         if (node != null && node.getEnableNode()) {
+
             jmriState = (jmriState.equalsIgnoreCase(ON) ? ON : OFF);
             jmriState = this.nodeWiseDataGenerated(LIGHT, node, jmriId, jmriState);
-            this.publish(node.getNodeSubscriptionTopic(), LIGHT_PREFIX + jmriId + COLLEN + jmriState, 1, false);
+
+            if (node.getEnablePublishing()) {
+                this.publish(node.getNodeSubscriptionTopic(), LIGHT_PREFIX + jmriId + COLLEN + jmriState, 1, false);
+            }
+
             if (node.getEnableRestApi()) {
                 store.get(node.getNodeId()).enqueue(LIGHT_PREFIX + jmriId + COLLEN + jmriState);
             }
@@ -316,5 +321,13 @@ public class MQTTService {
 
     public String getData(String nodeId) throws Exception {
         return store.get(nodeId).dequeue();
+    }
+
+    public void flushCache(NodeConfigurations.Nodes node, Map<String, List<String>> cache) throws Exception {
+        log.debug("flushCache nodeId= {} ", node.getNodeId());
+        String signalData = cache.get(node.getNodeId()).stream().distinct().collect(Collectors.joining(CONNECTION));
+        this.publish(node.getNodeSubscriptionTopic(), SIGNAL_PREFIX + signalData, 1, false);
+        store.get(node.getNodeId()).enqueue(SIGNAL_PREFIX + signalData);
+        cache.get(node.getNodeId()).clear();
     }
 }
