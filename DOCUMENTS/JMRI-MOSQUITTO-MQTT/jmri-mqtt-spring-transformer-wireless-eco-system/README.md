@@ -39,7 +39,7 @@
 # Implementation types 
 
 ## SPRING TRANSFORMER DATA FLOW 
-![img](image/spring-mqtt-transformer-app.png)
+![img](image/spring-mqtt-transformer.png)
 
 ## Data flow 
 ### Downstream data 

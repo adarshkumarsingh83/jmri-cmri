@@ -9,7 +9,7 @@
 
 ----
 
-![img](../image/spring-mqtt-transformer-app.png)
+![img](../image/spring-mqtt-transformer.png)
 
 ### To build this application 
 * $ mnvn clean package 
