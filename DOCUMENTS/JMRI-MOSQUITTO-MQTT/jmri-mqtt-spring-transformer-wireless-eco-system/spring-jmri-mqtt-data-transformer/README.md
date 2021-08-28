@@ -9,7 +9,7 @@
 
 ----
 
-![img](../image/spring.png)
+![img](../image/spring-transformer.png)
 
 ### To build this application 
 * $ mnvn clean package 

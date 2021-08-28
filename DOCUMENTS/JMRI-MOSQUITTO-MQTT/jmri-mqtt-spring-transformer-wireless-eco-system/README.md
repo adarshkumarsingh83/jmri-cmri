@@ -39,7 +39,7 @@
 # Implementation types 
 
 ## SPRING TRANSFORMER DATA FLOW 
-![img](image/spring.png)
+![img](image/spring-transformer.png)
 
 ## Data flow 
 ### Downstream data 
