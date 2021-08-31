@@ -8,6 +8,12 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+/*
+ * @author Adarsh
+ * @author $LastChangedBy: adarsh $
+ * @version $Revision: 0001 $, $Date:: 15/6/20 10:12 AM#$
+ */
+
 @Slf4j
 @RestController
 public class JMRIMQTTNodesController {
