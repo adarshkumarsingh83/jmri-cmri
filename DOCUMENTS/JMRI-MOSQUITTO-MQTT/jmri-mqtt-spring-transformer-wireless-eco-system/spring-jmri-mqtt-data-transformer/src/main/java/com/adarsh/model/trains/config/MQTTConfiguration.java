@@ -28,7 +28,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
         MqttProperties.class
 })
 public class MQTTConfiguration {
-    
+
     @Autowired
     MqttProperties properties;
 

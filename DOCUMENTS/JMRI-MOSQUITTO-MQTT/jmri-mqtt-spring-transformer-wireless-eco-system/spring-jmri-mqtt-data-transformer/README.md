@@ -289,9 +289,6 @@ node:
 ### To subscribe the mqtt application error topic 
 * $ mosquitto_sub -h localhost -u adarsh -P password -v -t '/amt/errors/#'
 
-### To subscribe the spring transformer connection  error topic 
-* $ mosquitto_sub -h localhost -u adarsh -P password -v -t '/amt/transformer/#'
-
 ### To subscribe the mqtt topic where application will publish data after transformation  
 * $ mosquitto_sub -h localhost -u adarsh -P password -v -t '/amt/node/#'
 ```
