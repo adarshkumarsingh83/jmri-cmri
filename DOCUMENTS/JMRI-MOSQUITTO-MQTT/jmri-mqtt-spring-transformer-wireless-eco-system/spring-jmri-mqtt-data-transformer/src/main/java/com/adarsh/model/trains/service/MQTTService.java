@@ -48,7 +48,7 @@ public class MQTTService {
     final public static String LIGHT = "LIGHT";
     final public static String SIGNAL = "SIGNAL";
     final public static String TURNOUT = "TURNOUT";
-    final public static String DEFAULT_BLOCK_RESULT = "0:0000:00:00:00";
+    final public static String DEFAULT_BLOCK_RESULT = "O:0000:00:00:00";
 
 
     @Autowired
