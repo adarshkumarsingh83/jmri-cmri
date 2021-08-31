@@ -34,7 +34,9 @@
 * curl -X GET http://localhost:8090/amt/node/1
 
 ### TO POST THE SENSOR INFO TO  MQTT  VIA END POINTS 
-> curl --header "Content-Type: application/json" --request POST --data '{"topic":"xyz","data":"xyz"}' http://localhost:8090/amt/node/[nodeId]
+> curl --header "Content-Type: application/json" \
+> --request POST --data '{"topic":"xyz","data":"xyz"}' \
+> http://localhost:8090/amt/node/[nodeId]
 * curl --header "Content-Type: application/json" \
   --request POST \
   --data '{"topic":"/trains/track/sensor/1","data":"INACTIVE"}' \
