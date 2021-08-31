@@ -29,6 +29,7 @@ public class JMRIMQTTNodesController {
         try {
             this.mqttService.publish(data.getTopic(), data.getData(), 1, false);
         } catch (Exception e) {
+            log.error("Exception e={}", e.getMessage());
             return PROCESSED_FAILED;
         }
         return PROCESSED_SUCCESS;
