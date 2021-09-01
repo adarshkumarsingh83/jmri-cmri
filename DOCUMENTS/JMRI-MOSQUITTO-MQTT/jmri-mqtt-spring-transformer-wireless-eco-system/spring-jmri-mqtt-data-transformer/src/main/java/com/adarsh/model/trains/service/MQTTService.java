@@ -121,72 +121,76 @@ public class MQTTService {
                 }
             }
         } catch (Exception e) {
-            this.publish(properties.getErrorTopic(), mqttTopic + COLLEN + jmriState, 1, false);
+            this.publish(properties.getErrorTopic(), e.getMessage() + "->" + mqttTopic + COLLEN + jmriState, 1, false);
             log.error("Exception while data transformation  mqttTopic= {} with jmriState ={} exception ={}", mqttTopic, jmriState, e);
         }
     }
 
     private void processSignal(Integer jmriId, String jmriState) throws Exception {
         log.debug("processSignal jmriId ={} with jmriState ={} ", jmriId, jmriState);
+        try {
+            //  to find out the node and then push the data to that node topic
+            NodeConfigurations.Nodes node = this.getNode(SIGNAL, jmriId);
 
-        //  to find out the node and then push the data to that node topic
-        NodeConfigurations.Nodes node = this.getNode(SIGNAL, jmriId);
-
-        if (node != null && node.getEnableNode()) {
-            if (jmriState.contains(THROWN) || jmriState.contains(CLOSED)) {
-                jmriState = (jmriState.equalsIgnoreCase(THROWN) ? ON : OFF);
-            } else {
-                jmriState = (jmriState.equalsIgnoreCase(ON) ? ON : OFF);
-            }
-            jmriState = this.nodeWiseDataGenerated(SIGNAL, node, jmriId, jmriState);
-            if (jmriId >= node.getSignal3LStartAddress()) {
-
-                if (cache3Led.get(node.getNodeId()).size() < led3) {
-                    cache3Led.get(node.getNodeId()).add(jmriId + COLLEN + jmriState);
-                    cache3LedTime.put(node.getNodeId(), System.currentTimeMillis());
+            if (node != null && node.getEnableNode()) {
+                if (jmriState.contains(THROWN) || jmriState.contains(CLOSED)) {
+                    jmriState = (jmriState.equalsIgnoreCase(THROWN) ? ON : OFF);
+                } else {
+                    jmriState = (jmriState.equalsIgnoreCase(ON) ? ON : OFF);
                 }
+                jmriState = this.nodeWiseDataGenerated(SIGNAL, node, jmriId, jmriState);
+                if (jmriId >= node.getSignal3LStartAddress()) {
 
-                if (cache3Led.get(node.getNodeId()).size() == led3) {
+                    if (cache3Led.get(node.getNodeId()).size() < led3) {
+                        cache3Led.get(node.getNodeId()).add(jmriId + COLLEN + jmriState);
+                        cache3LedTime.put(node.getNodeId(), System.currentTimeMillis());
+                    }
 
-                    String signalData = cache3Led.get(node.getNodeId()).stream().distinct().collect(Collectors.joining(CONNECTION));
+                    if (cache3Led.get(node.getNodeId()).size() == led3) {
+
+                        String signalData = cache3Led.get(node.getNodeId()).stream().distinct().collect(Collectors.joining(CONNECTION));
+                        if (node.getEnablePublishing()) {
+                            this.publish(node.getNodeSubscriptionTopic(), SIGNAL_PREFIX + signalData, 1, false);
+                        }
+                        if (node.getEnableRestApi()) {
+                            store.get(node.getNodeId()).enqueue(SIGNAL_PREFIX + signalData);
+                        }
+
+                        cache3Led.get(node.getNodeId()).clear();
+                    }
+                } else if (jmriId >= node.getSignal2LStartAddress()) {
+
+                    if (cache2Led.get(node.getNodeId()).size() < led2) {
+                        cache2Led.get(node.getNodeId()).add(jmriId + COLLEN + jmriState);
+                        cache2LedTime.put(node.getNodeId(), System.currentTimeMillis());
+                    }
+
+                    if (cache2Led.get(node.getNodeId()).size() == led2) {
+
+                        String signalData = cache2Led.get(node.getNodeId()).stream().distinct().collect(Collectors.joining(CONNECTION));
+                        if (node.getEnablePublishing()) {
+                            this.publish(node.getNodeSubscriptionTopic(), SIGNAL_PREFIX + signalData, 1, false);
+                        }
+                        if (node.getEnableRestApi()) {
+                            store.get(node.getNodeId()).enqueue(SIGNAL_PREFIX + signalData);
+                        }
+
+                        cache2Led.get(node.getNodeId()).clear();
+                    }
+                } else {
                     if (node.getEnablePublishing()) {
-                        this.publish(node.getNodeSubscriptionTopic(), SIGNAL_PREFIX + signalData, 1, false);
+                        this.publish(node.getNodeSubscriptionTopic(), SIGNAL_PREFIX + jmriId + COLLEN + jmriState, 1, false);
                     }
                     if (node.getEnableRestApi()) {
-                        store.get(node.getNodeId()).enqueue(SIGNAL_PREFIX + signalData);
+                        store.get(node.getNodeId()).enqueue(SIGNAL_PREFIX + jmriId + COLLEN + jmriState);
                     }
-
-                    cache3Led.get(node.getNodeId()).clear();
-                }
-            } else if (jmriId >= node.getSignal2LStartAddress()) {
-
-                if (cache2Led.get(node.getNodeId()).size() < led2) {
-                    cache2Led.get(node.getNodeId()).add(jmriId + COLLEN + jmriState);
-                    cache2LedTime.put(node.getNodeId(), System.currentTimeMillis());
-                }
-
-                if (cache2Led.get(node.getNodeId()).size() == led2) {
-
-                    String signalData = cache2Led.get(node.getNodeId()).stream().distinct().collect(Collectors.joining(CONNECTION));
-                    if (node.getEnablePublishing()) {
-                        this.publish(node.getNodeSubscriptionTopic(), SIGNAL_PREFIX + signalData, 1, false);
-                    }
-                    if (node.getEnableRestApi()) {
-                        store.get(node.getNodeId()).enqueue(SIGNAL_PREFIX + signalData);
-                    }
-
-                    cache2Led.get(node.getNodeId()).clear();
                 }
             } else {
-                if (node.getEnablePublishing()) {
-                    this.publish(node.getNodeSubscriptionTopic(), SIGNAL_PREFIX + jmriId + COLLEN + jmriState, 1, false);
-                }
-                if (node.getEnableRestApi()) {
-                    store.get(node.getNodeId()).enqueue(SIGNAL_PREFIX + jmriId + COLLEN + jmriState);
-                }
+                log.info("Node not Enabled for Signal jmriId ={} jmriState ={}", jmriId, jmriState);
+                this.publish(properties.getErrorTopic(), "Node not Enabled for Signal " + jmriId + " state " + jmriState, 1, false);
             }
-        } else {
-            log.info("Node not found for Signal jmriId ={} jmriState ={}", jmriId, jmriState);
+        } catch (Exception e) {
+            log.error("Node not Found for Signal jmriId ={} jmriState ={}", jmriId, jmriState);
             this.publish(properties.getErrorTopic(), "Node not Found for Signal " + jmriId + " state " + jmriState, 1, false);
         }
     }
@@ -194,44 +198,54 @@ public class MQTTService {
     private void processTurnout(Integer jmriId, String jmriState) throws Exception {
         log.debug("processTurnout jmriId ={} with jmriState ={} ", jmriId, jmriState);
         //  to find out the node and then push the data to that node topic
-        NodeConfigurations.Nodes node = this.getNode(TURNOUT, jmriId);
-        if (node != null && node.getEnableNode()) {
+        try {
+            NodeConfigurations.Nodes node = this.getNode(TURNOUT, jmriId);
+            if (node != null && node.getEnableNode()) {
 
-            jmriState = (jmriState.equalsIgnoreCase(THROWN) ? TH : CL);
-            jmriState = this.nodeWiseDataGenerated(TURNOUT, node, jmriId, jmriState);
+                jmriState = (jmriState.equalsIgnoreCase(THROWN) ? TH : CL);
+                jmriState = this.nodeWiseDataGenerated(TURNOUT, node, jmriId, jmriState);
 
-            if (node.getEnablePublishing()) {
-                this.publish(node.getNodeSubscriptionTopic(), TURNOUT_PREFIX + jmriId + COLLEN + jmriState, 1, false);
+                if (node.getEnablePublishing()) {
+                    this.publish(node.getNodeSubscriptionTopic(), TURNOUT_PREFIX + jmriId + COLLEN + jmriState, 1, false);
+                }
+
+                if (node.getEnableRestApi()) {
+                    store.get(node.getNodeId()).enqueue(TURNOUT_PREFIX + jmriId + COLLEN + jmriState);
+                }
+            } else {
+                log.info("Node is not Enabled for Turnout jmriId ={} jmriState ={}", jmriId, jmriState);
+                this.publish(properties.getErrorTopic(), "Node not Enabled for Turnout " + jmriId + " state " + jmriState, 1, false);
             }
-
-            if (node.getEnableRestApi()) {
-                store.get(node.getNodeId()).enqueue(TURNOUT_PREFIX + jmriId + COLLEN + jmriState);
-            }
-        } else {
-            log.info("Node not found for Turnout jmriId ={} jmriState ={}", jmriId, jmriState);
-            this.publish(properties.getErrorTopic(), "Node not Found for Turnout" + jmriId + " state " + jmriState, 1, false);
+        } catch (Exception e) {
+            log.error("Node not Found for Turnout jmriId ={} jmriState ={}", jmriId, jmriState);
+            this.publish(properties.getErrorTopic(), "Node not Found for Turnout " + jmriId + " state " + jmriState, 1, false);
         }
     }
 
     private void processLight(Integer jmriId, String jmriState) throws Exception {
         log.debug("processLight jmriId={} with jmriState={} ", jmriId, jmriState);
-        //  to find out the node and then push the data to that topic
-        NodeConfigurations.Nodes node = this.getNode(LIGHT, jmriId);
-        if (node != null && node.getEnableNode()) {
+        try {
+            //  to find out the node and then push the data to that topic
+            NodeConfigurations.Nodes node = this.getNode(LIGHT, jmriId);
+            if (node != null && node.getEnableNode()) {
 
-            jmriState = (jmriState.equalsIgnoreCase(ON) ? ON : OFF);
-            jmriState = this.nodeWiseDataGenerated(LIGHT, node, jmriId, jmriState);
+                jmriState = (jmriState.equalsIgnoreCase(ON) ? ON : OFF);
+                jmriState = this.nodeWiseDataGenerated(LIGHT, node, jmriId, jmriState);
 
-            if (node.getEnablePublishing()) {
-                this.publish(node.getNodeSubscriptionTopic(), LIGHT_PREFIX + jmriId + COLLEN + jmriState, 1, false);
+                if (node.getEnablePublishing()) {
+                    this.publish(node.getNodeSubscriptionTopic(), LIGHT_PREFIX + jmriId + COLLEN + jmriState, 1, false);
+                }
+
+                if (node.getEnableRestApi()) {
+                    store.get(node.getNodeId()).enqueue(LIGHT_PREFIX + jmriId + COLLEN + jmriState);
+                }
+            } else {
+                log.info("Node not Enabled for Light jmriId ={} jmriState ={}", jmriId, jmriState);
+                this.publish(properties.getErrorTopic(), "Node not Enabled for Light " + jmriId + " state " + jmriState, 1, false);
             }
-
-            if (node.getEnableRestApi()) {
-                store.get(node.getNodeId()).enqueue(LIGHT_PREFIX + jmriId + COLLEN + jmriState);
-            }
-        } else {
-            log.info("Node not found for Light jmriId ={} jmriState ={}", jmriId, jmriState);
-            this.publish(properties.getErrorTopic(), "Node not Found for Light" + jmriId + " state " + jmriState, 1, false);
+        } catch (Exception e) {
+            log.error("Node not Found for Light jmriId ={} jmriState ={}", jmriId, jmriState);
+            this.publish(properties.getErrorTopic(), "Node not Found for Light " + jmriId + " state " + jmriState, 1, false);
         }
     }
 
