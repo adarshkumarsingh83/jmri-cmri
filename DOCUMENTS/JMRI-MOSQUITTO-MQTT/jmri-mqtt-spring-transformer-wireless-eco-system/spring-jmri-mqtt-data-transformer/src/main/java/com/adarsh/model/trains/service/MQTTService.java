@@ -63,7 +63,7 @@ public class MQTTService {
     @PostConstruct
     public void init() {
         nodeConfigurations.getNodes().stream().forEach(node -> {
-            log.info("Node Id ={}  Node Enabled ={} Publishing Enabled ={}  Rest ApiEnabled ={} Api Cache Size ={}",
+            log.info("Node Id = {}  Node Enabled = {} Publishing Enabled = {}  Rest ApiEnabled = {} Api Cache Size ={}",
                     node.getNodeId(), node.getEnableNode(), node.getEnablePublishing(), node.getEnableRestApi(), node.getApiEndpointCacheSize());
             if (node.getEnableNode()) {
                 if (node.getEnableRestApi()) {
@@ -84,7 +84,7 @@ public class MQTTService {
     }
 
     public void transformData(String mqttTopic, String jmriState) throws Exception {
-        log.debug("Mqtt transformData mqttTopic ={} with jmriState ={} ", mqttTopic, jmriState);
+        log.debug("Mqtt transformData mqttTopic = {} with jmriState = {} ", mqttTopic, jmriState);
         try {
             if (!mqttTopic.isEmpty()) {
                 if (mqttTopic.startsWith(properties.getLightTopic())) {
@@ -93,8 +93,8 @@ public class MQTTService {
                             && jmriId < nodeConfigurations.getSignal2LStartingAddress()) {
                         this.processLight(jmriId, jmriState);
                     } else {
-                        log.error("JmriId for Light Type is not Valid Id ={} which is defined in Configuration", jmriId);
-                        this.publish(properties.getErrorTopic(), "Invalid jmriId for light type " + jmriId, 1, false);
+                        log.error("JmriId for Light Type is not Valid Id = {} which is defined in Configuration", jmriId);
+                        this.publish(properties.getErrorTopic(), " Invalid jmriId for light type " + jmriId, 1, false);
                     }
                 } else if (mqttTopic.startsWith(properties.getTurnoutTopic())) {
                     Integer jmriId = Integer.parseInt(mqttTopic.replace(properties.getTurnoutTopic(), EMPTY));
@@ -105,8 +105,8 @@ public class MQTTService {
                     } else if (jmriId >= nodeConfigurations.getTurnoutServoStartingAddress()) {
                         this.processTurnout(jmriId, jmriState);
                     } else {
-                        log.error("JmriId for Turnout|Signals Type is not Valid Id ={} which is defined in Configuration", jmriId);
-                        this.publish(properties.getErrorTopic(), "Invalid jmriId for turnout|signal type " + jmriId, 1, false);
+                        log.error("JmriId for Turnout|Signals Type is not Valid Id = {} which is defined in Configuration", jmriId);
+                        this.publish(properties.getErrorTopic(), " Invalid jmriId for turnout|signal type " + jmriId, 1, false);
                     }
 
                 } else if (mqttTopic.startsWith(properties.getSignalTopic())) {
@@ -115,19 +115,19 @@ public class MQTTService {
                             && jmriId < nodeConfigurations.getTurnoutServoStartingAddress()) {
                         this.processSignal(jmriId, jmriState);
                     } else {
-                        log.error("JmriId for Signals Type is not Valid Id ={} which is defined in Configuration", jmriId);
-                        this.publish(properties.getErrorTopic(), "Invalid jmriId for signal type " + jmriId, 1, false);
+                        log.error("JmriId for Signals Type is not Valid Id = {} which is defined in Configuration", jmriId);
+                        this.publish(properties.getErrorTopic(), " Invalid jmriId for signal type " + jmriId, 1, false);
                     }
                 }
             }
         } catch (Exception e) {
             this.publish(properties.getErrorTopic(), e.getMessage() + "->" + mqttTopic + COLLEN + jmriState, 1, false);
-            log.error("Exception while data transformation  mqttTopic= {} with jmriState ={} exception ={}", mqttTopic, jmriState, e);
+            log.error("Exception while data transformation  mqttTopic = {} with jmriState = {} exception = {}", mqttTopic, jmriState, e);
         }
     }
 
     private void processSignal(Integer jmriId, String jmriState) throws Exception {
-        log.debug("processSignal jmriId ={} with jmriState ={} ", jmriId, jmriState);
+        log.debug("processSignal jmriId = {} with jmriState = {} ", jmriId, jmriState);
         try {
             //  to find out the node and then push the data to that node topic
             NodeConfigurations.Nodes node = this.getNode(SIGNAL, jmriId);
@@ -186,17 +186,17 @@ public class MQTTService {
                     }
                 }
             } else {
-                log.info("Node not Enabled for Signal jmriId ={} jmriState ={}", jmriId, jmriState);
+                log.info("Node not Enabled for Signal jmriId = {} jmriState = {}", jmriId, jmriState);
                 this.publish(properties.getErrorTopic(), "Node not Enabled for Signal " + jmriId + " state " + jmriState, 1, false);
             }
         } catch (Exception e) {
-            log.error("Node not Found for Signal jmriId ={} jmriState ={}", jmriId, jmriState);
+            log.error("Node not Found for Signal jmriId = {} jmriState = {}", jmriId, jmriState);
             this.publish(properties.getErrorTopic(), "Node not Found for Signal " + jmriId + " state " + jmriState, 1, false);
         }
     }
 
     private void processTurnout(Integer jmriId, String jmriState) throws Exception {
-        log.debug("processTurnout jmriId ={} with jmriState ={} ", jmriId, jmriState);
+        log.debug("processTurnout jmriId = {} with jmriState = {} ", jmriId, jmriState);
         //  to find out the node and then push the data to that node topic
         try {
             NodeConfigurations.Nodes node = this.getNode(TURNOUT, jmriId);
@@ -213,17 +213,17 @@ public class MQTTService {
                     store.get(node.getNodeId()).enqueue(TURNOUT_PREFIX + jmriId + COLLEN + jmriState);
                 }
             } else {
-                log.info("Node is not Enabled for Turnout jmriId ={} jmriState ={}", jmriId, jmriState);
+                log.info("Node is not Enabled for Turnout jmriId = {} jmriState = {}", jmriId, jmriState);
                 this.publish(properties.getErrorTopic(), "Node not Enabled for Turnout " + jmriId + " state " + jmriState, 1, false);
             }
         } catch (Exception e) {
-            log.error("Node not Found for Turnout jmriId ={} jmriState ={}", jmriId, jmriState);
+            log.error("Node not Found for Turnout jmriId = {} jmriState = {}", jmriId, jmriState);
             this.publish(properties.getErrorTopic(), "Node not Found for Turnout " + jmriId + " state " + jmriState, 1, false);
         }
     }
 
     private void processLight(Integer jmriId, String jmriState) throws Exception {
-        log.debug("processLight jmriId={} with jmriState={} ", jmriId, jmriState);
+        log.debug("processLight jmriId = {} with jmriState = {} ", jmriId, jmriState);
         try {
             //  to find out the node and then push the data to that topic
             NodeConfigurations.Nodes node = this.getNode(LIGHT, jmriId);
@@ -240,11 +240,11 @@ public class MQTTService {
                     store.get(node.getNodeId()).enqueue(LIGHT_PREFIX + jmriId + COLLEN + jmriState);
                 }
             } else {
-                log.info("Node not Enabled for Light jmriId ={} jmriState ={}", jmriId, jmriState);
+                log.info("Node not Enabled for Light jmriId = {} jmriState = {}", jmriId, jmriState);
                 this.publish(properties.getErrorTopic(), "Node not Enabled for Light " + jmriId + " state " + jmriState, 1, false);
             }
         } catch (Exception e) {
-            log.error("Node not Found for Light jmriId ={} jmriState ={}", jmriId, jmriState);
+            log.error("Node not Found for Light jmriId = {} jmriState = {}", jmriId, jmriState);
             this.publish(properties.getErrorTopic(), "Node not Found for Light " + jmriId + " state " + jmriState, 1, false);
         }
     }
@@ -351,7 +351,7 @@ public class MQTTService {
 
     public void publish(final String topic, final String payload, int qos, boolean retained)
             throws MqttException {
-        log.debug("Publishing to Mqtt after transformation  Topic ={}  payload ={}", topic, payload);
+        log.debug("Publishing to Mqtt after transformation  Topic = {}  payload = {}", topic, payload);
         MqttMessage mqttMessage = new MqttMessage();
         mqttMessage.setPayload(payload.getBytes());
         mqttMessage.setQos(qos);
@@ -368,7 +368,7 @@ public class MQTTService {
     }
 
     public void flushCache(NodeConfigurations.Nodes node, Map<String, List<String>> cache) throws Exception {
-        log.debug("flushCache nodeId ={} ", node.getNodeId());
+        log.debug("flushCache nodeId = {} ", node.getNodeId());
         String signalData = cache.get(node.getNodeId()).stream().distinct().collect(Collectors.joining(CONNECTION));
         this.publish(node.getNodeSubscriptionTopic(), SIGNAL_PREFIX + signalData, 1, false);
         store.get(node.getNodeId()).enqueue(SIGNAL_PREFIX + signalData);
