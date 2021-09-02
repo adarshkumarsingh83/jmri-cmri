@@ -16,6 +16,7 @@ public class ConfigurationDetails extends NodeConfigurations.Nodes {
     Integer totalSignal3LedPins;
     Integer totalServoTurnoutPins;
     Integer totalSnapTurnoutPins;
+    String totalBoardRequired;
     LinkedHashMap<String, String> jmriAddressTurnoutServo;
     LinkedHashMap<String, String> jmriAddressTurnoutSnap;
     LinkedHashMap<String, String> jmriAddressLight;
@@ -46,11 +47,34 @@ public class ConfigurationDetails extends NodeConfigurations.Nodes {
         this.setTotalSignal3LedPins(node.getSignal3LCount() * 3);
         this.setTotalServoTurnoutPins(node.getTurnoutServoCount());
         this.setTotalSnapTurnoutPins(node.getTurnoutSnapCount() * 2);
+        this.totalBoardRequiredCalculation(node);
         this.calculateJmriAddressForTurnoutServo(node, mqttService);
         this.calculateJmriAddressForTurnoutSnap(node, mqttService);
         this.calculateJmriAddressForLight(node, mqttService);
         this.calculateJmriAddressFor2LedSignal(node, mqttService);
         this.calculateJmriAddressFor3LedSignal(node, mqttService);
+    }
+
+    @JsonIgnore
+    void totalBoardRequiredCalculation(NodeConfigurations.Nodes node) {
+        int totalTurnoutBoard = 0;
+        int totalLightBoard = 0;
+        if (node.getTurnoutServoCount() > 0) {
+            int servo = node.getTurnoutServoCount();
+            servo -= 1;
+            totalTurnoutBoard += (servo / 16) + 1;
+        }
+        if (node.getTurnoutSnapCount() > 0) {
+            int snap = node.getTurnoutSnapCount() * 2;
+            snap -= 1;
+            totalTurnoutBoard += (snap / 16) + 1;
+        }
+        int totalLights = node.getLightCount() + (node.getSignal2LCount() * 2) + (node.getSignal3LCount() * 3);
+        if (totalLights > 0) {
+            totalLights -= 1;
+            totalLightBoard += (totalLights / 16) + 1;
+        }
+        totalBoardRequired = " Total TurnoutBoard Required is " + totalTurnoutBoard + " Total Light Board Requred is " + totalLightBoard;
     }
 
     @JsonIgnore

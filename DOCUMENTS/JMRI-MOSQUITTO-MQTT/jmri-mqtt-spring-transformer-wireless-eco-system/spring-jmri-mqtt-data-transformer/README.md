@@ -356,7 +356,8 @@ node:
     "totalSignal3LedPins": 15,
     "totalServoTurnoutPins": 8,
     "totalSnapTurnoutPins": 16,
-      "jmriAddressTurnoutServo": {
+    "totalBoardRequired": " Total TurnoutBoard Required is 2 Total Light Board Requred is 3",
+    "jmriAddressTurnoutServo": {
       " Servo Number 1": " Jmri Address 40001, BoardNo:PinNo:Status => 00:00:TH - 00:00:CL",
       " Servo Number 2": " Jmri Address 40002, BoardNo:PinNo:Status => 00:01:TH - 00:01:CL",
       " Servo Number 3": " Jmri Address 40003, BoardNo:PinNo:Status => 00:02:TH - 00:02:CL",
@@ -457,7 +458,8 @@ $ curl -X GET http://localhost:8090/amt/description/node/1
     "totalSignal3LedPins": 15,
     "totalServoTurnoutPins": 8,
     "totalSnapTurnoutPins": 16,
-        "jmriAddressTurnoutServo": {
+    "totalBoardRequired": " Total TurnoutBoard Required is 2 Total Light Board Requred is 3",
+    "jmriAddressTurnoutServo": {
       " Servo Number 1": " Jmri Address 40001, BoardNo:PinNo:Status => 00:00:TH - 00:00:CL",
       " Servo Number 2": " Jmri Address 40002, BoardNo:PinNo:Status => 00:01:TH - 00:01:CL",
       " Servo Number 3": " Jmri Address 40003, BoardNo:PinNo:Status => 00:02:TH - 00:02:CL",
