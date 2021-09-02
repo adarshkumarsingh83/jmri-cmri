@@ -16,11 +16,11 @@ public class ConfigurationDetails extends NodeConfigurations.Nodes {
     Integer totalSignal3LedPins;
     Integer totalServoTurnoutPins;
     Integer totalSnapTurnoutPins;
+    LinkedHashMap<String, String> jmriAddressTurnoutServo;
+    LinkedHashMap<String, String> jmriAddressTurnoutSnap;
     LinkedHashMap<String, String> jmriAddressLight;
     LinkedHashMap<String, String> jmriAddressSignal2Led;
     LinkedHashMap<String, String> jmriAddressSignal3Led;
-    LinkedHashMap<String, String> jmriAddressTurnoutServo;
-    LinkedHashMap<String, String> jmriAddressTurnoutSnap;
 
     public ConfigurationDetails(NodeConfigurations.Nodes node, MQTTService mqttService) {
         super.setNodeId(node.getNodeId());
