@@ -465,6 +465,26 @@ $ curl -X GET http://localhost:8090/amt/description/node/1
     "totalSignal3LedPins": 15,
     "totalServoTurnoutPins": 8,
     "totalSnapTurnoutPins": 16,
+        "jmriAddressTurnoutServo": {
+      " Servo Number 1": " Jmri Address 40001, BoardNo:PinNo:Status => 00:00:TH - 00:00:CL",
+      " Servo Number 2": " Jmri Address 40002, BoardNo:PinNo:Status => 00:01:TH - 00:01:CL",
+      " Servo Number 3": " Jmri Address 40003, BoardNo:PinNo:Status => 00:02:TH - 00:02:CL",
+      " Servo Number 4": " Jmri Address 40004, BoardNo:PinNo:Status => 00:03:TH - 00:03:CL",
+      " Servo Number 5": " Jmri Address 40005, BoardNo:PinNo:Status => 00:04:TH - 00:04:CL",
+      " Servo Number 6": " Jmri Address 40006, BoardNo:PinNo:Status => 00:05:TH - 00:05:CL",
+      " Servo Number 7": " Jmri Address 40007, BoardNo:PinNo:Status => 00:06:TH - 00:06:CL",
+      " Servo Number 8": " Jmri Address 40008, BoardNo:PinNo:Status => 00:07:TH - 00:07:CL"
+    },
+    "jmriAddressTurnoutSnap": {
+      " Snap Number 1": " Jmri Address 50001, BoardNo:PinNo:Status => 01:00:TH - 01:01:CL",
+      " Snap Number 2": " Jmri Address 50002, BoardNo:PinNo:Status => 01:02:TH - 01:03:CL",
+      " Snap Number 3": " Jmri Address 50003, BoardNo:PinNo:Status => 01:04:TH - 01:05:CL",
+      " Snap Number 4": " Jmri Address 50004, BoardNo:PinNo:Status => 01:06:TH - 01:07:CL",
+      " Snap Number 5": " Jmri Address 50005, BoardNo:PinNo:Status => 01:08:TH - 01:09:CL",
+      " Snap Number 6": " Jmri Address 50006, BoardNo:PinNo:Status => 01:10:TH - 01:11:CL",
+      " Snap Number 7": " Jmri Address 50007, BoardNo:PinNo:Status => 01:12:TH - 01:13:CL",
+      " Snap Number 8": " Jmri Address 50008, BoardNo:PinNo:Status => 01:14:TH - 01:15:CL"
+    },
     "jmriAddressLight": {
       " Light Number 1": "Jmri Address 10001, BoardNo:PinNo:Status => 02:00:ON - 02:00:OF",
       " Light Number 2": "Jmri Address 10002, BoardNo:PinNo:Status => 02:01:ON - 02:01:OF"
@@ -503,26 +523,6 @@ $ curl -X GET http://localhost:8090/amt/description/node/1
       "RED 3Led Signal Number 5": " Jmri Address 30013, BoardNo:PinNo:Status => 03:14:ON - 03:14:OF",
       "GREEN 3Led Signal Number 5": " Jmri Address 30014, BoardNo:PinNo:Status => 03:15:ON - 03:15:OF",
       "YELLOW 3Led Signal Number 5": " Jmri Address 30015, BoardNo:PinNo:Status => 04:00:ON - 04:00:OF"
-    },
-    "jmriAddressTurnoutServo": {
-      " Servo Number 1": " Jmri Address 40001, BoardNo:PinNo:Status => 00:00:TH - 00:00:CL",
-      " Servo Number 2": " Jmri Address 40002, BoardNo:PinNo:Status => 00:01:TH - 00:01:CL",
-      " Servo Number 3": " Jmri Address 40003, BoardNo:PinNo:Status => 00:02:TH - 00:02:CL",
-      " Servo Number 4": " Jmri Address 40004, BoardNo:PinNo:Status => 00:03:TH - 00:03:CL",
-      " Servo Number 5": " Jmri Address 40005, BoardNo:PinNo:Status => 00:04:TH - 00:04:CL",
-      " Servo Number 6": " Jmri Address 40006, BoardNo:PinNo:Status => 00:05:TH - 00:05:CL",
-      " Servo Number 7": " Jmri Address 40007, BoardNo:PinNo:Status => 00:06:TH - 00:06:CL",
-      " Servo Number 8": " Jmri Address 40008, BoardNo:PinNo:Status => 00:07:TH - 00:07:CL"
-    },
-    "jmriAddressTurnoutSnap": {
-      " Snap Number 1": " Jmri Address 50001, BoardNo:PinNo:Status => 01:00:TH - 01:01:CL",
-      " Snap Number 2": " Jmri Address 50002, BoardNo:PinNo:Status => 01:02:TH - 01:03:CL",
-      " Snap Number 3": " Jmri Address 50003, BoardNo:PinNo:Status => 01:04:TH - 01:05:CL",
-      " Snap Number 4": " Jmri Address 50004, BoardNo:PinNo:Status => 01:06:TH - 01:07:CL",
-      " Snap Number 5": " Jmri Address 50005, BoardNo:PinNo:Status => 01:08:TH - 01:09:CL",
-      " Snap Number 6": " Jmri Address 50006, BoardNo:PinNo:Status => 01:10:TH - 01:11:CL",
-      " Snap Number 7": " Jmri Address 50007, BoardNo:PinNo:Status => 01:12:TH - 01:13:CL",
-      " Snap Number 8": " Jmri Address 50008, BoardNo:PinNo:Status => 01:14:TH - 01:15:CL"
     }
   }
 ]
