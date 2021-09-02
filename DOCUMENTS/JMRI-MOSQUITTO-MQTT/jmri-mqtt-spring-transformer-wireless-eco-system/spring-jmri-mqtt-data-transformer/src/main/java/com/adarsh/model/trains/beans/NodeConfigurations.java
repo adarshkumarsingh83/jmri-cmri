@@ -55,5 +55,9 @@ public class NodeConfigurations {
         Integer lightBoardCount;
         String nodeSubscriptionTopic;
         Integer apiEndpointCacheSize;
+        Integer turnoutSnapPreviousPins = 0;
+        Integer lightPreviousPins = 0;
+        Integer signal2PreviousPins = 0;
+        Integer signal3PreviousPins = 0;
     }
 }
