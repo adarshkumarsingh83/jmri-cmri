@@ -15,20 +15,19 @@ int boardId ;
 int pinId ;
 String serverResponse;
 
-Pca9685BoardManager pcaBoardManager;
+
 ESP8266WiFiMulti WiFiMulti;
+Pca9685BoardManager pcaBoardManager;
 
 void setup() {
   Serial.begin(BROAD_RATE);
   WiFi.mode(WIFI_STA);
   WiFiMulti.addAP(WIFI_SSID, WIFI_PASSWROD);
   while ((WiFiMulti.run() == WL_CONNECTED)) {
-    delay(DELAY_TIME + DELAY_TIME);
-    Serial.print(".");
+    delay(500);
   }
   Serial.println("");
   Serial.println("Connected to WiFi");
-
   pcaBoardManager.initPca9685Boards();
 }
 
@@ -40,7 +39,6 @@ void loop() {
       processCall(serverResponse);
       delay(DELAY_TIME);
     }
-
   } else {
     Serial.println("WiFi Disconnected");
   }

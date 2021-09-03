@@ -57,24 +57,26 @@ public class ConfigurationDetails extends NodeConfigurations.Nodes {
 
     @JsonIgnore
     void totalBoardRequiredCalculation(NodeConfigurations.Nodes node) {
-        int totalTurnoutBoard = 0;
-        int totalLightBoard = 0;
+        int totalBoard = 0;
         if (node.getTurnoutServoCount() > 0) {
             int servo = node.getTurnoutServoCount();
             servo -= 1;
-            totalTurnoutBoard += (servo / 16) + 1;
+            totalBoard += (servo / 16) + 1;
         }
+        totalBoardRequired = " Total Servo TurnoutBoard Required is " + totalBoard;
+        totalBoard = 0;
         if (node.getTurnoutSnapCount() > 0) {
             int snap = node.getTurnoutSnapCount() * 2;
             snap -= 1;
-            totalTurnoutBoard += (snap / 16) + 1;
+            totalBoard += (snap / 16) + 1;
         }
+        totalBoardRequired += " Total Snap TurnoutBoard Required is " + totalBoard;
         int totalLights = node.getLightCount() + (node.getSignal2LCount() * 2) + (node.getSignal3LCount() * 3);
         if (totalLights > 0) {
             totalLights -= 1;
-            totalLightBoard += (totalLights / 16) + 1;
+            totalBoard += (totalLights / 16) + 1;
         }
-        totalBoardRequired = " Total TurnoutBoard Required is " + totalTurnoutBoard + " Total Light Board Requred is " + totalLightBoard;
+        totalBoardRequired += " Total Light & Signal Boards Required is " + totalBoard;
     }
 
     @JsonIgnore
