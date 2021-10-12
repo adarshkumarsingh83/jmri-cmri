@@ -3,7 +3,7 @@
 ---
 
 ## setting up the wireless nce system
-![img](image/NCE-POWERPRO-SETUP.jpg)
+![img](images/NCE-POWERPRO-SETUP.jpg)
 
 
 ```
