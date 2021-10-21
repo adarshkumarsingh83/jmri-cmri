@@ -63,7 +63,8 @@ void switchOff() {
 void switchTurnOn() {
   if (switchState != previousState) {
     digitalWrite(OPEN_PIN, HIGH);
-    digitalWrite(CLOSE_PIN, LOW);
+    delay(50);
+    digitalWrite(OPEN_PIN, LOW);
     previousState = switchState;
     delay(200);
   }
@@ -71,9 +72,10 @@ void switchTurnOn() {
 }
 
 void switchStraightOn() {
-  if (switchState != previousState) {
-    digitalWrite(OPEN_PIN, LOW);
+  if (switchState != previousState) {  
     digitalWrite(CLOSE_PIN, HIGH);
+    delay(50);
+    digitalWrite(CLOSE_PIN, LOW);
     previousState = switchState;
     delay(200);
   }
