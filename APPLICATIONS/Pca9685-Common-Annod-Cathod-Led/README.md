@@ -19,3 +19,16 @@
 ### for common cathod 
 * take the pin 0...n yellow pin from pca9685 board and connect to the long legs of common cathod led 
 * take the vcc from the other end of the pca9685 and connect to the long leg of the common anode led 
+
+
+### Configuration in Config.h 
+```
+#define NO_OF_BOARDS 1
+
+
+#define BROAD_RATE 9600
+
+## For anode true and for cathod false 
+const bool enableAnode = true;
+
+```
