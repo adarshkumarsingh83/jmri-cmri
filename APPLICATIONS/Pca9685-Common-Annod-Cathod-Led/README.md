@@ -4,7 +4,7 @@
 
 ![img](image/common-annod-cathod-led.png)
 
-![img](image/connection.JPG)
+![img](image/connections.JPG)
 
 
 ## connection details 
