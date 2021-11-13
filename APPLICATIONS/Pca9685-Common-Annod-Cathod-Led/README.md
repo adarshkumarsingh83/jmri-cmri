@@ -18,7 +18,7 @@
 
 ### for common cathod 
 * take the pin 0...n yellow pin from pca9685 board and connect to the long legs of common cathod led 
-* take the vcc from the other end of the pca9685 and connect to the long leg of the common anode led 
+* take the gnd from the other end of the pca9685 and connect to the long leg of the common anode led 
 
 
 ### Configuration in Config.h 
